@@ -7,7 +7,7 @@ const AUDIO_FILE_PATH = "/audio/basement-dweller.mp3";
  // 
 
 interface BackgroundMusicProps {
-  audioRef: RefObject<HTMLAudioElement>;
+  audioRef: RefObject<HTMLAudioElement | null >;
 }
 
 export default function BackgroundAudio({ audioRef }: BackgroundMusicProps) {
