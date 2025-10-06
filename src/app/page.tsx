@@ -1,103 +1,108 @@
-import Image from "next/image";
+// app/page.tsx
+'use client';
 
-export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+// Import all necessary components and hooks
+import SystemStartup from "./components/SystemStartup/SystemStartup";
+import BackgroundAudio from "./components/BackgroundAudio/BackgroundAudio";
+import { useState, useRef } from "react";
+// WindowsStartupAudio is imported and used within TerminalScreen.tsx
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+// --- Configuration for Audio Fade-in ---
+const TARGET_VOLUME = 0.4;      // Final volume (40%)
+const FADE_DURATION = 1500;     // Fade over 1.5 seconds (1500ms)
+// ----------------------------------------
+
+// 🛑 COMPLETE STATE TYPE 🛑
+type AppState = 'idle' | 'zooming' | 'booting' | 'os_load' | 'terminal' | 'game';
+
+const Home = () => {
+    const [appState, setAppState] = useState<AppState>('idle');
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+
+    // Function to handle the smooth fade-in of the background audio
+    const startAudioFade = () => {
+        const audio = audioRef.current;
+        if (audio) {
+            audio.play().catch(error => { console.error("Audio failed to play:", error); });
+            let volume = 0;
+            const interval = 50;
+            const steps = FADE_DURATION / interval;
+            const volumeStep = TARGET_VOLUME / steps;
+            const fadeInterval = setInterval(() => {
+                volume += volumeStep;
+                if (audio) audio.volume = Math.min(volume, TARGET_VOLUME);
+                if (volume >= TARGET_VOLUME) clearInterval(fadeInterval);
+            }, interval);
+        }
+    };
+
+    // 1. HANDLER: Triggered when the 3D monitor mesh is clicked (idle -> zooming)
+    const handleScreenClick = () => {
+        if (appState === 'idle') {
+            startAudioFade();
+            setAppState('zooming');
+        }
+    };
+
+    // 2. HANDLER: Triggered when CameraZoom animation finishes (zooming -> booting)
+    const handleZoomComplete = () => {
+        if (appState === 'zooming') {
+            setAppState('booting');
+        }
+    };
+
+    // 3. HANDLER: Triggered twice by TerminalScreen (booting -> os_load -> terminal)
+    const handleOsLoadComplete = () => {
+        if (appState === 'booting') {
+            // Text messages finished, start OS animation
+            setAppState('os_load');
+        } else if (appState === 'os_load') {
+            // OS animation finished, show command prompt
+            setAppState('terminal');
+        }
+    };
+    
+    // 4. HANDLER: Triggered when the user clicks 'cards.exe' (terminal -> game)
+    const handleTerminalExecute = () => {
+        setAppState('game');
+    };
+
+    // --- CONDITIONAL RENDERING ---
+
+    return (
+        <>
+            <BackgroundAudio audioRef={audioRef} />
+
+            {/* RENDER CINEMATIC INTRO (All non-game states) */}
+            {(appState !== 'game') && (
+                <SystemStartup 
+                    appState={appState} 
+                    onScreenClick={handleScreenClick}
+                    onOsLoadComplete={handleOsLoadComplete} 
+                    onTerminalExecute={handleTerminalExecute}
+                    onZoomComplete={handleZoomComplete} // New handler for the CameraZoom component
+                />
+            )}
+
+            {/* RENDER MAIN GAME SCENE */}
+            {appState === 'game' && (
+                <div className="text-white h-screen w-screen flex justify-center items-center bg-black">
+                    <p className="text-3xl font-bold font-mono">
+                        [CARDS.EXE RUNNING: POKER GAME SCENE]
+                    </p>
+                </div>
+            )}
+            
+            {/* Overlay Text for Idle State */}
+            {appState === 'idle' && (
+                <div className="absolute inset-0 z-20 flex justify-center items-center pointer-events-none">
+                    <p className="text-xl md:text-2xl font-mono text-white animate-pulse">
+                        CLICK COMPUTER MONITOR TO INITIATE
+                    </p>
+                </div>
+            )}
+        </>
+    )
 }
+
+export default Home;
