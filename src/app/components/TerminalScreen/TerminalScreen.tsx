@@ -49,7 +49,7 @@ const WorldAndTime = ({ currentTime, currentDate }: { currentTime: string; curre
             <div className="flex flex-col items-center justify-start h-full text-green-400 p-1 w-full">
                 
                 {/* CLOCK DISPLAY */}
-                <pre className="text-5xl font-extrabold text-yellow-400 tracking-wider mb-1 leading-none">
+                <pre className="text-1xl font-extrabold text-yellow-400 tracking-wider mb-1 leading-none">
                     {currentTime.slice(0, 5)} 
                 </pre>
                 {/* DATE DISPLAY */}
@@ -60,7 +60,7 @@ const WorldAndTime = ({ currentTime, currentDate }: { currentTime: string; curre
                     <img 
                         src="/images/globe.gif" 
                         alt="Rotating Globe GIF" 
-                        className="w-1000 h-12 scale-500 object-contain" 
+                        className="w-500 h-9 scale-100 object-contain" 
                     />
                 </div>
             </div>
