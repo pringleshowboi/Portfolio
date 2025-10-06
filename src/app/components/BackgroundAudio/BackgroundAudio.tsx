@@ -16,8 +16,7 @@ export default function BackgroundAudio({ audioRef }: BackgroundMusicProps) {
       ref={audioRef} 
       src={AUDIO_FILE_PATH} 
       preload="auto" 
-      loop 
-      volume={0} 
+      loop
       style={{ display: 'none' }} 
     />
   );
