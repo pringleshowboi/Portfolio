@@ -2,7 +2,7 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Suspense, useEffect } from "react"; // 🛑 Removed useState
+import { Suspense, useEffect } from "react"; 
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import * as THREE from 'three'; 
 
@@ -17,14 +17,13 @@ const LOOK_AT_POINT = new THREE.Vector3(-0.3, 0.2, 0.8);
 const ZOOM_SPEED = 0.05;
 
 // 1. Component to handle the Camera Zoom Animation
-// 🛑 IMPORTANT: This component must now call the PARENT (Home/page.tsx) function 
-// to change the state to 'booting', instead of using a local setAppState.
 function CameraZoom({ appState, onZoomComplete }: { appState: AppState, onZoomComplete: () => void }) {
     const { camera } = useThree();
 
     useEffect(() => {
+        // FIX: Ensure initialization runs only once on mount to prevent null/undefined errors.
         camera.position.copy(START_POSITION);
-    }, [camera]);
+    }, []); // Empty dependency array is the fix
 
     useFrame(() => {
         if (appState === 'zooming') {
@@ -32,7 +31,6 @@ function CameraZoom({ appState, onZoomComplete }: { appState: AppState, onZoomCo
             camera.lookAt(LOOK_AT_POINT); 
 
             if (camera.position.distanceTo(TARGET_POSITION) < 0.1) {
-                // 🛑 NEW: Call the PARENT callback when zoom is done
                 onZoomComplete();
                 camera.position.copy(TARGET_POSITION);
             }
@@ -42,15 +40,14 @@ function CameraZoom({ appState, onZoomComplete }: { appState: AppState, onZoomCo
 }
 
 
-// 2. ClickableScreen and 3. ComputerModel remain the same...
+// 2. ClickableScreen
 interface ClickableScreenProps { onScreenClick: () => void; }
 function ClickableScreen({ onScreenClick }: ClickableScreenProps) {
-    const monitorPosition = new THREE.Vector3(-0.3, 0.2, 0.8);
-    const monitorScale = new THREE.Vector3(1, 0.9, 0.01); 
+    // FIX: Use array literals for static position/scale to prevent "read only" errors on the Mesh.
     return (
         <mesh 
-            position={monitorPosition}
-            scale={monitorScale}
+            position={[-0.3, 0.2, 0.8]} 
+            scale={[1, 0.9, 0.01]}
             onClick={onScreenClick} 
         >
             <boxGeometry args={[1, 1, 1]} />
@@ -58,15 +55,19 @@ function ClickableScreen({ onScreenClick }: ClickableScreenProps) {
         </mesh>
     );
 }
+
+// 3. ComputerModel (Fix for GLTF Group already incorporated)
 function ComputerModel() {
     const { scene } = useGLTF("/models/FullComp.glb");
+    
     return (
-        <primitive
-            object={scene}
+        <group 
             scale={0.5}
             position={[0.4, 0.1, 0.4]} 
             rotation={[0, Math.PI, 0]}
-        />
+        >
+            <primitive object={scene} />
+        </group>
     );
 }
 useGLTF.preload("/models/FullComp.glb");
@@ -74,25 +75,23 @@ useGLTF.preload("/models/FullComp.glb");
 
 // 4. Main SystemStartup Component
 interface SystemStartupProps {
-    appState: AppState | 'game';
+    appState: AppState; // Cast to AppState to remove 'game' since it's now internal to TerminalScreen
     onScreenClick: () => void;
     onOsLoadComplete: () => void; 
     onTerminalExecute: () => void;
-    // 🛑 NEW PROP for CameraZoom to call Home/page.tsx 🛑
     onZoomComplete: () => void;
 }
 
 export default function SystemStartup({ 
-    appState, // Use this directly, no local state copy
+    appState, 
     onScreenClick, 
     onOsLoadComplete, 
     onTerminalExecute,
-    onZoomComplete // Destructure new prop
+    onZoomComplete 
 }: SystemStartupProps) {
     
     // Cast the state for simpler conditional rendering
-    const currentAppState = appState as AppState;
-    const isIdle = currentAppState === 'idle';
+    const isIdle = appState === 'idle';
 
     return (
         <div 
@@ -103,9 +102,9 @@ export default function SystemStartup({
             }}
         >
             {/* A. Terminal Screen Overlay */}
-            {(currentAppState === 'booting' || currentAppState === 'os_load' || currentAppState === 'terminal') && (
+            {(appState === 'booting' || appState === 'os_load' || appState === 'terminal') && (
                 <TerminalScreen 
-                    appState={currentAppState} 
+                    appState={appState} 
                     onOsLoadComplete={onOsLoadComplete} 
                     onTerminalExecute={onTerminalExecute}
                 />
@@ -117,15 +116,15 @@ export default function SystemStartup({
                 
                 {/* B. Camera Zoom Logic */}
                 <CameraZoom 
-                    appState={currentAppState} 
-                    onZoomComplete={onZoomComplete} // 🛑 Pass the callback here 🛑
+                    appState={appState} 
+                    onZoomComplete={onZoomComplete} 
                 /> 
 
                 {/* C. Orbit Controls */}
                 <OrbitControls 
                     enableDamping 
                     dampingFactor={0.05} 
-                    enabled={currentAppState === 'terminal'} 
+                    enabled={appState === 'terminal'} 
                 />
                 
                 <Suspense fallback={null}>

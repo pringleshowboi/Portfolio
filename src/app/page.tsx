@@ -4,20 +4,27 @@
 // Import all necessary components and hooks
 import SystemStartup from "./components/SystemStartup/SystemStartup";
 import BackgroundAudio from "./components/BackgroundAudio/BackgroundAudio";
-import { useState, useRef } from "react";
-// WindowsStartupAudio is imported and used within TerminalScreen.tsx
+import { useState, useRef, useCallback, useEffect } from "react"; // ADDED useEffect
+import CardGame from "./components/CardGame/CardGame"; 
+import { useRouter } from 'next/navigation'; // 🛑 NEW IMPORT FOR REDIRECTION 🛑
 
 // --- Configuration for Audio Fade-in ---
-const TARGET_VOLUME = 0.4;      // Final volume (40%)
-const FADE_DURATION = 1500;     // Fade over 1.5 seconds (1500ms)
+const TARGET_VOLUME = 0.4;      // Final volume (40%)
+const FADE_DURATION = 1500;     // Fade over 1.5 seconds (1500ms)
+const REDIRECT_DELAY_MS = 1500; // Delay after game completion before redirecting
 // ----------------------------------------
 
-// 🛑 COMPLETE STATE TYPE 🛑
-type AppState = 'idle' | 'zooming' | 'booting' | 'os_load' | 'terminal' | 'game';
+// 🛑 COMPLETE STATE TYPE (UPDATED) 🛑
+type AppState = 'idle' | 'zooming' | 'booting' | 'os_load' | 'terminal' | 'game' | 'game_complete';
+// 🛑 CARD CONFIG
+const CARD_COUNT = 5;
 
 const Home = () => {
+    const router = useRouter(); // 🛑 INITIALIZE ROUTER 🛑
     const [appState, setAppState] = useState<AppState>('idle');
     const audioRef = useRef<HTMLAudioElement | null>(null);
+    const [collectedCards, setCollectedCards] = useState<boolean[]>(Array(CARD_COUNT).fill(false));
+
 
     // Function to handle the smooth fade-in of the background audio
     const startAudioFade = () => {
@@ -54,10 +61,8 @@ const Home = () => {
     // 3. HANDLER: Triggered twice by TerminalScreen (booting -> os_load -> terminal)
     const handleOsLoadComplete = () => {
         if (appState === 'booting') {
-            // Text messages finished, start OS animation
             setAppState('os_load');
         } else if (appState === 'os_load') {
-            // OS animation finished, show command prompt
             setAppState('terminal');
         }
     };
@@ -66,29 +71,82 @@ const Home = () => {
     const handleTerminalExecute = () => {
         setAppState('game');
     };
+    
+    // 5. HANDLER: Exit the game back to the terminal (This should now only be used for premature exit)
+    const handleExitGame = () => {
+        setAppState('terminal');
+    };
+
+    // 6. HANDLER: Card Collection Logic
+    const handleCardCollect = useCallback((index: number) => {
+        setCollectedCards(prev => {
+            const newCards = [...prev];
+            newCards[index] = true;
+            
+            // 🛑 CHECK FOR GAME COMPLETION HERE 🛑
+            const allCollected = newCards.every(isCollected => isCollected);
+            
+            if (allCollected) {
+                // If all cards are collected, transition to the completion state
+                setAppState('game_complete');
+            }
+            
+            return newCards;
+        });
+    }, []);
+
+    // 🛑 NEW EFFECT: Redirection Logic 🛑
+    useEffect(() => {
+        let timeout: NodeJS.Timeout;
+        
+        if (appState === 'game_complete') {
+            // Wait a moment for any final game state or message to display
+            timeout = setTimeout(() => {
+                // Use the router to navigate to the blog page
+                router.push('/blog'); 
+            }, REDIRECT_DELAY_MS);
+        }
+
+        return () => clearTimeout(timeout);
+    }, [appState, router]);
+
 
     // --- CONDITIONAL RENDERING ---
 
     return (
-        <>
+        <div className="h-screen w-screen overflow-hidden">
             <BackgroundAudio audioRef={audioRef} />
 
-            {/* RENDER CINEMATIC INTRO (All non-game states) */}
-            {(appState !== 'game') && (
+            {/* RENDER CINEMATIC INTRO / TERMINAL (All non-game states) */}
+            {(appState !== 'game' && appState !== 'game_complete') && ( // 🛑 EXCLUDE game_complete 🛑
                 <SystemStartup 
                     appState={appState} 
                     onScreenClick={handleScreenClick}
                     onOsLoadComplete={handleOsLoadComplete} 
                     onTerminalExecute={handleTerminalExecute}
-                    onZoomComplete={handleZoomComplete} // New handler for the CameraZoom component
+                    onZoomComplete={handleZoomComplete} 
                 />
             )}
 
-            {/* RENDER MAIN GAME SCENE */}
+            {/* 🛑 RENDER MAIN GAME SCENE 🛑 */}
             {appState === 'game' && (
-                <div className="text-white h-screen w-screen flex justify-center items-center bg-black">
-                    <p className="text-3xl font-bold font-mono">
-                        [CARDS.EXE RUNNING: POKER GAME SCENE]
+                <CardGame
+                    collectedCards={collectedCards}
+                    onCardCollect={handleCardCollect}
+                    onExit={handleExitGame}
+                    // The game component no longer needs an onComplete, as the logic
+                    // is handled by the handleCardCollect callback in this parent component.
+                />
+            )}
+            
+            {/* 🛑 GAME COMPLETE MESSAGE (Briefly Shown before Redirect) 🛑 */}
+            {appState === 'game_complete' && (
+                <div className="absolute inset-0 z-50 flex flex-col justify-center items-center bg-black/90 font-mono text-center">
+                    <p className="text-4xl font-bold text-green-400 animate-pulse mb-4">
+                        DATA RETRIEVAL COMPLETE.
+                    </p>
+                    <p className="text-xl text-yellow-400">
+                        Redirecting to //BLOGSITE.EXE...
                     </p>
                 </div>
             )}
@@ -101,7 +159,7 @@ const Home = () => {
                     </p>
                 </div>
             )}
-        </>
+        </div>
     )
 }
 
