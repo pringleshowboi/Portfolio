@@ -2,13 +2,18 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import WindowsStartupAudio from '../WindowsStartupAudio/WindowsStartupAudio';
 import { format } from 'date-fns'; 
 
-// Define AppState to match your page.tsx flow
-type AppState = 'idle' | 'zooming' | 'booting' | 'os_load' | 'terminal';
+// 🛑 REQUIRED EXTERNAL COMPONENTS 🛑
+import WindowsStartupAudio from '../WindowsStartupAudio/WindowsStartupAudio';
+// import CardGame from '../CardGame/CardGame'; // ❌ REMOVED: Game now opens externally
+import ChatbotArea from '../ChatbotArea/ChatbotArea'; 
+import JarvisAvatar from '../JarvisAvatar/JarvisAvatar'; 
 
-// Configuration for the boot sequence text
+// --- Configuration & Types ---
+// 1. 🟢 UPDATED: Removed 'zooming' state
+type AppState = 'idle' | 'booting' | 'os_load' | 'terminal';
+
 const BOOT_MESSAGES = [
     "BIOS v3.14 - Initializing...",
     "CPU: Intel Core Resume Processor",
@@ -19,20 +24,19 @@ const BOOT_MESSAGES = [
     "Ready.",
 ];
 
-const MESSAGE_DELAY = 350;       // Speed of the boot messages
-const OS_LOAD_DURATION = 3500;   // Duration of the Windows sound/animation (e.g., 3.5 seconds)
-const PAUSE_AFTER_READY = 700;   // Pause after 'Ready.' before switching
+const MESSAGE_DELAY = 350;       // Speed of the boot messages
+const OS_LOAD_DURATION = 3500;   // Duration of the Windows sound/animation
+const PAUSE_AFTER_READY = 700;   // Pause after 'Ready.' before switching
 
 interface TerminalScreenProps {
     appState: AppState;
     onOsLoadComplete: () => void;
-    onTerminalExecute: () => void;
+    // Updated interface to signal the specific command executed to the parent
+    onTerminalExecute: (command: 'cards.exe' | 'other_command') => void; 
 }
 
-// Define the ASCII Card Icon
-const ASCII_CARD_ICON = `
-🃜
-`;
+// Define the ASCII Card Icon (using unicode for a clearer card)
+const ASCII_CARD_ICON = `🃜`;
 
 // ----------------------------------------------------------------------
 // HELPER COMPONENT: WORLD AND TIME 
@@ -41,7 +45,6 @@ const ASCII_CARD_ICON = `
 const WorldAndTime = ({ currentTime, currentDate }: { currentTime: string; currentDate: string }) => {
 
     return (
-        // Added gridArea: 'world_time' to match the new nested grid structure
         <div 
             className="border-2 border-green-400 p-2 flex flex-col justify-center items-center h-full w-full"
             style={{ gridArea: 'world_time' }}
@@ -49,7 +52,7 @@ const WorldAndTime = ({ currentTime, currentDate }: { currentTime: string; curre
             <div className="flex flex-col items-center justify-start h-full text-green-400 p-1 w-full">
                 
                 {/* CLOCK DISPLAY */}
-                <pre className="text-5xl font-extrabold text-yellow-400 tracking-wider mb-1 leading-none">
+                <pre className="text-4xl font-extrabold text-yellow-400 tracking-wider mb-1 leading-none">
                     {currentTime.slice(0, 5)} 
                 </pre>
                 {/* DATE DISPLAY */}
@@ -68,46 +71,23 @@ const WorldAndTime = ({ currentTime, currentDate }: { currentTime: string; curre
     );
 }
 
+
 // ----------------------------------------------------------------------
-// HELPER COMPONENT: CHATBOT AREA 
+// HELPER COMPONENT: NESTED GRID WRAPPER FOR RIGHT COLUMN
 // ----------------------------------------------------------------------
 
-const ChatbotArea = ({ currentTime }: { currentTime: string }) => {
-    return (
-        // Added gridArea: 'chatbot' to match the new nested grid structure
-        <div 
-            className="border-2 border-green-400 p-2 flex flex-col justify-end h-full w-full"
-            style={{ gridArea: 'chatbot' }}
-        >
-            <p className="text-yellow-400 font-bold mb-2">J.A.R.V.I.S. INTERFACE:</p>
-            
-            {/* This div uses flex-grow to occupy most of the available height, now 2/3 of the right column */}
-            <div className="flex-grow flex justify-center items-center h-full bg-black/50">
-                <p className="text-xl text-gray-500 font-bold">
-                    [TALL JARVIS AVATAR AREA]
-                </p>
-            </div>
-
-            <div className="flex justify-between items-center text-sm mt-2">
-                <p className="text-yellow-400 font-bold">STATUS:</p>
-                <p className="text-sm">[ACTIVE]</p>
-            </div>
-            <p className="text-xs mt-1 text-right">LAST PING: {currentTime.slice(0, 5)}</p>
-        </div>
-    );
+interface RightColumnWrapperProps { 
+    currentTime: string; 
+    currentDate: string; 
+    status: string; // Dynamic status for the chatbot to display
 }
 
-// ----------------------------------------------------------------------
-// NESTED GRID WRAPPER FOR RIGHT COLUMN (FOR 1/3 and 2/3 SPLIT)
-// ----------------------------------------------------------------------
-
-const RightColumnWrapper = ({ currentTime, currentDate }: { currentTime: string, currentDate: string }) => {
+const RightColumnWrapper = ({ currentTime, currentDate, status }: RightColumnWrapperProps) => {
     return (
-        // This container occupies the entire right column area defined by the main grid
         <div 
             className="grid h-full w-full gap-4"
             style={{
-                // This defines the internal vertical split: 1fr (Time) 2fr (Chatbot)
+                // Internal vertical split: 1fr (Time) 2fr (Chatbot)
                 gridTemplateRows: '1fr 2fr', 
                 gridTemplateAreas: `
                     "world_time"
@@ -116,14 +96,15 @@ const RightColumnWrapper = ({ currentTime, currentDate }: { currentTime: string,
             }}
         >
             <WorldAndTime currentTime={currentTime} currentDate={currentDate} />
-            <ChatbotArea currentTime={currentTime} />
+            {/* Using the external ChatbotArea component */}
+            <ChatbotArea currentTime={currentTime} status={status} />
         </div>
     );
 }
 
 
 // ----------------------------------------------------------------------
-// MAIN COMPONENT 
+// MAIN TERMINALSCREEN COMPONENT 
 // ----------------------------------------------------------------------
 
 export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalExecute }: TerminalScreenProps) {
@@ -134,7 +115,27 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
     const [currentTime, setCurrentTime] = useState('');
     const [currentDate, setCurrentDate] = useState('');
 
-    // Function to run the sequential boot messages
+    // Dynamic Status State (Used by RightColumnWrapper -> ChatbotArea)
+    const [systemStatus, setSystemStatus] = useState("System Offline");
+
+
+    // Handler for Cards.exe click: Triggers state change in the parent component
+    const handleCardsExecute = () => {
+        // This function tells the parent component (App or Layout) to change state
+        onTerminalExecute('cards.exe'); 
+    };
+
+    // --- Dynamic Status Effect (Simplified) ---
+    useEffect(() => {
+        if (appState === 'terminal') {
+            setSystemStatus("Active - Awaiting Command");
+        } else {
+            setSystemStatus("System Initializing...");
+        }
+    }, [appState]);
+
+
+    // --- Boot Sequence Logic (Unchanged) ---
     const runBootSequence = useCallback(() => {
         if (sequenceStartedRef.current) return;
         sequenceStartedRef.current = true;
@@ -144,7 +145,7 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
         
         const typeMessage = () => {
             if (currentMessageIndex >= BOOT_MESSAGES.length) {
-                setTimeout(() => { onOsLoadComplete(); }, PAUSE_AFTER_READY);
+                setTimeout(() => { onOsLoadComplete(); }, PAUSE_AFTER_READY); // Transition to os_load
                 return;
             }
             
@@ -158,7 +159,7 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
     }, [onOsLoadComplete]);
 
 
-    // Effect to start the boot sequence
+    // Effect to start the boot sequence (Unchanged)
     useEffect(() => {
         if (appState === 'booting' && !sequenceStartedRef.current) {
             runBootSequence();
@@ -166,19 +167,21 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
     }, [appState, runBootSequence]);
 
 
-    // Effect to handle the OS Load animation/sound duration
+    // Effect to handle the OS Load duration (Unchanged)
     useEffect(() => {
         let timeout: NodeJS.Timeout;
 
         if (appState === 'os_load') {
-            timeout = setTimeout(() => { onOsLoadComplete(); }, OS_LOAD_DURATION);
+            timeout = setTimeout(() => { 
+                onOsLoadComplete(); // Transition to 'terminal' state
+            }, OS_LOAD_DURATION);
         }
 
         return () => clearTimeout(timeout);
     }, [appState, onOsLoadComplete]);
 
 
-    // Effect for the real-time clock and date display
+    // Effect for the real-time clock and date display (Unchanged)
     useEffect(() => {
         let interval: NodeJS.Timeout;
         if (appState === 'terminal') {
@@ -194,7 +197,6 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
     }, [appState]);
 
 
-    // Helper for the blinking cursor logic
     const isBootingActive = appState === 'booting' && sequenceStartedRef.current && messages.length < BOOT_MESSAGES.length;
 
     return (
@@ -212,7 +214,6 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
             
             {/* 🛑 STATE 2: OS LOAD (TRANSITION SCREEN) 🛑 */}
             {appState === 'os_load' && (
-                // Keep the blue screen briefly as a transition element
                 <div className="w-full h-full flex flex-col justify-center items-center bg-blue-700 text-white text-3xl font-bold">
                     <WindowsStartupAudio />
                     <p className='animate-pulse'>OS INITIALIZING...</p>
@@ -228,8 +229,7 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                     <div 
                         className="grid h-full w-full gap-4"
                         style={{
-                            gridTemplateColumns: '2fr 1fr', // Left 2/3, Right 1/3
-                            // Row split for the left column: 2fr (UI) 1fr (Terminal)
+                            gridTemplateColumns: '2fr 1fr', 
                             gridTemplateRows: '2fr 1fr', 
                             gridTemplateAreas: `
                                 "ui right_column"
@@ -249,16 +249,16 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                         >
                             <p className="text-yellow-400 font-bold mb-6">ACCESS PORT:</p>
                             
-                            {/* Icons/Menu */}
+                            {/* ICONS LIST */}
                             <div className="flex flex-col items-start space-y-4 pt-4">
-                                
-                                {/* Cards.exe Icon (ASCII ICON) - Clickable */}
+                                    
+                                {/* Cards.exe Icon (ASCII ICON) - Clickable, signals game launch */}
                                 <div 
                                     className="cursor-pointer hover:text-white flex items-start space-x-2"
-                                    onClick={onTerminalExecute}
+                                    onClick={handleCardsExecute}
                                 >
                                     <pre className="leading-none text-7xl text-green-400 hover:text-white">{ASCII_CARD_ICON}</pre>
-                                    <span className="mt-30">cards.exe</span>
+                                    <span className="mt-10">cards.exe</span>
                                 </div>
                             </div>
                         </div>
@@ -277,14 +277,17 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                             <p className="text-xs">LOG: System is now accepting commands.</p>
                             
                             {/* Terminal command line */}
-                            <p className="mt-2 text-white font-bold">C:\USERS\PORTFOLIO\&gt; <span className="animate-pulse">_</span></p>
-                            {/* Future API Hook: This area will host the logic for your terminal API interaction. */}
+                            <p className="mt-2 text-white font-bold">C:\USERS\PORTFOLIO\$: <span className="animate-pulse">_</span></p>
                         </div>
 
 
                         {/* 2 & 4. RIGHT COLUMN (Spans both rows, contains nested grid) */}
                         <div style={{ gridArea: 'right_column' }}>
-                            <RightColumnWrapper currentTime={currentTime} currentDate={currentDate} />
+                            <RightColumnWrapper 
+                                currentTime={currentTime} 
+                                currentDate={currentDate} 
+                                status={systemStatus} 
+                            />
                         </div>
                         
                     </div>
