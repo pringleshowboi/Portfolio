@@ -25,7 +25,11 @@ export const client = createClient({
 /**
  * Sanity Fetch Function
  */
-export async function sanityFetch<T>({ query, params = {} }: { query: string, params?: Record<string, any> }): Promise<T> {
+export async function sanityFetch<T>({ query, params = {} }: { 
+    query: string, 
+    // 🛑 FIX: Apply the linter disable comment
+    params?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any 
+}): Promise<T> {
     return client.fetch<T>(query, params);
 }
 
