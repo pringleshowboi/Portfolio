@@ -11,7 +11,6 @@ import ChatbotArea from '../ChatbotArea/ChatbotArea';
 import JarvisAvatar from '../JarvisAvatar/JarvisAvatar'; 
 
 // --- Configuration & Types ---
-// 1. 🟢 UPDATED: Removed 'zooming' state
 type AppState = 'idle' | 'booting' | 'os_load' | 'terminal';
 
 const BOOT_MESSAGES = [
@@ -24,19 +23,21 @@ const BOOT_MESSAGES = [
     "Ready.",
 ];
 
-const MESSAGE_DELAY = 350;       // Speed of the boot messages
-const OS_LOAD_DURATION = 3500;   // Duration of the Windows sound/animation
-const PAUSE_AFTER_READY = 700;   // Pause after 'Ready.' before switching
+const MESSAGE_DELAY = 350;      // Speed of the boot messages
+const OS_LOAD_DURATION = 3500;  // Duration of the Windows sound/animation
+const PAUSE_AFTER_READY = 700;  // Pause after 'Ready.' before switching
 
 interface TerminalScreenProps {
     appState: AppState;
     onOsLoadComplete: () => void;
-    // Updated interface to signal the specific command executed to the parent
-    onTerminalExecute: (command: 'cards.exe' | 'other_command') => void; 
+    // UPDATED: Added 'blog.exe' command type
+    onTerminalExecute: (command: 'cards.exe' | 'blog.exe') => void; 
 }
 
-// Define the ASCII Card Icon (using unicode for a clearer card)
+// Define the ASCII Card Icon
 const ASCII_CARD_ICON = `🃜`;
+// Define the ASCII Blog Icon (NEW)
+const ASCII_BLOG_ICON = `🖥`; 
 
 // ----------------------------------------------------------------------
 // HELPER COMPONENT: WORLD AND TIME 
@@ -52,11 +53,7 @@ const WorldAndTime = ({ currentTime, currentDate }: { currentTime: string; curre
             <div className="flex flex-col items-center justify-start h-full text-green-400 p-1 w-full">
                 
                 {/* CLOCK DISPLAY */}
-<<<<<<< HEAD
-                <pre className="text-1xl font-extrabold text-yellow-400 tracking-wider mb-1 leading-none">
-=======
-                <pre className="text-4xl font-extrabold text-yellow-400 tracking-wider mb-1 leading-none">
->>>>>>> 6247f0f
+                <pre className="text-5xl font-extrabold text-yellow-400 tracking-wider mb-1 leading-none">
                     {currentTime.slice(0, 5)} 
                 </pre>
                 {/* DATE DISPLAY */}
@@ -67,7 +64,7 @@ const WorldAndTime = ({ currentTime, currentDate }: { currentTime: string; curre
                     <img 
                         src="/images/globe.gif" 
                         alt="Rotating Globe GIF" 
-                        className="w-500 h-9 scale-100 object-contain" 
+                        className="w-500 h-12 scale-200 object-contain" 
                     />
                 </div>
             </div>
@@ -123,10 +120,16 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
     const [systemStatus, setSystemStatus] = useState("System Offline");
 
 
-    // Handler for Cards.exe click: Triggers state change in the parent component
+    // Handler for Cards.exe click
     const handleCardsExecute = () => {
         // This function tells the parent component (App or Layout) to change state
         onTerminalExecute('cards.exe'); 
+    };
+
+    // Handler for Blog.exe click (NEW)
+    const handleBlogExecute = () => {
+        // This function tells the parent component to navigate to the blog page
+        onTerminalExecute('blog.exe'); 
     };
 
     // --- Dynamic Status Effect (Simplified) ---
@@ -227,11 +230,14 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
 
             {/* 🛑 STATE 3: TERMINAL DESKTOP 🛑 */}
             {appState === 'terminal' && (
-                <div className="w-full h-full p-10 bg-black/90 pointer-events-auto text-green-400">
+                // ✅ SCROLL FIX STEP 1: Use h-full and w-full, and apply p-10 here. Make it a flex container.
+                <div className="w-full h-full bg-black/90 pointer-events-auto text-green-400 p-10 flex flex-col">
                     
                     {/* MASTER GRID */}
                     <div 
-                        className="grid h-full w-full gap-4"
+                        // ✅ SCROLL FIX STEP 2: Change `height: 'calc(100vh - 80px)'` to `h-full` and add `overflow-y-auto`.
+                        // h-full works now because the parent div is a constrained flex container.
+                        className="grid w-full h-full gap-4 overflow-y-auto"
                         style={{
                             gridTemplateColumns: '2fr 1fr', 
                             gridTemplateRows: '2fr 1fr', 
@@ -263,6 +269,15 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                 >
                                     <pre className="leading-none text-7xl text-green-400 hover:text-white">{ASCII_CARD_ICON}</pre>
                                     <span className="mt-10">cards.exe</span>
+                                </div>
+
+                                {/* blog.exe Icon (NEW) - Clickable, signals blog navigation */}
+                                <div 
+                                    className="cursor-pointer hover:text-white flex items-start space-x-2 ml-[-2]" // Added ml-[-2] for left nudge
+                                    onClick={handleBlogExecute} 
+                                >
+                                    <pre className="leading-none text-6xl text-green-400 hover:text-white">{ASCII_BLOG_ICON}</pre>
+                                    <span className="mt-10">blog.exe</span>
                                 </div>
                             </div>
                         </div>

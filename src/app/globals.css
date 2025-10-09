@@ -26,3 +26,39 @@ body {
   overflow: hidden;
 }
 
+/* --- Retro Terminal Blog Overrides --- */
+
+/* Style the body of the blog content */
+.prose-terminal {
+    color: var(--color-green-400); /* Ensure primary text is green */
+    max-width: none; /* Let the main layout control width */
+}
+
+/* Headings: Use yellow accent and a green bottom border */
+.prose-terminal h1,
+.prose-terminal h2,
+.prose-terminal h3 {
+    color: var(--color-yellow-400);
+    border-bottom: 2px solid var(--color-green-400);
+    padding-bottom: 0.25rem;
+    margin-top: 1.5rem;
+}
+
+/* Links: Use yellow accent and keep the monospace font */
+.prose-terminal a {
+    color: var(--color-yellow-400);
+    text-decoration: underline;
+}
+
+/* Blockquotes, Lists, Code Blocks, etc. */
+.prose-terminal blockquote {
+    color: var(--color-green-200); /* Slightly lighter green for contrast */
+    border-left-color: var(--color-yellow-400);
+}
+
+/* Define CSS variables for easier color reference */
+:root {
+    --color-green-400: #34D399; 
+    --color-yellow-400: #FACC15;
+    --color-green-200: #A7F3D0;
+}

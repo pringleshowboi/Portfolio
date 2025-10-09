@@ -3,31 +3,33 @@
 export const CARD_SYNOPSES: string[] = [
     // 0. Achievements: King of Clubs
     "CERTIFICATIONS & AWARDS:\n" +
-    "- Achieved 'Certified Professional Developer' status (2023).\n" +
-    "- Won 2nd place in the 'FutureTech Hackathon' for a novel decentralized application concept.\n" +
-    "- Recognized for outstanding contributions in system optimization.",
+    "- CCNA. || CISCO NETWORK PROFESSIONAL.\n" +
+    "- SECURITY+ & A1/2+ || COMPTIA.\n" +
+    "- ACHIEVED A 99% GRADE AVERAGE FOR SOFTWARE ENGINEERING.\n" + // <-- ADDED \n here
+    "- CYBERSECURITY ENGINEER || TRYHACKME.",
     
     // 1. Education: Queen of Clubs
     "EDUCATION:\n" +
-    "- Bachelor of Science in Computer Science (Major: Software Engineering).\n" +
-    "- Key coursework included Advanced Data Structures, Distributed Systems, and Human-Computer Interaction.\n" +
-    "- Graduated with honors.",
+    "- CERTIFIED SOFTWARE ENGINEER/DATA ENGINEER - HYPERIONDEV || NQF5.\n" +
+    "- CERTIFIED CYBERSECURITY SPECIALIST - EDUVOS || NQF5.\n" +
+    "- HAVARD CS50 FOR LAWYERS || HARVARD ONLINE.",
     
     // 2. Projects: Jack of Hearts
     "KEY PROJECTS:\n" +
-    "- Developed a 'CardGame' simulation using React and Three.js for 3D visualization.\n" +
-    "- Created a full-stack portfolio (V2) with integrated CI/CD pipelines.\n" +
-    "- Contributed to open-source weather data aggregation tools (React, TypeScript, Node.js).",
+    "- DISTRIBUTED COMPUTING AND SHARING OF RESOURCES ACCROSS A NETWORK.\n" +
+    "- FULL-STACK PORTFOLIO WITH NEXT.JS, THREE.JS, SANITY.IO.\n" +
+    "- CONTRIBUTIONS TO OPEN-SOURCE SELF-HOSTED PROXMOX SERVERS AND NODES.\n" +
+    "- AI/ML WITH PYTORCH.\n" +
+    "- M4N || A SELF-HOSTED HONEYPOT OS INTERACTING AS API FEEDING SIEM DATA.",
     
     // 3. Experience: Ace of Spades
     "PROFESSIONAL EXPERIENCE:\n" +
-    "- Internship as a Junior Full-Stack Developer (12 months).\n" +
-    "- Focused on migrating legacy JavaScript codebases to TypeScript/React.\n" +
-    "- Hands-on experience with RESTful API design and database schema management (PostgreSQL).",
+    "- DATA MONITOR/ENGINEER - PIPELINES, DATABASE SCHEMAS, DATA WRANGLING, BI-DASHBOARDS & STAKEHOLDER COMMUNICATION || SPINNAKER SOFTWARE 2025-2025\n" + // <-- ADDED \n here
+    "- IT SUPPORT SPECIALIST (VOLUNTEER) - TICKET ASSIGNMENTS, STOCK ORDERING AND INVENTORY MANAGEMENT || CPOA 2022-2022",
     
     // 4. Blogsite: 10 of Hearts
     "TECHNICAL BLOG:\n" +
-    "- Author of technical articles on modern web development practices.\n" +
-    "- Topics include 'Optimizing React Rendering with Memoization' and 'Serverless Architectures for Small Projects'.\n" +
-    "- Focus on sharing knowledge and continuous learning.",
+    "- A BLOGSITE TO DOCUMENT MY FINDINGS OR SOMETHING THAT I FOUND INTERESTING RATHER THAN SLOP POSTED ON LINKEDIN lol (i dont mean it please hire me).\n" +
+    "- TOPICS FOCUSED ON EITHER VULNERABILITIES OR INTERESTING TOPICS AROUND SECURITY.\n" + // <-- Changed '; to .\' and fixed the double semicolon issue
+    "- FOCUSING ON SHARING AND DEVELOPMENT OF KNOWLEDGE AROUND TECHNOLOGY.",
 ];

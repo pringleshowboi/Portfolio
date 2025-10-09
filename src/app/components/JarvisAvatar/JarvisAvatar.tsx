@@ -97,7 +97,6 @@ export default function JarvisAvatar({ emotion = 'idle' }: JarvisAvatarProps) {
                 width: `${SPRITE_WIDTH_PX}px`, 
                 height: `${SPRITE_HEIGHT_PX}px`,
                 overflow: 'hidden',
-                border: '1px solid rgba(0, 255, 0, 0.2)', 
             }}
         >
             <div

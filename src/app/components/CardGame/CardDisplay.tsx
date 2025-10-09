@@ -16,7 +16,7 @@ const CARD_MODELS = [
 ];
 
 // Reverting to Top-Left Configuration for the Analysis (Rotating) state:
-const ANALYZE_POSITION: [number, number, number] = [-3.0, 0.5, 0]; 
+const ANALYZE_POSITION: [number, number, number] = [-0.5, 0.5, 0.5]; 
 const ANALYZE_SCALE = 0.5; 
 
 interface CardDisplayProps {

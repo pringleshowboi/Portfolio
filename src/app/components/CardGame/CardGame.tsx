@@ -12,14 +12,14 @@ import { CARD_SYNOPSES } from './CardSynopses';
 
 // --- Configuration ---
 const CARD_COUNT = 5;
-const ANALYSIS_DURATION_MS = 5000; // 5 seconds
+const ANALYSIS_DURATION_MS = 8000; // 10 seconds
 
 const CARD_SYNOPSIS_TITLES = [
-    'Achievements: King of Clubs', 
-    'Education: Queen of Clubs', 
-    'Projects: Jack of Hearts', 
-    'Experience: Ace of Spades', 
-    'Blogsite: 10 of Hearts'
+    'ACHIEVEMENTS: KING OF CLUBS', 
+    'EDCUATION: QUEEN OF CLUBS', 
+    'PROJECTS: JACK OF HEARTS', 
+    'EXPERIENCE: ACE OF SPADES', 
+    'BLOGSITE: TEN OF HEARTS'
 ];
 
 interface CardGameProps {
@@ -252,12 +252,11 @@ export default function CardGame({ collectedCards, onCardCollect, onExit }: Card
                     
                     {/* Analysis Synopsis (Top-Left) */}
                     {analyzedCardIndex !== null && (
-                        <div className="absolute top-5 left-5 p-4 border border-red-500 bg-black/70 text-sm w-[300px] text-left"> 
+                        <div className="absolute top-5 left-5 p-4 border border-red-500 bg-black/70 text-sm w-[600px] text-left"> 
                             <p className="text-red-400 font-bold mb-2">NETWORK ANALYSIS IN PROGRESS...</p>
                             {/* DISPLAY SYNOPSIS: uses CARD_SYNOPSES data */}
                             <p className="text-white font-bold mb-1">{CARD_SYNOPSIS_TITLES[analyzedCardIndex]}</p>
                             <p className="text-white whitespace-pre-wrap">{CARD_SYNOPSES[analyzedCardIndex]}</p>
-                            <p className="text-gray-400 mt-2">Duration: {ANALYSIS_DURATION_MS / 1000} seconds.</p> 
                         </div>
                     )}
 
