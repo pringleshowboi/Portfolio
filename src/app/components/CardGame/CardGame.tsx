@@ -74,7 +74,7 @@ function StaticCamera() {
     const fixedZoom = 1.8; 
 
     // 🛑 R3F Hook Dependency Warning Fix: Ignore the rule for this specific use case
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const updateCamera = useCallback(() => {
         camera.position.set(...fixedPosition);
         camera.lookAt(...fixedTarget);
@@ -217,7 +217,6 @@ export default function CardGame({ collectedCards, onCardCollect, onExit }: Card
                         frameloop="demand" 
                         orthographic 
                         className="w-full h-full"
-                        {/* 🛑 FIX: Explicitly include all required RaycasterParameters */}
                         raycaster={{ 
                             params: { 
                                 Mesh: { material: true },
