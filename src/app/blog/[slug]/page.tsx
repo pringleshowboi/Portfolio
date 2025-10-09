@@ -1,9 +1,11 @@
 // src/app/blog/[slug]/page.tsx
 import { PortableText } from '@portabletext/react'; 
-import { sanityFetch, client, urlForImage } from '../../../utils/sanityClient'; // Assumed path
+// Import the content type for better TypeScript support
+import type { PortableTextContent } from '@portabletext/types'; 
+import { sanityFetch, client, urlForImage } from '../../../utils/sanityClient'; 
 import Image from 'next/image'; 
-import { groq } from 'next-sanity'; // Fixes 'groq is not defined'
-import components from '../../components/BlogPortableText/PortableTextComponents'; // Assumed path
+import { groq } from 'next-sanity'; 
+import components from '../../components/BlogPortableText/PortableTextComponents'; 
 
 // --- Configuration & Types ---
 
@@ -14,7 +16,6 @@ const postQuery = groq`
         slug,
         publishedAt,
         body,
-        // Fetch the necessary asset reference for the image
         mainImage {
             asset->{_ref}, 
             alt
@@ -27,8 +28,9 @@ interface Post {
     title: string;
     slug: { current: string };
     publishedAt: string;
-    body: any; // Portable Text array
-    mainImage?: { // Must match how it's queried above
+    // 🛑 FIX: Use the correct type for Portable Text content
+    body: PortableTextContent; 
+    mainImage?: {
         asset: {
             _ref: string;
         };
@@ -37,6 +39,7 @@ interface Post {
 }
 
 // 2. Define static paths for Next.js build
+// ... (generateStaticParams remains unchanged)
 export async function generateStaticParams() {
     const slugs: string[] = await client.fetch(
         groq`*[_type == "post" && defined(slug.current)][].slug.current`
@@ -47,6 +50,9 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
     // 3. Fetch the post data
+    // NOTE: If sanityFetch in utils/sanityClient.ts is still failing due to 'any', 
+    // you must fix it there, or temporarily add: 
+    // // eslint-disable-next-line @typescript-eslint/no-explicit-any 
     const post = await sanityFetch<Post>({
         query: postQuery,
         params: { slug: params.slug },
