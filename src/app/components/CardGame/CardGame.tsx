@@ -217,13 +217,14 @@ export default function CardGame({ collectedCards, onCardCollect, onExit }: Card
                         frameloop="demand" 
                         orthographic 
                         className="w-full h-full"
+                        // FIX APPLIED: Added 'threshold' to Line, Points, and Sprite params to satisfy TypeScript
                         raycaster={{ 
                             params: { 
                                 Mesh: { material: true },
-                                Line: {},
+                                Line: { threshold: 0.1 }, // <-- FIX
                                 LOD: {},
-                                Points: {},
-                                Sprite: {},
+                                Points: { threshold: 0.1 }, // <-- FIX
+                                Sprite: { threshold: 0.1 }, // <-- FIX
                             } 
                         }}
                     >
