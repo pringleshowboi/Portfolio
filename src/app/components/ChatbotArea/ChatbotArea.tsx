@@ -26,16 +26,20 @@ interface ChatbotAreaProps {
 const getEmotionFromText = (text: string, isThinkingNow: boolean): JarvisEmotion => {
     const lowerText = text.toLowerCase();
     
-    // FIX: Replaced 'listening' and 'thinking' with 'idle' as they are not valid JarvisEmotion types.
+    // FIX: Replaced all invalid emotion types ('listening', 'thinking', 'sad', 'active')
+    // with either 'idle' or 'talking'.
     if (isThinkingNow) return 'idle'; // Fallback to a valid, resting state
 
-    // FIX: Replaced 'sad' with 'active' as 'sad' is also not a valid JarvisEmotion type.
-    if (lowerText.includes('error') || lowerText.includes('not recognized')) return 'active'; 
-    
-    if (lowerText.includes('success') || lowerText.includes('nominal') || lowerText.includes('retrieving data')) return 'active';
+    // Error responses will result in the 'talking' emotion.
+    if (lowerText.includes('error') || lowerText.includes('not recognized')) return 'talking'; 
+    
+    // Success responses will result in the 'talking' emotion.
+    if (lowerText.includes('success') || lowerText.includes('nominal') || lowerText.includes('retrieving data')) return 'talking';
+    
+    // General greeting/assist responses will result in the 'talking' emotion.
     if (lowerText.includes('hello') || lowerText.includes('hi') || lowerText.includes('assist')) return 'talking';
     
-    return 'talking'; 
+    return 'talking'; // Default to talking if no specific condition met
 };
 
 const getQuickResponse = (lowerText: string, status: string): string | null => {
@@ -101,14 +105,14 @@ export default function ChatbotArea({ status, currentTime }: ChatbotAreaProps) {
         if (quickResponse) {
             setMessages(prev => [...prev, `${ASSISTANT_NAME}: ${quickResponse}`]);
             setEmotion(getEmotionFromText(quickResponse, false)); 
-            // Replaced invalid 'listening' with 'idle'
+            // Reset to idle after a response.
             setTimeout(() => setEmotion('idle'), 3000); 
             return;
         }
 
         setIsThinking(true);
-        // 'active' is a valid emotion and works as a placeholder for 'thinking'
-        setEmotion('active'); 
+        // FIX: 'idle' is the most appropriate valid emotion for a 'thinking' state.
+        setEmotion('idle'); 
 
         await new Promise(resolve => setTimeout(resolve, NLP_PROCESSING_DELAY_MS));
 
@@ -118,7 +122,7 @@ export default function ChatbotArea({ status, currentTime }: ChatbotAreaProps) {
         setMessages(prev => [...prev, `${ASSISTANT_NAME}: ${jarvisResponse}`]);
         setEmotion(getEmotionFromText(jarvisResponse, false));
         
-        // Replaced invalid 'listening' with 'idle'
+        // Reset to idle after a response.
         setTimeout(() => setEmotion('idle'), 3000); 
     };
 
@@ -129,7 +133,7 @@ export default function ChatbotArea({ status, currentTime }: ChatbotAreaProps) {
 
     useEffect(() => {
         setEmotion('talking');
-        // Replaced invalid 'listening' with 'idle'
+        // Reset to idle after initial greeting.
         setTimeout(() => setEmotion('idle'), 2000); 
     }, []);
 
@@ -187,7 +191,7 @@ export default function ChatbotArea({ status, currentTime }: ChatbotAreaProps) {
                     value={input}
                     onChange={(e) => {
                         setInput(e.target.value);
-                        // Replaced invalid 'listening' with 'idle'
+                        // Reset to idle while user is typing.
                         setEmotion('idle');
                     }}
                     onKeyDown={handleKeyPress}
