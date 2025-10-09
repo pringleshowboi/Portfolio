@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { CARD_SYNOPSES } from './CardGame/CardSynopses'; 
+import { CARD_SYNOPSES } from '../CardGame/CardSynopses'; 
 
 // --- Configuration ---
 const ASSISTANT_NAME = "J.A.R.V.I.S";
