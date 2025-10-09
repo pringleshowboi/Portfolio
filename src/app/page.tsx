@@ -68,14 +68,21 @@ const Home = () => {
     };
     
     // 4. HANDLER: Triggered when the user clicks 'cards.exe' OR 'blog.exe'
-    // 🛑 FIX APPLIED HERE 🛑
-    const handleTerminalExecute = (command: 'cards.exe' | 'blog.exe') => {
-        if (command === 'cards.exe') {
-            setAppState('game'); // Launch the card game
-        } else if (command === 'blog.exe') {
-            // Immediately redirect to the blog page when 'blog.exe' is clicked
-            router.push('/blog'); 
+    // 🛑 FIX: Make the 'command' argument optional. 
+    // This temporarily satisfies the compiler's '() => void' expectation, 
+    // though the best fix is ensuring the SystemStartup component passes the argument.
+    const handleTerminalExecute = (command?: 'cards.exe' | 'blog.exe') => {
+        if (!command) {
+            console.error("handleTerminalExecute called without a command.");
+            return;
         }
+
+        if (command === 'cards.exe') {
+            setAppState('game'); // Launch the card game
+        } else if (command === 'blog.exe') {
+            // Immediately redirect to the blog page when 'blog.exe' is clicked
+            router.push('/blog'); 
+        }
     };
     
     // 5. HANDLER: Exit the game back to the terminal
