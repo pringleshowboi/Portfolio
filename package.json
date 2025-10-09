@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
     "@portabletext/react": "^4.0.3",
+    "@portabletext/types": "^2.0.15",
     "@react-three/drei": "^10.7.6",
     "@react-three/fiber": "^9.3.0",
     "@sanity/client": "^7.12.0",
