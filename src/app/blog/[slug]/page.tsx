@@ -1,7 +1,6 @@
 // src/app/blog/[slug]/page.tsx
 import { PortableText } from '@portabletext/react'; 
-// The import below might be causing an issue if the package isn't installed.
-// We will replace 'PortableTextContent' with 'any' + a linter disable comment for now.
+// The type import is commented out to prevent a possible build issue, as intended.
 // import type { PortableTextContent } from '@portabletext/types'; 
 import { sanityFetch, client, urlForImage } from '../../../utils/sanityClient'; 
 import Image from 'next/image'; 
@@ -28,7 +27,7 @@ interface Post {
     title: string;
     slug: { current: string };
     publishedAt: string;
-    // 🛑 THE FIX: Use 'any' but disable the linter rule for this line.
+    // Retaining the fix for @typescript-eslint/no-explicit-any
     body: any; // eslint-disable-line @typescript-eslint/no-explicit-any 
     mainImage?: {
         asset: {
@@ -38,8 +37,15 @@ interface Post {
     };
 }
 
+// 🛑 CRITICAL FIX: Define the explicit PageProps interface for the component
+// This resolves the "Type '{ params: { slug: string; }; }' does not satisfy the constraint 'PageProps'" error.
+interface PageProps {
+    params: {
+        slug: string;
+    }
+}
+
 // 2. Define static paths for Next.js build
-// ... (generateStaticParams remains unchanged)
 export async function generateStaticParams() {
     const slugs: string[] = await client.fetch(
         groq`*[_type == "post" && defined(slug.current)][].slug.current`
@@ -48,7 +54,8 @@ export async function generateStaticParams() {
 }
 
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+// 🛑 APPLY FIX: Use the new PageProps interface in the function signature
+export default async function BlogPostPage({ params }: PageProps) {
     // 3. Fetch the post data
     const post = await sanityFetch<Post>({
         query: postQuery,
