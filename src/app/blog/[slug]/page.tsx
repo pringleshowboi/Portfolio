@@ -55,7 +55,7 @@ export async function generateStaticParams() {
 
 
 // 🛑 APPLY FIX: Use the new PageProps interface in the function signature
-export default async function BlogPostPage({ params }: PageProps) {
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
     // 3. Fetch the post data
     const post = await sanityFetch<Post>({
         query: postQuery,
