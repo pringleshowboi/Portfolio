@@ -25,7 +25,7 @@ const CARD_SYNOPSIS_TITLES = [
 interface CardGameProps {
     collectedCards: boolean[];
     onCardCollect: (index: number) => void;
-    onExit: () => void;
+    onExit: () => void;
 }
 
 // --- Hand Position/Rotation Setup for Fanned Effect ---
@@ -73,6 +73,8 @@ function StaticCamera() {
     const frustumSize = 7; 
     const fixedZoom = 1.8; 
 
+    // 🛑 R3F Hook Dependency Warning Fix: Ignore the rule for this specific use case
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const updateCamera = useCallback(() => {
         camera.position.set(...fixedPosition);
         camera.lookAt(...fixedTarget);
@@ -114,15 +116,15 @@ function InteractiveCard({ index, onCardClick, position, cardRotationZ }: Intera
         <group 
             onClick={() => onCardClick(index)}
             rotation={[0, 0, cardRotationZ]} 
-            // Ensures cursor changes on hover and prevents event bleed-through
-            onPointerOver={(e) => {
-                e.stopPropagation(); 
-                document.body.style.cursor = 'pointer';
-            }}
-            onPointerOut={(e) => {
-                e.stopPropagation();
-                document.body.style.cursor = 'default';
-            }}
+            // Ensures cursor changes on hover and prevents event bleed-through
+            onPointerOver={(e) => {
+                e.stopPropagation(); 
+                document.body.style.cursor = 'pointer';
+            }}
+            onPointerOut={(e) => {
+                e.stopPropagation();
+                document.body.style.cursor = 'default';
+            }}
         >
             <CardDisplay 
                 index={index} 
@@ -141,13 +143,13 @@ export default function CardGame({ collectedCards, onCardCollect, onExit }: Card
     const [message, setMessage] = useState("CV ACCESS GRANTED. SELECT A CARD for project data analysis.");
     const [analyzedCardIndex, setAnalyzedCardIndex] = useState<number | null>(null); 
     const [isAnalysisComplete, setIsAnalysisComplete] = useState(false);
-    
-    // CV is always enabled now
-    const allCardsCollected = true; 
-    const isInteractionBlocked = analyzedCardIndex !== null;
-    
-    // Set message color based on state
-    const messageColor = analyzedCardIndex !== null ? 'text-red-400' : (collectedCards.some(Boolean) ? 'text-green-400' : 'text-yellow-400');
+    
+    // CV is always enabled now
+    const allCardsCollected = true; 
+    const isInteractionBlocked = analyzedCardIndex !== null;
+    
+    // Set message color based on state
+    const messageColor = analyzedCardIndex !== null ? 'text-red-400' : (collectedCards.some(Boolean) ? 'text-green-400' : 'text-yellow-400');
 
 
     const handleCardClick = useCallback((index: number) => {
@@ -162,10 +164,10 @@ export default function CardGame({ collectedCards, onCardCollect, onExit }: Card
             setAnalyzedCardIndex(null); 
             onCardCollect(index); // Still mark the card as collected 
             
-                setIsAnalysisComplete(true);
-                // Status message after collection
-                setMessage(`ANALYSIS COMPLETE: Data fragment retrieved for ${CARD_SYNOPSIS_TITLES[index]}. SELECT ANOTHER CARD or use the download link.`);
-                setTimeout(() => setIsAnalysisComplete(false), 1000); 
+                setIsAnalysisComplete(true);
+                // Status message after collection
+                setMessage(`ANALYSIS COMPLETE: Data fragment retrieved for ${CARD_SYNOPSIS_TITLES[index]}. SELECT ANOTHER CARD or use the download link.`);
+                setTimeout(() => setIsAnalysisComplete(false), 1000); 
         }, ANALYSIS_DURATION_MS); 
 
     }, [onCardCollect, isInteractionBlocked, collectedCards]);
@@ -177,36 +179,36 @@ export default function CardGame({ collectedCards, onCardCollect, onExit }: Card
                 <div className="flex justify-between items-center mb-2 pb-2 border-b border-green-700">
                     <h2 className="text-xl text-yellow-400 font-bold">DATA RETRIEVAL: cards.exe</h2>
                     <div className="flex space-x-2"> 
-                        {/* CV Download Button (ALWAYS ACTIVE, disabled only during analysis) */}
-                        <Link 
-                            href="/cv/Owen-Van-Wyk-Resume.pdf" // 👈 UPDATE THIS PATH
-                            download 
-                            className={`px-3 py-1 text-sm transition-colors font-bold ${
-                                !isInteractionBlocked
-                                    ? 'text-white bg-green-600 hover:bg-green-400 border border-green-600'
-                                    : 'text-gray-600 bg-gray-900 border border-gray-600 cursor-not-allowed'
-                            }`}
-                            aria-disabled={isInteractionBlocked}
-                            onClick={(e) => {
-                                if (isInteractionBlocked) e.preventDefault();
-                            }}
-                        >
-                            [💾] DOWNLOAD CV
-                        </Link>
+                        {/* CV Download Button (ALWAYS ACTIVE, disabled only during analysis) */}
+                        <Link 
+                            href="/cv/Owen-Van-Wyk-Resume.pdf" // 👈 UPDATE THIS PATH
+                            download 
+                            className={`px-3 py-1 text-sm transition-colors font-bold ${
+                                !isInteractionBlocked
+                                    ? 'text-white bg-green-600 hover:bg-green-400 border border-green-600'
+                                    : 'text-gray-600 bg-gray-900 border border-gray-600 cursor-not-allowed'
+                            }`}
+                            aria-disabled={isInteractionBlocked}
+                            onClick={(e) => {
+                                if (isInteractionBlocked) e.preventDefault();
+                            }}
+                        >
+                            [💾] DOWNLOAD CV
+                        </Link>
 
-                        {/* Exit to Terminal Button (Always Visible, Conditionally Disabled) */}
-                        <button 
-                            onClick={onExit} 
-                            disabled={isInteractionBlocked}
-                            className={`px-3 py-1 text-sm transition-colors font-mono ${
-                                isInteractionBlocked 
-                                ? 'text-gray-600 border border-gray-600 cursor-not-allowed' 
-                                : 'text-red-400 hover:text-red-200 border border-red-400'
-                            }`}
-                        >
-                            [X] EXIT TO TERMINAL
-                        </button>
-                    </div>
+                        {/* Exit to Terminal Button (Always Visible, Conditionally Disabled) */}
+                        <button 
+                            onClick={onExit} 
+                            disabled={isInteractionBlocked}
+                            className={`px-3 py-1 text-sm transition-colors font-mono ${
+                                isInteractionBlocked 
+                                ? 'text-gray-600 border border-gray-600 cursor-not-allowed' 
+                                : 'text-red-400 hover:text-red-200 border border-red-400'
+                            }`}
+                        >
+                            [X] EXIT TO TERMINAL
+                        </button>
+                    </div>
                 </div>
 
                 <div className="h-[calc(100%-6rem)] border border-green-700 bg-gray-900 relative">
@@ -215,7 +217,16 @@ export default function CardGame({ collectedCards, onCardCollect, onExit }: Card
                         frameloop="demand" 
                         orthographic 
                         className="w-full h-full"
-                        raycaster={{ params: { Mesh: { material: true } } }}
+                        {/* 🛑 FIX: Explicitly include all required RaycasterParameters */}
+                        raycaster={{ 
+                            params: { 
+                                Mesh: { material: true },
+                                Line: {},
+                                LOD: {},
+                                Points: {},
+                                Sprite: {},
+                            } 
+                        }}
                     >
                         <StaticCamera />
                         
@@ -238,7 +249,7 @@ export default function CardGame({ collectedCards, onCardCollect, onExit }: Card
 
                         {/* Renders ONLY UNCOLLECTED cards in the hand */}
                         {collectedCards.map((isCollected, index) => (
-                            !isCollected && analyzedCardIndex !== index && (
+                            !isCollected && analyzedCardIndex !== index && (
                             <InteractiveCard
                                 key={index}
                                 index={index}
@@ -246,7 +257,7 @@ export default function CardGame({ collectedCards, onCardCollect, onExit }: Card
                                 position={HAND_POSITIONS[index]}
                                 cardRotationZ={CARD_ROTATIONS_Z[index]}
                             />
-                            )
+                            )
                         ))}
                     </Canvas>
                     
@@ -254,9 +265,9 @@ export default function CardGame({ collectedCards, onCardCollect, onExit }: Card
                     {analyzedCardIndex !== null && (
                         <div className="absolute top-5 left-5 p-4 border border-red-500 bg-black/70 text-sm w-[600px] text-left"> 
                             <p className="text-red-400 font-bold mb-2">NETWORK ANALYSIS IN PROGRESS...</p>
-                            {/* DISPLAY SYNOPSIS: uses CARD_SYNOPSES data */}
+                            {/* DISPLAY SYNOPSIS: uses CARD_SYNOPSES data */}
                             <p className="text-white font-bold mb-1">{CARD_SYNOPSIS_TITLES[analyzedCardIndex]}</p>
-                            <p className="text-white whitespace-pre-wrap">{CARD_SYNOPSES[analyzedCardIndex]}</p>
+                            <p className="text-white whitespace-pre-wrap">{CARD_SYNOPSES[analyzedCardIndex]}</p>
                         </div>
                     )}
 
