@@ -181,7 +181,7 @@ export default function CardGame({ collectedCards, onCardCollect, onExit }: Card
                     <div className="flex space-x-2"> 
                         {/* CV Download Button (ALWAYS ACTIVE, disabled only during analysis) */}
                         <Link 
-                            href="/cv/Owen-Van-Wyk-Resume.pdf" // 👈 UPDATE THIS PATH
+                            href="/cv/OWEN-VAN-WYK-RESUME.pdf"
                             download 
                             className={`px-3 py-1 text-sm transition-colors font-bold ${
                                 !isInteractionBlocked
