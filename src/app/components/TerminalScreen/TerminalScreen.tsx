@@ -230,14 +230,10 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
 
             {/* 🛑 STATE 3: TERMINAL DESKTOP 🛑 */}
             {appState === 'terminal' && (
-                // ✅ SCROLL FIX STEP 1: Use h-full and w-full, and apply p-10 here. Make it a flex container.
-                <div className="w-full h-full bg-black/90 pointer-events-auto text-green-400 p-10 flex flex-col">
+                <div className="w-full h-full bg-black/90 pointer-events-auto text-green-400 px-6 py-4 md:px-10 md:py-6 flex flex-col">
                     
-                    {/* MASTER GRID */}
                     <div 
-                        // ✅ SCROLL FIX STEP 2: Change `height: 'calc(100vh - 80px)'` to `h-full` and add `overflow-y-auto`.
-                        // h-full works now because the parent div is a constrained flex container.
-                        className="grid w-full h-full gap-4 overflow-y-auto"
+                        className="grid w-full h-full gap-4"
                         style={{
                             gridTemplateColumns: '2fr 1fr', 
                             gridTemplateRows: '2fr 1fr', 
