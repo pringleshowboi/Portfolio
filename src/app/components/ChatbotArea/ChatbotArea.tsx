@@ -53,32 +53,44 @@ const getQuickResponse = (lowerText: string, status: string): string | null => {
         return `Current system status is: ${status}. All core protocols are nominal.`;
     }
     if (lowerText.includes('contact')) {
-        return "Contact protocols are reserved. Please achieve DATA RETRIEVAL COMPLETE status first.";
+        return "Contact sequence: Use the CALL TO DISCUSS A WEBSITE button in the services panel to start a direct call.";
+    }
+    if (lowerText.includes('pricing') || lowerText.includes('price') || lowerText.includes('packages') || lowerText.includes('services')) {
+        return "Pricing summary: Open the WEB_DEV.DASH terminal panel to view Launch Pad, Growth Ready, and Custom Experience website packages, then call directly from the highlighted button.";
     }
     return null;
 }
 
 const processQuery = (query: string): string => {
-    const lowerQuery = query.toLowerCase();
+    const lowerQuery = query.toLowerCase();
 
-    if (lowerQuery === 'help' || lowerQuery === 'commands') {
-        return "COMMANDS AVAILABLE:\n - Query topics: Try keywords like 'ACHIEVEMENTS', 'EDUCATION', 'PROJECTS', 'EXPERIENCE', or 'BLOG'.\n - Ask 'who are you', 'status', 'cards.exe', or 'contact'.";
-    }
-    
-    if (lowerQuery.includes('cards.exe') || lowerQuery.includes('game')) {
-        return "SYSTEM MESSAGE: Cards.exe is a 3D data retrieval utility. Access it from the main desktop interface to begin collecting data fragments. It cannot be launched from this console.";
-    }
+    if (lowerQuery === 'help' || lowerQuery === 'commands') {
+        return [
+            "COMMANDS AVAILABLE:",
+            "- Ask about topics: 'ACHIEVEMENTS', 'EDUCATION', 'PROJECTS', 'EXPERIENCE', or 'BLOG'.",
+            "- Ask 'pricing' or 'services' to view website packages.",
+            "- Ask 'who are you', 'status', 'cards.exe', or 'contact'."
+        ].join("\n");
+    }
+    
+    if (lowerQuery.includes('cards.exe') || lowerQuery.includes('game')) {
+        return "SYSTEM MESSAGE: cards.exe is the interactive 3D portfolio game. Launch it from the ACCESS PORT panel on the desktop.";
+    }
 
-    for (let i = 0; i < CORPUS_TITLES.length; i++) {
-        const title = CORPUS_TITLES[i].toLowerCase();
-        if (lowerQuery.includes(title) || (title === 'blogsite' && lowerQuery.includes('blog'))) {
-            const synopsis = CARD_SYNOPSES[i];
-            const formattedSynopsis = synopsis.replace(/\n/g, ' | ').replace(/- /g, '> '); 
-            return `SUCCESS: RETRIEVING DATA FRAGMENT: ${formattedSynopsis}`;
-        }
-    }
-    
-    return "ERROR: Query not recognized or insufficient data in the corpus. Try 'help'.";
+    if (lowerQuery.includes('pricing') || lowerQuery.includes('services') || lowerQuery.includes('packages')) {
+        return "SERVICE SUMMARY: Open WEB_DEV.DASH in the terminal panel to view Launch Pad, Growth Ready, and Custom Experience packages, then use the call button to discuss a project.";
+    }
+
+    for (let i = 0; i < CORPUS_TITLES.length; i++) {
+        const title = CORPUS_TITLES[i].toLowerCase();
+        if (lowerQuery.includes(title) || (title === 'blogsite' && lowerQuery.includes('blog'))) {
+            const synopsis = CARD_SYNOPSES[i];
+            const formattedSynopsis = synopsis.replace(/\n/g, " | ").replace(/- /g, "> "); 
+            return `SUCCESS: RETRIEVING DATA FRAGMENT: ${formattedSynopsis}`;
+        }
+    }
+    
+    return "ERROR: Query not recognized or insufficient data in the corpus. Try 'help' for available commands.";
 };
 // --------------------------------------------------------------------------
 
@@ -143,70 +155,64 @@ export default function ChatbotArea({ status, currentTime }: ChatbotAreaProps) {
         }
     };
 
-    return (
-        <div 
-            // SCROLLING FIX: Add min-h-0 to the component's root to prevent it from overflowing its grid cell
-            className="border-2 border-green-400 p-2 flex flex-col justify-end h-full w-full min-h-0"
-            style={{ gridArea: 'chatbot' }}
-        >
-            <p className="text-yellow-400 font-bold mb-2">J.A.R.V.I.S. INTERFACE:</p>
-            
-            {/* 1. Spritesheet Avatar Area (Fixed Height) */}
-            <div className="h-[120px] w-full flex justify-center mb-4">
-                <JarvisAvatar emotion={emotion} /> 
-            </div>
+    return (
+        <div 
+            className="border-2 border-green-400 p-2 flex flex-col h-full w-full gap-2"
+            style={{ gridArea: 'chatbot' }}
+        >
+            <p className="text-yellow-400 font-bold">J.A.R.V.I.S. INTERFACE:</p>
+            
+            <div className="h-[120px] w-full flex justify-center">
+                <JarvisAvatar emotion={emotion} /> 
+            </div>
 
-            {/* 2. Chat Log Wrapper - This area handles the internal scroll effect */}
-            <div className="flex-grow flex flex-col min-h-0"> 
-                <div 
-                    className="flex-grow p-1 overflow-y-auto text-sm border-b border-green-700 bg-black/50 mb-2"
-                > 
-                    {messages.map((msg, index) => (
-                        <p 
-                            key={index} 
-                            className={
-                                msg.startsWith('>') 
-                                    ? 'text-yellow-300' 
-                                    : msg.includes('SUCCESS') 
-                                        ? 'text-green-300' 
-                                        : msg.includes('ERROR') 
-                                            ? 'text-red-400'
-                                            : 'text-green-400'
-                            }
-                        >
-                            {msg}
-                        </p>
-                    ))}
-                    {isThinking && <p className="text-gray-500 animate-pulse">J.A.R.V.I.S. is thinking...</p>}
-                    <div ref={messagesEndRef} />
-                </div>
-            </div>
+            <div className="flex-1 min-h-0">
+                <div 
+                    className="h-full p-1 overflow-y-auto text-xs md:text-sm border-b border-green-700 bg-black/50"
+                > 
+                    {messages.map((msg, index) => (
+                        <p 
+                            key={index} 
+                            className={
+                                msg.startsWith('>') 
+                                    ? 'text-yellow-300' 
+                                    : msg.includes('SUCCESS') 
+                                        ? 'text-green-300' 
+                                        : msg.includes('ERROR') 
+                                            ? 'text-red-400'
+                                            : 'text-green-400'
+                            }
+                        >
+                            {msg}
+                        </p>
+                    ))}
+                    {isThinking && <p className="text-gray-500 animate-pulse">J.A.R.V.I.S. is thinking...</p>}
+                    <div ref={messagesEndRef} />
+                </div>
+            </div>
 
-            {/* 3. Input Area */}
-            <div className="p-1 flex items-center">
-                <span className="text-green-400">$: </span>
-                <input
-                    type="text"
-                    className="flex-grow bg-transparent text-green-400 border-none outline-none ml-2"
-                    value={input}
-                    onChange={(e) => {
-                        setInput(e.target.value);
-                        // Reset to idle while user is typing.
-                        setEmotion('idle');
-                    }}
-                    onKeyDown={handleKeyPress}
-                    disabled={isThinking}
-                />
-            </div>
-            
-            <div className="flex justify-between items-center text-sm mt-2">
-                <p className="text-yellow-400 font-bold">STATUS:</p>
-                <p className="text-sm text-green-500 font-bold">{status}</p>
-            </div>
-            {/* FIX: Conditional check to prevent slice() error on initial render */}
-            <p className="text-xs mt-1 text-gray-500 text-right">
-                LAST PING: {currentTime ? currentTime.slice(0, 8) : '00:00:00'} 
-            </p>
-        </div>
-    );
+            <div className="p-1 flex items-center">
+                <span className="text-green-400">$:</span>
+                <input
+                    type="text"
+                    className="flex-grow bg-transparent text-green-400 border-none outline-none ml-2 text-xs md:text-sm"
+                    value={input}
+                    onChange={(e) => {
+                        setInput(e.target.value);
+                        setEmotion('idle');
+                    }}
+                    onKeyDown={handleKeyPress}
+                    disabled={isThinking}
+                />
+            </div>
+            
+            <div className="flex justify-between items-center text-xs md:text-sm">
+                <p className="text-yellow-400 font-bold">STATUS:</p>
+                <p className="text-green-500 font-bold">{status}</p>
+            </div>
+            <p className="text-[10px] md:text-xs text-gray-500 text-right">
+                LAST PING: {currentTime ? currentTime.slice(0, 8) : "00:00:00"} 
+            </p>
+        </div>
+    );
 }

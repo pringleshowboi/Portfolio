@@ -248,7 +248,6 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                         }}
                     >
                         
-                        {/* 1. UI AREA (Top Left - Tall) */}
                         <div 
                             className="p-4 flex flex-col border-t border-l border-green-400"
                             style={{ 
@@ -257,46 +256,112 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                 borderBottom: 'none' 
                             }}
                         >
-                            <p className="text-yellow-400 font-bold mb-6">ACCESS PORT:</p>
+                            <p className="text-yellow-400 font-bold mb-2">ACCESS PORT:</p>
+                            <p className="text-xs text-green-300">
+                                Launch the interactive game, read detailed case studies, or jump straight to services.
+                            </p>
                             
-                            {/* ICONS LIST */}
                             <div className="flex flex-col items-start space-y-4 pt-4">
-                                    
-                                {/* Cards.exe Icon (ASCII ICON) - Clickable, signals game launch */}
                                 <div 
                                     className="cursor-pointer hover:text-white flex items-start space-x-2"
                                     onClick={handleCardsExecute}
                                 >
                                     <pre className="leading-none text-7xl text-green-400 hover:text-white">{ASCII_CARD_ICON}</pre>
-                                    <span className="mt-10">cards.exe</span>
+                                    <div className="flex flex-col ml-2 mt-6">
+                                        <span className="text-sm">cards.exe</span>
+                                        <span className="text-xs text-green-300">
+                                            3D portfolio game that reveals key projects and skills.
+                                        </span>
+                                    </div>
                                 </div>
 
-                                {/* blog.exe Icon (NEW) - Clickable, signals blog navigation */}
                                 <div 
-                                    className="cursor-pointer hover:text-white flex items-start space-x-2 ml-[-2]" // Added ml-[-2] for left nudge
+                                    className="cursor-pointer hover:text-white flex items-start space-x-2 ml-[-2]"
                                     onClick={handleBlogExecute} 
                                 >
                                     <pre className="leading-none text-6xl text-green-400 hover:text-white">{ASCII_BLOG_ICON}</pre>
-                                    <span className="mt-10">blog.exe</span>
+                                    <div className="flex flex-col ml-2 mt-6">
+                                        <span className="text-sm">blog.exe</span>
+                                        <span className="text-xs text-green-300">
+                                            Long-form writeups, breakdowns, and technical deep dives.
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         
-                        {/* 3. TERMINAL AREA (Bottom Left - Short) */}
                         <div 
-                            className="border-t-2 border-l-2 border-b-2 border-green-400 p-2 overflow-y-auto flex flex-col justify-start"
+                            className="border-t-2 border-l-2 border-b-2 border-green-400 px-4 py-3 flex flex-col justify-start text-xs md:text-sm leading-relaxed"
                             style={{ gridArea: 'terminal' }}
                         >
-                            <p className="text-yellow-400 font-bold mb-1">C:\USERS\PORTFOLIO\TERMINAL_LOG.txt</p>
-                            
-                            {/* Placeholder content */}
-                            <p className="text-xs">LOG: System integrity check complete. OK.</p>
-                            <p className="text-xs">LOG: Initiating network probe sequence...</p>
-                            <p className="text-xs">LOG: Encryption protocols fully engaged.</p>
-                            <p className="text-xs">LOG: System is now accepting commands.</p>
-                            
-                            {/* Terminal command line */}
-                            <p className="mt-2 text-white font-bold">C:\USERS\PORTFOLIO\$: <span className="animate-pulse">_</span></p>
+                            <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-3">
+                                <p className="text-yellow-400 font-bold">C:\SERVICES\WEB_DEV.DASH</p>
+                                <p className="text-[10px] md:text-xs text-green-300">
+                                    Next.js • Three.js • Tailwind • Sanity • Custom UX
+                                </p>
+                            </div>
+
+                            <div className="flex flex-col md:flex-row gap-6">
+                                <div className="md:w-1/2 space-y-2">
+                                    <p className="text-green-300 font-semibold tracking-wide">
+                                        PORTFOLIO SNAPSHOT
+                                    </p>
+                                    <p>
+                                        This OS-style interface is a custom 3D portfolio built to feel like real software,
+                                        not just a scrolling web page.
+                                    </p>
+                                    <div className="border border-green-700/70 px-3 py-2 rounded-md bg-black/40 space-y-1">
+                                        <p className="text-green-300 font-semibold text-xs">HIGHLIGHTED CAPABILITIES</p>
+                                        <ul className="list-disc list-inside space-y-1">
+                                            <li>Interactive 3D scenes wired into real navigation.</li>
+                                            <li>Headless CMS for blogs and content-heavy sections.</li>
+                                            <li>Responsive layouts tuned for desktop and mobile.</li>
+                                            <li>Fast, smooth experiences with attention to detail.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div className="md:w-1/2 space-y-2">
+                                    <p className="text-green-300 font-semibold tracking-wide">
+                                        WEBSITE PACKAGES & PRICING
+                                    </p>
+                                    <div className="grid grid-cols-1 gap-2">
+                                        <div className="border border-green-700/70 px-3 py-2 rounded-md bg-black/40">
+                                            <p className="font-semibold text-yellow-300 text-xs uppercase">Launch Pad</p>
+                                            <p className="text-green-300 text-xs">From $900</p>
+                                            <p className="mt-1">
+                                                Clean, modern single-page or small multi-section site to get you live quickly.
+                                            </p>
+                                        </div>
+                                        <div className="border border-green-700/70 px-3 py-2 rounded-md bg-black/40">
+                                            <p className="font-semibold text-yellow-300 text-xs uppercase">Growth Ready</p>
+                                            <p className="text-green-300 text-xs">From $1,800</p>
+                                            <p className="mt-1">
+                                                Multi-page marketing site with blog, CMS, and conversion-focused UX for leads.
+                                            </p>
+                                        </div>
+                                        <div className="border border-green-700/70 px-3 py-2 rounded-md bg-black/40">
+                                            <p className="font-semibold text-yellow-300 text-xs uppercase">Custom Experience</p>
+                                            <p className="text-green-300 text-xs">From $3,000</p>
+                                            <p className="mt-1">
+                                                Bespoke interactions, animations, and product-like experiences tailored to your brand.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                                <p className="text-xs text-green-300">
+                                    Ready to talk about a project? Initiate a direct call protocol:
+                                </p>
+                                <a
+                                    href="tel:+270609884544"
+                                    className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-semibold rounded-md border border-yellow-400 text-yellow-300 hover:bg-yellow-400 hover:text-black transition-colors"
+                                >
+                                    CALL TO DISCUSS A WEBSITE
+                                </a>
+                            </div>
                         </div>
 
 
