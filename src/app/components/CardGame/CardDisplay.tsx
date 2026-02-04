@@ -1,7 +1,7 @@
 // src/app/components/CardGame/CardDisplay.tsx
 'use client';
 
-import { useGLTF } from '@react-three/drei';
+import { useGLTF, Image } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber'; 
 import * as THREE from 'three';
 import { useRef } from 'react';
@@ -20,22 +20,21 @@ const ANALYZE_POSITION: [number, number, number] = [-0.5, 0.5, 0.5];
 const ANALYZE_SCALE = 0.5; 
 
 interface CardDisplayProps {
-    index: number;
-    position: [number, number, number];
-    isDisplayed?: boolean; // Warning: 'isDisplayed' is assigned a value but never used. 
-    isClicked?: boolean; // Warning: 'isClicked' is assigned a value but never used.
-    isAnalyzed: boolean; 
+    index: number;
+    position: [number, number, number];
+    isDisplayed?: boolean; 
+    isClicked?: boolean; 
+    isAnalyzed: boolean; 
 }
 
-export default function CardDisplay({ index, position, isDisplayed = false, isClicked = false, isAnalyzed }: CardDisplayProps) {
-    const modelPath = CARD_MODELS[index];
-    const groupRef = useRef<THREE.Group>(null); 
+export default function CardDisplay({ index, position, isAnalyzed }: CardDisplayProps) {
+    const modelPath = CARD_MODELS[index];
+    const groupRef = useRef<THREE.Group>(null); 
 
-    // 🛑 FIX 1: useGLTF MUST BE CALLED UNCONDITIONALLY AT THE TOP
+    // 🛑 FIX 1: useGLTF MUST BE CALLED UNCONDITIONALLY AT THE TOP
     // This resolves: Error: React Hook "useGLTF" is called conditionally.
     // The hook is called outside of the previous try/catch block.
-    let loadedData;
-    let scene: THREE.Group | null = null;
+    let scene: THREE.Group | null = null;
     
     // Temporarily disable the linter here to prevent issues with GLTF type inference
     // when accessing .scene outside a try/catch, if needed.
@@ -75,22 +74,37 @@ export default function CardDisplay({ index, position, isDisplayed = false, isCl
     const BASE_ROTATION_Y = isAnalyzed ? 0 : Math.PI; 
     
     const initialRotation: [number, number, number] = [
-        0, 
-        BASE_ROTATION_Y, 
-        0
-    ];          
+        0, 
+        BASE_ROTATION_Y, 
+        0
+    ];          
 
-    return (
-        <group 
-            ref={groupRef}
-            position={finalPosition} 
-            scale={[finalScale, finalScale, finalScale]} 
-            rotation={initialRotation}
-        >
-            {/* renderOrder=1 ensures the analyzed card is always drawn on top */}
-            <primitive object={scene.clone()} renderOrder={isAnalyzed ? 1 : 0} /> 
-        </group>
-    );
+    const isGRC = index === 4;
+
+    return (
+        <group 
+            ref={groupRef}
+            position={finalPosition} 
+            scale={[finalScale, finalScale, finalScale]} 
+            rotation={initialRotation}
+        >
+            {/* renderOrder=1 ensures the analyzed card is always drawn on top */}
+            <primitive object={scene.clone()} renderOrder={isAnalyzed ? 1 : 0} /> 
+
+            {/* Overlay Lady Justice for the GRC Card (Index 4) when analyzed */}
+            {isAnalyzed && isGRC && (
+                // eslint-disable-next-line jsx-a11y/alt-text
+                <Image 
+                    url="/images/lady-justice.png"
+                    position={[0, 0.2, 0.15]} // Slightly raised and in front
+                    scale={[1.5, 1.5]} 
+                    transparent
+                    opacity={0.9}
+                    renderOrder={2} // Ensure it renders on top of the card
+                />
+            )}
+        </group>
+    );
 }
 
 // --- Preloading ---

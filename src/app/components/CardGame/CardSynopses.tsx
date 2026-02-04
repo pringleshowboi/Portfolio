@@ -1,35 +1,33 @@
-// components/CardGame/CardSynopses.ts
 
 export const CARD_SYNOPSES: string[] = [
-    // 0. Achievements: King of Clubs
-    "CERTIFICATIONS & AWARDS:\n" +
-    "- CCNA. || CISCO NETWORK PROFESSIONAL.\n" +
-    "- SECURITY+ & A1/2+ || COMPTIA.\n" +
-    "- ACHIEVED A 99% GRADE AVERAGE FOR SOFTWARE ENGINEERING.\n" + // <-- ADDED \n here
-    "- CYBERSECURITY ENGINEER || TRYHACKME.",
-    
-    // 1. Education: Queen of Clubs
-    "EDUCATION:\n" +
-    "- CERTIFIED SOFTWARE ENGINEER/DATA ENGINEER - HYPERIONDEV.\n" +
-    "- CERTIFIED CYBERSECURITY SPECIALIST - EDUVOS. \n" +
-    "- HAVARD CS50 FOR LAWYERS || HARVARD ONLINE.",
-    
-    // 2. Projects: Jack of Hearts
-    "KEY PROJECTS:\n" +
-    "- DISTRIBUTED COMPUTING AND SHARING OF RESOURCES ACCROSS A NETWORK.\n" +
-    "- FULL-STACK PORTFOLIO WITH NEXT.JS, THREE.JS, SANITY.IO.\n" +
-    "- CONTRIBUTIONS TO OPEN-SOURCE SELF-HOSTED PROXMOX SERVERS AND NODES.\n" +
-    "- AI/ML WITH PYTORCH.\n" +
-    "- M4N || A SELF-HOSTED HONEYPOT OS INTERACTING AS API FEEDING SIEM DATA.",
-    
-    // 3. Experience: Ace of Spades
-    "PROFESSIONAL EXPERIENCE:\n" +
-    "- DATA MONITOR/ENGINEER - PIPELINES, DATABASE SCHEMAS, DATA WRANGLING, BI-DASHBOARDS & STAKEHOLDER COMMUNICATION || SPINNAKER SOFTWARE 2025-2025\n" + // <-- ADDED \n here
-    "- IT SUPPORT SPECIALIST (VOLUNTEER) - TICKET ASSIGNMENTS, STOCK ORDERING AND INVENTORY MANAGEMENT || CPOA 2022-2022",
-    
-    // 4. Blogsite: 10 of Hearts
-    "TECHNICAL BLOG:\n" +
-    "- A BLOGSITE TO DOCUMENT MY FINDINGS OR SOMETHING THAT I FOUND INTERESTING RATHER THAN SLOP POSTED ON LINKEDIN lol (i dont mean it please hire me).\n" +
-    "- TOPICS FOCUSED ON EITHER VULNERABILITIES OR INTERESTING TOPICS AROUND SECURITY.\n" + // <-- Changed '; to .\' and fixed the double semicolon issue
-    "- FOCUSING ON SHARING AND DEVELOPMENT OF KNOWLEDGE AROUND TECHNOLOGY.",
+    // 0. High-Impact Data Services
+    "HIGH-IMPACT DATA SERVICES:\n" +
+    "- ANALYTICS: Real-time dashboards (Power BI, Tableau) for executive decisions.\n" +
+    "- PREDICTIVE MODELING: Forecast churn, sales trends, and supply chain disruptions.\n" +
+    "- ENGINEERING: Complex pipelines & storage solutions (Amazon DynamoDB).",
+
+    // 1. Business Process Automation
+    "BUSINESS PROCESS AUTOMATION:\n" +
+    "- HYPERAUTOMATION: End-to-end automation reducing manual labor & operational costs.\n" +
+    "- NO-CODE/LOW-CODE: Rapid internal tools via Zapier, Make, or Power Automate.\n" +
+    "- RPA: Automating repetitive back-office tasks like invoice processing.",
+
+    // 2. Specialized Web & UX Strategy
+    "COMPETITIVE ADVANTAGE (THE GAPS):\n" +
+    "- SECURITY GAP: We are 'Cyber-Secure Developers', unlike standard designers who leave sites vulnerable.\n" +
+    "- PRICE GAP: 'Affordable Specialist' for private practices vs. R30k+ corporate audits.\n" +
+    "- SILO GAP: The 'All-in-One Digital Guardian' ensuring SEO ranking, conversion, AND security.",
+
+    // 3. Advanced Cloud & Infrastructure
+    "CLOUD ARCHITECTURE & MANAGED IT:\n" +
+    "- HEALTHCARE IT: End-to-end IT for medical practices (The boutique alternative to BCX/Altron).\n" +
+    "- MSP SERVICES: Specialized support rivalling Cloudbox/LanDynamix for SMEs.\n" +
+    "- INFRASTRUCTURE: Scalable multi-cloud strategies & automated CI/CD pipelines.",
+
+    // 4. Emerging Tech & Compliance
+    "GRC & COMPLIANCE (TIER 1 STANDARDS):\n" +
+    "- GOVERNANCE: Handling GRC for SMEs with the rigor of Deloitte, PwC, & KPMG.\n" +
+    "- COMPLIANCE: End-to-end readiness for GDPR, POPIA, SOC 2, & HIPAA.\n" +
+    "- CYBER DEFENSE: Manual penetration testing & risk aversion (Inspired by SensePost/Qualysec).\n" +
+    "- ETHOS: 'Lady Justice' – Uncompromising protection of your data and legal standing."
 ];

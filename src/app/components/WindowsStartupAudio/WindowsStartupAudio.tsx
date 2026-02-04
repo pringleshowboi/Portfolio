@@ -15,6 +15,8 @@ export default function WindowsStartupAudio() {
         const audio = audioRef.current;
         
         if (audio) {
+            // Set volume to a lower level (20%)
+            audio.volume = 0.2;
             // Play the sound immediately when the component mounts
             audio.play().catch(error => {
                 console.warn("Windows startup audio failed to play (user interaction required):", error);

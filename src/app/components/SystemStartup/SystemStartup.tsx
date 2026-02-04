@@ -23,7 +23,7 @@ function CameraZoom({ appState, onZoomComplete }: { appState: AppState, onZoomCo
     useEffect(() => {
         // FIX: Ensure initialization runs only once on mount to prevent null/undefined errors.
         camera.position.copy(START_POSITION);
-    }, []); // Empty dependency array is the fix
+    }, [camera.position]); // Empty dependency array is the fix
 
     useFrame(() => {
         if (appState === 'zooming') {
@@ -78,7 +78,7 @@ interface SystemStartupProps {
     appState: AppState; // Cast to AppState to remove 'game' since it's now internal to TerminalScreen
     onScreenClick: () => void;
     onOsLoadComplete: () => void; 
-    onTerminalExecute: () => void;
+    onTerminalExecute: (command: 'cards.exe' | 'blog.exe') => void;
     onZoomComplete: () => void;
 }
 

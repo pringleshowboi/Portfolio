@@ -48,14 +48,14 @@ export default function JarvisAvatar({ emotion = 'idle' }: JarvisAvatarProps) {
     const frameConfig = EMOTION_FRAMES[emotion] || EMOTION_FRAMES.idle;
     
     // 💡 SIMPLIFIED: isAnimation is always true now since all remaining states are animations
-    const isAnimation = true; 
+    // const isAnimation = true; 
 
     useEffect(() => {
         // Now that all states are animations, we no longer need the if (!isAnimation) check.
         
         // Animated sequence: set up interval
         // We cast frameConfig as the animation object structure, since it is guaranteed to be one.
-        const { row, startCol, endCol } = frameConfig as { row: number, startCol: number, endCol: number };
+        const { startCol, endCol } = frameConfig as { row: number, startCol: number, endCol: number };
         const frameCount = endCol - startCol + 1;
 
         // Reset frame state when emotion changes

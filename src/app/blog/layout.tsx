@@ -13,7 +13,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           {`C:\\BLOG.EXE`}
         </h1>
         <p className="text-sm mt-1">
-          {`// Portfolio Data Stream Access Log`}
+          {`// Secure Launchpad Data Stream`}
         </p>
       </header>
       

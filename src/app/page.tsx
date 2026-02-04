@@ -166,10 +166,10 @@ const Home = () => {
                 <div className="absolute inset-0 z-20 flex justify-center items-center pointer-events-none">
                     <div className="flex flex-col items-center gap-2 text-center px-4">
                         <p className="text-xl md:text-2xl font-mono text-white animate-pulse">
-                            CLICK THE MONITOR TO ENTER THE PORTFOLIO OS
+                            CLICK THE MONITOR TO INITIALIZE SYSTEM
                         </p>
                         <p className="text-sm md:text-base font-mono text-gray-200 max-w-xl">
-                            Explore interactive projects, read in-depth case studies, and view website packages and pricing.
+                            Explore secure services, engagement models, and digital capabilities.
                         </p>
                     </div>
                 </div>

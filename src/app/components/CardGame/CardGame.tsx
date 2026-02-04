@@ -1,31 +1,35 @@
-// components/CardGame/CardGame.tsx
 'use client';
 
 import { useState, useCallback, useLayoutEffect } from 'react';
-import { Canvas, useThree, useStore } from '@react-three/fiber'; 
+import { Canvas, useThree } from '@react-three/fiber'; 
 import { Environment } from '@react-three/drei'; 
 import * as THREE from 'three';
 import CardDisplay from './CardDisplay'; 
 import Link from 'next/link'; 
-// 1. IMPORT SYNOPSIS DATA
-import { CARD_SYNOPSES } from './CardSynopses'; 
+import { useRouter } from 'next/navigation';
 
 // --- Configuration ---
-const CARD_COUNT = 5;
-const ANALYSIS_DURATION_MS = 8000; // 10 seconds
+const CARD_SYNOPSIS_TITLES_DATA = [
+    'DATA SERVICES: KING OF CLUBS', 
+    'AUTOMATION: QUEEN OF CLUBS', 
+    'THE GAPS: JACK OF HEARTS', 
+    'CLOUD & INFRA: ACE OF SPADES', 
+    'FUTURE TECH: TEN OF HEARTS'
+];
 
-const CARD_SYNOPSIS_TITLES = [
-    'ACHIEVEMENTS: KING OF CLUBS', 
-    'EDCUATION: QUEEN OF CLUBS', 
-    'PROJECTS: JACK OF HEARTS', 
-    'EXPERIENCE: ACE OF SPADES', 
-    'BLOGSITE: TEN OF HEARTS'
+// Mapping of card index to redirect URLs
+const CARD_URLS = [
+    '/services/data-services',       // 0
+    '/services/automation',          // 1
+    '/services/web-strategy',        // 2
+    '/services/cloud-infrastructure',// 3
+    '/services/emerging-tech'        // 4
 ];
 
 interface CardGameProps {
-    collectedCards: boolean[];
-    onCardCollect: (index: number) => void;
-    onExit: () => void;
+    collectedCards: boolean[];
+    onCardCollect: (index: number) => void;
+    onExit: () => void;
 }
 
 // --- Hand Position/Rotation Setup for Fanned Effect ---
@@ -35,255 +39,194 @@ const CARD_ROTATIONS_Z: number[] = [0.15, 0.05, 0, -0.05, -0.15];
 
 const HAND_POSITIONS: [number, number, number][] = HAND_POSITIONS_X.map(x => [x, BASE_HAND_Y, 0]);
 
-// --- CANVAS INTERACTION HANDLER (R3F Context) ---
-interface CanvasInteractionHandlerProps {
-    analyzedCardIndex: number | null;
-}
-
-function CanvasInteractionHandler({ analyzedCardIndex }: CanvasInteractionHandlerProps) {
-    const { invalidate } = useThree(); 
-    const store = useStore(); 
-    
-    const setFrameloop = useCallback((mode: 'always' | 'demand') => {
-        store.setState({ frameloop: mode });
-    }, [store]);
-
-    useLayoutEffect(() => {
-        invalidate(); 
-    }, [analyzedCardIndex, invalidate]); 
-    
-    useLayoutEffect(() => {
-        if (analyzedCardIndex !== null) {
-            setFrameloop('always');
-        } else {
-            setFrameloop('demand');
-        }
-    }, [analyzedCardIndex, setFrameloop]);
-
-    return null; 
-}
-
-
 // --- STATIC CAMERA ---
 function StaticCamera() {
-    const { camera, size, invalidate } = useThree(); 
-    
-    const fixedPosition: [number, number, number] = [0, 0, 5]; 
-    const fixedTarget: [number, number, number] = [0, 0, 0];
-    const frustumSize = 7; 
-    const fixedZoom = 1.8; 
+    const { camera, size, invalidate } = useThree(); 
+    
+    const updateCamera = useCallback(() => {
+        const fixedPosition: [number, number, number] = [0, 0, 5]; 
+        const fixedTarget: [number, number, number] = [0, 0, 0];
+        const frustumSize = 7; 
+        const fixedZoom = 1.8; 
 
-    // 🛑 R3F Hook Dependency Warning Fix: Ignore the rule for this specific use case
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const updateCamera = useCallback(() => {
-        camera.position.set(...fixedPosition);
-        camera.lookAt(...fixedTarget);
-        camera.zoom = fixedZoom; 
-        
-        if (camera instanceof THREE.OrthographicCamera) {
-            const aspect = size.width / size.height;
-            
-            camera.left = -frustumSize * aspect / 2;
-            camera.right = frustumSize * aspect / 2;
-            camera.top = frustumSize / 2;
-            camera.bottom = -frustumSize / 2;
-        }
-        
-        camera.updateProjectionMatrix();
-        invalidate(); 
-        
-    }, [camera, size.width, size.height, invalidate]);
+        camera.position.set(...fixedPosition);
+        camera.lookAt(...fixedTarget);
+        camera.zoom = fixedZoom; 
+        
+        if (camera instanceof THREE.OrthographicCamera) {
+            const aspect = size.width / size.height;
+            
+            camera.left = -frustumSize * aspect / 2;
+            camera.right = frustumSize * aspect / 2;
+            camera.top = frustumSize / 2;
+            camera.bottom = -frustumSize / 2;
+        }
+        
+        camera.updateProjectionMatrix();
+        invalidate(); 
+        
+    }, [camera, size.width, size.height, invalidate]);
 
 
-    useLayoutEffect(() => {
-        updateCamera();
-    }, [updateCamera]); 
+    useLayoutEffect(() => {
+        updateCamera();
+    }, [updateCamera]); 
 
-    return null; 
+    return null; 
 }
 
 
 // --- Interactive Card Component ---
 interface InteractiveCardProps {
-    index: number;
-    onCardClick: (index: number) => void;
-    position: [number, number, number];
-    cardRotationZ: number; 
+    index: number;
+    onCardClick: (index: number) => void;
+    position: [number, number, number];
+    cardRotationZ: number; 
 }
 
 function InteractiveCard({ index, onCardClick, position, cardRotationZ }: InteractiveCardProps) {
-    return (
-        <group 
-            onClick={() => onCardClick(index)}
-            rotation={[0, 0, cardRotationZ]} 
-            // Ensures cursor changes on hover and prevents event bleed-through
-            onPointerOver={(e) => {
-                e.stopPropagation(); 
-                document.body.style.cursor = 'pointer';
-            }}
-            onPointerOut={(e) => {
-                e.stopPropagation();
-                document.body.style.cursor = 'default';
-            }}
-        >
-            <CardDisplay 
-                index={index} 
-                position={position} 
-                isDisplayed={false} 
-                isClicked={false}
-                isAnalyzed={false}
-            />
-        </group>
-    );
+    return (
+        <group 
+            onClick={() => onCardClick(index)}
+            rotation={[0, 0, cardRotationZ]} 
+            // Ensures cursor changes on hover and prevents event bleed-through
+            onPointerOver={(e) => {
+                e.stopPropagation(); 
+                document.body.style.cursor = 'pointer';
+            }}
+            onPointerOut={(e) => {
+                e.stopPropagation(); 
+                document.body.style.cursor = 'default';
+            }}
+        >
+            <CardDisplay 
+                index={index} 
+                position={position} 
+                isDisplayed={false} 
+                isClicked={false}
+                isAnalyzed={false}
+            />
+        </group>
+    );
 }
 
 
-export default function CardGame({ collectedCards, onCardCollect, onExit }: CardGameProps) {
-    // Initial message reflects CV is ready, but cards are for detail
-    const [message, setMessage] = useState("CV ACCESS GRANTED. SELECT A CARD for project data analysis.");
-    const [analyzedCardIndex, setAnalyzedCardIndex] = useState<number | null>(null); 
-    const [isAnalysisComplete, setIsAnalysisComplete] = useState(false);
-    
-    // CV is always enabled now
-    const allCardsCollected = true; 
-    const isInteractionBlocked = analyzedCardIndex !== null;
-    
-    // Set message color based on state
-    const messageColor = analyzedCardIndex !== null ? 'text-red-400' : (collectedCards.some(Boolean) ? 'text-green-400' : 'text-yellow-400');
+export default function CardGame({ onExit }: CardGameProps) {
+    const router = useRouter();
+    const [message, setMessage] = useState("SELECT A SERVICE CARD TO NAVIGATE");
+
+    const handleCardClick = useCallback((index: number) => {
+        const url = CARD_URLS[index];
+        if (url) {
+            setMessage(`REDIRECTING TO ${CARD_SYNOPSIS_TITLES_DATA[index]}...`);
+            router.push(url);
+        }
+    }, [router]);
 
 
-    const handleCardClick = useCallback((index: number) => {
-        if (isInteractionBlocked || collectedCards[index]) return; 
+    return (
+        <> 
+            <div className="flex flex-col h-full w-full p-2 bg-black relative">
+                <div className="flex justify-between items-center mb-2 pb-2 border-b border-green-700">
+                    <h2 className="text-xl text-yellow-400 font-bold">SERVICE CATALOG: services.exe</h2>
+                    <div className="flex space-x-2"> 
+                        <Link 
+                            href="/cv/OWEN-VAN-WYK-RESUME.pdf"
+                            download 
+                            className="px-3 py-1 text-sm transition-colors font-bold text-white bg-green-600 hover:bg-green-400 border border-green-600"
+                        >
+                            [💾] DOWNLOAD PROFILE
+                        </Link>
+                        <button 
+                            onClick={onExit} 
+                            className="px-3 py-1 text-sm text-white bg-red-600 hover:bg-red-400 border border-red-600 transition-colors font-bold"
+                        >
+                            [X] EXIT TO TERMINAL
+                        </button>
+                    </div>
+                </div>
 
-        // 1. Begin Analysis Sequence
-        setAnalyzedCardIndex(index);
-        setMessage(`ANALYZING: ${CARD_SYNOPSIS_TITLES[index]}... 5-second data retrieval commencing.`);
-        
-        // 2. Set Timeout to stop analysis and collect the card
-        setTimeout(() => {
-            setAnalyzedCardIndex(null); 
-            onCardCollect(index); // Still mark the card as collected 
-            
-                setIsAnalysisComplete(true);
-                // Status message after collection
-                setMessage(`ANALYSIS COMPLETE: Data fragment retrieved for ${CARD_SYNOPSIS_TITLES[index]}. SELECT ANOTHER CARD or use the download link.`);
-                setTimeout(() => setIsAnalysisComplete(false), 1000); 
-        }, ANALYSIS_DURATION_MS); 
+                <div className="flex-1 relative border border-green-700 bg-gray-900 overflow-hidden flex">
+                    
+                    {/* LEFT SIDE: 3D CARDS */}
+                    <div className="flex-1 h-full relative z-10">
+                        <Canvas 
+                            frameloop="demand" 
+                            orthographic 
+                            className="w-full h-full"
+                            raycaster={{ 
+                                params: { 
+                                    Mesh: { material: true },
+                                    Line: { threshold: 0.1 }, 
+                                    LOD: {},
+                                    Points: { threshold: 0.1 }, 
+                                    Sprite: { threshold: 0.1 }, 
+                                } 
+                            }}
+                        >
+                            <StaticCamera />
+                            <ambientLight intensity={0.5} />
+                            <directionalLight position={[10, 10, 5]} intensity={1} />
+                            <Environment preset="night" />
 
-    }, [onCardCollect, isInteractionBlocked, collectedCards]);
+                            {/* Renders cards in hand */}
+                            {HAND_POSITIONS.map((pos, index) => (
+                                <InteractiveCard
+                                    key={index}
+                                    index={index}
+                                    onCardClick={handleCardClick}
+                                    position={pos}
+                                    cardRotationZ={CARD_ROTATIONS_Z[index]}
+                                />
+                            ))}
+                        </Canvas>
+                    </div>
 
+                    {/* RIGHT SIDE: LADY JUSTICE & SERVICE LIST */}
+                    <div className="w-1/3 h-full border-l border-green-800 bg-black/80 flex flex-col p-4 z-20 overflow-y-auto">
+                        
+                        <div className="flex flex-col items-center mb-6">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img 
+                                src="/images/lady-justice.png" 
+                                alt="Lady Justice" 
+                                className="w-40 h-40 object-contain mb-2 opacity-80"
+                            />
+                            <p className="text-green-500 text-xs font-mono text-center">
+                                {'// GUARDIAN_PROTOCOL_ACTIVE'}
+                            </p>
+                        </div>
 
-    return (
-        <> 
-            <div className="flex flex-col h-full w-full p-2 bg-black">
-                <div className="flex justify-between items-center mb-2 pb-2 border-b border-green-700">
-                    <h2 className="text-xl text-yellow-400 font-bold">DATA RETRIEVAL: cards.exe</h2>
-                    <div className="flex space-x-2"> 
-                        {/* CV Download Button (ALWAYS ACTIVE, disabled only during analysis) */}
-                        <Link 
-                            href="/cv/OWEN-VAN-WYK-RESUME.pdf"
-                            download 
-                            className={`px-3 py-1 text-sm transition-colors font-bold ${
-                                !isInteractionBlocked
-                                    ? 'text-white bg-green-600 hover:bg-green-400 border border-green-600'
-                                    : 'text-gray-600 bg-gray-900 border border-gray-600 cursor-not-allowed'
-                            }`}
-                            aria-disabled={isInteractionBlocked}
-                            onClick={(e) => {
-                                if (isInteractionBlocked) e.preventDefault();
-                            }}
-                        >
-                            [💾] DOWNLOAD CV
-                        </Link>
+                        <div className="space-y-3">
+                            <p className="text-yellow-400 font-bold border-b border-yellow-400/30 pb-1 mb-2">
+                                AVAILABLE MODULES
+                            </p>
+                            {CARD_SYNOPSIS_TITLES_DATA.map((title, idx) => (
+                                <div 
+                                    key={idx} 
+                                    className="text-xs font-mono cursor-pointer hover:bg-green-900/30 p-1 transition-colors group"
+                                    onClick={() => handleCardClick(idx)}
+                                >
+                                    <span className="text-green-600 mr-2 group-hover:text-green-400">{`[0${idx}]`}</span>
+                                    <span className="text-gray-300 group-hover:text-white">{title.split(':')[0]}</span>
+                                </div>
+                            ))}
+                        </div>
 
-                        {/* Exit to Terminal Button (Always Visible, Conditionally Disabled) */}
-                        <button 
-                            onClick={onExit} 
-                            disabled={isInteractionBlocked}
-                            className={`px-3 py-1 text-sm transition-colors font-mono ${
-                                isInteractionBlocked 
-                                ? 'text-gray-600 border border-gray-600 cursor-not-allowed' 
-                                : 'text-red-400 hover:text-red-200 border border-red-400'
-                            }`}
-                        >
-                            [X] EXIT TO TERMINAL
-                        </button>
-                    </div>
-                </div>
+                        <div className="mt-auto pt-4 border-t border-green-800">
+                             <p className="text-[10px] text-gray-500">
+                                SELECT A CARD OR MODULE TO INITIALIZE SERVICE REDIRECT.
+                             </p>
+                        </div>
+                    </div>
 
-                <div className="h-[calc(100%-6rem)] border border-green-700 bg-gray-900 relative">
-                    
-                    <Canvas 
-                        frameloop="demand" 
-                        orthographic 
-                        className="w-full h-full"
-                        // FIX APPLIED: Added 'threshold' to Line, Points, and Sprite params to satisfy TypeScript
-                        raycaster={{ 
-                            params: { 
-                                Mesh: { material: true },
-                                Line: { threshold: 0.1 }, // <-- FIX
-                                LOD: {},
-                                Points: { threshold: 0.1 }, // <-- FIX
-                                Sprite: { threshold: 0.1 }, // <-- FIX
-                            } 
-                        }}
-                    >
-                        <StaticCamera />
-                        
-                        <CanvasInteractionHandler analyzedCardIndex={analyzedCardIndex} /> 
-                        
-                        <ambientLight intensity={0.5} />
-                        <directionalLight position={[10, 10, 5]} intensity={1} />
-                        <Environment preset="night" />
-
-                        {/* RENDER ANALYZED CARD (Top-Left, Rotating) */}
-                        {analyzedCardIndex !== null && (
-                            <CardDisplay 
-                                key={`analyze-${analyzedCardIndex}`} 
-                                index={analyzedCardIndex} 
-                                position={[0, 0, 0]} 
-                                isDisplayed={false} 
-                                isAnalyzed={true}
-                            />
-                        )}
-
-                        {/* Renders ONLY UNCOLLECTED cards in the hand */}
-                        {collectedCards.map((isCollected, index) => (
-                            !isCollected && analyzedCardIndex !== index && (
-                            <InteractiveCard
-                                key={index}
-                                index={index}
-                                onCardClick={handleCardClick} 
-                                position={HAND_POSITIONS[index]}
-                                cardRotationZ={CARD_ROTATIONS_Z[index]}
-                            />
-                            )
-                        ))}
-                    </Canvas>
-                    
-                    {/* Analysis Synopsis (Top-Left) */}
-                    {analyzedCardIndex !== null && (
-                        <div className="absolute top-5 left-5 p-4 border border-red-500 bg-black/70 text-sm w-[600px] text-left"> 
-                            <p className="text-red-400 font-bold mb-2">NETWORK ANALYSIS IN PROGRESS...</p>
-                            {/* DISPLAY SYNOPSIS: uses CARD_SYNOPSES data */}
-                            <p className="text-white font-bold mb-1">{CARD_SYNOPSIS_TITLES[analyzedCardIndex]}</p>
-                            <p className="text-white whitespace-pre-wrap">{CARD_SYNOPSES[analyzedCardIndex]}</p>
-                        </div>
-                    )}
-
-                    {/* Collection Complete Message */}
-                    {isAnalysisComplete && (
-                         <div className='absolute inset-0 flex justify-center items-center text-2xl text-green-400 bg-black/70'>
-                           FRAGMENT RETRIEVED.
-                       </div>
-                    )}
-                </div>
-                
-                {/* Status Area */}
-                <div className={`mt-2 text-sm font-mono ${messageColor}`}>
-                    {message}
-                </div>
-            </div>
-        </>
-    );
+                </div>
+                
+                {/* Status Area */}
+                <div className="mt-2 text-sm font-mono text-yellow-400">
+                    {message}
+                </div>
+            </div>
+        </>
+    );
 }
