@@ -11,6 +11,7 @@ import WindowsStartupAudio from '../WindowsStartupAudio/WindowsStartupAudio';
 // import CardGame from '../CardGame/CardGame'; // ❌ REMOVED: Game now opens externally
 import ChatbotArea from '../ChatbotArea/ChatbotArea'; 
 // import JarvisAvatar from '../JarvisAvatar/JarvisAvatar'; 
+import ContactModal from '../ContactForm/ContactModal';
 
 // --- Configuration & Types ---
 type AppState = 'idle' | 'booting' | 'os_load' | 'terminal';
@@ -40,6 +41,8 @@ interface TerminalScreenProps {
 const ASCII_CARD_ICON = `🃜`;
 // Define the ASCII Blog Icon (NEW)
 const ASCII_BLOG_ICON = `🖥`; 
+// Define the ASCII Contact Icon (NEW)
+const ASCII_CONTACT_ICON = `✉`;
 
 // ----------------------------------------------------------------------
 // HELPER COMPONENT: WORLD AND TIME 
@@ -118,6 +121,9 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
 
     // Dynamic Status State (Used by RightColumnWrapper -> ChatbotArea)
     const [systemStatus, setSystemStatus] = useState("System Offline");
+    
+    // Contact Modal State
+    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
 
     // Handler for Cards.exe click
@@ -130,6 +136,11 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
     const handleBlogExecute = () => {
         // This function tells the parent component to navigate to the blog page
         onTerminalExecute('blog.exe'); 
+    };
+
+    // Handler for Contact.exe click (NEW)
+    const handleContactExecute = () => {
+        setIsContactModalOpen(true);
     };
 
     // --- Dynamic Status Effect (Simplified) ---
@@ -272,6 +283,19 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                         </span>
                                     </div>
                                 </div>
+
+                                <div 
+                                    className="cursor-pointer hover:text-white flex items-start space-x-2 ml-[-2]"
+                                    onClick={handleContactExecute}
+                                >
+                                    <pre className="leading-none text-6xl text-green-400 hover:text-white">{ASCII_CONTACT_ICON}</pre>
+                                    <div className="flex flex-col ml-2 mt-6">
+                                        <span className="text-sm">contact.exe</span>
+                                        <span className="text-xs text-green-300">
+                                            Establish a secure connection. Send project briefs or encrypted inquiries.
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
@@ -368,6 +392,11 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                     </div>
                 </div>
             )}
+
+            <ContactModal 
+                isOpen={isContactModalOpen} 
+                onClose={() => setIsContactModalOpen(false)} 
+            />
         </div>
     );
 }

@@ -1,23 +1,26 @@
-// src/app/components/CardGame/CardDisplay.tsx
 'use client';
 
-import { useGLTF, Image } from '@react-three/drei';
+import { useGLTF, Html } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber'; 
 import * as THREE from 'three';
 import { useRef } from 'react';
+import { CARD_SYNOPSES } from './CardSynopses';
 
 // --- Global Configuration ---
 const CARD_MODELS = [
-    "KingOfClubs.glb",  
-    "QueenOfClubs.glb", 
-    "JackOfHearts.glb", 
-    "AceOfSpades.glb", 
-    "10OfHearts.glb", 
+    "KingOfClubs.glb", 
+    "QueenOfClubs.glb", 
+    "JackOfHearts.glb", 
+    "AceOfSpades.glb", 
+    "10OfHearts.glb", 
 ];
 
 // Reverting to Top-Left Configuration for the Analysis (Rotating) state:
-const ANALYZE_POSITION: [number, number, number] = [-0.5, 0.5, 0.5]; 
-const ANALYZE_SCALE = 0.5; 
+// Actually, we want it center or prominent if we are reading text.
+// Let's keep it somewhat centered but maybe zoomed in?
+// The StaticCamera in CardGame fixes the view.
+const ANALYZE_POSITION: [number, number, number] = [0, 0, 2]; // Center and closer
+const ANALYZE_SCALE = 0.6; 
 
 interface CardDisplayProps {
     index: number;
@@ -25,83 +28,89 @@ interface CardDisplayProps {
     isDisplayed?: boolean; 
     isClicked?: boolean; 
     isAnalyzed: boolean; 
+    onLaunch?: () => void;
 }
 
-export default function CardDisplay({ index, position, isAnalyzed }: CardDisplayProps) {
+export default function CardDisplay({ index, position, isAnalyzed, onLaunch }: CardDisplayProps) {
     const modelPath = CARD_MODELS[index];
     const groupRef = useRef<THREE.Group>(null); 
 
-    // 🛑 FIX 1: useGLTF MUST BE CALLED UNCONDITIONALLY AT THE TOP
-    // This resolves: Error: React Hook "useGLTF" is called conditionally.
-    // The hook is called outside of the previous try/catch block.
-    let scene: THREE.Group | null = null;
-    
-    // Temporarily disable the linter here to prevent issues with GLTF type inference
-    // when accessing .scene outside a try/catch, if needed.
-    // However, the cleanest fix is to just call the hook:
+    // Load model
     const gltf = useGLTF(`/models/${modelPath}`);
-    scene = gltf.scene;
+    const scene = gltf.scene;
 
-    // 🛑 FIX 2: useFrame MUST BE CALLED UNCONDITIONALLY AT THE TOP
-    useFrame((state, delta) => {
-        if (isAnalyzed && groupRef.current) {
-            // Rotate around the Y-axis when being analyzed
-            groupRef.current.rotation.y += delta * 0.5; 
-        }
-    });
+    // --- Animation Logic ---
+    useFrame((state, delta) => {
+        if (groupRef.current) {
+            // Smoothly rotate to target
+            // If analyzed (flipped), face front (0). If in hand, face back (Math.PI).
+            const targetY = isAnalyzed ? 0 : Math.PI;
+            
+            // We use a simple lerp for smooth transition
+            // We need to handle the wrapping from PI to 0 if needed, but here 0 and PI are distinct.
+            // Math.PI is 3.14. 0 is 0. 
+            // If we are at 3.14 and go to 0, it rotates back.
+            
+            groupRef.current.rotation.y = THREE.MathUtils.lerp(
+                groupRef.current.rotation.y, 
+                targetY, 
+                delta * 5
+            );
+        }
+    });
 
+    if (!scene) return null;
 
-    // --- Early Return (NOW SAFE) ---
-    // If the model load failed, we return AFTER the hooks are called.
-    if (!scene) return null;
+    // --- Scaling and Positioning Logic ---
+    const handScale = 0.25; 
 
+    // 1. Determine the final scale
+    const finalScale = isAnalyzed ? ANALYZE_SCALE : handScale;
 
-    // --- Scaling and Positioning Logic ---
-    const handScale = 0.25; 
+    // 2. Determine the final position
+    // If analyzed, we override the hand position to the center
+    const finalPosition = isAnalyzed ? ANALYZE_POSITION : position;
+    
+    // 3. Initial Rotation (for first render)
+    // We let useFrame handle the updates, but set initial to avoid jump on mount if possible
+    // groupRef will handle it.
 
-    // 1. Determine the final scale (Analysis overrides all)
-    const finalScale = isAnalyzed 
-        ? ANALYZE_SCALE 
-        : handScale;
-
-    // 2. Determine the final position
-    const finalPosition = isAnalyzed 
-        ? ANALYZE_POSITION // Top-left corner
-        : position;
-    
-    // 3. Calculate Rotation
-    // Card faces forward (0) in analysis, faces away (Math.PI) in the hand
-    const BASE_ROTATION_Y = isAnalyzed ? 0 : Math.PI; 
-    
-    const initialRotation: [number, number, number] = [
-        0, 
-        BASE_ROTATION_Y, 
-        0
-    ];          
-
-    const isGRC = index === 4;
+    const synopsis = CARD_SYNOPSES[index];
 
     return (
         <group 
             ref={groupRef}
             position={finalPosition} 
             scale={[finalScale, finalScale, finalScale]} 
-            rotation={initialRotation}
+            rotation={[0, Math.PI, 0]} // Start facing back (in hand)
         >
             {/* renderOrder=1 ensures the analyzed card is always drawn on top */}
             <primitive object={scene.clone()} renderOrder={isAnalyzed ? 1 : 0} /> 
 
-            {/* Overlay Lady Justice for the GRC Card (Index 4) when analyzed */}
-            {isAnalyzed && isGRC && (
-                // eslint-disable-next-line jsx-a11y/alt-text
-                <Image 
-                    url="/images/lady-justice.png"
-                    position={[0, 0.2, 0.15]} // Slightly raised and in front
-                    scale={[1.5, 1.5]} 
-                    transparent
-                    opacity={0.9}
-                    renderOrder={2} // Ensure it renders on top of the card
-                />
+            {/* Content Reveal on Flip */}
+            {isAnalyzed && (
+                <Html 
+                    position={[0, 0, 0.2]} // Slightly in front of the card face
+                    transform 
+                    occlude 
+                    center
+                    distanceFactor={1.5}
+                >
+                    <div className="w-64 bg-black/90 border border-green-500 p-4 text-[10px] md:text-xs font-mono text-green-400 shadow-lg shadow-green-900/50 flex flex-col gap-2">
+                        <div className="whitespace-pre-wrap leading-tight">
+                            {synopsis}
+                        </div>
+                        <button 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onLaunch?.();
+                            }}
+                            className="mt-2 w-full py-1 bg-green-700 text-black font-bold hover:bg-green-500 transition-colors uppercase"
+                        >
+                            LAUNCH_MODULE &gt;&gt;
+                        </button>
+                    </div>
+                </Html>
             )}
         </group>
     );
