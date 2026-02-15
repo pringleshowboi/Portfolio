@@ -12,6 +12,7 @@ import WindowsStartupAudio from '../WindowsStartupAudio/WindowsStartupAudio';
 import ChatbotArea from '../ChatbotArea/ChatbotArea'; 
 // import JarvisAvatar from '../JarvisAvatar/JarvisAvatar'; 
 import ContactModal from '../ContactForm/ContactModal';
+import RiskScanModal from '../RiskScan/RiskScanModal';
 
 // --- Configuration & Types ---
 type AppState = 'idle' | 'booting' | 'os_load' | 'terminal';
@@ -124,6 +125,9 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
     
     // Contact Modal State
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+    
+    // Risk Scan Modal State
+    const [isRiskScanModalOpen, setIsRiskScanModalOpen] = useState(false);
 
 
     // Handler for Cards.exe click
@@ -141,6 +145,11 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
     // Handler for Contact.exe click (NEW)
     const handleContactExecute = () => {
         setIsContactModalOpen(true);
+    };
+
+    // Handler for Risk Scan (NEW)
+    const handleRiskScanExecute = () => {
+        setIsRiskScanModalOpen(true);
     };
 
     // --- Dynamic Status Effect (Simplified) ---
@@ -266,7 +275,7 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                     <div className="flex flex-col ml-2 mt-6">
                                         <span className="text-sm">services.exe</span>
                                         <span className="text-xs text-green-300">
-                                            3D interactive deck revealing our capabilities and specialized services.
+                                            Explore our Cybersecurity, GRC, and Development solutions.
                                         </span>
                                     </div>
                                 </div>
@@ -277,22 +286,37 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                 >
                                     <pre className="leading-none text-6xl text-green-400 hover:text-white">{ASCII_BLOG_ICON}</pre>
                                     <div className="flex flex-col ml-2 mt-6">
-                                        <span className="text-sm">blog.exe</span>
+                                        <span className="text-sm">intel.exe</span>
                                         <span className="text-xs text-green-300">
-                                            Long-form writeups, breakdowns, and technical deep dives.
+                                            Security advisories, threat analysis, and industry insights.
                                         </span>
                                     </div>
                                 </div>
 
                                 <div 
                                     className="cursor-pointer hover:text-white flex items-start space-x-2 ml-[-2]"
-                                    onClick={handleContactExecute}
+                                    onClick={handleRiskScanExecute}
                                 >
                                     <pre className="leading-none text-6xl text-green-400 hover:text-white">{ASCII_CONTACT_ICON}</pre>
                                     <div className="flex flex-col ml-2 mt-6">
-                                        <span className="text-sm">contact.exe</span>
+                                        <span className="text-sm">risk_score.exe</span>
                                         <span className="text-xs text-green-300">
-                                            Establish a secure connection. Send project briefs or encrypted inquiries.
+                                            GET RISK SCORE.
+                                            <br/>
+                                            Identify gaps before they are exploited.
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div 
+                                    className="cursor-pointer hover:text-white flex items-start space-x-2 ml-[-2] opacity-80"
+                                    onClick={handleContactExecute}
+                                >
+                                    <pre className="leading-none text-6xl text-green-400 hover:text-white">🗎</pre>
+                                    <div className="flex flex-col ml-2 mt-6">
+                                        <span className="text-sm">checklist.pdf</span>
+                                        <span className="text-xs text-green-300">
+                                            Download the Cyber Readiness Checklist.
                                         </span>
                                     </div>
                                 </div>
@@ -303,79 +327,148 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                             className="border-t-2 border-l-2 border-b-2 border-green-400 px-4 py-3 flex flex-col justify-start text-xs md:text-sm leading-relaxed lg:col-span-2 lg:row-span-1"
                         >
                             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-3">
-                                <p className="text-yellow-400 font-bold tracking-widest">WEB_DEV.DASH</p>
-                                <p className="text-[10px] md:text-xs text-green-300 font-mono opacity-80">
-                                    Next.js • Three.js • Tailwind • Sanity • Custom UX
-                                </p>
+                                <h1 className="text-yellow-400 font-bold tracking-widest text-lg md:text-xl">SECURE_FIRST.DASH</h1>
+                                <h2 className="text-[10px] md:text-xs text-green-300 font-mono opacity-80 font-normal">
+                                    Cybersecurity • GRC • Software • AI Automation
+                                </h2>
                             </div>
 
-                            <div className="flex flex-col md:flex-row gap-6">
-                                <div className="md:w-1/2 space-y-3">
-                                    <div className="border-l-2 border-green-700 pl-3">
-                                        <p className="text-green-300 font-semibold tracking-wide text-xs mb-1">
-                                            {'// SYSTEM SNAPSHOT'}
-                                        </p>
-                                        <p className="text-gray-300 leading-relaxed">
-                                            Unlike Tier 3 agencies (Ruby Digital, CreativeWeb) that often rely on standard templates, 
-                                            we build custom, secure-first environments tailored for high-impact brand differentiation.
+                            <div className="flex flex-col gap-8">
+                                <div className="space-y-6">
+                                    <div className="border-l-2 border-green-700 pl-4 py-1">
+                                        <h3 className="text-green-300 font-semibold tracking-wide text-xs mb-2 uppercase">
+                                            {'// SECURE YOUR BUSINESS BEFORE IT BECOMES A HEADLINE'}
+                                        </h3>
+                                        <p className="text-gray-300 leading-relaxed text-sm max-w-prose">
+                                            We identify your cyber risks, compliance gaps, and software vulnerabilities — then give you a clear action plan.
                                         </p>
                                     </div>
 
-                                    <div className="bg-green-900/10 border border-green-800 p-3 rounded-sm space-y-2">
-                                        <p className="text-green-400 font-bold text-xs uppercase tracking-wider border-b border-green-800 pb-1 mb-1">
-                                            OUR EDGE (THE &quot;GAPS&quot;)
+                                    {/* MVP CORE OFFER: HEALTH CHECK */}
+                                    <div className="bg-green-900/10 border border-green-500 p-6 rounded-sm relative overflow-hidden group hover:bg-green-900/20 transition-all">
+                                        <div className="absolute top-0 right-0 bg-green-500 text-black text-[10px] font-bold px-3 py-1">
+                                            MVP CORE OFFER
+                                        </div>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <h3 className="text-xl font-bold text-white tracking-wider">
+                                                CYBERSECURITY HEALTH CHECK
+                                            </h3>
+                                        </div>
+                                        <p className="text-green-300 text-sm mb-6 font-mono">
+                                            Rapid assessment revealing risk exposure & clear roadmap.
                                         </p>
-                                        <div className="grid grid-cols-1 gap-2 text-xs">
-                                            <div className="flex justify-between items-center">
-                                                <span className="text-gray-400">Security Gap</span>
-                                                <span className="text-green-300 font-mono">&quot;Cyber-Secure Dev&quot; vs. vulnerable sites.</span>
+                                        
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-sm text-gray-400 mb-6">
+                                            <div className="flex items-center">
+                                                <span className="text-green-500 mr-3">✓</span> Malware Exposure Scan
                                             </div>
-                                            <div className="flex justify-between items-center">
-                                                <span className="text-gray-400">Price Gap</span>
-                                                <span className="text-green-300 font-mono">&quot;Affordable Specialist&quot; vs. R30k+ giants.</span>
+                                            <div className="flex items-center">
+                                                <span className="text-green-500 mr-3">✓</span> GRC Quick Audit (POPIA/ISO)
                                             </div>
-                                            <div className="flex justify-between items-center">
-                                                <span className="text-gray-400">Silo Gap</span>
-                                                <span className="text-green-300 font-mono">SEO + Design + Cyber &quot;All-in-One&quot;.</span>
+                                            <div className="flex items-center">
+                                                <span className="text-green-500 mr-3">✓</span> Software Security Review
+                                            </div>
+                                            <div className="flex items-center">
+                                                <span className="text-green-500 mr-3">✓</span> AI Risk Briefing
                                             </div>
                                         </div>
+
+                                        <button 
+                                            onClick={handleRiskScanExecute}
+                                            className="w-full bg-green-600 hover:bg-green-500 text-black font-bold py-3 uppercase tracking-widest text-sm transition-all shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:shadow-[0_0_25px_rgba(34,197,94,0.6)]"
+                                        >
+                                            GET YOUR CYBER RISK SCORE &gt;&gt;
+                                        </button>
                                     </div>
                                 </div>
 
-                                <div className="md:w-1/2 space-y-3">
-                                    <p className="text-green-300 font-semibold tracking-wide text-xs">
-                                        {'// ENGAGEMENT MODELS'}
-                                    </p>
-                                    <div className="grid grid-cols-1 gap-2">
-                                        <div className="group border border-green-800 hover:border-green-500 bg-black/40 p-3 transition-colors duration-300 cursor-default">
-                                            <div className="flex justify-between items-center mb-1">
-                                                <p className="font-bold text-yellow-400 text-xs tracking-wider">Fixed-Price Pilot</p>
-                                                <span className="text-[10px] bg-green-900/50 px-1 text-green-300 rounded">$3,000 (One-Time)</span>
-                                            </div>
-                                            <p className="text-gray-400 text-xs mb-1">Initial site build, security hardening, and SEO foundation. The &quot;Digital Launchpad&quot;.</p>
+                                {/* SERVICE BLOCKS */}
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                    <div 
+                                        className="border border-green-800 p-3 bg-black/40 hover:border-green-600 transition-colors cursor-pointer group flex flex-col justify-between"
+                                        onClick={handleContactExecute}
+                                    >
+                                        <div>
+                                            <p className="text-yellow-400 font-bold text-xs mb-1">TIER 1: REMEDIATION</p>
+                                            <p className="text-[10px] text-gray-400 mb-2">Threat hunting, vuln scanning, patch guidance & secure code review.</p>
                                         </div>
-
-                                        <div className="group border border-green-800 hover:border-green-500 bg-black/40 p-3 transition-colors duration-300 cursor-default">
-                                            <div className="flex justify-between items-center mb-1">
-                                                <p className="font-bold text-yellow-400 text-xs tracking-wider">Guardian Retainer</p>
-                                                <span className="text-[10px] bg-green-900/50 px-1 text-green-300 rounded">Monthly Subscription</span>
-                                            </div>
-                                            <p className="text-gray-400 text-xs mb-1">Ongoing maintenance, security monitoring, and minor SEO updates.</p>
+                                        <p className="text-[10px] text-green-500 font-bold uppercase group-hover:underline mt-auto">
+                                            &gt; SCAN MY EXPOSURE
+                                        </p>
+                                    </div>
+                                    <div 
+                                        className="border border-green-800 p-3 bg-black/40 hover:border-green-600 transition-colors cursor-pointer group flex flex-col justify-between"
+                                        onClick={handleContactExecute}
+                                    >
+                                        <div>
+                                            <p className="text-yellow-400 font-bold text-xs mb-1">TIER 2: GRC IMPLEMENTATION</p>
+                                            <p className="text-[10px] text-gray-400 mb-2">ISO 27001-aligned risk mgmt, policy frameworks & audit readiness.</p>
                                         </div>
+                                        <p className="text-[10px] text-green-500 font-bold uppercase group-hover:underline mt-auto">
+                                            &gt; CHECK COMPLIANCE GAPS
+                                        </p>
+                                    </div>
+                                    <div 
+                                        className="border border-green-800 p-3 bg-black/40 hover:border-green-600 transition-colors cursor-pointer group flex flex-col justify-between"
+                                        onClick={handleContactExecute}
+                                    >
+                                        <div>
+                                            <p className="text-yellow-400 font-bold text-xs mb-1">TIER 3: SOFTWARE & AI</p>
+                                            <p className="text-[10px] text-gray-400 mb-2">Secure web apps, APIs & custom AI solutions with security-first design.</p>
+                                        </div>
+                                        <p className="text-[10px] text-green-500 font-bold uppercase group-hover:underline mt-auto">
+                                            &gt; BUILD THIS SECURELY
+                                        </p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="mt-4 pt-3 border-t border-green-900/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                <p className="text-[10px] text-green-500 font-mono">
-                                    Ready to talk about a project? Initiate a direct call protocol:
+                            <div className="mt-4 pt-3 border-t border-green-900/50 flex flex-col gap-2">
+                                <p className="text-[10px] text-green-500 font-mono opacity-70 mb-1">
+                                    TRUST SIGNALS: COMPLIANCE READY • SECURE ARCHITECTURE • RAPID RESPONSE
                                 </p>
-                                <a
-                                    href="tel:+270609884544"
-                                    className="inline-flex items-center justify-center px-4 py-1.5 text-xs font-bold tracking-widest uppercase rounded-sm bg-yellow-500/10 border border-yellow-500 text-yellow-400 hover:bg-yellow-500 hover:text-black transition-all duration-300"
-                                >
-                                    CALL TO DISCUSS A WEBSITE
-                                </a>
+                                
+                                <div className="grid grid-cols-2 gap-4">
+                                    {/* CASE STUDIES */}
+                                    <div className="col-span-2 md:col-span-1">
+                                        <h4 className="text-[10px] font-bold text-green-400 mb-2 border-b border-green-800/50 pb-1">RECENT MISSIONS</h4>
+                                        <ul className="space-y-2">
+                                            <li className="text-[10px] text-gray-400 border-l-2 border-green-800 pl-2">
+                                                <span className="text-green-500 font-bold block">FinTech Audit</span>
+                                                Closed 12 critical vulnerabilities before launch.
+                                            </li>
+                                            <li className="text-[10px] text-gray-400 border-l-2 border-green-800 pl-2">
+                                                <span className="text-green-500 font-bold block">SaaS Compliance</span>
+                                                Achieved POPIA readiness in 3 weeks.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    {/* TESTIMONIALS */}
+                                    <div className="col-span-2 md:col-span-1">
+                                        <h4 className="text-[10px] font-bold text-green-400 mb-2 border-b border-green-800/50 pb-1">INTEL / FEEDBACK</h4>
+                                        <div className="text-[10px] text-gray-400 italic mb-2 bg-green-900/10 p-2 border border-green-900/30">
+                                            &quot;The health check revealed risks we didn&apos;t know existed. The roadmap was clear and actionable.&quot;
+                                            <br/><span className="not-italic text-green-600 font-bold mt-1 block">- CTO, Logistics Firm</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                {/* COMPLIANCE BADGES */}
+                                <div className="mt-2 flex flex-wrap gap-2 opacity-80">
+                                    <span className="border border-green-800 bg-green-900/20 px-2 py-1 text-[9px] text-green-400 font-bold">ISO 27001 READY</span>
+                                    <span className="border border-green-800 bg-green-900/20 px-2 py-1 text-[9px] text-green-400 font-bold">POPIA COMPLIANT</span>
+                                    <span className="border border-green-800 bg-green-900/20 px-2 py-1 text-[9px] text-green-400 font-bold">OWASP TOP 10</span>
+                                </div>
+
+                                <div className="mt-4 pt-4 border-t border-green-900/50">
+                                    <button 
+                                        onClick={handleContactExecute}
+                                        className="w-full border border-green-600 text-green-400 hover:bg-green-900/30 font-bold py-2 text-xs uppercase tracking-widest transition-all"
+                                    >
+                                        SCHEDULE A CALL
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
@@ -396,6 +489,11 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
             <ContactModal 
                 isOpen={isContactModalOpen} 
                 onClose={() => setIsContactModalOpen(false)} 
+            />
+
+            <RiskScanModal 
+                isOpen={isRiskScanModalOpen} 
+                onClose={() => setIsRiskScanModalOpen(false)} 
             />
         </div>
     );

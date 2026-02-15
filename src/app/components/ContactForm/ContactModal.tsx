@@ -36,8 +36,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-            <div className="w-full max-w-lg border-2 border-green-500 bg-black p-6 shadow-[0_0_20px_rgba(34,197,94,0.3)] font-mono relative">
+        <div 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={onClose} // Close when clicking the backdrop
+        >
+            <div 
+                className="w-full max-w-lg border-2 border-green-500 bg-black p-6 shadow-[0_0_20px_rgba(34,197,94,0.3)] font-mono relative"
+                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+            >
                 
                 {/* Header */}
                 <div className="flex justify-between items-center mb-6 border-b border-green-800 pb-2">
@@ -46,9 +52,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     </h2>
                     <button 
                         onClick={onClose}
-                        className="text-red-500 hover:text-red-400 font-bold border border-red-900 hover:border-red-500 px-2 transition-colors"
+                        className="text-red-500 hover:text-red-400 font-bold border border-red-900 hover:border-red-500 px-3 py-1 transition-colors uppercase"
+                        aria-label="Close Modal"
                     >
-                        [ABORT]
+                        [X] ABORT
                     </button>
                 </div>
 

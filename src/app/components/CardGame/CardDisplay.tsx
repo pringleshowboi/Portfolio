@@ -43,14 +43,20 @@ export default function CardDisplay({ index, position, isAnalyzed, onLaunch }: C
     useFrame((state, delta) => {
         if (groupRef.current) {
             // Smoothly rotate to target
-            // If analyzed (flipped), face front (0). If in hand, face back (Math.PI).
+            // If analyzed (flipped), we want to show the FRONT (Face).
+            // If NOT analyzed (in hand), we want to show the BACK.
+            
+            // Testing has shown that:
+            // Math.PI = Shows the BACK of the card (Blue pattern).
+            // 0 = Shows the FRONT of the card (Face).
+            
+            // Therefore:
+            // Analyzed -> Face -> 0
+            // Not Analyzed -> Back -> Math.PI
+            
             const targetY = isAnalyzed ? 0 : Math.PI;
             
             // We use a simple lerp for smooth transition
-            // We need to handle the wrapping from PI to 0 if needed, but here 0 and PI are distinct.
-            // Math.PI is 3.14. 0 is 0. 
-            // If we are at 3.14 and go to 0, it rotates back.
-            
             groupRef.current.rotation.y = THREE.MathUtils.lerp(
                 groupRef.current.rotation.y, 
                 targetY, 
@@ -71,10 +77,6 @@ export default function CardDisplay({ index, position, isAnalyzed, onLaunch }: C
     // If analyzed, we override the hand position to the center
     const finalPosition = isAnalyzed ? ANALYZE_POSITION : position;
     
-    // 3. Initial Rotation (for first render)
-    // We let useFrame handle the updates, but set initial to avoid jump on mount if possible
-    // groupRef will handle it.
-
     const synopsis = CARD_SYNOPSES[index];
 
     return (
@@ -82,7 +84,7 @@ export default function CardDisplay({ index, position, isAnalyzed, onLaunch }: C
             ref={groupRef}
             position={finalPosition} 
             scale={[finalScale, finalScale, finalScale]} 
-            rotation={[0, Math.PI, 0]} // Start facing back (in hand)
+            rotation={[0, Math.PI, 0]} // Start facing BACK (Math.PI)
         >
             {/* renderOrder=1 ensures the analyzed card is always drawn on top */}
             <primitive object={scene.clone()} renderOrder={isAnalyzed ? 1 : 0} /> 

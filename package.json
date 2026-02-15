@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@next/third-parties": "^16.1.6",
     "@portabletext/react": "^4.0.3",
     "@portabletext/types": "^2.0.15",
     "@react-three/drei": "^10.7.6",
@@ -24,6 +25,7 @@
     "gray-matter": "^4.0.3",
     "next": "15.5.9",
     "next-sanity": "^11.4.2",
+    "posthog-js": "^1.347.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-markdown": "^10.1.0",

@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from '@next/third-parties/google';
+import Script from 'next/script';
+import { PostHogProvider } from './providers';
+import PostHogPageView from './PostHogPageView';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,6 +26,12 @@ export const metadata: Metadata = {
   keywords: ["Cybersecurity", "Next.js Development", "IT Consultation", "Secure Web Design", "Automation Ops", "Guardian Protocol"],
   authors: [{ name: "Guardian Protocol Team" }],
   creator: "Guardian Protocol",
+  icons: {
+    icon: "/images/M4n.png",
+  },
+  verification: {
+    google: "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE", // TODO: Replace with your actual code
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -57,6 +67,37 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Guardian Protocol",
+  "image": "https://guardian-protocol.com/images/M4n.png",
+  "description": "Enterprise-grade security, high-performance web development, and data-driven insights.",
+  "url": "https://guardian-protocol.com",
+  "telephone": "+27-000-000-0000",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Your Business Address",
+    "addressLocality": "Johannesburg",
+    "addressRegion": "Gauteng",
+    "postalCode": "2000",
+    "addressCountry": "ZA"
+  },
+  "priceRange": "$$$",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "09:00",
+    "closes": "17:00"
+  }
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -68,7 +109,28 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        {children}
+        <PostHogProvider>
+          <PostHogPageView />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+          {children}
+        </PostHogProvider>
+        
+        {/* Google Analytics - TODO: Replace GA_MEASUREMENT_ID with your actual ID */}
+        <GoogleAnalytics gaId="G-XXXXXXXXXX" />
+        
+        {/* Microsoft Clarity Heatmap - TODO: Replace YOUR_CLARITY_ID with actual ID */}
+        <Script id="clarity-script" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "YOUR_CLARITY_ID");
+          `}
+        </Script>
       </body>
     </html>
   );

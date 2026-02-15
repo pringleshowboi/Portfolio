@@ -152,6 +152,21 @@ export default function CardGame({ onExit }: CardGameProps) {
     // Determine which index to highlight in the list
     const activeIndex = flippedIndex !== null ? flippedIndex : hoveredIndex;
 
+    // Handle Escape Key to Exit
+    useLayoutEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                if (flippedIndex !== null) {
+                    setFlippedIndex(null); // Close card inspection first
+                } else {
+                    onExit(); // Exit game
+                }
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [onExit, flippedIndex]);
+
     return (
         <> 
             <div className="flex flex-col h-full w-full p-2 bg-black relative">
