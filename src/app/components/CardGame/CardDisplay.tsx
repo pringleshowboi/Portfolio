@@ -28,10 +28,11 @@ interface CardDisplayProps {
     isDisplayed?: boolean; 
     isClicked?: boolean; 
     isAnalyzed: boolean; 
+    isHovered?: boolean;
     onLaunch?: () => void;
 }
 
-export default function CardDisplay({ index, position, isAnalyzed, onLaunch }: CardDisplayProps) {
+export default function CardDisplay({ index, position, isAnalyzed, isHovered, onLaunch }: CardDisplayProps) {
     const modelPath = CARD_MODELS[index];
     const groupRef = useRef<THREE.Group>(null); 
 
@@ -39,52 +40,90 @@ export default function CardDisplay({ index, position, isAnalyzed, onLaunch }: C
     const gltf = useGLTF(`/models/${modelPath}`);
     const scene = gltf.scene;
 
-    // --- Animation Logic ---
     useFrame((state, delta) => {
         if (groupRef.current) {
-            // Smoothly rotate to target
-            // If analyzed (flipped), we want to show the FRONT (Face).
-            // If NOT analyzed (in hand), we want to show the BACK.
+            // Target Rotation Y:
+            const targetRotY = isAnalyzed ? 0 : Math.PI;
+
+            // Target Position:
+            const targetPos = isAnalyzed ? new THREE.Vector3(0, 0, 0) : new THREE.Vector3(...position);
+
+            // Target Scale:
+            const handScale = 0.25; 
+            const analyzeScale = 0.6; 
+            const targetScale = isAnalyzed ? analyzeScale : handScale;
+
+            // Smooth Interpolation (Lerp)
+            // 1. Rotation
+            if (isAnalyzed) {
+                // If analyzed, force target rotation
+                groupRef.current.rotation.y = THREE.MathUtils.lerp(
+                    groupRef.current.rotation.y, 
+                    targetRotY, 
+                    delta * 5
+                );
+            } else if (!isHovered) {
+                // If NOT analyzed AND NOT hovered, go to base rotation
+                groupRef.current.rotation.y = THREE.MathUtils.lerp(
+                    groupRef.current.rotation.y, 
+                    targetRotY, 
+                    delta * 5
+                );
+            }
+
+            // 2. Position
+            if (isAnalyzed) {
+                // If analyzed, force target position
+                groupRef.current.position.lerp(targetPos, delta * 5);
+            } else if (!isHovered) {
+                // If NOT analyzed AND NOT hovered, go to base position
+                groupRef.current.position.lerp(targetPos, delta * 5);
+            }
+
+            // 3. Scale
+            const currentScale = groupRef.current.scale.x;
+            const newScale = THREE.MathUtils.lerp(currentScale, targetScale, delta * 5);
+            groupRef.current.scale.set(newScale, newScale, newScale);
             
-            // Testing has shown that:
-            // Math.PI = Shows the BACK of the card (Blue pattern).
-            // 0 = Shows the FRONT of the card (Face).
-            
-            // Therefore:
-            // Analyzed -> Face -> 0
-            // Not Analyzed -> Back -> Math.PI
-            
-            const targetY = isAnalyzed ? 0 : Math.PI;
-            
-            // We use a simple lerp for smooth transition
-            groupRef.current.rotation.y = THREE.MathUtils.lerp(
-                groupRef.current.rotation.y, 
-                targetY, 
-                delta * 5
-            );
+            // 4. Hover Rotation (Only if NOT analyzed)
+            // When hovered, rotate slightly to show a bit of the side/face (peek)
+            if (!isAnalyzed && isHovered) {
+                 // Peek rotation: Rotate slightly away from Math.PI towards 0
+                 const hoverTargetRotY = Math.PI - 0.5; 
+                 groupRef.current.rotation.y = THREE.MathUtils.lerp(
+                     groupRef.current.rotation.y,
+                     hoverTargetRotY,
+                     delta * 8 
+                 );
+                 
+                 // Also lift slightly?
+                 const hoverTargetY = position[1] + 0.3; 
+                 groupRef.current.position.y = THREE.MathUtils.lerp(
+                    groupRef.current.position.y,
+                    hoverTargetY,
+                    delta * 8
+                 );
+            }
         }
     });
 
     if (!scene) return null;
-
-    // --- Scaling and Positioning Logic ---
-    const handScale = 0.25; 
-
-    // 1. Determine the final scale
-    const finalScale = isAnalyzed ? ANALYZE_SCALE : handScale;
-
-    // 2. Determine the final position
-    // If analyzed, we override the hand position to the center
-    const finalPosition = isAnalyzed ? ANALYZE_POSITION : position;
     
+    // We initialize with the "start" values, but useFrame handles the updates
+    // So we don't need to pass position/scale directly to the group prop anymore, 
+    // EXCEPT for the initial render to prevent jumping.
+    // However, if we want smooth transition FROM the start, we can let useFrame handle it from 0.
+
     const synopsis = CARD_SYNOPSES[index];
 
     return (
         <group 
             ref={groupRef}
-            position={finalPosition} 
-            scale={[finalScale, finalScale, finalScale]} 
-            rotation={[0, Math.PI, 0]} // Start facing BACK (Math.PI)
+            // Initial position/rotation/scale can be set here, but useFrame will override.
+            // Setting initial values to match "Not Analyzed" state prevents jump on load.
+            position={position} 
+            rotation={[0, Math.PI, 0]} 
+            scale={[0.25, 0.25, 0.25]}
         >
             {/* renderOrder=1 ensures the analyzed card is always drawn on top */}
             <primitive object={scene.clone()} renderOrder={isAnalyzed ? 1 : 0} /> 

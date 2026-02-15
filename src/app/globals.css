@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-green-400: #34D399; 
+  --color-yellow-400: #FACC15;
+  --color-green-200: #A7F3D0;
 }
 
 @theme inline {
@@ -20,21 +23,89 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #050505; /* Deep black for terminal feel */
+  color: var(--color-green-400);
+  font-family: var(--font-mono), monospace; /* Enforce mono by default */
   overflow: hidden;
+}
+
+/* --- Retro Terminal Utilities --- */
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 2px rgba(74, 222, 128, 0.4), 0 0 8px rgba(74, 222, 128, 0.2);
+  }
+  
+  .box-glow {
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.2), inset 0 0 5px rgba(34, 197, 94, 0.1);
+  }
+
+  .box-glow-hover:hover {
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.4), inset 0 0 10px rgba(34, 197, 94, 0.2);
+  }
+
+  .bg-grid-pattern {
+    background-size: 30px 30px;
+    background-image: 
+      linear-gradient(to right, rgba(34, 197, 94, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(34, 197, 94, 0.05) 1px, transparent 1px);
+  }
+}
+
+/* --- CRT & Scanline Effects --- */
+
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50; /* Above most content but below modals if needed */
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 4px;
+  animation: scanlines-anim 0.5s linear infinite; /* Very fast subtle flicker */
+  opacity: 0.3;
+}
+
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 51;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+@keyframes scanlines-anim {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 4px; }
+}
+
+/* --- Typography Overrides --- */
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* --- Retro Terminal Blog Overrides --- */
 
-/* Style the body of the blog content */
 .prose-terminal {
-    color: var(--color-green-400); /* Ensure primary text is green */
-    max-width: none; /* Let the main layout control width */
+    color: var(--color-green-400);
+    max-width: none;
 }
 
-/* Headings: Use yellow accent and a green bottom border */
 .prose-terminal h1,
 .prose-terminal h2,
 .prose-terminal h3 {
@@ -44,21 +115,12 @@ body {
     margin-top: 1.5rem;
 }
 
-/* Links: Use yellow accent and keep the monospace font */
 .prose-terminal a {
     color: var(--color-yellow-400);
     text-decoration: underline;
 }
 
-/* Blockquotes, Lists, Code Blocks, etc. */
 .prose-terminal blockquote {
-    color: var(--color-green-200); /* Slightly lighter green for contrast */
+    color: var(--color-green-200);
     border-left-color: var(--color-yellow-400);
-}
-
-/* Define CSS variables for easier color reference */
-:root {
-    --color-green-400: #34D399; 
-    --color-yellow-400: #FACC15;
-    --color-green-200: #A7F3D0;
 }

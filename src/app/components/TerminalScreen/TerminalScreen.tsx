@@ -250,22 +250,24 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
 
             {/* 🛑 STATE 3: TERMINAL DESKTOP 🛑 */}
             {appState === 'terminal' && (
-                <div className="w-full h-full bg-black/90 pointer-events-auto text-green-400 px-6 py-4 md:px-10 md:py-6 flex flex-col">
+                <div className="w-full h-full bg-black/90 bg-grid-pattern pointer-events-auto text-green-400 px-6 py-4 md:px-10 md:py-6 flex flex-col relative overflow-hidden">
+                    {/* Background faint glow for depth */}
+                    <div className="absolute inset-0 bg-green-900/5 pointer-events-none z-0" />
                     
-                    <div className="flex flex-col lg:grid lg:grid-cols-3 w-full h-full gap-4 overflow-y-auto lg:overflow-hidden pr-1 lg:pr-0">
+                    <div className="flex flex-col lg:grid lg:grid-cols-3 w-full h-full gap-4 overflow-y-auto lg:overflow-hidden pr-1 lg:pr-0 relative z-10">
                         
                         {/* LEFT COLUMN: SECURE DASH (Merged Access Port) */}
                         <div className="flex flex-col gap-4 lg:col-span-2 h-full overflow-y-auto pr-2">
                             
                             {/* SECURE_FIRST.DASH */}
                             <div 
-                                className="border-t-2 border-l-2 border-b-2 border-green-400 px-4 py-3 flex flex-col justify-start text-xs md:text-sm leading-relaxed flex-grow"
+                                className="border-t-2 border-l-2 border-b-2 border-green-400/80 box-glow px-4 py-3 flex flex-col justify-start text-xs md:text-sm leading-relaxed flex-grow bg-black/60 backdrop-blur-sm"
                             >
                                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4 border-b border-green-800/50 pb-2">
                                     <div>
-                                        <h1 className="text-yellow-400 font-bold tracking-widest text-lg md:text-xl">SECURE_FIRST.DASH</h1>
+                                        <h1 className="text-yellow-400 font-bold tracking-widest text-lg md:text-xl text-glow">DEV_ARCHITECT.DASH</h1>
                                         <h2 className="text-[10px] md:text-xs text-green-300 font-mono opacity-80 font-normal">
-                                            Cybersecurity • GRC • Software
+                                            Full-Stack • UI/UX • Systems
                                         </h2>
                                     </div>
 
@@ -273,7 +275,7 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                     <div className="flex flex-wrap justify-start md:justify-end gap-3">
                                         <button 
                                             onClick={handleCardsExecute}
-                                            className="flex items-center gap-1 text-[10px] hover:text-white transition-colors group border border-green-800 px-2 py-1 bg-black/40 hover:bg-green-900/30"
+                                            className="flex items-center gap-1 text-[10px] hover:text-white transition-all group border border-green-800 px-2 py-1 bg-black/40 hover:bg-green-900/30 hover:border-green-500 hover:box-glow"
                                             title="Services"
                                         >
                                             <span className="text-sm group-hover:scale-110 transition-transform">{ASCII_CARD_ICON}</span>
@@ -282,7 +284,7 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
 
                                         <button 
                                             onClick={handleBlogExecute}
-                                            className="flex items-center gap-1 text-[10px] hover:text-white transition-colors group border border-green-800 px-2 py-1 bg-black/40 hover:bg-green-900/30"
+                                            className="flex items-center gap-1 text-[10px] hover:text-white transition-all group border border-green-800 px-2 py-1 bg-black/40 hover:bg-green-900/30 hover:border-green-500 hover:box-glow"
                                             title="Intel"
                                         >
                                             <span className="text-sm group-hover:scale-110 transition-transform">{ASCII_BLOG_ICON}</span>
@@ -291,16 +293,16 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
 
                                         <button 
                                             onClick={handleRiskScanExecute}
-                                            className="flex items-center gap-1 text-[10px] hover:text-white transition-colors group border border-green-800 px-2 py-1 bg-black/40 hover:bg-green-900/30"
-                                            title="Risk Scan"
+                                            className="flex items-center gap-1 text-[10px] hover:text-white transition-all group border border-green-800 px-2 py-1 bg-black/40 hover:bg-green-900/30 hover:border-green-500 hover:box-glow"
+                                            title="Audit"
                                         >
                                             <span className="text-sm group-hover:scale-110 transition-transform">{ASCII_CONTACT_ICON}</span>
-                                            <span className="hidden sm:inline">SCAN</span>
+                                            <span className="hidden sm:inline">AUDIT</span>
                                         </button>
 
                                         <button 
                                             onClick={handleContactExecute}
-                                            className="flex items-center gap-1 text-[10px] hover:text-white transition-colors group border border-green-800 px-2 py-1 bg-black/40 hover:bg-green-900/30"
+                                            className="flex items-center gap-1 text-[10px] hover:text-white transition-all group border border-green-800 px-2 py-1 bg-black/40 hover:bg-green-900/30 hover:border-green-500 hover:box-glow"
                                             title="Checklist"
                                         >
                                             <span className="text-sm group-hover:scale-110 transition-transform">🗎</span>
@@ -311,34 +313,34 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
 
                                 <div className="flex flex-col gap-6">
                                     <div className="space-y-4">
-                                        <div className="border-l-2 border-green-700 pl-4 py-1">
-                                            <h3 className="text-green-300 font-semibold tracking-wide text-xs mb-1 uppercase">
+                                        <div className="border-l-2 border-green-500 pl-4 py-1">
+                                            <h3 className="text-green-300 font-semibold tracking-wide text-xs mb-1 uppercase text-glow">
                                                 {'// MISSION BRIEFING'}
                                             </h3>
                                             <p className="text-gray-300 leading-relaxed text-sm max-w-prose">
-                                                Identify risks. Close gaps. Secure your future.
+                                                Pixel-perfect UI. Robust Backends. Scalable Architecture.
                                             </p>
                                         </div>
 
                                         {/* MVP CORE OFFER: HEALTH CHECK (Simplified) */}
-                                        <div className="bg-green-900/10 border border-green-500 p-4 rounded-sm relative overflow-hidden group hover:bg-green-900/20 transition-all">
-                                            <div className="absolute top-0 right-0 bg-green-500 text-black text-[9px] font-bold px-2 py-0.5">
+                                        <div className="bg-gradient-to-r from-green-900/20 to-black border border-green-500/80 p-4 rounded-sm relative overflow-hidden group hover:border-green-400 transition-all box-glow">
+                                            <div className="absolute top-0 right-0 bg-green-500 text-black text-[9px] font-bold px-2 py-0.5 shadow-[0_0_10px_rgba(34,197,94,0.6)]">
                                                 CORE OFFER
                                             </div>
                                             <div className="flex flex-col gap-2 mb-3">
-                                                <h3 className="text-lg font-bold text-white tracking-wider">
-                                                    CYBERSECURITY HEALTH CHECK
+                                                <h3 className="text-lg font-bold text-white tracking-wider text-glow">
+                                                    MODERN WEB DEVELOPMENT
                                                 </h3>
                                                 <p className="text-green-300 text-xs font-mono">
-                                                    Rapid assessment: Malware, GRC, Software, AI Risk.
+                                                    Custom high-performance websites & applications built for growth.
                                                 </p>
                                             </div>
                                             
                                             <button 
-                                                onClick={handleRiskScanExecute}
-                                                className="w-full bg-green-600 hover:bg-green-500 text-black font-bold py-2 uppercase tracking-widest text-xs transition-all shadow-[0_0_10px_rgba(34,197,94,0.3)] hover:shadow-[0_0_20px_rgba(34,197,94,0.5)]"
+                                                onClick={handleContactExecute}
+                                                className="w-full bg-green-600 hover:bg-green-500 text-black font-bold py-2 uppercase tracking-widest text-xs transition-all shadow-[0_0_15px_rgba(34,197,94,0.5)] hover:shadow-[0_0_25px_rgba(34,197,94,0.8)] hover:scale-[1.01]"
                                             >
-                                                GET YOUR RISK SCORE &gt;&gt;
+                                                START YOUR BUILD &gt;&gt;
                                             </button>
                                         </div>
                                     </div>
@@ -346,39 +348,39 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                     {/* SERVICE BLOCKS (Simplified) */}
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                                         <div 
-                                            className="border border-green-800 p-3 bg-black/40 hover:border-green-600 transition-colors cursor-pointer group flex flex-col justify-between"
+                                            className="border border-green-800 p-3 bg-black/40 hover:border-green-500 transition-all cursor-pointer group flex flex-col justify-between hover:bg-green-900/10 box-glow-hover"
                                             onClick={handleContactExecute}
                                         >
                                             <div>
-                                                <p className="text-yellow-400 font-bold text-xs mb-1">TIER 1: REMEDIATION</p>
-                                                <p className="text-[10px] text-gray-400 mb-2">Threat hunting, vuln scanning, patch guidance & secure code review.</p>
+                                                <p className="text-yellow-400 font-bold text-xs mb-1 group-hover:text-glow">TIER 1: FRONTEND UI/UX</p>
+                                                <p className="text-[10px] text-gray-400 mb-2">Pixel-perfect, responsive design with smooth animations & modern frameworks.</p>
                                             </div>
                                             <p className="text-[10px] text-green-500 font-bold uppercase group-hover:underline mt-auto">
-                                                &gt; SCAN MY EXPOSURE
+                                                &gt; VIEW PORTFOLIO
                                             </p>
                                         </div>
                                         <div 
-                                            className="border border-green-800 p-3 bg-black/40 hover:border-green-600 transition-colors cursor-pointer group flex flex-col justify-between"
+                                            className="border border-green-800 p-3 bg-black/40 hover:border-green-500 transition-all cursor-pointer group flex flex-col justify-between hover:bg-green-900/10 box-glow-hover"
                                             onClick={handleContactExecute}
                                         >
                                             <div>
-                                                <p className="text-yellow-400 font-bold text-xs mb-1">TIER 2: GRC IMPLEMENTATION</p>
-                                                <p className="text-[10px] text-gray-400 mb-2">ISO 27001-aligned risk mgmt, policy frameworks & audit readiness.</p>
+                                                <p className="text-yellow-400 font-bold text-xs mb-1 group-hover:text-glow">TIER 2: BACKEND & API</p>
+                                                <p className="text-[10px] text-gray-400 mb-2">Scalable database architecture, secure APIs, and cloud infrastructure.</p>
                                             </div>
                                             <p className="text-[10px] text-green-500 font-bold uppercase group-hover:underline mt-auto">
-                                                &gt; CHECK COMPLIANCE GAPS
+                                                &gt; VIEW ARCHITECTURE
                                             </p>
                                         </div>
                                         <div 
-                                            className="border border-green-800 p-3 bg-black/40 hover:border-green-600 transition-colors cursor-pointer group flex flex-col justify-between"
+                                            className="border border-green-800 p-3 bg-black/40 hover:border-green-500 transition-all cursor-pointer group flex flex-col justify-between hover:bg-green-900/10 box-glow-hover"
                                             onClick={handleContactExecute}
                                         >
                                             <div>
-                                                <p className="text-yellow-400 font-bold text-xs mb-1">TIER 3: SOFTWARE & AI</p>
-                                                <p className="text-[10px] text-gray-400 mb-2">Secure web apps, APIs & custom AI solutions with security-first design.</p>
+                                                <p className="text-yellow-400 font-bold text-xs mb-1 group-hover:text-glow">TIER 3: AI INTEGRATION</p>
+                                                <p className="text-[10px] text-gray-400 mb-2">Smart chatbots, process automation, and data-driven insights.</p>
                                             </div>
                                             <p className="text-[10px] text-green-500 font-bold uppercase group-hover:underline mt-auto">
-                                                &gt; BUILD THIS SECURELY
+                                                &gt; DEPLOY AGENTS
                                             </p>
                                         </div>
                                     </div>
@@ -386,21 +388,21 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
 
                                 <div className="mt-4 pt-3 border-t border-green-900/50 flex flex-col gap-2">
                                     <p className="text-[10px] text-green-500 font-mono opacity-70 mb-1">
-                                        TRUST SIGNALS: COMPLIANCE READY • SECURE ARCHITECTURE • RAPID RESPONSE
+                                        TECH STACK: NEXT.JS • TAILWIND • TYPESCRIPT • SUPABASE
                                     </p>
                                     
                                     <div className="grid grid-cols-2 gap-4">
                                         {/* CASE STUDIES */}
                                         <div className="col-span-2 md:col-span-1">
-                                            <h4 className="text-[10px] font-bold text-green-400 mb-2 border-b border-green-800/50 pb-1">RECENT MISSIONS</h4>
+                                            <h4 className="text-[10px] font-bold text-green-400 mb-2 border-b border-green-800/50 pb-1">RECENT DEPLOYS</h4>
                                             <ul className="space-y-2">
                                                 <li className="text-[10px] text-gray-400 border-l-2 border-green-800 pl-2">
-                                                    <span className="text-green-500 font-bold block">FinTech Audit</span>
-                                                    Closed 12 critical vulnerabilities before launch.
+                                                    <span className="text-green-500 font-bold block">SaaS Dashboard</span>
+                                                    200% user growth post-launch.
                                                 </li>
                                                 <li className="text-[10px] text-gray-400 border-l-2 border-green-800 pl-2">
-                                                    <span className="text-green-500 font-bold block">SaaS Compliance</span>
-                                                    Achieved POPIA readiness in 3 weeks.
+                                                    <span className="text-green-500 font-bold block">E-Commerce Platform</span>
+                                                    Sub-second page loads & SEO optimized.
                                                 </li>
                                             </ul>
                                         </div>
@@ -409,17 +411,17 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                         <div className="col-span-2 md:col-span-1">
                                             <h4 className="text-[10px] font-bold text-green-400 mb-2 border-b border-green-800/50 pb-1">INTEL / FEEDBACK</h4>
                                             <div className="text-[10px] text-gray-400 italic mb-2 bg-green-900/10 p-2 border border-green-900/30">
-                                                &quot;The health check revealed risks we didn&apos;t know existed. The roadmap was clear and actionable.&quot;
-                                                <br/><span className="not-italic text-green-600 font-bold mt-1 block">- CTO, Logistics Firm</span>
+                                                &quot;Our new platform isn&apos;t just faster—it&apos;s a conversion machine. The design is stunning.&quot;
+                                                <br/><span className="not-italic text-green-600 font-bold mt-1 block">- Founder, Tech Startup</span>
                                             </div>
                                         </div>
                                     </div>
                                     
                                     {/* COMPLIANCE BADGES */}
                                     <div className="mt-2 flex flex-wrap gap-2 opacity-80">
-                                        <span className="border border-green-800 bg-green-900/20 px-2 py-1 text-[9px] text-green-400 font-bold">ISO 27001 READY</span>
-                                        <span className="border border-green-800 bg-green-900/20 px-2 py-1 text-[9px] text-green-400 font-bold">POPIA COMPLIANT</span>
-                                        <span className="border border-green-800 bg-green-900/20 px-2 py-1 text-[9px] text-green-400 font-bold">OWASP TOP 10</span>
+                                        <span className="border border-green-800 bg-green-900/20 px-2 py-1 text-[9px] text-green-400 font-bold">100% LIGHTHOUSE</span>
+                                        <span className="border border-green-800 bg-green-900/20 px-2 py-1 text-[9px] text-green-400 font-bold">SEO OPTIMIZED</span>
+                                        <span className="border border-green-800 bg-green-900/20 px-2 py-1 text-[9px] text-green-400 font-bold">WCAG 2.1</span>
                                     </div>
 
                                     <div className="mt-4 pt-4 border-t border-green-900/50">

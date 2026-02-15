@@ -109,6 +109,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
+        <div className="scanlines" />
+        <div className="vignette" />
         <PostHogProvider>
           <PostHogPageView />
           <script

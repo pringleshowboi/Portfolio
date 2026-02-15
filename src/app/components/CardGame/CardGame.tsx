@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useLayoutEffect } from 'react';
+import { useState, useCallback, useLayoutEffect, useEffect } from 'react';
 import { Canvas, useThree } from '@react-three/fiber'; 
 import { Environment } from '@react-three/drei'; 
 import * as THREE from 'three';
@@ -38,18 +38,17 @@ const CARD_ROTATIONS_Z: number[] = [0.15, 0.05, 0, -0.05, -0.15];
 const HAND_POSITIONS: [number, number, number][] = HAND_POSITIONS_X.map(x => [x, BASE_HAND_Y, 0]);
 
 // --- STATIC CAMERA ---
-function StaticCamera() {
+function StaticCamera({ zoomLevel }: { zoomLevel: number }) {
     const { camera, size, invalidate } = useThree(); 
     
     const updateCamera = useCallback(() => {
         const fixedPosition: [number, number, number] = [0, 0, 5]; 
         const fixedTarget: [number, number, number] = [0, 0, 0];
         const frustumSize = 7; 
-        const fixedZoom = 1.8; 
-
+        
         camera.position.set(...fixedPosition);
         camera.lookAt(...fixedTarget);
-        camera.zoom = fixedZoom; 
+        camera.zoom = zoomLevel; // Use dynamic zoom
         
         if (camera instanceof THREE.OrthographicCamera) {
             const aspect = size.width / size.height;
@@ -63,7 +62,7 @@ function StaticCamera() {
         camera.updateProjectionMatrix();
         invalidate(); 
         
-    }, [camera, size.width, size.height, invalidate]);
+    }, [camera, size.width, size.height, invalidate, zoomLevel]);
 
 
     useLayoutEffect(() => {
@@ -83,9 +82,10 @@ interface InteractiveCardProps {
     position: [number, number, number];
     cardRotationZ: number; 
     isFlipped: boolean;
+    isHovered: boolean;
 }
 
-function InteractiveCard({ index, onCardClick, onCardHover, onCardLaunch, position, cardRotationZ, isFlipped }: InteractiveCardProps) {
+function InteractiveCard({ index, onCardClick, onCardHover, onCardLaunch, position, cardRotationZ, isFlipped, isHovered }: InteractiveCardProps) {
     return (
         <group 
             onClick={(e) => {
@@ -111,6 +111,7 @@ function InteractiveCard({ index, onCardClick, onCardHover, onCardLaunch, positi
                 isDisplayed={false} 
                 isClicked={false}
                 isAnalyzed={isFlipped} // Reuse isAnalyzed logic for the flip/focus state
+                isHovered={isHovered} // Pass hover state
                 onLaunch={() => onCardLaunch(index)}
             />
         </group>
@@ -152,6 +153,24 @@ export default function CardGame({ onExit }: CardGameProps) {
     // Determine which index to highlight in the list
     const activeIndex = flippedIndex !== null ? flippedIndex : hoveredIndex;
 
+    const [zoomLevel, setZoomLevel] = useState(1.8);
+    const [isZoomed, setIsZoomed] = useState(false);
+
+    // Zoom on click, reset on close
+    useEffect(() => {
+        if (flippedIndex !== null) {
+            setZoomLevel(2.5);
+            setIsZoomed(true);
+        } else {
+            setZoomLevel(1.8);
+            setIsZoomed(false);
+        }
+    }, [flippedIndex]);
+
+    const handleZoomToggle = useCallback(() => {
+        setZoomLevel(prev => prev === 1.8 ? 2.5 : 1.8);
+    }, []);
+
     // Handle Escape Key to Exit
     useLayoutEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -191,6 +210,16 @@ export default function CardGame({ onExit }: CardGameProps) {
 
                 <div className="flex-1 relative border border-green-700 bg-gray-900 overflow-hidden flex flex-col md:flex-row">
                     
+                    {/* ZOOM CONTROL OVERLAY */}
+                    <div className="absolute top-4 left-4 z-30">
+                         <button 
+                            onClick={handleZoomToggle}
+                            className="p-2 border border-green-500 bg-black/80 text-green-400 hover:bg-green-900/50 hover:text-white transition-colors text-xs font-mono uppercase"
+                         >
+                            [ {isZoomed ? '-' : '+'} ] ZOOM_OPTICS
+                         </button>
+                    </div>
+
                     {/* LEFT SIDE: 3D CARDS */}
                     <div className="flex-1 h-full relative z-10 order-2 md:order-1">
                         <Canvas 
@@ -207,7 +236,7 @@ export default function CardGame({ onExit }: CardGameProps) {
                                 } 
                             }}
                         >
-                            <StaticCamera />
+                            <StaticCamera zoomLevel={zoomLevel} />
                             <ambientLight intensity={0.5} />
                             <directionalLight position={[10, 10, 5]} intensity={1} />
                             <Environment preset="night" />
@@ -223,8 +252,15 @@ export default function CardGame({ onExit }: CardGameProps) {
                                     position={pos}
                                     cardRotationZ={CARD_ROTATIONS_Z[index]}
                                     isFlipped={flippedIndex === index}
+                                    isHovered={hoveredIndex === index}
                                 />
                             ))}
+                            
+                            {/* Plane to catch raycasts for empty space clicks (optional, but helps with UX) */}
+                            <mesh position={[0, 0, -1]} onClick={(e) => { e.stopPropagation(); setFlippedIndex(null); }}>
+                                <planeGeometry args={[50, 50]} />
+                                <meshBasicMaterial visible={false} />
+                            </mesh>
                         </Canvas>
                     </div>
 
