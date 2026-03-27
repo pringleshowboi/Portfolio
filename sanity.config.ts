@@ -9,11 +9,18 @@ export default defineConfig({
 
   projectId: 'yzp4zaeb',
   dataset: 'production',
+  
+  // ADD THIS LINE - Required for embedded Studio at /studio sub-route
+  basePath: '/studio', 
 
+  apiVersion: '2025-09-10',
 
   plugins: [structureTool(), visionTool()],
 
   schema: {
     types: schemaTypes,
   },
+  
+  // Note: 'cors' is not a valid key here. 
+  // You must add these URLs at https://www.sanity.io/manage
 })
