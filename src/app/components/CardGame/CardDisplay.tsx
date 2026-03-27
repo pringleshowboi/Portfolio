@@ -20,7 +20,7 @@ const CARD_MODELS = [
 // Let's keep it somewhat centered but maybe zoomed in?
 // The StaticCamera in CardGame fixes the view.
 const ANALYZE_POSITION: [number, number, number] = [0, 0, 2]; // Center and closer
-const ANALYZE_SCALE = 0.6; 
+const ANALYZE_SCALE = 0.6;
 
 interface CardDisplayProps {
     index: number;
@@ -46,12 +46,11 @@ export default function CardDisplay({ index, position, isAnalyzed, isHovered, on
             const targetRotY = isAnalyzed ? 0 : Math.PI;
 
             // Target Position:
-            const targetPos = isAnalyzed ? new THREE.Vector3(0, 0, 0) : new THREE.Vector3(...position);
+            const targetPos = isAnalyzed ? new THREE.Vector3(...ANALYZE_POSITION) : new THREE.Vector3(...position);
 
             // Target Scale:
             const handScale = 0.25; 
-            const analyzeScale = 0.6; 
-            const targetScale = isAnalyzed ? analyzeScale : handScale;
+            const targetScale = isAnalyzed ? ANALYZE_SCALE : handScale;
 
             // Smooth Interpolation (Lerp)
             // 1. Rotation
