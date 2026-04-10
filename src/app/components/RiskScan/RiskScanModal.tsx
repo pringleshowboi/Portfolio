@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { sendEmail } from '../../actions/send-email';
 
 interface RiskScanModalProps {
     isOpen: boolean;
     onClose: () => void;
 }
+
 
 const SCAN_STEPS = [
     "INITIALIZING_TARGET_RECON...",
@@ -28,6 +29,13 @@ export default function RiskScanModal({ isOpen, onClose }: RiskScanModalProps) {
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
     const logsEndRef = useRef<HTMLDivElement>(null);
 
+    // Handle ESC key to close modal
+    const handleKeyDown = useCallback((e: KeyboardEvent) => {
+        if (e.key === 'Escape' && isOpen) {
+            onClose();
+        }
+    }, [isOpen, onClose]);
+
     // Reset state when modal opens
     useEffect(() => {
         if (isOpen) {
@@ -35,8 +43,25 @@ export default function RiskScanModal({ isOpen, onClose }: RiskScanModalProps) {
             setCurrentStepIndex(0);
             setScanComplete(false);
             setSubmitStatus('idle');
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
         }
+        return () => {
+            document.body.style.overflow = '';
+        };
     }, [isOpen]);
+
+    // Add/remove ESC key listener
+    useEffect(() => {
+        if (isOpen) {
+            document.addEventListener('keydown', handleKeyDown);
+        }
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isOpen, handleKeyDown]);
 
     // Auto-scroll logs
     useEffect(() => {

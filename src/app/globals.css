@@ -50,6 +50,30 @@ body {
       linear-gradient(to right, rgba(34, 197, 94, 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(34, 197, 94, 0.05) 1px, transparent 1px);
   }
+
+  .animate-glow {
+    animation: text-glow-anim 2s ease-in-out infinite alternate;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #22c55e;
+    border-radius: 2px;
+  }
+}
+
+@keyframes text-glow-anim {
+  from {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 20px rgba(34, 197, 94, 0.2);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 30px rgba(34, 197, 94, 0.4);
+  }
 }
 
 /* --- CRT & Scanline Effects --- */
@@ -123,4 +147,13 @@ h1, h2, h3, h4, h5, h6 {
 .prose-terminal blockquote {
     color: var(--color-green-200);
     border-left-color: var(--color-yellow-400);
+}
+
+/* Demo intake: native <select> dropdown list (OS renders options — force dark + readable) */
+.demo-intake-select {
+  color-scheme: dark;
+}
+.demo-intake-select option {
+  background-color: #0a0a0c;
+  color: #fed7aa;
 }

@@ -15,11 +15,11 @@ export async function sendEmail(formData: FormData) {
 
   try {
     const data = await resend.emails.send({
-      from: 'Portfolio Contact <onboarding@resend.dev>',
+      from: 'SECURE_AUDIT_PROTOCOL <onboarding@resend.dev>',
       to: process.env.CONTACT_EMAIL || 'delivered@resend.dev', // Fallback for testing
-      subject: `New Inquiry from ${name}`,
+      subject: `[SECURE AUDIT] Request from ${name}`,
       replyTo: email,
-      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+      text: `AUDIT_PROTOCOL: INITIALIZED\nSENDER: ${name}\nEMAIL: ${email}\n\nPAYLOAD:\n${message}`,
     });
 
     return { success: true, data };

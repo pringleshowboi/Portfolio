@@ -1,31 +1,31 @@
 export const CARD_SYNOPSES: string[] = [
-    // 0. King (K) - The Secure Core
-    "THE SECURE CORE (FULLSTACK + CYBER):\n" +
-    "- FORTRESS ARCHITECTURE: Secure-first development for fintech, medical, & legal.\n" +
-    "- ZERO TRUST: Identity-aware proxies & encrypted data states.\n" +
-    "- RESILIENCE: DDoS-hardened infrastructure with auto-scaling.",
+    // 0. King (K) - The Secure Core -> PLATFORM ENGINEERING
+    "PLATFORM ENGINEERING (SECURE-BY-DESIGN):\n" +
+    "- FULL-STACK ARCHITECTURE: Secure-first development for fintech, medical, & legal.\n" +
+    "- ZERO TRUST: Identity-aware proxies, IAM integration, and encrypted data states.\n" +
+    "- RESILIENCE: Cloud-native infrastructure with Kubernetes & auto-scaling.",
 
-    // 1. Queen (Q) - Automation Ops
-    "AUTOMATION OPS (LEGAL + LOGIC):\n" +
-    "- WORKFLOW AUTO: Handle NDAs & contracts without human touch.\n" +
-    "- CLIENT ONBOARDING: Automated intake & verification pipelines.\n" +
-    "- DOC GENERATION: Dynamic PDF creation from raw data inputs.",
+    // 1. Queen (Q) - Automation Ops -> CYBER DEFENSE
+    "CYBER DEFENSE (THREAT MANAGEMENT):\n" +
+    "- CHECK POINT INFINITY: Quantum, CloudGuard, and Harmony deployment.\n" +
+    "- THREAT HUNTING: Proactive monitoring and incident response workflows.\n" +
+    "- GOVERNANCE: Automated compliance auditing for SOC2, ISO27001, and HIPAA.",
 
-    // 2. Jack (J) - AI Integration
-    "AI INTEGRATION (LLM IMPLEMENTATION):\n" +
-    "- RAG SYSTEMS: Chat with your own legal/technical documents securely.\n" +
-    "- PRIVATE LLMS: Self-hosted models for sensitive data privacy.\n" +
-    "- INTELLIGENT SEARCH: Semantic retrieval across fragmented knowledge bases.",
+    // 2. Jack (J) - AI Integration -> AI AUTOMATION
+    "AI AUTOMATION (AGENTIC SYSTEMS):\n" +
+    "- AUTONOMOUS AGENTS: Custom LLM workflows for business process automation.\n" +
+    "- RAG PIPELINES: Secure semantic search across fragmented knowledge bases.\n" +
+    "- AI SOC ASSISTANT: Intelligent threat triage and automated remediation.",
 
-    // 3. Ace (A) - The Guardian Audit
-    "THE GUARDIAN AUDIT (CYBERSECURITY):\n" +
-    "- THREAT LANDSCAPE: Comprehensive vulnerability assessment & reporting.\n" +
-    "- PENETRATION TESTING: Simulated attacks to identify critical weaknesses.\n" +
-    "- COMPLIANCE READY: Prep for SOC2, GDPR, and POPIA standards.",
+    // 3. Ace (A) - The Guardian Audit -> ENTERPRISE STACKS
+    "ENTERPRISE STACKS (SIEM/SOAR):\n" +
+    "- SPLUNK OPERATIONS: SIEM monitoring, SOAR automation, and ITSI observability.\n" +
+    "- INFRASTRUCTURE AS CODE: Secure deployment via Terraform and Ansible.\n" +
+    "- LOG AGGREGATION: Centralized visibility across multi-cloud environments.",
 
-    // 4. Ten (10) - The Future Stack
-    "THE FUTURE STACK (MVP RAPID DEV):\n" +
-    "- AI-ASSISTED CODE: Complex web apps built in 1/4 of the time.\n" +
-    "- SCALABLE MVP: Launch fast with enterprise-grade foundations.\n" +
-    "- MODERN TECH: Next.js 15, React Server Components, & Edge Compute."
+    // 4. Ten (10) - The Future Stack -> MODERN ARCHITECTURE
+    "MODERN ARCHITECTURE (RAPID DEPLOY):\n" +
+    "- SECURE SAAS: Launch enterprise-grade platforms with high-end UI/UX.\n" +
+    "- MOBILE SECURITY: Cloud-secure apps with end-to-end encryption.\n" +
+    "- TECH STACK: Next.js 15, Rust, Go, Python, and Edge Computing."
 ];

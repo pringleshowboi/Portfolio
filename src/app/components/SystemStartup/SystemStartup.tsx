@@ -2,8 +2,8 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Suspense, useEffect } from "react"; 
-import { useGLTF, OrbitControls } from "@react-three/drei";
+import { Suspense, useEffect, useState } from "react"; 
+import { useGLTF, OrbitControls, Points, PointMaterial } from "@react-three/drei";
 import * as THREE from 'three'; 
 
 import TerminalScreen from "../TerminalScreen/TerminalScreen"; 
@@ -43,15 +43,18 @@ function CameraZoom({ appState, onZoomComplete }: { appState: AppState, onZoomCo
 // 2. ClickableScreen
 interface ClickableScreenProps { onScreenClick: () => void; }
 function ClickableScreen({ onScreenClick }: ClickableScreenProps) {
-    // FIX: Use array literals for static position/scale to prevent "read only" errors on the Mesh.
+    // Large invisible hit volume covering the CRT bezel + screen (FullComp monitor sits ~center-left in view)
     return (
-        <mesh 
-            position={[-0.3, 0.2, 0.8]} 
-            scale={[1, 0.9, 0.01]}
-            onClick={onScreenClick} 
+        <mesh
+            position={[-0.22, 0.38, 0.62]}
+            scale={[2.85, 2.35, 0.2]}
+            onClick={(e) => {
+                e.stopPropagation();
+                onScreenClick();
+            }}
         >
             <boxGeometry args={[1, 1, 1]} />
-            <meshBasicMaterial transparent opacity={0} />
+            <meshBasicMaterial transparent opacity={0} depthWrite={false} />
         </mesh>
     );
 }
@@ -73,7 +76,43 @@ function ComputerModel() {
 useGLTF.preload("/models/FullComp.glb");
 
 
-// 4. Main SystemStartup Component
+// 4. DigitalRain
+function DigitalRain() {
+    const count = 2000;
+    const [positions] = useState(() => {
+        const pos = new Float32Array(count * 3);
+        for (let i = 0; i < count; i++) {
+            pos[i * 3] = (Math.random() - 0.5) * 10;
+            pos[i * 3 + 1] = Math.random() * 10;
+            pos[i * 3 + 2] = (Math.random() - 0.5) * 10;
+        }
+        return pos;
+    });
+
+    useFrame((state, delta) => {
+        for (let i = 0; i < count; i++) {
+            positions[i * 3 + 1] -= delta * 2;
+            if (positions[i * 3 + 1] < -5) {
+                positions[i * 3 + 1] = 5;
+            }
+        }
+    });
+
+    return (
+        <Points positions={positions} stride={3}>
+            <PointMaterial
+                transparent
+                color="#22c55e"
+                size={0.02}
+                sizeAttenuation={true}
+                depthWrite={false}
+                opacity={0.4}
+            />
+        </Points>
+    );
+}
+
+// 5. Main SystemStartup Component
 interface SystemStartupProps {
     appState: AppState; // Cast to AppState to remove 'game' since it's now internal to TerminalScreen
     onScreenClick: () => void;
@@ -129,6 +168,7 @@ export default function SystemStartup({
                 
                 <Suspense fallback={null}>
                     <ComputerModel />
+                    <DigitalRain />
                     
                     {/* D. Clickable Screen */}
                     {isIdle && <ClickableScreen onScreenClick={onScreenClick} />}
