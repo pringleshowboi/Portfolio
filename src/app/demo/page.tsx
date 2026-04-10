@@ -114,14 +114,6 @@ function LoadingScreen({ progress, loaded }: { progress: number; loaded: string[
 // NETWORK ARC SYSTEM (Particles traveling between points)
 // ============================================================
 
-interface ArcParticle {
-  position: THREE.Vector3;
-  progress: number;
-  speed: number;
-  color: string;
-  style: 'aggressive' | 'normal' | 'blocked';
-}
-
 function NetworkArcs({
   source,
   target,
@@ -437,7 +429,7 @@ function KasperskyShield({ active = false }: { active?: boolean }) {
   // Initialize viruses
   useEffect(() => {
     if (active) {
-      const initialViruses = Array.from({ length: 8 }, (_, i) => ({
+      const initialViruses = Array.from({ length: 8 }, () => ({
         pos: new THREE.Vector3(-5 + Math.random() * 2, -2 + Math.random() * 4, Math.random() * 2 - 1),
         speed: 0.5 + Math.random() * 0.5,
         caught: false,
@@ -582,7 +574,7 @@ function NodeGraph({
 
   return (
     <group ref={groupRef} position={groupOffset as THREE.Vector3Tuple}>
-      {nodes.map((node, i) => (
+      {nodes.map((node) => (
         <group key={node.id} position={node.pos as THREE.Vector3Tuple}>
           {/* Node sphere */}
           <mesh>

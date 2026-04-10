@@ -5,9 +5,7 @@ import SystemStartup from "./components/SystemStartup/SystemStartup";
 import BackgroundAudio from "./components/BackgroundAudio/BackgroundAudio"
 import { useState, useRef } from "react"; 
 import CardGame from "./components/CardGame/CardGame"; 
-import { useRouter } from 'next/navigation'; 
-
-import CyberViz from "./components/CyberViz/CyberViz";
+import { useRouter } from 'next/navigation';
 
 // --- Configuration for Audio Fade-in ---
 const TARGET_VOLUME = 0.1;      // Final volume (40%)
