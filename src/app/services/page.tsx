@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, Points, PointMaterial, Line, Text, MeshReflectorMaterial } from '@react-three/drei';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Line, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import { useRouter } from 'next/navigation';
 import ChatbotArea from '../components/ChatbotArea/ChatbotArea';
@@ -24,6 +24,17 @@ const COLORS = {
 // SECTION 1: QUANTUM FIREWALL ARCHITECTURE
 // ============================================================
 
+const QUANTUM_SATELLITE_POSITIONS = [
+  new THREE.Vector3(3, 1, 0),
+  new THREE.Vector3(2, 2.5, 1),
+  new THREE.Vector3(-1, 3, 0),
+  new THREE.Vector3(-3, 1, 0),
+  new THREE.Vector3(-2, -2.5, 1),
+  new THREE.Vector3(1, -3, 0),
+  new THREE.Vector3(3, -1, 0),
+  new THREE.Vector3(0, 2, -2),
+];
+
 function QuantumFirewallScene() {
   const groupRef = useRef<THREE.Group>(null);
   const [packetPositions, setPacketPositions] = useState<THREE.Vector3[]>([]);
@@ -33,24 +44,14 @@ function QuantumFirewallScene() {
   const [burstParticles, setBurstParticles] = useState<{ pos: THREE.Vector3; vel: THREE.Vector3; life: number; color: string }[]>([]);
 
   const centralNodePos = new THREE.Vector3(0, 0, 0);
-  const satellitePositions = [
-    new THREE.Vector3(3, 1, 0),
-    new THREE.Vector3(2, 2.5, 1),
-    new THREE.Vector3(-1, 3, 0),
-    new THREE.Vector3(-3, 1, 0),
-    new THREE.Vector3(-2, -2.5, 1),
-    new THREE.Vector3(1, -3, 0),
-    new THREE.Vector3(3, -1, 0),
-    new THREE.Vector3(0, 2, -2),
-  ];
 
   // Initialize packets
   useEffect(() => {
     const positions: THREE.Vector3[] = [];
     const colors: string[] = [];
     for (let i = 0; i < 12; i++) {
-      const satIdx = i % satellitePositions.length;
-      positions.push(satellitePositions[satIdx].clone());
+      const satIdx = i % QUANTUM_SATELLITE_POSITIONS.length;
+      positions.push(QUANTUM_SATELLITE_POSITIONS[satIdx].clone());
       colors.push(COLORS.primary);
     }
     setPacketPositions(positions);
@@ -64,8 +65,8 @@ function QuantumFirewallScene() {
 
     // Animate packets along beams
     setPacketPositions(prev => prev.map((pos, i) => {
-      const satIdx = i % satellitePositions.length;
-      const direction = centralNodePos.clone().sub(satellitePositions[satIdx]).normalize();
+      const satIdx = i % QUANTUM_SATELLITE_POSITIONS.length;
+      const direction = centralNodePos.clone().sub(QUANTUM_SATELLITE_POSITIONS[satIdx]).normalize();
       const newPos = pos.clone().add(direction.multiplyScalar(delta * 2));
       
       // Check if packet reached center
@@ -98,18 +99,18 @@ function QuantumFirewallScene() {
           
           // Reset packet
           const newPositions = [...prev];
-          newPositions[i] = satellitePositions[satIdx].clone();
+          newPositions[i] = QUANTUM_SATELLITE_POSITIONS[satIdx].clone();
           const newColors = [...packetColors];
           newColors[i] = COLORS.primary;
           setPacketColors(newColors);
-          return satellitePositions[satIdx].clone();
+          return QUANTUM_SATELLITE_POSITIONS[satIdx].clone();
         }
         
         // Reset packet to satellite
         const newPositions = [...prev];
-        newPositions[i] = satellitePositions[satIdx].clone();
+        newPositions[i] = QUANTUM_SATELLITE_POSITIONS[satIdx].clone();
         setPacketCount(c => c + 1);
-        return satellitePositions[satIdx].clone();
+        return QUANTUM_SATELLITE_POSITIONS[satIdx].clone();
       }
       
       return newPos;
@@ -136,7 +137,7 @@ function QuantumFirewallScene() {
       </mesh>
       
       {/* Satellite Nodes */}
-      {satellitePositions.map((pos, i) => (
+      {QUANTUM_SATELLITE_POSITIONS.map((pos, i) => (
         <group key={i}>
           {/* Connection Line */}
           <Line
@@ -228,15 +229,6 @@ function HtmlOverlay({ position, text, scale = 0.3, color = COLORS.primary, flas
   );
 }
 
-// Simple HTML overlay component for Three.js
-function Html({ children, position, center }: { children: React.ReactNode; position: [number, number, number]; center?: boolean }) {
-  return (
-    <group position={position}>
-      {/* We'll use a different approach - CSS positioned overlays */}
-    </group>
-  );
-}
-
 // ============================================================
 // SECTION 2: ATTACK SIMULATION
 // ============================================================
@@ -245,10 +237,12 @@ type SimulationPhase = 'normal' | 'attack' | 'defence' | 'logs' | 'stabilize';
 
 function AttackSimulationScene({ triggerSimulation, onPhaseChange }: { triggerSimulation: number; onPhaseChange: (phase: string) => void }) {
   const groupRef = useRef<THREE.Group>(null);
+  const simulationBusyRef = useRef(false);
+  const onPhaseChangeRef = useRef(onPhaseChange);
+  onPhaseChangeRef.current = onPhaseChange;
   const [phase, setPhase] = useState<SimulationPhase>('normal');
   const [nodeStates, setNodeStates] = useState<('healthy' | 'infected' | 'isolated' | 'rebuilding')[]>([]);
   const [logs, setLogs] = useState<string[]>([]);
-  const [simulationRunning, setSimulationRunning] = useState(false);
 
   const nodePositions = [
     new THREE.Vector3(0, 0, 0),    // 0: Central firewall
@@ -270,26 +264,20 @@ function AttackSimulationScene({ triggerSimulation, onPhaseChange }: { triggerSi
     setNodeStates(new Array(12).fill('healthy'));
   }, []);
 
-  // Simulation trigger
-  useEffect(() => {
-    if (triggerSimulation > 0 && !simulationRunning) {
-      runSimulation();
-    }
-  }, [triggerSimulation]);
-
   const runSimulation = useCallback(async () => {
-    setSimulationRunning(true);
+    if (simulationBusyRef.current) return;
+    simulationBusyRef.current = true;
     setLogs([]);
     setNodeStates(new Array(12).fill('healthy'));
     setPhase('normal');
-    onPhaseChange('NORMAL STATE - All systems operational');
+    onPhaseChangeRef.current('NORMAL STATE - All systems operational');
 
     // Phase 1: Normal (3 seconds)
     await new Promise(r => setTimeout(r, 3000));
     
     // Phase 2: Attack begins
     setPhase('attack');
-    onPhaseChange('⚠ THREAT DETECTED - PHISHING INGRESS NODE_07');
+    onPhaseChangeRef.current('⚠ THREAT DETECTED - PHISHING INGRESS NODE_07');
     setNodeStates(prev => {
       const next = [...prev];
       next[7] = 'infected';
@@ -312,7 +300,7 @@ function AttackSimulationScene({ triggerSimulation, onPhaseChange }: { triggerSi
 
     // Phase 3: Defence activates
     setPhase('defence');
-    onPhaseChange('QUANTUM FIREWALL: ACTIVE');
+    onPhaseChangeRef.current('QUANTUM FIREWALL: ACTIVE');
     setLogs(prev => [...prev, 
       '[18:46:02] FIREWALL RULE TRIGGERED: BLOCK',
       '[18:46:02] NODE_07 ISOLATED',
@@ -337,14 +325,14 @@ function AttackSimulationScene({ triggerSimulation, onPhaseChange }: { triggerSi
 
     // Phase 4: Logs phase
     setPhase('logs');
-    onPhaseChange('ISOLATING COMPROMISED NODES...');
+    onPhaseChangeRef.current('ISOLATING COMPROMISED NODES...');
     setLogs(prev => [...prev, '[18:46:05] SYSTEM INTEGRITY: RESTORED']);
 
     await new Promise(r => setTimeout(r, 1000));
 
     // Phase 5: Stabilize
     setPhase('stabilize');
-    onPhaseChange('ALL SYSTEMS: SECURE');
+    onPhaseChangeRef.current('ALL SYSTEMS: SECURE');
     setNodeStates(prev => {
       const next = [...prev];
       next[7] = 'rebuilding';
@@ -358,8 +346,15 @@ function AttackSimulationScene({ triggerSimulation, onPhaseChange }: { triggerSi
     // Reset to healthy
     setNodeStates(new Array(12).fill('healthy'));
     setPhase('normal');
-    setSimulationRunning(false);
-  }, [onPhaseChange]);
+    simulationBusyRef.current = false;
+  }, []);
+
+  // Simulation trigger
+  useEffect(() => {
+    if (triggerSimulation > 0) {
+      void runSimulation();
+    }
+  }, [triggerSimulation, runSimulation]);
 
   useFrame((state, delta) => {
     if (groupRef.current) {
@@ -680,23 +675,23 @@ function LayeredFortressScene() {
 // SECTION 5: SPLUNK DATA STORM
 // ============================================================
 
+const SPLUNK_SOURCE_NODES = [
+  { name: 'FIREWALL', position: new THREE.Vector3(-4, 2, 0) },
+  { name: 'ENDPOINTS', position: new THREE.Vector3(-3, -2, 1) },
+  { name: 'CLOUD', position: new THREE.Vector3(-2, 3, -1) },
+  { name: 'IDENTITY', position: new THREE.Vector3(-4, -1, 1) },
+  { name: 'NETWORK', position: new THREE.Vector3(-3, 0, -2) },
+  { name: 'APPS', position: new THREE.Vector3(-2, -3, 0) },
+];
+
+const SPLUNK_CORE_POS = new THREE.Vector3(0, 0, 0);
+
 function SplunkDataStormScene() {
   const groupRef = useRef<THREE.Group>(null);
   const [eventsPerSec, setEventsPerSec] = useState(0);
-  const [alertsToday, setAlertsToday] = useState(847);
-  const [mttr, setMttr] = useState(4.2);
+  const alertsToday = 847;
+  const mttr = 4.2;
   const [anomalyActive, setAnomalyActive] = useState(false);
-
-  const sourceNodes = [
-    { name: 'FIREWALL', position: new THREE.Vector3(-4, 2, 0) },
-    { name: 'ENDPOINTS', position: new THREE.Vector3(-3, -2, 1) },
-    { name: 'CLOUD', position: new THREE.Vector3(-2, 3, -1) },
-    { name: 'IDENTITY', position: new THREE.Vector3(-4, -1, 1) },
-    { name: 'NETWORK', position: new THREE.Vector3(-3, 0, -2) },
-    { name: 'APPS', position: new THREE.Vector3(-2, -3, 0) },
-  ];
-
-  const splunkCorePos = new THREE.Vector3(0, 0, 0);
 
   // Simulate particle flow
   const [particles, setParticles] = useState<{ pos: THREE.Vector3; target: THREE.Vector3; speed: number; color: string }[]>([]);
@@ -704,10 +699,10 @@ function SplunkDataStormScene() {
   useEffect(() => {
     const initialParticles: typeof particles = [];
     for (let i = 0; i < 100; i++) {
-      const sourceIdx = Math.floor(Math.random() * sourceNodes.length);
+      const sourceIdx = Math.floor(Math.random() * SPLUNK_SOURCE_NODES.length);
       initialParticles.push({
-        pos: sourceNodes[sourceIdx].position.clone(),
-        target: splunkCorePos.clone(),
+        pos: SPLUNK_SOURCE_NODES[sourceIdx].position.clone(),
+        target: SPLUNK_CORE_POS.clone(),
         speed: 2 + Math.random() * 3,
         color: Math.random() < 0.05 ? COLORS.threat : COLORS.primary,
       });
@@ -727,10 +722,10 @@ function SplunkDataStormScene() {
       
       // Reset if reached core
       if (newPos.distanceTo(p.target) < 0.5) {
-        const sourceIdx = Math.floor(Math.random() * sourceNodes.length);
+        const sourceIdx = Math.floor(Math.random() * SPLUNK_SOURCE_NODES.length);
         return {
           ...p,
-          pos: sourceNodes[sourceIdx].position.clone(),
+          pos: SPLUNK_SOURCE_NODES[sourceIdx].position.clone(),
           color: Math.random() < 0.05 ? COLORS.threat : COLORS.primary,
         };
       }
@@ -751,7 +746,7 @@ function SplunkDataStormScene() {
   return (
     <group ref={groupRef}>
       {/* Splunk Core */}
-      <mesh position={splunkCorePos}>
+      <mesh position={SPLUNK_CORE_POS}>
         <sphereGeometry args={[1, 32, 32]} />
         <meshBasicMaterial 
           color={anomalyActive ? COLORS.threat : COLORS.warning} 
@@ -759,13 +754,13 @@ function SplunkDataStormScene() {
           opacity={0.6} 
         />
       </mesh>
-      <mesh position={splunkCorePos}>
+      <mesh position={SPLUNK_CORE_POS}>
         <sphereGeometry args={[1.3, 16, 16]} />
         <meshBasicMaterial color={COLORS.warning} wireframe transparent opacity={0.2} />
       </mesh>
 
       {/* Source Nodes */}
-      {sourceNodes.map((node, i) => (
+      {SPLUNK_SOURCE_NODES.map((node, i) => (
         <group key={i} position={node.position}>
           <mesh>
             <octahedronGeometry args={[0.2, 0]} />
@@ -835,7 +830,7 @@ export default function ServicesPage() {
   const [activeSection, setActiveSection] = useState(0);
   const [simTrigger, setSimTrigger] = useState(0);
   const [simPhase, setSimPhase] = useState('');
-  const [jarvisTrigger, setJarvisTrigger] = useState(0);
+  const [jarvisTrigger] = useState(0);
   const [showTierShowcase, setShowTierShowcase] = useState(false);
   const [selectedTier, setSelectedTier] = useState<{
     tier: string;
@@ -877,10 +872,6 @@ export default function ServicesPage() {
 
   const handlePhaseChange = (phase: string) => {
     setSimPhase(phase);
-  };
-
-  const handleJarvisInput = () => {
-    setJarvisTrigger(prev => prev + 1);
   };
 
   return (

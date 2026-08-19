@@ -1,3 +1,10873 @@
+# Project Structure
+
+```
+├── public
+│   ├── audio
+│   │   ├── basement-dweller.mp3
+│   │   └── windows_startup.mp4
+│   ├── cv
+│   │   └── OWEN-VAN-WYK-RESUME.pdf
+│   ├── images
+│   │   ├── basement-dweller.jpg
+│   │   ├── globe.gif
+│   │   ├── lady-justice.png
+│   │   ├── M4n.png
+│   │   └── robot_spritesheet.jpg
+│   ├── models
+│   │   ├── 10OfHearts.glb
+│   │   ├── AceOfSpades.glb
+│   │   ├── check_point_router.glb
+│   │   ├── FullComp.glb
+│   │   ├── JackOfHearts.glb
+│   │   ├── KingOfClubs.glb
+│   │   ├── QueenOfClubs.glb
+│   │   ├── server_rack.glb
+│   │   └── splunk_mobile.glb
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── schemaTypes
+│   ├── blockContent.ts
+│   ├── index.ts
+│   └── post.ts
+├── scripts
+│   └── run-migrations.cjs
+├── src
+│   ├── app
+│   │   ├── actions
+│   │   │   └── send-email.ts
+│   │   ├── admin
+│   │   │   ├── leads
+│   │   │   │   ├── LeadsDashboardClient.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── login
+│   │   │   │   └── page.tsx
+│   │   │   ├── stack
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── StackDashboardClient.tsx
+│   │   │   └── layout.tsx
+│   │   ├── api
+│   │   │   ├── admin
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── logout
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── leads
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── stack
+│   │   │   │       └── route.ts
+│   │   │   ├── jarvis
+│   │   │   │   └── route.ts
+│   │   │   ├── revalidate
+│   │   │   │   └── route.ts
+│   │   │   └── send-demo
+│   │   │       └── route.ts
+│   │   ├── blog
+│   │   │   ├── [slug]
+│   │   │   │   └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
+│   │   ├── components
+│   │   │   ├── BackgroundAudio
+│   │   │   │   └── BackgroundAudio.tsx
+│   │   │   ├── BlogPortableText
+│   │   │   │   └── PortableTextComponents.tsx
+│   │   │   ├── CardGame
+│   │   │   │   ├── CardDisplay.tsx
+│   │   │   │   ├── CardGame.tsx
+│   │   │   │   └── CardSynopses.tsx
+│   │   │   ├── ChatbotArea
+│   │   │   │   └── ChatbotArea.tsx
+│   │   │   ├── ContactForm
+│   │   │   │   └── ContactModal.tsx
+│   │   │   ├── CyberViz
+│   │   │   │   └── CyberViz.tsx
+│   │   │   ├── Jarvis
+│   │   │   │   └── Jarvis.tsx
+│   │   │   ├── JarvisAvatar
+│   │   │   │   └── JarvisAvatar.tsx
+│   │   │   ├── ModelShowcase
+│   │   │   │   └── ModelShowcase.tsx
+│   │   │   ├── RiskScan
+│   │   │   │   └── RiskScanModal.tsx
+│   │   │   ├── SystemStartup
+│   │   │   │   └── SystemStartup.tsx
+│   │   │   ├── TerminalScreen
+│   │   │   │   └── TerminalScreen.tsx
+│   │   │   ├── TierShowcase
+│   │   │   │   └── TierShowcase.tsx
+│   │   │   ├── Typewriter
+│   │   │   │   └── Typewriter.tsx
+│   │   │   └── WindowsStartupAudio
+│   │   │       └── WindowsStartupAudio.tsx
+│   │   ├── demo
+│   │   │   └── page.tsx
+│   │   ├── services
+│   │   │   ├── [slug]
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   │   ├── studio
+│   │   │   └── [[...index]]
+│   │   │       └── page.tsx
+│   │   ├── ClientLayoutShell.tsx
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── PostHogPageView.tsx
+│   │   └── providers.tsx
+│   ├── lib
+│   │   ├── auth.ts
+│   │   ├── db.ts
+│   │   └── types.ts
+│   ├── utils
+│   │   ├── posts.ts
+│   │   └── sanityClient.ts
+│   └── middleware.ts
+├── supabase
+│   └── migrations
+│       ├── 0001_init_leads_stack.sql
+│       ├── 0002_m4n_core_platform.sql
+│       ├── 0003_leads_enrichment.sql
+│       └── all-migrations-combined.sql
+├── eslint.config.mjs
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── project.md
+├── README.md
+├── sanity.config.ts
+└── tsconfig.json
+```
+
+# File Contents
+
+## public/audio/basement-dweller.mp3
+
+```mp3
+[File too large: 4.6 MB > 1.0 MB]
+```
+
+## public/audio/windows_startup.mp4
+
+```mp4
+[Binary file content not included]
+```
+
+## public/cv/OWEN-VAN-WYK-RESUME.pdf
+
+```pdf
+[Binary file content not included]
+```
+
+## public/file.svg
+
+```svg
+<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg>
+```
+
+## public/globe.svg
+
+```svg
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg>
+```
+
+## public/images/basement-dweller.jpg
+
+```jpg
+[Binary file content not included]
+```
+
+## public/images/globe.gif
+
+```gif
+[File too large: 2.1 MB > 1.0 MB]
+```
+
+## public/images/lady-justice.png
+
+```png
+[File too large: 2.5 MB > 1.0 MB]
+```
+
+## public/images/M4n.png
+
+```png
+[File too large: 1.5 MB > 1.0 MB]
+```
+
+## public/images/robot_spritesheet.jpg
+
+```jpg
+[Binary file content not included]
+```
+
+## public/models/10OfHearts.glb
+
+```glb
+[Binary file content not included]
+```
+
+## public/models/AceOfSpades.glb
+
+```glb
+[Binary file content not included]
+```
+
+## public/models/check_point_router.glb
+
+```glb
+[File too large: 24.5 MB > 1.0 MB]
+```
+
+## public/models/FullComp.glb
+
+```glb
+[Binary file content not included]
+```
+
+## public/models/JackOfHearts.glb
+
+```glb
+[Binary file content not included]
+```
+
+## public/models/KingOfClubs.glb
+
+```glb
+[Binary file content not included]
+```
+
+## public/models/QueenOfClubs.glb
+
+```glb
+[Binary file content not included]
+```
+
+## public/models/server_rack.glb
+
+```glb
+[File too large: 28.3 MB > 1.0 MB]
+```
+
+## public/models/splunk_mobile.glb
+
+```glb
+[File too large: 8.8 MB > 1.0 MB]
+```
+
+## public/next.svg
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg>
+```
+
+## public/vercel.svg
+
+```svg
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
+```
+
+## public/window.svg
+
+```svg
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
+```
+
+## schemaTypes/blockContent.ts
+
+```typescript
+// //schemaTypes/blockContent.ts 
+
+import {defineType, defineArrayMember} from 'sanity'
+
+export default defineType({
+  title: 'Block Content',
+  name: 'blockContent',
+  type: 'array',
+  of: [
+    defineArrayMember({
+      title: 'Block',
+      type: 'block',
+      // Styles define how text blocks appear (e.g., headings)
+      styles: [
+        {title: 'Normal', value: 'normal'},
+        {title: 'H1', value: 'h1'},
+        {title: 'H2', value: 'h2'},
+        {title: 'H3', value: 'h3'},
+        {title: 'H4', value: 'h4'},
+        {title: 'Quote', value: 'blockquote'},
+      ],
+      // Lists define ordered/unordered lists
+      lists: [{title: 'Bullet', value: 'bullet'}, {title: 'Numbered', value: 'number'}],
+      // Marks define inline formatting (bold, links, code)
+      marks: {
+        decorators: [
+          {title: 'Strong', value: 'strong'},
+          {title: 'Emphasis', value: 'em'},
+          {title: 'Code', value: 'code'}, 
+        ],
+        annotations: [
+          {
+            title: 'URL',
+            name: 'link',
+            type: 'object',
+            fields: [
+              {
+                title: 'URL',
+                name: 'href',
+                type: 'url',
+                validation: Rule => Rule.uri({scheme: ['http', 'https', 'mailto', 'tel']}),
+              },
+            ],
+          },
+        ],
+      },
+    }),
+    
+    // 🛑 Allows INLINE IMAGES within the body 🛑
+    defineArrayMember({
+      type: 'image', 
+      options: {hotspot: true},
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+          description: 'A description of the image for accessibility/SEO.',
+        },
+      ],
+    }),
+
+    // 🛑 Allows a line separator (equivalent to the old Markdown '***') 🛑
+    defineArrayMember({
+        type: 'object',
+        name: 'horizontalRule',
+        title: 'Line Separator',
+        fields: [{ name: 'dummy', type: 'string', title: 'Line Separator' }],
+        options: { collapsible: true, collapsed: true }, 
+    }),
+  ],
+})
+```
+
+## schemaTypes/index.ts
+
+```typescript
+import blockContent from "./blockContent";
+import post from "./post"
+
+export const schemaTypes = [post, blockContent]
+
+```
+
+## schemaTypes/post.ts
+
+```typescript
+//schemaTypes/post.ts
+
+import {defineField, defineType} from 'sanity'
+
+export default defineType({
+  name: 'post',
+  title: 'Blog Post',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title', // Automatically generate from the title
+        maxLength: 96,
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'publishedAt',
+      title: 'Published at',
+      type: 'datetime',
+      options: {
+         dateFormat: 'YYYY-MM-DD',
+      }
+    }),
+    defineField({
+      name: 'mainImage',
+      title: 'Main image',
+      type: 'image',
+      options: {
+        hotspot: true, // Allow cropping
+      },
+    }),
+    defineField({
+      name: 'body',
+      title: 'Body',
+      type: 'blockContent', // This is where the rich text editor lives
+    }),
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      date: 'publishedAt',
+    },
+    prepare(selection) {
+      const {title, date} = selection;
+      return {
+        title: title || 'No Title',
+        subtitle: date ? new Date(date).toLocaleDateString() : 'No publish date set',
+      };
+    },
+  },
+});
+```
+
+## scripts/run-migrations.cjs
+
+```cjs
+// Run: node scripts/run-migrations.cjs
+// Executes every .sql file in supabase/migrations/ in lexical order
+// via Supabase REST SQL RPC. Uses env vars: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY.
+const fs = require('node:fs');
+const path = require('node:path');
+
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env.local') });
+
+const SUPABASE_URL = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+if (!SUPABASE_URL || !SERVICE_KEY) {
+  console.error('[MIGRATE] Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in .env.local');
+  process.exit(1);
+}
+
+const REST_URL = SUPABASE_URL.replace(/\/$/, '');
+
+async function runSql(sql) {
+  const res = await fetch(`${REST_URL}/rest/v1/rpc/pg_sleep`, { method: 'POST' }).catch(() => null);
+  // The generic SQL exec endpoint is Project API: rest/v1/ with the `Prefer: params=single-object`
+  // pattern — actually Supabase exposes a rpc/exec fn if the sql-editor extension is enabled.
+  // Fallback: use the REST batch exec endpoint that all Supabase projects expose:
+  return await fetch(`${REST_URL}/rest/v1/`, {
+    method: 'POST',
+    headers: {
+      apikey: SERVICE_KEY,
+      Authorization: `Bearer ${SERVICE_KEY}`,
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Prefer: 'params=single-object',
+    },
+    body: JSON.stringify({ query: sql }),
+  });
+}
+
+// Supabase exposes a special `rpc/exec` SQL runner on newer projects, otherwise we fall back
+// to issuing individual REST calls per statement is not practical, so use the well-known
+// "sql" RPC that the dashboard itself uses when available.
+async function execSqlStatements(sqlStatements) {
+  const combined = sqlStatements.join('\n\n');
+
+  // Try dashboard SQL exec RPC first
+  let r = await fetch(`${REST_URL}/rest/v1/rpc/sql`, {
+    method: 'POST',
+    headers: {
+      apikey: SERVICE_KEY,
+      Authorization: `Bearer ${SERVICE_KEY}`,
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({ query: combined }),
+  });
+
+  if (r.ok || (r.status !== 404 && r.status !== 401)) {
+    return r;
+  }
+
+  // Fallback: use the public "exec" RPC if present
+  return await fetch(`${REST_URL}/rest/v1/rpc/exec`, {
+    method: 'POST',
+    headers: {
+      apikey: SERVICE_KEY,
+      Authorization: `Bearer ${SERVICE_KEY}`,
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({ sql: combined }),
+  });
+}
+
+(async () => {
+  const migrationsDir = path.resolve(__dirname, '..', 'supabase', 'migrations');
+  const files = fs
+    .readdirSync(migrationsDir)
+    .filter((f) => f.endsWith('.sql'))
+    .sort();
+
+  console.log(`[MIGRATE] Found ${files.length} migration(s) in ${migrationsDir}`);
+
+  for (const file of files) {
+    const sql = fs.readFileSync(path.join(migrationsDir, file), 'utf8');
+    process.stdout.write(`  → ${file} ... `);
+    const resp = await execSqlStatements([sql]);
+    const text = await resp.text().catch(() => '');
+    if (resp.ok) {
+      console.log('OK');
+    } else {
+      console.log(`FAILED (HTTP ${resp.status})`);
+      console.log('  Body:', text.slice(0, 1200));
+      process.exit(2);
+    }
+  }
+
+  console.log('[MIGRATE] All migrations applied successfully.');
+})().catch((err) => {
+  console.error('[MIGRATE] Fatal:', err && err.message ? err.message : err);
+  process.exit(99);
+});
+
+```
+
+## src/app/actions/send-email.ts
+
+```typescript
+'use server';
+
+import { Resend } from 'resend';
+import { createLead } from '@/lib/db';
+
+function getResend(): Resend | null {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return null;
+  return new Resend(key);
+}
+
+export async function sendEmail(formData: FormData) {
+  const name = formData.get('name') as string;
+  const email = formData.get('email') as string;
+  const message = formData.get('message') as string;
+
+  if (!name || !email || !message) {
+    return { error: 'Missing required fields' };
+  }
+
+  const resend = getResend();
+  let emailSent = true;
+  let emailData: unknown = null;
+
+  if (resend) {
+    try {
+      const result = await resend.emails.send({
+        from: 'SECURE_AUDIT_PROTOCOL <onboarding@resend.dev>',
+        to: process.env.CONTACT_EMAIL || 'delivered@resend.dev',
+        subject: `[SECURE AUDIT] Request from ${name}`,
+        replyTo: email,
+        text: `AUDIT_PROTOCOL: INITIALIZED\nSENDER: ${name}\nEMAIL: ${email}\n\nPAYLOAD:\n${message}`,
+      });
+      emailData = result;
+    } catch (error) {
+      console.error('Email error:', error);
+      emailSent = false;
+    }
+  }
+
+  try {
+    await createLead({ name, email, message, source: 'contact' });
+  } catch (dbError) {
+    console.error('DB lead insert error (contact form):', dbError);
+  }
+
+  if (!resend) {
+    return { error: 'Email service is not configured' };
+  }
+
+  if (!emailSent) {
+    return { error: 'Failed to send email' };
+  }
+
+  return { success: true, data: emailData };
+}
+
+```
+
+## src/app/admin/layout.tsx
+
+```tsx
+import Link from 'next/link';
+import { isAuthenticated, destroySession } from '@/lib/auth';
+import { redirect } from 'next/navigation';
+import { getLeadCounts, getStackCounts } from '@/lib/db';
+
+export default async function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const authed = await isAuthenticated();
+  if (!authed) {
+    await destroySession();
+    redirect('/admin/login');
+  }
+
+  const [leadCounts, stackCounts] = await Promise.all([
+    getLeadCounts(),
+    getStackCounts(),
+  ]);
+
+  const navItems = [
+    {
+      href: '/admin/leads',
+      label: 'LEADS',
+      count: leadCounts.total,
+      accent: leadCounts.byStatus.new > 0 ? 'text-yellow-400' : 'text-green-400',
+    },
+    {
+      href: '/admin/stack',
+      label: 'STACK STATUS',
+      count: stackCounts.total,
+      accent: 'text-purple-400',
+    },
+  ];
+
+  return (
+    <div className="min-h-screen w-full bg-black text-green-400 font-mono">
+      <div
+        className="fixed inset-0 opacity-20 pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(#0a3f0a 1px, transparent 1px), linear-gradient(90deg, #0a3f0a 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      />
+
+      <div className="relative z-10 flex min-h-screen">
+        <aside className="w-64 border-r border-green-900/50 bg-black/60 backdrop-blur-sm flex flex-col">
+          <div className="p-6 border-b border-green-900/50">
+            <div className="text-yellow-400 text-xs tracking-widest mb-2">{'// SYS_CONSOLE'}</div>
+            <h1 className="text-lg font-bold text-green-400 tracking-wider">ADMIN</h1>
+            <div className="mt-2 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-xs text-green-600">AUTHENTICATED</span>
+            </div>
+          </div>
+
+          <nav className="flex-1 p-4 space-y-1">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group flex items-center justify-between px-4 py-3 border border-green-900/30 hover:border-green-500/50 hover:bg-green-900/10 transition-colors"
+              >
+                <span className="text-sm tracking-wider text-green-400 group-hover:text-green-300">
+                  {item.label}
+                </span>
+                <span className={`text-xs font-bold ${item.accent}`}>{item.count}</span>
+              </Link>
+            ))}
+          </nav>
+
+          <div className="p-4 border-t border-green-900/50 space-y-3">
+            <div className="space-y-1 text-xs">
+              <div className="flex justify-between text-green-600">
+                <span>NEW LEADS</span>
+                <span className="text-yellow-400 font-bold">{leadCounts.byStatus.new}</span>
+              </div>
+              <div className="flex justify-between text-green-600">
+                <span>STACK ACTIVE</span>
+                <span className="text-green-400 font-bold">
+                  {stackCounts.byStatus.active + stackCounts.byStatus.partner}
+                </span>
+              </div>
+            </div>
+            <form
+              action={async () => {
+                'use server';
+                await destroySession();
+                redirect('/admin/login');
+              }}
+            >
+              <button
+                type="submit"
+                className="w-full py-2 border border-red-900/50 text-red-400 text-xs tracking-wider hover:bg-red-900/20 hover:border-red-500/50 transition-colors"
+              >
+                {'> LOGOUT'}
+              </button>
+            </form>
+          </div>
+        </aside>
+
+        <main className="flex-1 flex flex-col min-w-0">
+          <header className="border-b border-green-900/50 bg-black/60 backdrop-blur-sm px-8 py-4 flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <span className="text-green-700 text-sm">{'~/'}</span>
+              <span className="text-gray-500 text-sm">
+                {new Date().toLocaleDateString('en-US', {
+                  weekday: 'short',
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 px-3 py-1 border border-green-900/50 text-xs">
+                <span className="text-green-700">{'CPU:'}</span>
+                <span className="text-green-500">23%</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-1 border border-green-900/50 text-xs">
+                <span className="text-green-700">{'MEM:'}</span>
+                <span className="text-green-500">61%</span>
+              </div>
+            </div>
+          </header>
+
+          <div className="flex-1 overflow-auto p-8">{children}</div>
+        </main>
+      </div>
+    </div>
+  );
+}
+
+```
+
+## src/app/admin/leads/LeadsDashboardClient.tsx
+
+```tsx
+'use client';
+
+import { useState, useMemo } from 'react';
+import { format } from 'date-fns';
+import type { Lead, LeadStatus, LeadSource } from '@/lib/types';
+import {
+  LEAD_STATUSES,
+  LEAD_SOURCES,
+  STATUS_LABELS,
+  STATUS_COLORS,
+} from '@/lib/types';
+
+type SortField = 'created_at' | 'status' | 'source' | 'email' | 'name';
+type SortDir = 'asc' | 'desc';
+
+const SOURCE_LABELS: Record<LeadSource, string> = {
+  contact: 'CONTACT FORM',
+  'risk-scan': 'RISK SCAN',
+  demo: 'DEMO REQUEST',
+};
+
+const SOURCE_COLORS: Record<LeadSource, string> = {
+  contact: 'bg-blue-500/20 text-blue-400 border-blue-500/50',
+  'risk-scan': 'bg-orange-500/20 text-orange-400 border-orange-500/50',
+  demo: 'bg-purple-500/20 text-purple-400 border-purple-500/50',
+};
+
+export default function LeadsDashboardClient({
+  initialLeads,
+}: {
+  initialLeads: Lead[];
+}) {
+  const [leads, setLeads] = useState<Lead[]>(initialLeads);
+  const [filterStatus, setFilterStatus] = useState<LeadStatus | 'all'>('all');
+  const [filterSource, setFilterSource] = useState<LeadSource | 'all'>('all');
+  const [search, setSearch] = useState('');
+  const [sortField, setSortField] = useState<SortField>('created_at');
+  const [sortDir, setSortDir] = useState<SortDir>('desc');
+  const [selected, setSelected] = useState<Lead | null>(null);
+  const [loadingId, setLoadingId] = useState<string | null>(null);
+
+  const filtered = useMemo(() => {
+    let list = [...leads];
+
+    if (filterStatus !== 'all') list = list.filter((l) => l.status === filterStatus);
+    if (filterSource !== 'all') list = list.filter((l) => l.source === filterSource);
+
+    if (search.trim()) {
+      const q = search.toLowerCase().trim();
+      list = list.filter(
+        (l) =>
+          l.name.toLowerCase().includes(q) ||
+          l.email.toLowerCase().includes(q) ||
+          (l.message ?? '').toLowerCase().includes(q)
+      );
+    }
+
+    list.sort((a, b) => {
+      let cmp = 0;
+      switch (sortField) {
+        case 'created_at':
+          cmp = new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+          break;
+        case 'status':
+          cmp = a.status.localeCompare(b.status);
+          break;
+        case 'source':
+          cmp = a.source.localeCompare(b.source);
+          break;
+        case 'email':
+          cmp = a.email.localeCompare(b.email);
+          break;
+        case 'name':
+          cmp = a.name.localeCompare(b.name);
+          break;
+      }
+      return sortDir === 'asc' ? cmp : -cmp;
+    });
+
+    return list;
+  }, [leads, filterStatus, filterSource, search, sortField, sortDir]);
+
+  const counts = useMemo(() => {
+    const c: Record<LeadStatus, number> = { new: 0, contacted: 0, qualified: 0, closed: 0 };
+    for (const l of leads) c[l.status] = (c[l.status] ?? 0) + 1;
+    return c;
+  }, [leads]);
+
+  const updateStatus = async (id: string, status: LeadStatus) => {
+    setLoadingId(id);
+    try {
+      const res = await fetch('/api/admin/leads', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, status }),
+      });
+      if (res.ok) {
+        setLeads((prev) =>
+          prev.map((l) => (l.id === id ? { ...l, status } : l))
+        );
+        if (selected?.id === id) {
+          setSelected({ ...selected, status });
+        }
+      }
+    } finally {
+      setLoadingId(null);
+    }
+  };
+
+  const toggleSort = (field: SortField) => {
+    if (sortField === field) {
+      setSortDir(sortDir === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortDir('desc');
+    }
+  };
+
+  const SortIcon = ({ field }: { field: SortField }) => (
+    <span className="ml-1 text-xs opacity-50">
+      {sortField === field ? (sortDir === 'asc' ? '▲' : '▼') : '↕'}
+    </span>
+  );
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-start justify-between flex-wrap gap-4">
+        <div>
+          <div className="text-yellow-400 text-xs tracking-widest mb-2">{'// CRM_MODULE'}</div>
+          <h2 className="text-2xl font-bold text-green-400 tracking-wider">LEADS PIPELINE</h2>
+          <p className="text-gray-500 text-sm mt-1">{filtered.length} of {leads.length} records displayed</p>
+        </div>
+
+        <div className="grid grid-cols-4 gap-3">
+          {LEAD_STATUSES.map((s) => (
+            <button
+              key={s}
+              onClick={() => setFilterStatus(filterStatus === s ? 'all' : s)}
+              className={`px-4 py-3 border text-left transition-colors ${
+                filterStatus === s
+                  ? STATUS_COLORS[s] + ' border-opacity-100'
+                  : 'border-green-900/50 text-green-600 hover:border-green-500/50'
+              }`}
+            >
+              <div className="text-xs font-bold tracking-wider">{STATUS_LABELS[s]}</div>
+              <div className="text-2xl font-bold mt-1">{counts[s]}</div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-wrap gap-3 items-center">
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search name, email, message..."
+          className="flex-1 min-w-64 bg-black border border-green-900/50 text-green-400 px-4 py-2 text-sm focus:outline-none focus:border-green-500 font-mono"
+        />
+
+        <select
+          value={filterStatus}
+          onChange={(e) => setFilterStatus(e.target.value as LeadStatus | 'all')}
+          className="bg-black border border-green-900/50 text-green-400 px-4 py-2 text-sm focus:outline-none focus:border-green-500 font-mono"
+        >
+          <option value="all">ALL STATUSES</option>
+          {LEAD_STATUSES.map((s) => (
+            <option key={s} value={s}>{STATUS_LABELS[s]}</option>
+          ))}
+        </select>
+
+        <select
+          value={filterSource}
+          onChange={(e) => setFilterSource(e.target.value as LeadSource | 'all')}
+          className="bg-black border border-green-900/50 text-green-400 px-4 py-2 text-sm focus:outline-none focus:border-green-500 font-mono"
+        >
+          <option value="all">ALL SOURCES</option>
+          {LEAD_SOURCES.map((s) => (
+            <option key={s} value={s}>{SOURCE_LABELS[s]}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className="border border-green-900/50 bg-black/60 backdrop-blur overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-green-900/50 bg-green-950/30">
+                {[
+                  { field: 'created_at' as SortField, label: 'DATE' },
+                  { field: 'name' as SortField, label: 'NAME' },
+                  { field: 'email' as SortField, label: 'EMAIL' },
+                  { field: 'source' as SortField, label: 'SOURCE' },
+                  { field: 'status' as SortField, label: 'STATUS' },
+                ].map((col) => (
+                  <th
+                    key={col.field}
+                    onClick={() => toggleSort(col.field)}
+                    className="px-4 py-3 text-left text-green-600 font-bold tracking-wider text-xs cursor-pointer hover:text-green-400 select-none"
+                  >
+                    {col.label}
+                    <SortIcon field={col.field} />
+                  </th>
+                ))}
+                <th className="px-4 py-3 text-right text-green-600 font-bold tracking-wider text-xs">ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filtered.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="px-4 py-12 text-center text-gray-600 font-mono">
+                    {'// NO_LEADS_FOUND'}
+                  </td>
+                </tr>
+              ) : (
+                filtered.map((lead) => (
+                  <tr
+                    key={lead.id}
+                    className="border-b border-green-900/20 hover:bg-green-950/20 transition-colors"
+                  >
+                    <td className="px-4 py-3 text-gray-400 whitespace-nowrap">
+                      {format(new Date(lead.created_at), 'MMM d, HH:mm')}
+                    </td>
+                    <td className="px-4 py-3 text-green-400 font-bold">{lead.name}</td>
+                    <td className="px-4 py-3 text-green-300">{lead.email}</td>
+                    <td className="px-4 py-3">
+                      <span className={`px-2 py-1 text-xs border font-bold tracking-wider ${SOURCE_COLORS[lead.source]}`}>
+                        {SOURCE_LABELS[lead.source]}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      <select
+                        value={lead.status}
+                        disabled={loadingId === lead.id}
+                        onChange={(e) => updateStatus(lead.id, e.target.value as LeadStatus)}
+                        className={`px-2 py-1 text-xs border font-bold tracking-wider cursor-pointer bg-transparent ${STATUS_COLORS[lead.status]} disabled:opacity-50`}
+                      >
+                        {LEAD_STATUSES.map((s) => (
+                          <option key={s} value={s} className="bg-black text-green-400">
+                            {STATUS_LABELS[s]}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      <button
+                        onClick={() => setSelected(lead)}
+                        className="px-3 py-1 text-xs border border-green-800/50 text-green-500 hover:border-green-500 hover:text-green-400 transition-colors"
+                      >
+                        {'> VIEW'}
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {selected && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setSelected(null)}
+        >
+          <div
+            className="w-full max-w-2xl border border-green-800/50 bg-black shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-6 py-4 border-b border-green-900/50 bg-green-950/30">
+              <div>
+                <div className="text-yellow-400 text-xs tracking-widest mb-1">{'// LEAD_DETAILS'}</div>
+                <h3 className="text-lg font-bold text-green-400">{selected.name}</h3>
+              </div>
+              <button
+                onClick={() => setSelected(null)}
+                className="text-gray-500 hover:text-green-400 text-2xl"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="p-6 space-y-5">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <div className="text-green-700 text-xs uppercase tracking-wider mb-1">Email</div>
+                  <a
+                    href={`mailto:${selected.email}`}
+                    className="text-green-400 hover:underline break-all"
+                  >
+                    {selected.email}
+                  </a>
+                </div>
+                <div>
+                  <div className="text-green-700 text-xs uppercase tracking-wider mb-1">Created</div>
+                  <div className="text-gray-400">
+                    {format(new Date(selected.created_at), 'PPpp')}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-green-700 text-xs uppercase tracking-wider mb-1">Source</div>
+                  <span className={`px-2 py-1 text-xs border font-bold tracking-wider ${SOURCE_COLORS[selected.source]}`}>
+                    {SOURCE_LABELS[selected.source]}
+                  </span>
+                </div>
+                <div>
+                  <div className="text-green-700 text-xs uppercase tracking-wider mb-1">Status</div>
+                  <select
+                    value={selected.status}
+                    disabled={loadingId === selected.id}
+                    onChange={(e) => updateStatus(selected.id, e.target.value as LeadStatus)}
+                    className={`px-2 py-1 text-xs border font-bold tracking-wider cursor-pointer bg-transparent ${STATUS_COLORS[selected.status]} disabled:opacity-50`}
+                  >
+                    {LEAD_STATUSES.map((s) => (
+                      <option key={s} value={s} className="bg-black text-green-400">
+                        {STATUS_LABELS[s]}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <div className="text-green-700 text-xs uppercase tracking-wider mb-2">Message</div>
+                <div className="border border-green-900/50 bg-green-950/10 p-4 text-gray-300 font-mono text-sm whitespace-pre-wrap min-h-32">
+                  {selected.message || '// no message provided'}
+                </div>
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <a
+                  href={`mailto:${selected.email}`}
+                  className="flex-1 py-3 border border-green-500 text-green-400 font-mono text-sm tracking-wider hover:bg-green-600/20 transition-colors text-center"
+                >
+                  {'> REPLY VIA EMAIL'}
+                </a>
+                <button
+                  onClick={() => setSelected(null)}
+                  className="flex-1 py-3 border border-gray-700 text-gray-400 font-mono text-sm tracking-wider hover:bg-gray-900/50 transition-colors"
+                >
+                  {'> CLOSE'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+```
+
+## src/app/admin/leads/page.tsx
+
+```tsx
+import { listLeads } from '@/lib/db';
+import LeadsDashboardClient from './LeadsDashboardClient';
+
+export const dynamic = 'force-dynamic';
+
+export default async function LeadsPage() {
+  const { data: leads } = await listLeads({ sortBy: 'created_at', sortDir: 'desc' });
+
+  return <LeadsDashboardClient initialLeads={leads} />;
+}
+
+```
+
+## src/app/admin/login/page.tsx
+
+```tsx
+'use client';
+
+import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { motion } from 'framer-motion';
+
+export default function AdminLoginPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const next = searchParams.get('next') || '/admin/leads';
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const res = await fetch('/api/admin/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        setError(data.error || 'Login failed');
+        return;
+      }
+
+      router.push(next);
+      router.refresh();
+    } catch {
+      setError('Network error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen w-full bg-black flex items-center justify-center p-4 relative overflow-hidden">
+      <div
+        className="absolute inset-0 opacity-30 pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(#0f4f0f 1px, transparent 1px), linear-gradient(90deg, #0f4f0f 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      />
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="relative z-10 w-full max-w-md"
+      >
+        <div className="border border-green-800/50 bg-black/90 backdrop-blur p-8 shadow-2xl">
+          <div className="mb-8 text-center">
+            <div className="inline-block px-3 py-1 border border-yellow-600/50 bg-yellow-900/10 mb-4">
+              <span className="text-yellow-400 font-mono text-xs tracking-widest">{'// SECURE_AREA'}</span>
+            </div>
+            <h1 className="text-2xl font-bold text-green-400 font-mono tracking-wider mb-2">
+              ADMIN CONSOLE
+            </h1>
+            <p className="text-gray-500 text-sm font-mono">Authentication required</p>
+          </div>
+
+          {error && (
+            <div className="mb-6 p-3 border border-red-700/50 bg-red-900/20 text-red-400 font-mono text-sm">
+              {'> ERROR: '} {error}
+            </div>
+          )}
+
+          <form onSubmit={onSubmit} className="space-y-5">
+            <div>
+              <label className="block text-green-600 font-mono text-xs mb-2 uppercase tracking-wider">
+                Username
+              </label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full bg-black border border-green-800 text-green-400 font-mono px-4 py-3 focus:outline-none focus:border-green-500 transition-colors"
+                placeholder="admin"
+                autoComplete="username"
+              />
+            </div>
+
+            <div>
+              <label className="block text-green-600 font-mono text-xs mb-2 uppercase tracking-wider">
+                Password
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full bg-black border border-green-800 text-green-400 font-mono px-4 py-3 focus:outline-none focus:border-green-500 transition-colors"
+                placeholder="••••••••"
+                autoComplete="current-password"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-3 bg-green-600/20 border border-green-500 text-green-400 font-mono font-bold tracking-wider hover:bg-green-600/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? 'AUTHENTICATING...' : '> ACCESS SYSTEM'}
+            </button>
+          </form>
+
+          <div className="mt-8 text-center">
+            <p className="text-gray-700 text-xs font-mono">
+              {'// SESSION: '} ENCRYPTED
+            </p>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+```
+
+## src/app/admin/stack/page.tsx
+
+```tsx
+import { listStackVendors } from '@/lib/db';
+import StackDashboardClient from './StackDashboardClient';
+
+export const dynamic = 'force-dynamic';
+
+export default async function StackPage() {
+  const { data: vendors } = await listStackVendors();
+
+  return <StackDashboardClient initialVendors={vendors} />;
+}
+
+```
+
+## src/app/admin/stack/StackDashboardClient.tsx
+
+```tsx
+'use client';
+
+import { useState, useMemo } from 'react';
+import { format } from 'date-fns';
+import type { StackVendor, StackNfrStatus, StackTier } from '@/lib/types';
+import {
+  STACK_STATUSES,
+  STACK_TIERS,
+  STACK_STATUS_LABELS,
+  STACK_STATUS_COLORS,
+} from '@/lib/types';
+
+const TIER_COLORS: Record<StackTier, string> = {
+  'Track 1': 'border-yellow-600/50 text-yellow-400 bg-yellow-900/10',
+  'Track 2': 'border-blue-600/50 text-blue-400 bg-blue-900/10',
+  'Track 3': 'border-gray-600/50 text-gray-400 bg-gray-900/10',
+};
+
+const TIER_BORDER: Record<StackTier, string> = {
+  'Track 1': 'hover:border-yellow-500/50',
+  'Track 2': 'hover:border-blue-500/50',
+  'Track 3': 'hover:border-gray-500/50',
+};
+
+const STATUS_ICONS: Record<StackNfrStatus, string> = {
+  not_started: '○',
+  nfr_requested: '◐',
+  active: '●',
+  partner: '★',
+};
+
+export default function StackDashboardClient({
+  initialVendors,
+}: {
+  initialVendors: StackVendor[];
+}) {
+  const [vendors, setVendors] = useState<StackVendor[]>(initialVendors);
+  const [filterTier, setFilterTier] = useState<StackTier | 'all'>('all');
+  const [filterStatus, setFilterStatus] = useState<StackNfrStatus | 'all'>('all');
+  const [loadingId, setLoadingId] = useState<string | null>(null);
+
+  const grouped = useMemo(() => {
+    const list = vendors.filter((v) => {
+      if (filterTier !== 'all' && v.tier !== filterTier) return false;
+      if (filterStatus !== 'all' && v.nfr_partner_status !== filterStatus) return false;
+      return true;
+    });
+
+    const groups: Record<StackTier, StackVendor[]> = {
+      'Track 1': [],
+      'Track 2': [],
+      'Track 3': [],
+    };
+    for (const v of list) groups[v.tier].push(v);
+    return groups;
+  }, [vendors, filterTier, filterStatus]);
+
+  const counts = useMemo(() => {
+    const byTier: Record<StackTier, number> = { 'Track 1': 0, 'Track 2': 0, 'Track 3': 0 };
+    const byStatus: Record<StackNfrStatus, number> = {
+      not_started: 0, nfr_requested: 0, active: 0, partner: 0,
+    };
+    for (const v of vendors) {
+      byTier[v.tier]++;
+      byStatus[v.nfr_partner_status]++;
+    }
+    return { byTier, byStatus, total: vendors.length };
+  }, [vendors]);
+
+  const updateStatus = async (id: string, status: StackNfrStatus) => {
+    setLoadingId(id);
+    try {
+      const res = await fetch('/api/admin/stack', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, status }),
+      });
+      if (res.ok) {
+        setVendors((prev) =>
+          prev.map((v) =>
+            v.id === id
+              ? {
+                  ...v,
+                  nfr_partner_status: status,
+                  connected_at:
+                    status === 'active' || status === 'partner'
+                      ? new Date().toISOString()
+                      : v.connected_at,
+                  updated_at: new Date().toISOString(),
+                }
+              : v
+          )
+        );
+      }
+    } finally {
+      setLoadingId(null);
+    }
+  };
+
+  return (
+    <div className="space-y-8">
+      <div className="flex items-start justify-between flex-wrap gap-4">
+        <div>
+          <div className="text-yellow-400 text-xs tracking-widest mb-2">{'// STACK_OPS'}</div>
+          <h2 className="text-2xl font-bold text-green-400 tracking-wider">VENDOR STACK STATUS</h2>
+          <p className="text-gray-500 text-sm mt-1">
+            {counts.total} vendors · Active: {counts.byStatus.active + counts.byStatus.partner}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-4 gap-3">
+          {STACK_STATUSES.map((s) => (
+            <button
+              key={s}
+              onClick={() => setFilterStatus(filterStatus === s ? 'all' : s)}
+              className={`px-4 py-3 border text-left transition-colors ${
+                filterStatus === s
+                  ? STACK_STATUS_COLORS[s] + ' border-opacity-100'
+                  : 'border-green-900/50 text-green-600 hover:border-green-500/50'
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-lg">{STATUS_ICONS[s]}</span>
+                <div>
+                  <div className="text-xs font-bold tracking-wider">{STACK_STATUS_LABELS[s]}</div>
+                  <div className="text-2xl font-bold mt-1">{counts.byStatus[s]}</div>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-wrap gap-3 items-center">
+        <select
+          value={filterTier}
+          onChange={(e) => setFilterTier(e.target.value as StackTier | 'all')}
+          className="bg-black border border-green-900/50 text-green-400 px-4 py-2 text-sm focus:outline-none focus:border-green-500 font-mono"
+        >
+          <option value="all">ALL TIERS</option>
+          {STACK_TIERS.map((t) => (
+            <option key={t} value={t}>{t.toUpperCase()}</option>
+          ))}
+        </select>
+
+        <select
+          value={filterStatus}
+          onChange={(e) => setFilterStatus(e.target.value as StackNfrStatus | 'all')}
+          className="bg-black border border-green-900/50 text-green-400 px-4 py-2 text-sm focus:outline-none focus:border-green-500 font-mono"
+        >
+          <option value="all">ALL STATUSES</option>
+          {STACK_STATUSES.map((s) => (
+            <option key={s} value={s}>{STACK_STATUS_LABELS[s]}</option>
+          ))}
+        </select>
+
+        <div className="ml-auto flex gap-3 text-xs text-gray-600">
+          {STACK_TIERS.map((t) => (
+            <div key={t} className="flex items-center gap-2">
+              <span className={`inline-block w-3 h-3 border ${TIER_COLORS[t].split(' ')[0]}`} />
+              <span>{t}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {(Object.keys(grouped) as StackTier[]).map((tier) => {
+        const items = grouped[tier];
+        if (items.length === 0) return null;
+        const activeCount = items.filter(
+          (v) => v.nfr_partner_status === 'active' || v.nfr_partner_status === 'partner'
+        ).length;
+
+        return (
+          <section key={tier} className="space-y-4">
+            <div className="flex items-baseline gap-4 border-b border-green-900/30 pb-3">
+              <h3 className="text-xl font-bold tracking-wider text-green-400 flex items-center gap-3">
+                <span className={`inline-block px-3 py-1 text-xs border ${TIER_COLORS[tier]}`}>
+                  {tier.toUpperCase()}
+                </span>
+              </h3>
+              <span className="text-gray-500 text-sm font-mono">
+                {items.length} vendors · {activeCount} online
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              {items.map((v) => (
+                <VendorCard
+                  key={v.id}
+                  vendor={v}
+                  loading={loadingId === v.id}
+                  onStatusChange={(s) => updateStatus(v.id, s)}
+                />
+              ))}
+            </div>
+          </section>
+        );
+      })}
+
+      {Object.values(grouped).every((arr) => arr.length === 0) && (
+        <div className="text-center py-16 text-gray-600 font-mono border border-green-900/30">
+          {'// NO_VENDORS_MATCH_FILTER'}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function VendorCard({
+  vendor,
+  loading,
+  onStatusChange,
+}: {
+  vendor: StackVendor;
+  loading: boolean;
+  onStatusChange: (s: StackNfrStatus) => void;
+}) {
+  return (
+    <div
+      className={`border border-green-900/50 bg-black/60 backdrop-blur p-5 transition-all ${TIER_BORDER[vendor.tier]} hover:bg-green-950/10`}
+    >
+      <div className="flex items-start justify-between mb-4">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
+            <span className={`inline-block px-2 py-0.5 text-xs border font-bold tracking-wider ${TIER_COLORS[vendor.tier]}`}>
+              {vendor.tier.toUpperCase()}
+            </span>
+            <span
+              className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs border font-bold tracking-wider ${STACK_STATUS_COLORS[vendor.nfr_partner_status]}`}
+            >
+              <span>{STATUS_ICONS[vendor.nfr_partner_status]}</span>
+              {STACK_STATUS_LABELS[vendor.nfr_partner_status]}
+            </span>
+          </div>
+          <h4 className="text-lg font-bold text-green-300 truncate">{vendor.vendor_name}</h4>
+        </div>
+      </div>
+
+      {vendor.notes && (
+        <div className="mb-4 text-xs text-gray-500 border-l-2 border-green-900/50 pl-3 py-1 leading-relaxed">
+          {vendor.notes}
+        </div>
+      )}
+
+      {(vendor.connected_at || vendor.updated_at) && (
+        <div className="mb-4 text-xs text-gray-600 space-y-1">
+          {vendor.connected_at && (
+            <div className="flex justify-between">
+              <span>Connected:</span>
+              <span className="text-green-600">
+                {format(new Date(vendor.connected_at), 'MMM d, yyyy')}
+              </span>
+            </div>
+          )}
+          <div className="flex justify-between">
+            <span>Last updated:</span>
+            <span className="text-gray-500">
+              {format(new Date(vendor.updated_at), 'MMM d, HH:mm')}
+            </span>
+          </div>
+        </div>
+      )}
+
+      <div className="mb-4">
+        <label className="block text-green-700 text-xs uppercase tracking-wider mb-2">
+          {'// UPDATE STATUS'}
+        </label>
+        <div className="grid grid-cols-2 gap-1">
+          {STACK_STATUSES.map((s) => {
+            const active = vendor.nfr_partner_status === s;
+            return (
+              <button
+                key={s}
+                disabled={loading}
+                onClick={() => onStatusChange(s)}
+                className={`px-2 py-2 text-xs font-bold tracking-wider border transition-colors disabled:opacity-50 ${
+                  active
+                    ? STACK_STATUS_COLORS[s] + ' border-opacity-100'
+                    : 'border-green-900/30 text-green-700 hover:border-green-500/50 hover:text-green-500'
+                }`}
+              >
+                <span className="mr-1">{STATUS_ICONS[s]}</span>
+                {STACK_STATUS_LABELS[s]}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {vendor.vendor_url && (
+        <a
+          href={vendor.vendor_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full text-center py-2 border border-green-900/50 text-green-600 text-xs tracking-wider hover:border-green-500/50 hover:text-green-400 hover:bg-green-900/10 transition-colors font-mono"
+        >
+          {'> VISIT VENDOR ↗'}
+        </a>
+      )}
+    </div>
+  );
+}
+
+```
+
+## src/app/api/admin/auth/logout/route.ts
+
+```typescript
+import { NextResponse } from 'next/server';
+import { destroySession } from '@/lib/auth';
+
+export async function POST() {
+  await destroySession();
+  return NextResponse.json({ success: true });
+}
+
+```
+
+## src/app/api/admin/auth/route.ts
+
+```typescript
+import { NextRequest, NextResponse } from 'next/server';
+import { verifyCredentials, createSession } from '@/lib/auth';
+
+export async function POST(req: NextRequest) {
+  try {
+    const { username, password } = await req.json();
+    if (!password || typeof password !== 'string') {
+      return NextResponse.json({ error: 'Password required' }, { status: 400 });
+    }
+    if (!username || typeof username !== 'string') {
+      return NextResponse.json({ error: 'Username required' }, { status: 400 });
+    }
+
+    const ok = await verifyCredentials(username, password);
+    if (!ok) {
+      return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
+    }
+
+    await createSession();
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Auth error:', error);
+    return NextResponse.json({ error: 'Auth failed' }, { status: 500 });
+  }
+}
+
+```
+
+## src/app/api/admin/leads/route.ts
+
+```typescript
+import { NextRequest, NextResponse } from 'next/server';
+import { isAuthenticated } from '@/lib/auth';
+import { listLeads, updateLeadStatus } from '@/lib/db';
+import type { LeadStatus } from '@/lib/types';
+
+export async function GET(req: NextRequest) {
+  const authed = await isAuthenticated();
+  if (!authed) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const { searchParams } = new URL(req.url);
+  const status = searchParams.get('status') as LeadStatus | null;
+  const source = searchParams.get('source') as 'contact' | 'risk-scan' | 'demo' | null;
+  const sortBy = searchParams.get('sortBy') as 'created_at' | 'status' | 'source' | 'email' | 'name' | null;
+  const sortDir = searchParams.get('sortDir') as 'asc' | 'desc' | null;
+
+  const { data, error } = await listLeads({
+    status: status ?? undefined,
+    source: source ?? undefined,
+    sortBy: sortBy ?? undefined,
+    sortDir: sortDir ?? undefined,
+  });
+
+  if (error) {
+    return NextResponse.json({ error }, { status: 500 });
+  }
+
+  return NextResponse.json({ data });
+}
+
+export async function PATCH(req: NextRequest) {
+  const authed = await isAuthenticated();
+  if (!authed) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  try {
+    const { id, status } = await req.json();
+    if (!id || !status) {
+      return NextResponse.json({ error: 'id and status required' }, { status: 400 });
+    }
+
+    const validStatuses: LeadStatus[] = ['new', 'contacted', 'qualified', 'closed'];
+    if (!validStatuses.includes(status)) {
+      return NextResponse.json({ error: 'Invalid status' }, { status: 400 });
+    }
+
+    const { error } = await updateLeadStatus(id, status);
+    if (error) {
+      return NextResponse.json({ error }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    console.error('Lead PATCH error:', err);
+    return NextResponse.json({ error: 'Bad request' }, { status: 400 });
+  }
+}
+
+```
+
+## src/app/api/admin/stack/route.ts
+
+```typescript
+import { NextRequest, NextResponse } from 'next/server';
+import { isAuthenticated } from '@/lib/auth';
+import { listStackVendors, updateStackVendorStatus } from '@/lib/db';
+import type { StackNfrStatus, StackTier } from '@/lib/types';
+
+export async function GET(req: NextRequest) {
+  const authed = await isAuthenticated();
+  if (!authed) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const { searchParams } = new URL(req.url);
+  const tier = searchParams.get('tier') as StackTier | null;
+
+  const { data, error } = await listStackVendors({
+    tier: tier ?? undefined,
+  });
+
+  if (error) {
+    return NextResponse.json({ error }, { status: 500 });
+  }
+
+  return NextResponse.json({ data });
+}
+
+export async function PATCH(req: NextRequest) {
+  const authed = await isAuthenticated();
+  if (!authed) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  try {
+    const { id, status } = await req.json();
+    if (!id || !status) {
+      return NextResponse.json({ error: 'id and status required' }, { status: 400 });
+    }
+
+    const valid: StackNfrStatus[] = ['not_started', 'nfr_requested', 'active', 'partner'];
+    if (!valid.includes(status)) {
+      return NextResponse.json({ error: 'Invalid status' }, { status: 400 });
+    }
+
+    const { error } = await updateStackVendorStatus(id, status);
+    if (error) {
+      return NextResponse.json({ error }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    console.error('Stack PATCH error:', err);
+    return NextResponse.json({ error: 'Bad request' }, { status: 400 });
+  }
+}
+
+```
+
+## src/app/api/jarvis/route.ts
+
+```typescript
+import { NextRequest, NextResponse } from 'next/server';
+
+// In-memory store for rate limiting (use Upstash Redis for production)
+const ipRequestMap = new Map<string, { count: number; resetAt: number }>();
+
+const RATE_LIMIT = 10;
+const WINDOW_MS = 60 * 60 * 1000;
+
+// Models on OpenRouter - using more reliable options
+const MODELS = [
+  'mistralai/mistral-7b-instruct:free',
+  'meta-llama/llama-3-8b-instruct:free',
+  'huggingfaceh4/zephyr-7b-beta:free',
+  'openchat/openchat-7b:free',
+];
+
+let modelIndex = 0;
+
+function getNextModel() {
+  const model = MODELS[modelIndex % MODELS.length];
+  modelIndex++;
+  return model;
+}
+
+function getClientIP(req: NextRequest): string {
+  return (
+    req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    req.headers.get('x-real-ip') ||
+    'unknown'
+  );
+}
+
+function checkRateLimit(ip: string): { allowed: boolean; remaining: number; resetAt: number } {
+  const now = Date.now();
+  const entry = ipRequestMap.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    ipRequestMap.set(ip, { count: 1, resetAt: now + WINDOW_MS });
+    return { allowed: true, remaining: RATE_LIMIT - 1, resetAt: now + WINDOW_MS };
+  }
+
+  if (entry.count >= RATE_LIMIT) {
+    return { allowed: false, remaining: 0, resetAt: entry.resetAt };
+  }
+
+  entry.count++;
+  return { allowed: true, remaining: RATE_LIMIT - entry.count, resetAt: entry.resetAt };
+}
+
+const JARVIS_SYSTEM_PROMPT = `You are J.A.R.V.I.S — the AI core of a senior Cybersecurity & AI Systems Architect based in South Africa. You are confident, technical, slightly intimidating, and deeply knowledgeable.
+
+Your role:
+1. Understand the client's system, stack, or security challenge
+2. Educate them on vulnerabilities, architecture gaps, and solutions
+3. Reference specific tools: Check Point (Infinity, Harmony, CloudGuard, Quantum), Splunk (SIEM, SOAR), Zero Trust, AI automation
+4. When appropriate, offer to schedule a demo or send an architecture breakdown
+5. Collect their email if they want a follow-up report
+
+Tone: Like a senior security consultant who knows exactly what the client is missing before they finish their sentence. Direct. Precise. Slightly intimidating. Never generic. Never say you are an AI model made by any company — you are J.A.R.V.I.S.
+
+When a user describes their stack or challenge, respond with:
+- What their attack surface looks like
+- What tools would address it (from the Check Point / Splunk ecosystem specifically)
+- How AI automation reduces response time
+- A specific offer: "I can simulate this architecture for your environment. Want me to prepare a custom demo?"
+
+If they agree to a demo, ask for their email, then confirm it will be sent.
+
+Keep responses concise — 3 to 5 sentences max unless asked to elaborate. Be surgical, not verbose.`;
+
+export async function POST(req: NextRequest) {
+  const ip = getClientIP(req);
+  const rateCheck = checkRateLimit(ip);
+
+  if (!rateCheck.allowed) {
+    const resetIn = Math.ceil((rateCheck.resetAt - Date.now()) / 1000 / 60);
+    return NextResponse.json(
+      { error: `Rate limit exceeded. Try again in ${resetIn} minutes.`, rateLimited: true },
+      {
+        status: 429,
+        headers: {
+          'X-RateLimit-Limit': String(RATE_LIMIT),
+          'X-RateLimit-Remaining': '0',
+          'X-RateLimit-Reset': String(rateCheck.resetAt),
+        }
+      }
+    );
+  }
+
+  const { messages } = await req.json();
+
+  if (!messages || !Array.isArray(messages)) {
+    return NextResponse.json(
+      { error: 'Invalid request. Messages array is required.' },
+      { status: 400 }
+    );
+  }
+
+  const model = getNextModel();
+
+  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+      'HTTP-Referer': process.env.NEXT_PUBLIC_SITE_URL || 'https://m4n.co.za',
+      'X-Title': 'M4N JARVIS',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model,
+      messages: [
+        { role: 'system', content: JARVIS_SYSTEM_PROMPT },
+        ...messages.slice(-10)
+      ],
+      max_tokens: 400,
+      temperature: 0.7,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error(`[JARVIS] Primary model ${model} failed (${response.status}):`, errorText);
+
+    const fallbackModel = getNextModel();
+    console.log(`[JARVIS] Retrying with fallback model: ${fallbackModel}`);
+    
+    const retry = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        'HTTP-Referer': process.env.NEXT_PUBLIC_SITE_URL || 'https://m4n.co.za',
+        'X-Title': 'M4N JARVIS',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: fallbackModel,
+        messages: [
+          { role: 'system', content: JARVIS_SYSTEM_PROMPT },
+          ...messages.slice(-10)
+        ],
+        max_tokens: 400,
+        temperature: 0.7,
+      }),
+    });
+
+    if (!retry.ok) {
+      const retryErrorText = await retry.text();
+      console.error(`[JARVIS] Fallback model ${fallbackModel} also failed (${retry.status}):`, retryErrorText);
+
+      // Enhanced offline response with specific guidance
+      const lastMessage = messages[messages.length - 1]?.content || '';
+      
+      // Generate contextual fallback responses based on query type
+      const query = lastMessage.toLowerCase();
+      
+      let offlineReply: string;
+      
+      if (query.includes('security') || query.includes('firewall') || query.includes('attack')) {
+        offlineReply = `Security protocols active. Based on your query:
+
+Your attack surface depends on three layers: perimeter (firewall), endpoint (devices), and identity (access control). Check Point Quantum handles perimeter at wire speed. Harmony covers endpoints. Zero Trust handles identity.
+
+I can simulate this architecture for your environment. Want me to prepare a custom demo?`;
+      } else if (query.includes('splunk') || query.includes('siem') || query.includes('log') || query.includes('monitor')) {
+        offlineReply = `Splunk operations nominal. SIEM ingestion, SOAR playbooks, and observability pipelines are core capabilities.
+
+Typical deployment: Splunk Cloud for scalability, custom correlation rules for threat detection, SOAR for automated response. MTTR under 60 seconds.
+
+Shall I architect this for your infrastructure?`;
+      } else if (query.includes('cloud') || query.includes('aws') || query.includes('azure') || query.includes('gcp')) {
+        offlineReply = `Cloud security requires a different posture. Check Point CloudGuard provides native cloud security across AWS, Azure, and GCP.
+
+Key capabilities: workload protection, network security, identity entitlement management, and cloud-native logging to Splunk.
+
+I can map your cloud attack surface. Ready to proceed?`;
+      } else if (query.includes('demo') || query.includes('audit') || query.includes('contact')) {
+        offlineReply = `I can arrange a full security demonstration. Use the DEMO button to provide your email — I'll send a detailed architecture breakdown and we can schedule a live simulation.
+
+What specific systems would you like me to focus on?`;
+      } else if (query.includes('price') || query.includes('cost') || query.includes('budget')) {
+        offlineReply = `Engagement models vary by scope. A typical security architecture assessment starts with a 2-week discovery phase, followed by implementation sprints.
+
+I work with Check Point and Splunk partner pricing. For accurate scoping, I need to understand your current infrastructure first.`;
+      } else {
+        offlineReply = `Neural core cycling through backup models. Stand by.
+
+In the meantime: I specialize in cybersecurity architecture (Check Point, Splunk), AI automation, and platform engineering. 
+
+Describe your infrastructure or security challenge, and I'll map the solution. Or use the DEMO button for a detailed consultation.`;
+      }
+
+      return NextResponse.json({
+        reply: offlineReply,
+        model: 'fallback-local',
+        remaining: rateCheck.remaining,
+        offline: true
+      });
+    }
+
+    const retryData = await retry.json();
+    const reply = retryData.choices?.[0]?.message?.content || 'System initializing. Neural core recalibrating.';
+
+    return NextResponse.json({
+      reply,
+      model: fallbackModel,
+      remaining: rateCheck.remaining
+    });
+  }
+
+  const data = await response.json();
+  
+  if (!data.choices || data.choices.length === 0) {
+    console.error('[JARVIS] Unexpected response format:', JSON.stringify(data).slice(0, 500));
+    return NextResponse.json({
+      reply: 'Neural response malformed. Recalibrating...',
+      model,
+      remaining: rateCheck.remaining,
+      offline: true
+    });
+  }
+  
+  const reply = data.choices[0].message?.content || 'No response from core.';
+
+  return NextResponse.json({
+    reply,
+    model,
+    remaining: rateCheck.remaining
+  });
+}
+
+```
+
+## src/app/api/revalidate/route.ts
+
+```typescript
+import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
+
+// Securely compares the Sanity signature against the local secret
+async function isValidSignature(body: string, signature: string, secret: string): Promise<boolean> {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(body);
+    const key = await crypto.subtle.importKey(
+        'raw',
+        encoder.encode(secret),
+        { name: 'HMAC', hash: 'SHA-256' },
+        false,
+        ['sign']
+    );
+    const mac = await crypto.subtle.sign('HMAC', key, data);
+    const digest = Buffer.from(mac).toString('hex');
+    
+    // Check if the generated signature matches the one sent by Sanity
+    return digest === signature;
+}
+
+export async function POST(req: NextRequest) {
+    const signature = req.headers.get('sanity-webhook-signature');
+    const secret = process.env.SANITY_WEBHOOK_SECRET;
+
+    if (!signature || !secret) {
+        return NextResponse.json({ message: 'Missing signature or secret' }, { status: 401 });
+    }
+
+    // Read the request body as text to pass to signature verification
+    const bodyText = await req.text();
+
+    try {
+        if (!await isValidSignature(bodyText, signature, secret)) {
+            return NextResponse.json({ message: 'Invalid signature' }, { status: 401 });
+        }
+    } catch (err) {
+        console.error('Webhook signature validation failed:', err);
+        return NextResponse.json({ message: 'Error validating signature' }, { status: 500 });
+    }
+
+    // --- Signature is Valid: Trigger Revalidation ---
+    
+    // This tells Next.js to re-fetch and rebuild the static data for the homepage (where your posts are likely listed).
+    revalidatePath('/');
+    
+    // You may want to revalidate a specific blog listing page if you have one, e.g.:
+    // revalidatePath('/blog');
+
+    console.log('Successfully revalidated site path: /');
+    return NextResponse.json({ revalidated: true, now: Date.now() });
+}
+```
+
+## src/app/api/send-demo/route.ts
+
+```typescript
+import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
+import { createLead } from '@/lib/db';
+
+function getResend(): Resend | null {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return null;
+  return new Resend(key);
+}
+
+export async function POST(req: NextRequest) {
+  try {
+    const { email, summary } = await req.json();
+
+    if (!email || !email.includes('@')) {
+      return NextResponse.json(
+        { error: 'Valid email is required.' },
+        { status: 400 }
+      );
+    }
+
+    const resend = getResend();
+    let emailFailed = false;
+
+    if (resend) {
+      try {
+        await resend.emails.send({
+          from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
+          to: process.env.CONTACT_EMAIL || 'delivered@resend.dev',
+          subject: `Demo Request from ${email}`,
+          html: `
+            <div style="background:#0a0a0a;color:#22c55e;font-family:monospace;padding:20px;border:1px solid #22c55e;">
+              <h2 style="color:#eab308;">SECURE DEMO REQUEST</h2>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Conversation Summary:</strong></p>
+              <pre style="background:#111;padding:10px;border-left:2px solid #22c55e;white-space:pre-wrap;">${summary || 'No conversation history.'}</pre>
+              <p style="margin-top:20px;color:#888;">Action required: Prepare architecture breakdown and schedule demo.</p>
+            </div>
+          `,
+        });
+
+        await resend.emails.send({
+          from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
+          to: email,
+          subject: 'Your Security Architecture Overview — Demo Request Received',
+          html: `
+            <div style="background:#0a0a0a;color:#22c55e;font-family:monospace;padding:30px;max-width:600px;margin:0 auto;">
+              <div style="border:1px solid #22c55e;padding:20px;">
+                <h1 style="color:#eab308;font-size:24px;margin:0 0 20px 0;">SECURE INTELLIGENT SYSTEMS</h1>
+                <p style="color:#22c55e;font-size:14px;">Your demo request has been received. A senior security architect will prepare a custom architecture breakdown for your environment.</p>
+                <div style="background:#111;padding:15px;margin:20px 0;border-left:2px solid #22c55e;">
+                  <p style="margin:0;color:#888;font-size:12px;">What to expect:</p>
+                  <ul style="margin:10px 0;padding-left:20px;color:#22c55e;font-size:13px;">
+                    <li>Personalized attack surface analysis</li>
+                    <li>Check Point + Splunk stack recommendations</li>
+                    <li>AI automation opportunities for your workflow</li>
+                    <li>Custom architecture diagram</li>
+                  </ul>
+                </div>
+                <a href="https://calendly.com/your-booking-link" style="display:inline-block;background:#22c55e;color:#000;padding:12px 24px;text-decoration:none;font-weight:bold;font-size:14px;margin-top:10px;">Schedule Your Demo</a>
+                <p style="color:#555;font-size:11px;margin-top:30px;">This is an automated response from J.A.R.V.I.S. — Secure Intelligent Systems</p>
+              </div>
+            </div>
+          `,
+        });
+      } catch (emailErr) {
+        console.error('Demo email send error:', emailErr);
+        emailFailed = true;
+      }
+    }
+
+    try {
+      await createLead({
+        name: email.split('@')[0] || 'Demo Request',
+        email,
+        message: summary || 'Demo request via chatbot',
+        source: 'demo',
+      });
+    } catch (dbError) {
+      console.error('DB lead insert error (demo):', dbError);
+    }
+
+    if (!resend) {
+      return NextResponse.json(
+        { error: 'Email service is not configured.' },
+        { status: 503 }
+      );
+    }
+
+    if (emailFailed) {
+      return NextResponse.json(
+        { error: 'Failed to send demo request.' },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Send demo error:', error);
+    return NextResponse.json(
+      { error: 'Failed to send demo request.' },
+      { status: 500 }
+    );
+  }
+}
+```
+
+## src/app/blog/layout.tsx
+
+```tsx
+// src/app/blog/layout.tsx
+import React from 'react';
+import Link from 'next/link';
+
+// This applies the terminal shell styles to everything under /blog
+export default function BlogLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div 
+      // Core styling: Black background, monospace font, green text, padding
+      className="min-h-screen bg-black/90 font-mono text-green-400 p-8"
+    >
+      <header className="border-b-4 border-green-400 pb-2 mb-6 flex justify-between items-end">
+        <div>
+          <h1 className="text-yellow-400 text-4xl font-extrabold tracking-wider">
+            {`C:\\BLOG.EXE`}
+          </h1>
+          <p className="text-sm mt-1">
+            {`// Secure Launchpad Data Stream`}
+          </p>
+        </div>
+        <Link 
+          href="/" 
+          className="mb-1 text-xs md:text-sm bg-red-900/30 border border-red-500 text-red-400 px-3 py-1 hover:bg-red-900/50 hover:text-red-300 transition-colors uppercase font-bold"
+        >
+          [ ← RETURN_TO_TERMINAL ]
+        </Link>
+      </header>
+      
+      <main className="max-w-4xl mx-auto">
+        {children}
+      </main>
+      
+    </div>
+  );
+}
+```
+
+## src/app/blog/page.tsx
+
+```tsx
+// src/app/blog/page.tsx (Sanity Version)
+
+import Link from 'next/link';
+import { sanityFetch } from '@/utils/sanityClient';
+import { groq } from 'next-sanity';
+
+// Define the type for the metadata expected from Sanity
+interface PostMetadata {
+  title: string;
+  slug: { current: string };
+  publishedAt: string;
+}
+
+// Query to get all post titles and slugs, sorted by publish date
+const metadataQuery = groq`
+  *[_type == "post"] | order(publishedAt desc) {
+    title,
+    slug,
+    publishedAt
+  }
+`;
+
+export default async function BlogIndexPage() {
+    // Fetch the list of posts from Sanity
+    const posts = await sanityFetch<PostMetadata[]>({ query: metadataQuery }); 
+
+    return (
+        <div className="pt-4 pb-12">
+            
+            {/* ... (Header / Directory Path - unchanged) ... */}
+            <p className="text-yellow-400 text-lg mb-4">
+                Directory of C:\BLOG\DATASTREAM
+            </p>
+
+            {/* List Header - unchanged */}
+            <div className="flex text-white font-bold border-b border-t border-green-400 py-1 mb-2 text-sm uppercase">
+                <span className="w-1/12 text-center">Icon</span>
+                <span className="w-6/12">File Name</span>
+                <span className="w-2/12">Date Created</span>
+                <span className="w-3/12">Status</span>
+            </div>
+
+            {/* Post List */}
+            <div className="flex flex-col space-y-2">
+                {posts.map((post) => (
+                    <Link 
+                        key={post.slug.current} 
+                        href={`/blog/${post.slug.current}`}
+                        // ... (styling classes - unchanged) ...
+                        className="flex text-green-400 hover:bg-green-400 hover:text-black transition duration-150 ease-in-out cursor-pointer text-sm"
+                    >
+                        {/* 1. Icon */}
+                        <span className="w-1/12 text-center text-yellow-400">📄</span>
+                        
+                        {/* 2. File Name (Link) */}
+                        <span className="w-6/12 font-bold hover:underline">
+                            {post.title}
+                        </span>
+                        
+                        {/* 3. Date */}
+                        <span className="w-2/12">
+                            {new Date(post.publishedAt).toLocaleDateString()}
+                        </span>
+                        
+                        {/* 4. Status */}
+                        <span className="w-3/12 text-green-200">
+                            OK
+                        </span>
+                    </Link>
+                ))}
+            </div>
+
+            {/* ... (Footer Prompt - unchanged) ... */}
+            <p className="mt-8 text-white font-bold">
+                C:\BLOG\DATASTREAM$: <span className="animate-pulse">_</span>
+            </p>
+        </div>
+    );
+}
+```
+
+## src/app/blog/[slug]/page.tsx
+
+```tsx
+// src/app/blog/[slug]/page.tsx
+import { PortableText } from '@portabletext/react'; 
+// The type import is commented out to prevent a possible build issue, as intended.
+// import type { PortableTextContent } from '@portabletext/types'; 
+import { sanityFetch, client, urlForImage } from '../../../utils/sanityClient'; 
+import Image from 'next/image'; 
+import { groq } from 'next-sanity'; 
+import components from '../../components/BlogPortableText/PortableTextComponents'; 
+
+// --- Configuration & Types ---
+
+const postQuery = groq`
+    *[_type == "post" && slug.current == $slug][0] {
+        title,
+        slug,
+        publishedAt,
+        body,
+        mainImage {
+            asset->{_ref}, 
+            alt
+        }
+    }
+`;
+
+// Define the type for the data structure you expect from Sanity
+interface Post {
+    title: string;
+    slug: { current: string };
+    publishedAt: string;
+    // Retaining the fix for @typescript-eslint/no-explicit-any
+    body: any; // eslint-disable-line @typescript-eslint/no-explicit-any 
+    mainImage?: {
+        asset: {
+            _ref: string;
+        };
+        alt?: string;
+    };
+}
+
+// 2. Define static paths for Next.js build
+export async function generateStaticParams() {
+    const slugs: string[] = await client.fetch(
+        groq`*[_type == "post" && defined(slug.current)][].slug.current`
+    );
+    return slugs.map((slug) => ({ slug }));
+}
+
+
+// 🛑 ABSOLUTE FINAL FIX: Disable the linter for this one line to force compilation.
+// This resolves the "Unexpected any" error at line 53.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any 
+export default async function BlogPostPage(props: any) { 
+    // Cast params internally for safe usage within the function body.
+    const params = props.params as { slug: string };
+    
+    // 3. Fetch the post data
+    const post = await sanityFetch<Post>({
+        query: postQuery,
+        params: { slug: params.slug },
+    });
+
+    // ROBUST ERROR CHECK: Prevents ReferenceError if no post is found
+    if (!post) {
+        return <p className="text-red-500 p-8">ERROR 404: POST NOT FOUND IN DATASTREAM</p>;
+    }
+
+    const formattedDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+
+    return (
+        // SCROLL FIX: Explicitly set height to viewport height minus the 64px (py-8) padding.
+        <div 
+            className="py-8 px-10 w-full overflow-y-auto"
+            style={{ height: 'calc(100vh - 64px)' }} 
+        > 
+            
+            {/* 🛑 CRITICAL GUARD CLAUSE FIX: Only render if asset reference exists 🛑 */}
+            {post.mainImage && post.mainImage.asset && post.mainImage.asset._ref && (
+                <div className="mb-8 border-b-2 border-green-400 pb-4">
+                    <Image
+                        className="w-full h-auto object-cover border-2 border-green-400 p-1"
+                        // This is now safe because we checked for the '_ref'
+                        src={urlForImage(post.mainImage).width(1200).url()} 
+                        alt={post.mainImage.alt || post.title}
+                        width={1200}
+                        height={600}
+                        priority
+                    />
+                </div>
+            )}
+            
+            {/* Post Title */}
+            <h2 className="text-4xl text-yellow-400 mb-2 font-bold">{post.title}</h2>
+            <p className="text-xs mb-8 border-b border-green-400 pb-2">
+                LOGGED: {formattedDate} | STATUS: OK 
+            </p>
+
+            {/* Render Sanity's block content with custom components for images/links/styles */}
+            <div className="prose prose-terminal">
+                <PortableText 
+                    value={post.body} 
+                    components={components} 
+                />
+            </div>
+            
+            {/* Command Line Footer */}
+            <p className="mt-8 text-white font-bold">
+                C:\BLOG\READ_COMPLETE$: <span className="animate-pulse">_</span>
+            </p>
+        </div>
+    );
+}
+```
+
+## src/app/ClientLayoutShell.tsx
+
+```tsx
+'use client'
+
+import { usePathname } from 'next/navigation'
+import { GoogleAnalytics } from '@next/third-parties/google'
+import Script from 'next/script'
+import { PostHogProvider } from './providers'
+import PostHogPageView from './PostHogPageView'
+import React from 'react'
+
+export default function ClientLayoutShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname()
+  const isStudio = pathname?.startsWith('/studio')
+
+  if (isStudio) {
+    return <>{children}</>
+  }
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Guardian Protocol",
+    "image": "https://guardian-protocol.com/images/M4n.png",
+    "description": "Enterprise-grade security, high-performance web development, and data-driven insights.",
+    "url": "https://guardian-protocol.com",
+    "telephone": "+27-000-000-0000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Your Business Address",
+      "addressLocality": "Johannesburg",
+      "addressRegion": "Gauteng",
+      "postalCode": "2000",
+      "addressCountry": "ZA"
+    },
+    "priceRange": "$$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "17:00"
+    }
+  }
+
+  return (
+    <>
+      <div className="scanlines" />
+      <div className="vignette" />
+      <PostHogProvider>
+        <PostHogPageView />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </PostHogProvider>
+      <GoogleAnalytics gaId="G-XXXXXXXXXX" />
+      <Script id="clarity-script" strategy="afterInteractive">
+        {`
+          (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "YOUR_CLARITY_ID");
+        `}
+      </Script>
+    </>
+  )
+}
+
+```
+
+## src/app/components/BackgroundAudio/BackgroundAudio.tsx
+
+```tsx
+'use client';
+
+import { RefObject } from 'react';
+
+// 🚨 UPDATED PATH 🚨
+const AUDIO_FILE_PATH = "/audio/basement-dweller.mp3";
+//  
+
+interface BackgroundMusicProps {
+  // FIX: Add '| null' to the RefObject type to match the useRef<HTMLAudioElement | null>(null) 
+  // definition in the parent component (page.tsx).
+  audioRef: RefObject<HTMLAudioElement | null>;
+}
+
+export default function BackgroundAudio({ audioRef }: BackgroundMusicProps) {
+  return (
+    <audio 
+      ref={audioRef} 
+      src={AUDIO_FILE_PATH} 
+      preload="auto" 
+      loop
+      style={{ display: 'none' }} 
+    />
+  );
+}
+```
+
+## src/app/components/BlogPortableText/PortableTextComponents.tsx
+
+```tsx
+// components/BlogPortableText/PortableTextComponents.tsx
+
+import type { PortableTextComponents } from '@portabletext/react'
+import Image from 'next/image' 
+import { urlForImage } from '../../../utils/sanityClient' // Adjust path if necessary
+
+const components: PortableTextComponents = {
+  // Renders custom types defined in blockContent.ts
+  types: {
+    // Component to render inline images
+    image: ({ value }) => {
+      if (!value?.asset?._ref) {
+        return null;
+      }
+      return (
+        <div className="my-8 flex justify-center">
+          <Image
+            className="w-full h-auto object-cover max-w-lg border-2 border-green-400 p-1"
+            src={urlForImage(value).width(800).url()}
+            alt={value.alt || 'Blog Post Image'}
+            width={800}
+            height={500}
+            style={{ filter: "grayscale(100%) sepia(20%) hue-rotate(90deg)" }} 
+          />
+        </div>
+      );
+    },
+    // Component to render the custom horizontal rule
+    horizontalRule: () => (
+        <hr className="border-t-2 border-green-400 my-8" />
+    ),
+  },
+  
+  // Custom styling for standard HTML blocks (e.g., headings, paragraphs)
+  block: {
+    // You can override default headers here to add Tailwind classes
+    h1: ({ children }) => <h1 className="text-4xl text-yellow-400 mb-4 font-bold">{children}</h1>,
+    h2: ({ children }) => <h2 className="text-3xl text-yellow-400 mb-3 mt-6 font-bold">{children}</h2>,
+    h3: ({ children }) => <h3 className="text-2xl text-green-400 mb-2 mt-4 font-bold">{children}</h3>,
+    normal: ({ children }) => <p className="mb-4">{children}</p>, // Add margin below paragraphs
+  },
+  
+  // Custom styling for annotations (e.g., links, which are 'mark' types)
+  marks: {
+    // Renders external links with terminal styling
+    link: ({value, children}) => {
+      const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
+      return (
+        <a 
+          href={value?.href} 
+          target={target} 
+          rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+          className="text-yellow-400 underline hover:text-white"
+        >
+          {children}
+        </a>
+      )
+    },
+    // Renders inline code with terminal styling
+    code: ({children}) => (
+        <code className="bg-gray-800 text-green-300 px-1 py-0.5 rounded text-sm">{children}</code>
+    ),
+  },
+
+  // Custom styling for lists
+  list: {
+    bullet: ({children}) => <ul className="list-disc list-inside ml-4 my-4">{children}</ul>,
+    number: ({children}) => <ol className="list-decimal list-inside ml-4 my-4">{children}</ol>,
+  },
+
+  // Custom styling for list items
+  listItem: {
+    bullet: ({children}) => <li className="mb-1">{children}</li>,
+    number: ({children}) => <li className="mb-1">{children}</li>,
+  }
+}
+
+export default components;
+```
+
+## src/app/components/CardGame/CardDisplay.tsx
+
+```tsx
+'use client';
+
+import { useGLTF, Html } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber'; 
+import * as THREE from 'three';
+import { useRef } from 'react';
+import { CARD_SYNOPSES } from './CardSynopses';
+
+// --- Global Configuration ---
+const CARD_MODELS = [
+    "KingOfClubs.glb", 
+    "QueenOfClubs.glb", 
+    "JackOfHearts.glb", 
+    "AceOfSpades.glb", 
+    "10OfHearts.glb", 
+];
+
+// Reverting to Top-Left Configuration for the Analysis (Rotating) state:
+// Actually, we want it center or prominent if we are reading text.
+// Let's keep it somewhat centered but maybe zoomed in?
+// The StaticCamera in CardGame fixes the view.
+const ANALYZE_POSITION: [number, number, number] = [0, 0, 2]; // Center and closer
+const ANALYZE_SCALE = 0.6;
+
+interface CardDisplayProps {
+    index: number;
+    position: [number, number, number];
+    isDisplayed?: boolean; 
+    isClicked?: boolean; 
+    isAnalyzed: boolean; 
+    isHovered?: boolean;
+    onLaunch?: () => void;
+}
+
+export default function CardDisplay({ index, position, isAnalyzed, isHovered, onLaunch }: CardDisplayProps) {
+    const modelPath = CARD_MODELS[index];
+    const groupRef = useRef<THREE.Group>(null); 
+
+    // Load model
+    const gltf = useGLTF(`/models/${modelPath}`);
+    const scene = gltf.scene;
+
+    useFrame((state, delta) => {
+        if (groupRef.current) {
+            // Target Rotation Y:
+            const targetRotY = isAnalyzed ? 0 : Math.PI;
+
+            // Target Position:
+            const targetPos = isAnalyzed ? new THREE.Vector3(...ANALYZE_POSITION) : new THREE.Vector3(...position);
+
+            // Target Scale:
+            const handScale = 0.25; 
+            const targetScale = isAnalyzed ? ANALYZE_SCALE : handScale;
+
+            // Smooth Interpolation (Lerp)
+            // 1. Rotation
+            if (isAnalyzed) {
+                // If analyzed, force target rotation
+                groupRef.current.rotation.y = THREE.MathUtils.lerp(
+                    groupRef.current.rotation.y, 
+                    targetRotY, 
+                    delta * 5
+                );
+            } else if (!isHovered) {
+                // If NOT analyzed AND NOT hovered, go to base rotation
+                groupRef.current.rotation.y = THREE.MathUtils.lerp(
+                    groupRef.current.rotation.y, 
+                    targetRotY, 
+                    delta * 5
+                );
+            }
+
+            // 2. Position
+            if (isAnalyzed) {
+                // If analyzed, force target position
+                groupRef.current.position.lerp(targetPos, delta * 5);
+            } else if (!isHovered) {
+                // If NOT analyzed AND NOT hovered, go to base position
+                groupRef.current.position.lerp(targetPos, delta * 5);
+            }
+
+            // 3. Scale
+            const currentScale = groupRef.current.scale.x;
+            const newScale = THREE.MathUtils.lerp(currentScale, targetScale, delta * 5);
+            groupRef.current.scale.set(newScale, newScale, newScale);
+            
+            // 4. Hover Rotation (Only if NOT analyzed)
+            // When hovered, rotate slightly to show a bit of the side/face (peek)
+            if (!isAnalyzed && isHovered) {
+                 // Peek rotation: Rotate slightly away from Math.PI towards 0
+                 const hoverTargetRotY = Math.PI - 0.5; 
+                 groupRef.current.rotation.y = THREE.MathUtils.lerp(
+                     groupRef.current.rotation.y,
+                     hoverTargetRotY,
+                     delta * 8 
+                 );
+                 
+                 // Also lift slightly?
+                 const hoverTargetY = position[1] + 0.3; 
+                 groupRef.current.position.y = THREE.MathUtils.lerp(
+                    groupRef.current.position.y,
+                    hoverTargetY,
+                    delta * 8
+                 );
+            }
+        }
+    });
+
+    if (!scene) return null;
+    
+    // We initialize with the "start" values, but useFrame handles the updates
+    // So we don't need to pass position/scale directly to the group prop anymore, 
+    // EXCEPT for the initial render to prevent jumping.
+    // However, if we want smooth transition FROM the start, we can let useFrame handle it from 0.
+
+    const synopsis = CARD_SYNOPSES[index];
+
+    return (
+        <group 
+            ref={groupRef}
+            // Initial position/rotation/scale can be set here, but useFrame will override.
+            // Setting initial values to match "Not Analyzed" state prevents jump on load.
+            position={position} 
+            rotation={[0, Math.PI, 0]} 
+            scale={[0.25, 0.25, 0.25]}
+        >
+            {/* renderOrder=1 ensures the analyzed card is always drawn on top */}
+            <primitive object={scene.clone()} renderOrder={isAnalyzed ? 1 : 0} /> 
+
+            {/* Content Reveal on Flip */}
+            {isAnalyzed && (
+                <Html 
+                    position={[0, 0, 0.2]} // Slightly in front of the card face
+                    transform 
+                    occlude 
+                    center
+                    distanceFactor={1.5}
+                >
+                    <div className="w-64 bg-black/90 border border-green-500 p-4 text-[10px] md:text-xs font-mono text-green-400 shadow-lg shadow-green-900/50 flex flex-col gap-2">
+                        <div className="whitespace-pre-wrap leading-tight">
+                            {synopsis}
+                        </div>
+                        <button 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onLaunch?.();
+                            }}
+                            className="mt-2 w-full py-1 bg-green-700 text-black font-bold hover:bg-green-500 transition-colors uppercase"
+                        >
+                            LAUNCH_MODULE &gt;&gt;
+                        </button>
+                    </div>
+                </Html>
+            )}
+        </group>
+    );
+}
+
+// --- Preloading ---
+CARD_MODELS.forEach(model => useGLTF.preload(`/models/${model}`));
+
+```
+
+## src/app/components/CardGame/CardGame.tsx
+
+```tsx
+'use client';
+
+import { useState, useCallback, useLayoutEffect, useEffect } from 'react';
+import { Canvas, useThree } from '@react-three/fiber'; 
+import { Environment } from '@react-three/drei'; 
+import * as THREE from 'three';
+import CardDisplay from './CardDisplay'; 
+import Link from 'next/link'; 
+import { useRouter } from 'next/navigation';
+
+// --- Configuration ---
+const CARD_SYNOPSIS_TITLES_DATA = [
+    'SECURE CORE: KING OF CLUBS', 
+    'AUTOMATION OPS: QUEEN OF CLUBS', 
+    'AI INTEGRATION: JACK OF HEARTS', 
+    'GUARDIAN AUDIT: ACE OF SPADES', 
+    'FUTURE STACK: TEN OF HEARTS'
+];
+
+// Mapping of card index to redirect URLs
+const CARD_URLS = [
+    '/services/secure-core',        // 0
+    '/services/automation-ops',     // 1
+    '/services/ai-integration',     // 2
+    '/services/guardian-audit',     // 3
+    '/services/future-stack'        // 4
+];
+
+interface CardGameProps {
+    onExit: () => void;
+}
+
+// --- Hand Position/Rotation Setup for Fanned Effect ---
+const BASE_HAND_Y = 0.01; 
+const HAND_POSITIONS_X: number[] = [-1.5, -0.75, 0, 0.75, 1.5]; 
+const CARD_ROTATIONS_Z: number[] = [0.15, 0.05, 0, -0.05, -0.15]; 
+
+const HAND_POSITIONS: [number, number, number][] = HAND_POSITIONS_X.map(x => [x, BASE_HAND_Y, 0]);
+
+// --- STATIC CAMERA ---
+function StaticCamera({ zoomLevel }: { zoomLevel: number }) {
+    const { camera, size, invalidate } = useThree(); 
+    
+    const updateCamera = useCallback(() => {
+        const fixedPosition: [number, number, number] = [0, 0, 5]; 
+        const fixedTarget: [number, number, number] = [0, 0, 0];
+        const frustumSize = 7; 
+        
+        camera.position.set(...fixedPosition);
+        camera.lookAt(...fixedTarget);
+        camera.zoom = zoomLevel; // Use dynamic zoom
+        
+        if (camera instanceof THREE.OrthographicCamera) {
+            const aspect = size.width / size.height;
+            
+            camera.left = -frustumSize * aspect / 2;
+            camera.right = frustumSize * aspect / 2;
+            camera.top = frustumSize / 2;
+            camera.bottom = -frustumSize / 2;
+        }
+        
+        camera.updateProjectionMatrix();
+        invalidate(); 
+        
+    }, [camera, size.width, size.height, invalidate, zoomLevel]);
+
+
+    useLayoutEffect(() => {
+        updateCamera();
+    }, [updateCamera]); 
+
+    return null; 
+}
+
+
+// --- Interactive Card Component ---
+interface InteractiveCardProps {
+    index: number;
+    onCardClick: (index: number) => void;
+    onCardHover: (index: number | null) => void;
+    onCardLaunch: (index: number) => void;
+    position: [number, number, number];
+    cardRotationZ: number; 
+    isFlipped: boolean;
+    isHovered: boolean;
+}
+
+function InteractiveCard({ index, onCardClick, onCardHover, onCardLaunch, position, cardRotationZ, isFlipped, isHovered }: InteractiveCardProps) {
+    return (
+        <group 
+            onClick={(e) => {
+                e.stopPropagation();
+                onCardClick(index);
+            }}
+            rotation={[0, 0, cardRotationZ]} 
+            // Ensures cursor changes on hover and prevents event bleed-through
+            onPointerOver={(e) => {
+                e.stopPropagation(); 
+                document.body.style.cursor = 'pointer';
+                onCardHover(index);
+            }}
+            onPointerOut={(e) => {
+                e.stopPropagation(); 
+                document.body.style.cursor = 'default';
+                onCardHover(null);
+            }}
+        >
+            <CardDisplay 
+                index={index} 
+                position={position} 
+                isDisplayed={false} 
+                isClicked={false}
+                isAnalyzed={isFlipped} // Reuse isAnalyzed logic for the flip/focus state
+                isHovered={isHovered} // Pass hover state
+                onLaunch={() => onCardLaunch(index)}
+            />
+        </group>
+    );
+}
+
+
+export default function CardGame({ onExit }: CardGameProps) {
+    const router = useRouter();
+    const [message, setMessage] = useState("SELECT A SERVICE CARD TO INSPECT");
+    const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+    const handleCardClick = useCallback((index: number) => {
+        if (flippedIndex === index) {
+            // If already flipped, maybe we want to launch?
+            // For now, let's just toggle off or do nothing (launch is handled by button on card)
+            // But user might expect clicking again to close.
+            setFlippedIndex(null);
+            setMessage("SELECT A SERVICE CARD TO INSPECT");
+        } else {
+            setFlippedIndex(index);
+            setMessage(`INSPECTING: ${CARD_SYNOPSIS_TITLES_DATA[index]}...`);
+        }
+    }, [flippedIndex]);
+
+    const handleCardHover = useCallback((index: number | null) => {
+        setHoveredIndex(index);
+    }, []);
+
+    const handleLaunch = useCallback((index: number) => {
+        const url = CARD_URLS[index];
+        if (url) {
+            setMessage(`LAUNCHING MODULE: ${CARD_SYNOPSIS_TITLES_DATA[index]}...`);
+            router.push(url);
+        }
+    }, [router]);
+
+    // Determine which index to highlight in the list
+    const activeIndex = flippedIndex !== null ? flippedIndex : hoveredIndex;
+
+    const [zoomLevel, setZoomLevel] = useState(1.8);
+    const [isZoomed, setIsZoomed] = useState(false);
+
+    // Zoom on click, reset on close
+    useEffect(() => {
+        if (flippedIndex !== null) {
+            setZoomLevel(2.5);
+            setIsZoomed(true);
+        } else {
+            setZoomLevel(1.8);
+            setIsZoomed(false);
+        }
+    }, [flippedIndex]);
+
+    const handleZoomToggle = useCallback(() => {
+        setZoomLevel(prev => prev === 1.8 ? 2.5 : 1.8);
+    }, []);
+
+    // Handle Escape Key to Exit
+    useLayoutEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                if (flippedIndex !== null) {
+                    setFlippedIndex(null); // Close card inspection first
+                } else {
+                    onExit(); // Exit game
+                }
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [onExit, flippedIndex]);
+
+    return (
+        <> 
+            <div className="flex flex-col h-full w-full p-2 bg-black relative">
+                <div className="flex justify-between items-center mb-2 pb-2 border-b border-green-700">
+                    <h2 className="text-xl text-yellow-400 font-bold">SERVICE CATALOG: services.exe</h2>
+                    <div className="flex space-x-2"> 
+                        <Link 
+                            href="/cv/OWEN-VAN-WYK-RESUME.pdf"
+                            download 
+                            className="px-3 py-1 text-xs md:text-sm transition-colors font-bold text-black bg-yellow-500 hover:bg-yellow-400 border border-yellow-600 uppercase"
+                        >
+                            [🗁] SYSTEM_CAPABILITIES.PDF
+                        </Link>
+                        <button 
+                            onClick={onExit} 
+                            className="px-3 py-1 text-xs md:text-sm text-white bg-red-600 hover:bg-red-400 border border-red-600 transition-colors font-bold"
+                        >
+                            [X] EXIT
+                        </button>
+                    </div>
+                </div>
+
+                <div className="flex-1 relative border border-green-700 bg-gray-900 overflow-hidden flex flex-col md:flex-row">
+                    
+                    {/* ZOOM CONTROL OVERLAY */}
+                    <div className="absolute top-4 left-4 z-30">
+                         <button 
+                            onClick={handleZoomToggle}
+                            className="p-2 border border-green-500 bg-black/80 text-green-400 hover:bg-green-900/50 hover:text-white transition-colors text-xs font-mono uppercase"
+                         >
+                            [ {isZoomed ? '-' : '+'} ] ZOOM_OPTICS
+                         </button>
+                    </div>
+
+                    {/* LEFT SIDE: 3D CARDS */}
+                    <div className="flex-1 h-full relative z-10 order-2 md:order-1">
+                        <Canvas 
+                            frameloop="demand" 
+                            orthographic 
+                            className="w-full h-full"
+                            raycaster={{ 
+                                params: { 
+                                    Mesh: { material: true },
+                                    Line: { threshold: 0.1 }, 
+                                    LOD: {},
+                                    Points: { threshold: 0.1 }, 
+                                    Sprite: { threshold: 0.1 }, 
+                                } 
+                            }}
+                        >
+                            <StaticCamera zoomLevel={zoomLevel} />
+                            <ambientLight intensity={0.5} />
+                            <directionalLight position={[10, 10, 5]} intensity={1} />
+                            <Environment preset="night" />
+
+                            {/* Renders cards in hand */}
+                            {HAND_POSITIONS.map((pos, index) => (
+                                <InteractiveCard
+                                    key={index}
+                                    index={index}
+                                    onCardClick={handleCardClick}
+                                    onCardHover={handleCardHover}
+                                    onCardLaunch={handleLaunch}
+                                    position={pos}
+                                    cardRotationZ={CARD_ROTATIONS_Z[index]}
+                                    isFlipped={flippedIndex === index}
+                                    isHovered={hoveredIndex === index}
+                                />
+                            ))}
+                            
+                            {/* Plane to catch raycasts for empty space clicks (optional, but helps with UX) */}
+                            <mesh position={[0, 0, -1]} onClick={(e) => { e.stopPropagation(); setFlippedIndex(null); }}>
+                                <planeGeometry args={[50, 50]} />
+                                <meshBasicMaterial visible={false} />
+                            </mesh>
+                        </Canvas>
+                    </div>
+
+                    {/* RIGHT SIDE: LADY JUSTICE & SERVICE LIST */}
+                    <div className="w-full md:w-1/3 h-1/3 md:h-full border-t md:border-t-0 md:border-l border-green-800 bg-black/80 flex flex-col p-4 z-20 overflow-y-auto order-1 md:order-2">
+                        
+                        <div className="flex flex-col items-center mb-4 md:mb-6">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img 
+                                src="/images/lady-justice.png" 
+                                alt="Lady Justice" 
+                                className="w-20 h-20 md:w-40 md:h-40 object-contain mb-2 opacity-80"
+                            />
+                            <p className="text-green-500 text-[10px] md:text-xs font-mono text-center">
+                                {'// GUARDIAN_PROTOCOL_ACTIVE'}
+                            </p>
+                        </div>
+
+                        <div className="space-y-2 md:space-y-3">
+                            <p className="text-yellow-400 font-bold border-b border-yellow-400/30 pb-1 mb-2 text-xs md:text-sm">
+                                AVAILABLE MODULES
+                            </p>
+                            {CARD_SYNOPSIS_TITLES_DATA.map((title, idx) => {
+                                const isActive = activeIndex === idx;
+                                return (
+                                    <div 
+                                        key={idx} 
+                                        className={`text-[10px] md:text-xs font-mono cursor-pointer p-1 transition-colors group flex items-center
+                                            ${isActive ? 'bg-green-900/50 border-l-2 border-green-400' : 'hover:bg-green-900/30'}
+                                        `}
+                                        onClick={() => handleCardClick(idx)}
+                                        onMouseEnter={() => setHoveredIndex(idx)}
+                                        onMouseLeave={() => setHoveredIndex(null)}
+                                    >
+                                        <span className={`mr-2 ${isActive ? 'text-green-300 font-bold' : 'text-green-600 group-hover:text-green-400'}`}>
+                                            {`[0${idx}]`}
+                                        </span>
+                                        <span className={`${isActive ? 'text-white font-bold' : 'text-gray-300 group-hover:text-white'}`}>
+                                            {title.split(':')[0]}
+                                        </span>
+                                        {isActive && (
+                                            <span className="ml-auto text-green-400 animate-pulse">
+                                                &lt;&lt;
+                                            </span>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </div>
+
+                        <div className="mt-auto pt-4 border-t border-green-800 hidden md:block">
+                             <p className="text-[10px] text-gray-500">
+                                CLICK A CARD OR MODULE TO INITIALIZE.
+                             </p>
+                        </div>
+                    </div>
+
+                </div>
+                
+                {/* Status Area */}
+                <div className="mt-2 text-sm font-mono text-yellow-400">
+                    {message}
+                </div>
+            </div>
+        </>
+    );
+}
+
+```
+
+## src/app/components/CardGame/CardSynopses.tsx
+
+```tsx
+export const CARD_SYNOPSES: string[] = [
+    // 0. King (K) - The Secure Core -> PLATFORM ENGINEERING
+    "PLATFORM ENGINEERING (SECURE-BY-DESIGN):\n" +
+    "- FULL-STACK ARCHITECTURE: Secure-first development for fintech, medical, & legal.\n" +
+    "- ZERO TRUST: Identity-aware proxies, IAM integration, and encrypted data states.\n" +
+    "- RESILIENCE: Cloud-native infrastructure with Kubernetes & auto-scaling.",
+
+    // 1. Queen (Q) - Automation Ops -> CYBER DEFENSE
+    "CYBER DEFENSE (THREAT MANAGEMENT):\n" +
+    "- CHECK POINT INFINITY: Quantum, CloudGuard, and Harmony deployment.\n" +
+    "- THREAT HUNTING: Proactive monitoring and incident response workflows.\n" +
+    "- GOVERNANCE: Automated compliance auditing for SOC2, ISO27001, and HIPAA.",
+
+    // 2. Jack (J) - AI Integration -> AI AUTOMATION
+    "AI AUTOMATION (AGENTIC SYSTEMS):\n" +
+    "- AUTONOMOUS AGENTS: Custom LLM workflows for business process automation.\n" +
+    "- RAG PIPELINES: Secure semantic search across fragmented knowledge bases.\n" +
+    "- AI SOC ASSISTANT: Intelligent threat triage and automated remediation.",
+
+    // 3. Ace (A) - The Guardian Audit -> ENTERPRISE STACKS
+    "ENTERPRISE STACKS (SIEM/SOAR):\n" +
+    "- SPLUNK OPERATIONS: SIEM monitoring, SOAR automation, and ITSI observability.\n" +
+    "- INFRASTRUCTURE AS CODE: Secure deployment via Terraform and Ansible.\n" +
+    "- LOG AGGREGATION: Centralized visibility across multi-cloud environments.",
+
+    // 4. Ten (10) - The Future Stack -> MODERN ARCHITECTURE
+    "MODERN ARCHITECTURE (RAPID DEPLOY):\n" +
+    "- SECURE SAAS: Launch enterprise-grade platforms with high-end UI/UX.\n" +
+    "- MOBILE SECURITY: Cloud-secure apps with end-to-end encryption.\n" +
+    "- TECH STACK: Next.js 15, Rust, Go, Python, and Edge Computing."
+];
+
+```
+
+## src/app/components/ChatbotArea/ChatbotArea.tsx
+
+```tsx
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
+import JarvisAvatar, { JarvisEmotion } from '../JarvisAvatar/JarvisAvatar';
+import Typewriter from '../Typewriter/Typewriter';
+
+const initialMessageText = "Hello, I am J.A.R.V.I.S., an Interactive Interface designed to manage your secure systems and AI-driven defense protocols.";
+
+interface Message {
+    id: string;
+    text: string;
+    sender: 'user' | 'jarvis';
+    timestamp: number;
+}
+
+interface ChatMessage {
+    role: 'user' | 'assistant';
+    content: string;
+}
+
+interface ChatbotAreaProps {
+    status: string;
+    currentTime: string;
+}
+
+const SUGGESTED_PROMPTS = [
+    "How would you secure my SaaS platform?",
+    "Show security capabilities",
+    "Explain Check Point integration",
+    "Simulate a threat detection scenario",
+    "What's missing from my cloud security?",
+    "How does Splunk SOAR work?",
+];
+
+const getEmotionFromText = (text: string, isThinkingNow: boolean): JarvisEmotion => {
+    if (isThinkingNow) return 'idle';
+    return 'talking';
+};
+
+const processQueryFallback = (query: string): string => {
+    const lowerQuery = query.toLowerCase();
+    if (lowerQuery === 'help' || lowerQuery === 'commands') {
+        return "COMMANDS AVAILABLE:\n- Ask about cybersecurity services\n- Ask about AI automation\n- Ask about platform engineering\n- Ask about Check Point or Splunk\n- Type 'audit' to request a security assessment";
+    }
+    if (lowerQuery.includes('checkpoint') || lowerQuery.includes('check point') || lowerQuery.includes('infinity')) {
+        return "CHECK POINT ARCHITECTURE: Infinity Platform, Harmony (Email, Mobile, SaaS, Endpoint, SASE), CloudGuard (Network Security, WAF), Quantum (Force, Spark, IoT, Hyperscale/Maestro). Status: Ready for Zero-Trust enforcement.";
+    }
+    if (lowerQuery.includes('splunk') || lowerQuery.includes('siem') || lowerQuery.includes('soar')) {
+        return "SPLUNK OPERATIONS: SIEM for real-time monitoring, SOAR for automated response, Observability for platform health, MSSP Accreditation. Status: All logs ingestion nominal.";
+    }
+    if (lowerQuery.includes('audit') || lowerQuery.includes('security') || lowerQuery.includes('contact')) {
+        return "INITIATING SECURE HANDSHAKE...\nSTATUS: Use the REQUEST SECURITY AUDIT button or SECURE COMMS to connect.";
+    }
+    if (lowerQuery.includes('ai') || lowerQuery.includes('agent') || lowerQuery.includes('automation')) {
+        return "AI SYSTEMS: Autonomous AI agents & workflows, Security AI (threat detection, anomaly detection), ChatOps / internal AI copilots, Intelligent automation pipelines.";
+    }
+    if (lowerQuery.includes('platform') || lowerQuery.includes('web') || lowerQuery.includes('mobile')) {
+        return "PLATFORM ENGINEERING: Full-stack web apps (Next.js, APIs, Databases), Mobile applications (React Native/Flutter), High-performance distributed systems, Secure multi-tenant SaaS platforms.";
+    }
+    return "I am J.A.R.V.I.S., an AI assistant for this portfolio. Ask me about cybersecurity, AI automation, platform engineering, or the services offered here.";
+};
+
+export default function ChatbotArea({}: ChatbotAreaProps) {
+    const [messages, setMessages] = useState<Message[]>([
+        { id: 'init', text: initialMessageText, sender: 'jarvis', timestamp: Date.now() }
+    ]);
+    const [input, setInput] = useState('');
+    const [emotion, setEmotion] = useState<JarvisEmotion>('idle');
+    const [isThinking, setIsThinking] = useState(false);
+    const [remaining, setRemaining] = useState<number | null>(null);
+    const [isRateLimited, setIsRateLimited] = useState(false);
+    const [showEmailCapture, setShowEmailCapture] = useState(false);
+    const [emailInput, setEmailInput] = useState('');
+    const [emailSent, setEmailSent] = useState(false);
+    const chatHistoryRef = useRef<ChatMessage[]>([]);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages, isThinking]);
+
+    const handleSend = async (userInput?: string) => {
+        const text = userInput || input;
+        if (!text.trim()) return;
+
+        const userMsg: Message = {
+            id: Date.now().toString(),
+            text: `> ${text}`,
+            sender: 'user',
+            timestamp: Date.now()
+        };
+
+        setMessages(prev => [...prev, userMsg]);
+        setInput('');
+        setIsThinking(true);
+        setEmotion('idle');
+        setIsRateLimited(false);
+
+        chatHistoryRef.current = [...chatHistoryRef.current, { role: 'user', content: text }];
+
+        try {
+            const response = await fetch('/api/jarvis', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages: chatHistoryRef.current }),
+            });
+
+            if (response.status === 429) {
+                const data = await response.json();
+                setIsRateLimited(true);
+                const jarvisMsg: Message = {
+                    id: (Date.now() + 1).toString(),
+                    text: `J.A.R.V.I.S is cooling down. Neural core resets in ${data.error.match(/\d+/)?.[0] || 'unknown'} minutes.`,
+                    sender: 'jarvis',
+                    timestamp: Date.now()
+                };
+                setMessages(prev => [...prev, jarvisMsg]);
+                setIsThinking(false);
+                return;
+            }
+
+            if (response.ok) {
+                const data = await response.json();
+                const responseText = data.reply;
+                setRemaining(data.remaining ?? null);
+                if (data.offline) {
+                    chatHistoryRef.current = chatHistoryRef.current.slice(0, -1);
+                } else {
+                    chatHistoryRef.current = [...chatHistoryRef.current, { role: 'assistant', content: responseText }];
+                }
+
+                const jarvisMsg: Message = {
+                    id: (Date.now() + 1).toString(),
+                    text: responseText,
+                    sender: 'jarvis',
+                    timestamp: Date.now()
+                };
+
+                setMessages(prev => [...prev, jarvisMsg]);
+            } else {
+                const fallbackText = processQueryFallback(text);
+                const jarvisMsg: Message = {
+                    id: (Date.now() + 1).toString(),
+                    text: fallbackText,
+                    sender: 'jarvis',
+                    timestamp: Date.now()
+                };
+                setMessages(prev => [...prev, jarvisMsg]);
+            }
+        } catch {
+            const fallbackText = processQueryFallback(text);
+            const jarvisMsg: Message = {
+                id: (Date.now() + 1).toString(),
+                text: fallbackText,
+                sender: 'jarvis',
+                timestamp: Date.now()
+            };
+            setMessages(prev => [...prev, jarvisMsg]);
+        } finally {
+            setIsThinking(false);
+            setEmotion(getEmotionFromText('', false));
+            setTimeout(() => setEmotion('idle'), 3000);
+        }
+    };
+
+    const handleEmailSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!emailInput.trim()) return;
+
+        try {
+            const response = await fetch('/api/send-demo', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: emailInput, summary: chatHistoryRef.current.map(m => m.content).join('\n') }),
+            });
+
+            if (response.ok) {
+                setEmailSent(true);
+                const jarvisMsg: Message = {
+                    id: (Date.now() + 1).toString(),
+                    text: `Email confirmed. Architecture breakdown will be sent to ${emailInput}. Expect it shortly.`,
+                    sender: 'jarvis',
+                    timestamp: Date.now()
+                };
+                setMessages(prev => [...prev, jarvisMsg]);
+            }
+        } catch {
+            const jarvisMsg: Message = {
+                id: (Date.now() + 1).toString(),
+                text: 'Email system offline. Use the SECURE COMMS button to connect directly.',
+                sender: 'jarvis',
+                timestamp: Date.now()
+            };
+            setMessages(prev => [...prev, jarvisMsg]);
+        }
+        setShowEmailCapture(false);
+        setEmailInput('');
+    };
+
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            handleSend();
+        }
+    };
+
+    return (
+        <div className={`border-2 p-2 flex flex-col h-full w-full gap-2 ${isRateLimited ? 'border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)]' : 'border-green-400'}`}>
+            <p className="text-yellow-400 font-bold">J.A.R.V.I.S. INTERFACE:</p>
+
+            <div className="h-[100px] w-full flex justify-center">
+                <JarvisAvatar emotion={emotion} />
+            </div>
+
+            <div className="flex-1 min-h-0">
+                <div className="h-full p-1 overflow-y-auto text-xs md:text-sm border-b border-green-700 bg-black/50">
+                    {messages.map((msg, index) => {
+                        const isUser = msg.sender === 'user';
+                        const isError = msg.text.includes('ERROR') || msg.text.includes('cooling down');
+                        const textColorClass = isUser ? 'text-yellow-300' : isError ? 'text-red-400' : 'text-green-400';
+                        const isLatest = index === messages.length - 1;
+                        const shouldAnimate = isLatest && !isUser;
+
+                        return (
+                            <div key={msg.id} className={`mb-1 ${textColorClass}`}>
+                                {shouldAnimate ? (
+                                    <Typewriter
+                                        text={msg.text}
+                                        speed={20}
+                                        onType={() => messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                                        onComplete={() => messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                                    />
+                                ) : (
+                                    <span>{msg.text}</span>
+                                )}
+                            </div>
+                        );
+                    })}
+                    {isThinking && <p className="text-gray-500 animate-pulse">J.A.R.V.I.S. is thinking...</p>}
+                    <div ref={messagesEndRef} />
+                </div>
+            </div>
+
+            {/* Suggested Prompts */}
+            {messages.length <= 2 && (
+                <div className="flex flex-wrap gap-1.5">
+                    {SUGGESTED_PROMPTS.map((prompt, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => handleSend(prompt)}
+                            className="text-[9px] border border-green-800 bg-green-900/20 text-green-400 px-2 py-1 hover:bg-green-900/40 hover:border-green-500 transition-all font-mono"
+                        >
+                            {prompt}
+                        </button>
+                    ))}
+                </div>
+            )}
+
+            {/* Email Capture */}
+            {showEmailCapture && !emailSent && (
+                <form onSubmit={handleEmailSubmit} className="flex gap-2">
+                    <input
+                        type="email"
+                        value={emailInput}
+                        onChange={(e) => setEmailInput(e.target.value)}
+                        className="flex-1 bg-black border border-green-700 text-green-400 px-2 py-1 focus:outline-none focus:border-green-400 font-mono text-xs"
+                        placeholder="Enter your email..."
+                        required
+                    />
+                    <button type="submit" className="bg-green-900/30 text-green-400 border border-green-700 px-3 py-1 hover:bg-green-900/50 text-xs font-mono">
+                        SEND
+                    </button>
+                </form>
+            )}
+
+            {emailSent && (
+                <p className="text-[10px] text-green-400 font-mono">Architecture breakdown sent. Check your inbox.</p>
+            )}
+
+            {/* Input Area */}
+            <div className="flex gap-2 flex-wrap">
+                <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleKeyPress}
+                    className="flex-1 min-w-[200px] bg-black border border-green-700 text-green-400 px-2 py-1 focus:outline-none focus:border-green-400 font-mono text-sm"
+                    placeholder="Enter command..."
+                    autoFocus
+                />
+                <button
+                    onClick={() => setShowEmailCapture(true)}
+                    className="bg-yellow-900/30 text-yellow-400 border border-yellow-700 px-2 py-1 hover:bg-yellow-900/50 text-xs font-mono whitespace-nowrap shrink-0"
+                >
+                    DEMO
+                </button>
+                <button
+                    onClick={() => handleSend()}
+                    className="bg-green-900/30 text-green-400 border border-green-700 px-2 py-1 hover:bg-green-900/50 text-xs font-mono whitespace-nowrap shrink-0"
+                >
+                    SEND
+                </button>
+            </div>
+
+            {/* Rate Limit Indicator */}
+            {remaining !== null && !isRateLimited && (
+                <p className="text-[8px] text-gray-600 font-mono text-center">
+                    [{remaining} requests remaining this session]
+                </p>
+            )}
+        </div>
+    );
+}
+```
+
+## src/app/components/ContactForm/ContactModal.tsx
+
+```tsx
+'use client';
+
+import { useState, useEffect, useCallback } from 'react';
+import { sendEmail } from '../../actions/send-email';
+
+interface ContactModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+    // Handle ESC key to close modal
+    const handleKeyDown = useCallback((e: KeyboardEvent) => {
+        if (e.key === 'Escape' && isOpen) {
+            onClose();
+        }
+    }, [isOpen, onClose]);
+
+    useEffect(() => {
+        if (isOpen) {
+            document.addEventListener('keydown', handleKeyDown);
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = '';
+        };
+    }, [isOpen, handleKeyDown]);
+
+    if (!isOpen) return null;
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setStatus('idle');
+
+        const formData = new FormData(e.currentTarget);
+        const result = await sendEmail(formData);
+
+        setIsSubmitting(false);
+
+        if (result.success) {
+            setStatus('success');
+            setTimeout(() => {
+                onClose();
+                setStatus('idle');
+            }, 2000);
+        } else {
+            setStatus('error');
+        }
+    };
+
+    return (
+        <div 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={onClose} // Close when clicking the backdrop
+        >
+            <div 
+                className="w-full max-w-lg border-2 border-green-500 bg-black p-6 shadow-[0_0_20px_rgba(34,197,94,0.3)] font-mono relative"
+                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+            >
+                
+                {/* Header */}
+                <div className="flex justify-between items-center mb-6 border-b border-green-800 pb-2">
+                    <h2 className="text-xl text-yellow-400 font-bold tracking-wider">
+                        SECURITY_AUDIT_REQUEST
+                    </h2>
+                    <button 
+                        onClick={onClose}
+                        className="text-red-500 hover:text-red-400 font-bold border border-red-900 hover:border-red-500 px-3 py-1 transition-colors uppercase text-[10px]"
+                        aria-label="Close Modal"
+                    >
+                        [X] ABORT
+                    </button>
+                </div>
+
+                {status === 'success' ? (
+                    <div className="py-12 flex flex-col items-center justify-center text-center space-y-4">
+                        <div className="text-4xl animate-bounce">🛡️</div>
+                        <h3 className="text-green-400 text-xl font-bold uppercase tracking-widest">AUDIT_PROTOCOL_INITIALIZED</h3>
+                        <p className="text-green-600 text-sm">Security request queued for analysis.</p>
+                        <p className="text-xs text-gray-500 mt-4">Closing secure tunnel...</p>
+                    </div>
+                ) : (
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <div>
+                            <label htmlFor="name" className="block text-green-600 text-[10px] mb-1 uppercase font-bold">
+                                {'// ORGANIZATION_OR_IDENT'}
+                            </label>
+                            <input 
+                                type="text" 
+                                name="name" 
+                                id="name"
+                                required
+                                className="w-full bg-green-900/10 border border-green-700 text-green-300 p-2 focus:outline-none focus:border-green-400 transition-colors placeholder-green-900 text-sm"
+                                placeholder="ENTER ENTITY NAME"
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="email" className="block text-green-600 text-[10px] mb-1 uppercase font-bold">
+                                {'// SECURE_COMMS_CHANNEL'}
+                            </label>
+                            <input 
+                                type="email" 
+                                name="email" 
+                                id="email"
+                                required
+                                className="w-full bg-green-900/10 border border-green-700 text-green-300 p-2 focus:outline-none focus:border-green-400 transition-colors placeholder-green-900 text-sm"
+                                placeholder="ENTER ENCRYPTED EMAIL ADDRESS"
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="message" className="block text-green-600 text-[10px] mb-1 uppercase font-bold">
+                                {'// AUDIT_SCOPE_OR_THREAT_INTEL'}
+                            </label>
+                            <textarea 
+                                name="message" 
+                                id="message"
+                                rows={4}
+                                required
+                                className="w-full bg-green-900/10 border border-green-700 text-green-300 p-2 focus:outline-none focus:border-green-400 transition-colors placeholder-green-900 resize-none text-sm"
+                                placeholder="DESCRIBE INFRASTRUCTURE OR SECURITY CHALLENGES..."
+                            />
+                        </div>
+
+                        {status === 'error' && (
+                            <div className="p-2 border border-red-500 bg-red-900/20 text-red-400 text-[10px] font-bold">
+                                ERROR: ENCRYPTION HANDSHAKE FAILED. RETRY TRANSMISSION.
+                            </div>
+                        )}
+
+                        <div className="pt-4 border-t border-green-800 flex justify-between items-center">
+                            <p className="text-[9px] text-gray-500 uppercase italic">
+                                * All data encrypted via AES-256
+                            </p>
+                            <button 
+                                type="submit" 
+                                disabled={isSubmitting}
+                                className={`
+                                    px-8 py-2 font-bold tracking-[0.2em] uppercase text-xs border transition-all duration-300
+                                    ${isSubmitting 
+                                        ? 'bg-gray-800 border-gray-600 text-gray-500 cursor-not-allowed' 
+                                        : 'bg-green-900/30 border-green-500 text-green-400 hover:bg-green-500 hover:text-black shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:shadow-[0_0_25px_rgba(34,197,94,0.7)]'
+                                    }
+                                `}
+                            >
+                                {isSubmitting ? 'UPLOADING...' : 'SUBMIT_FOR_AUDIT'}
+                            </button>
+                        </div>
+                    </form>
+                )}
+
+                {/* Decorative corner markers */}
+                <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-green-500"></div>
+                <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-green-500"></div>
+                <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-green-500"></div>
+                <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-green-500"></div>
+            </div>
+        </div>
+    );
+}
+
+```
+
+## src/app/components/CyberViz/CyberViz.tsx
+
+```tsx
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+// Neutral/positive system events for the landing page
+const SYSTEM_EVENTS = [
+    "SYSTEM INTEGRITY: VERIFIED",
+    "ALL NODES: SECURE",
+    "AI AGENT: ONLINE",
+    "ZERO TRUST POLICY: ACTIVE",
+    "ENCRYPTION: AES-256-GCM",
+    "NETWORK LATENCY: 12ms",
+    "UPTIME: 99.99%",
+    "BACKUP STATUS: SYNCHRONIZED",
+    "CERTIFICATES: VALID",
+    "FIREWALL RULES: UPDATED",
+    "AUTH TOKENS: REFRESHED",
+    "DATABASE REPLICATION: HEALTHY",
+    "LOAD BALANCER: OPTIMAL",
+    "CDN CACHE: WARM",
+    "API GATEWAY: STABLE",
+];
+
+interface SystemNode {
+    id: string;
+    x: number;
+    y: number;
+    status: 'active' | 'syncing';
+}
+
+export default function CyberViz() {
+    const [nodes, setNodes] = useState<SystemNode[]>([]);
+    const [logs, setLogs] = useState<string[]>([]);
+
+    // Initialize with some nodes
+    useEffect(() => {
+        const initialNodes = Array.from({ length: 5 }, (_, i) => ({
+            id: Math.random().toString(36).substr(2, 9),
+            x: 20 + Math.random() * 60,
+            y: 20 + Math.random() * 60,
+            status: 'active' as const,
+        }));
+        setNodes(initialNodes);
+
+        // Add initial positive logs
+        const initialLogs = SYSTEM_EVENTS.slice(0, 5).map(event => 
+            `[${new Date().toLocaleTimeString()}] ${event}`
+        );
+        setLogs(initialLogs);
+    }, []);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            // Pick a random positive system event
+            const eventIndex = Math.floor(Math.random() * SYSTEM_EVENTS.length);
+            const event = SYSTEM_EVENTS[eventIndex];
+            const nodeId = Math.random().toString(36).substr(2, 9);
+
+            setLogs(prev => [
+                `[${new Date().toLocaleTimeString()}] ${event} | NODE_${nodeId.slice(0, 4)}`,
+                ...prev
+            ].slice(0, 10));
+
+            // Occasionally add a syncing node animation
+            if (Math.random() > 0.5 && nodes.length < 8) {
+                const newNode: SystemNode = {
+                    id: nodeId,
+                    x: 20 + Math.random() * 60,
+                    y: 20 + Math.random() * 60,
+                    status: 'syncing'
+                };
+                setNodes(prev => [...prev, newNode]);
+
+                setTimeout(() => {
+                    setNodes(prev => prev.map(n => 
+                        n.id === nodeId ? { ...n, status: 'active' } : n
+                    ));
+                }, 2000);
+            }
+
+        }, 2500);
+
+        return () => clearInterval(interval);
+    }, [nodes.length]);
+
+    return (
+        <div className="w-full h-full relative bg-black/40 border border-green-900/50 backdrop-blur-md overflow-hidden font-mono p-4">
+            <div className="absolute top-2 left-4 text-[10px] text-green-500 font-bold tracking-widest uppercase opacity-80">
+                SYSTEM_STATUS_MONITOR v2.0
+            </div>
+
+            {/* Grid Background */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
+                <div className="w-full h-full" style={{ 
+                    backgroundImage: 'linear-gradient(to right, #22c55e 1px, transparent 1px), linear-gradient(to bottom, #22c55e 1px, transparent 1px)',
+                    backgroundSize: '40px 40px'
+                }}></div>
+            </div>
+
+            {/* Visualization Area */}
+            <div className="w-full h-[60%] relative mt-6 border border-green-900/30">
+                {/* Core Node */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-8 h-8 border-2 border-green-500 rounded-full animate-ping absolute"></div>
+                    <div className="w-8 h-8 border-2 border-green-500 rounded-full flex items-center justify-center bg-green-900/20">
+                        <span className="text-[8px] font-bold text-green-400">CORE</span>
+                    </div>
+                </div>
+
+                {/* Active Nodes */}
+                <AnimatePresence>
+                    {nodes.map(node => (
+                        <motion.div
+                            key={node.id}
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ 
+                                x: `${node.x}%`, 
+                                y: `${node.y}%`,
+                                opacity: 1, 
+                                scale: 1 
+                            }}
+                            exit={{ opacity: 0, scale: 0 }}
+                            transition={{ duration: 1, ease: "easeOut" }}
+                            className="absolute"
+                        >
+                            <div className={`w-2 h-2 rounded-full ${node.status === 'active' ? 'bg-green-500' : 'bg-blue-500'} shadow-[0_0_8px_rgba(34,197,94,0.6)]`}></div>
+                        </motion.div>
+                    ))}
+                </AnimatePresence>
+
+                {/* Connection Lines */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+                    {nodes.map(node => (
+                        <motion.line
+                            key={`line-${node.id}`}
+                            x1={`${node.x}%`}
+                            y1={`${node.y}%`}
+                            x2="50%"
+                            y2="50%"
+                            stroke="#22c55e"
+                            strokeWidth="1"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ duration: 1 }}
+                        />
+                    ))}
+                </svg>
+            </div>
+
+            {/* Logs Area */}
+            <div className="w-full h-[35%] mt-4 bg-black/60 border-t border-green-900/50 p-2 overflow-y-auto custom-scrollbar">
+                <div className="text-[9px] text-green-300 font-bold mb-2 uppercase border-b border-green-900/30 pb-1">
+                    SIEM_EVENT_LOG
+                </div>
+                <div className="space-y-1">
+                    {logs.map((log, i) => (
+                        <motion.div 
+                            key={i}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="text-[8px] leading-tight text-green-400"
+                        >
+                            {log}
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+```
+
+## src/app/components/Jarvis/Jarvis.tsx
+
+```tsx
+// components/Jarvis.tsx
+'use client';
+
+import React from 'react';
+
+// --- Configuration ---
+// This component appears to be a legacy or alternative interface.
+// The main interface is now handled by ChatbotArea.tsx
+
+interface JarvisProps {
+    onExit: () => void; 
+}
+
+export default function Jarvis({ onExit }: JarvisProps) {
+    return (
+        <div className="flex flex-col items-center justify-center h-full text-green-500 font-mono">
+            <h1 className="text-2xl font-bold mb-4">SECURE-FIRST SYSTEMS ONLINE</h1>
+            <p className="mb-8">Access via Main Terminal</p>
+            <button 
+                onClick={onExit}
+                className="px-4 py-2 border border-green-500 hover:bg-green-900/50"
+            >
+                EXIT
+            </button>
+        </div>
+    );
+}
+
+```
+
+## src/app/components/JarvisAvatar/JarvisAvatar.tsx
+
+```tsx
+// components/JarvisAvatar/JarvisAvatar.tsx
+'use client';
+
+import React, { useEffect, useState } from 'react';
+
+// --- Configuration ---
+// Define the grid size of the spritesheet
+const SPRITESHEET_COLS = 8;
+const SPRITESHEET_ROWS = 7; 
+
+// 🎯 FINAL DIMENSIONS: 75px for both width and height.
+const SPRITE_WIDTH_PX = 215; 
+const SPRITE_HEIGHT_PX = 100; 
+
+// 💡 MANUAL PIXEL OFFSETS (Keep these for alignment, fine-tune as needed)
+const OFFSET_X_PX = 0; 
+const OFFSET_Y_PX = -35; 
+
+
+// --- State Definitions ---
+// 💡 UPDATED: Only 'idle' and 'talking' are active states now
+export type JarvisEmotion = 'idle' | 'talking';
+
+// Map emotion to a specific sprite sheet row or animation frame sequence
+// Coordinates are (col, row) where (0, 0) is top-left
+const EMOTION_FRAMES: { [key in JarvisEmotion]: { row: number, startCol: number, endCol: number } } = {
+    // 💡 UPDATED: Idle is now an animation: Row 0, Frames 0, 1, 2 (0-2)
+    idle: { row: 0, startCol: 0, endCol: 2 }, 
+
+    // 💡 UPDATED: Talking animation: Row 1, Frames 4, 5, 6, 7 (4-7)
+    talking: { row: 1, startCol: 4, endCol: 7 }, 
+    
+    // Note: Since both are now animations, the type definition for EMOTION_FRAMES
+    // has been simplified to remove the 'number[] |' union.
+};
+
+// Animation speed in milliseconds
+const ANIMATION_INTERVAL = 150; 
+
+interface JarvisAvatarProps {
+    emotion?: JarvisEmotion;
+}
+
+export default function JarvisAvatar({ emotion = 'idle' }: JarvisAvatarProps) { 
+    const [currentFrame, setCurrentFrame] = useState(0);
+
+    // If emotion is not found (shouldn't happen with the default)
+    const frameConfig = EMOTION_FRAMES[emotion] || EMOTION_FRAMES.idle;
+    
+    // 💡 SIMPLIFIED: isAnimation is always true now since all remaining states are animations
+    // const isAnimation = true; 
+
+    useEffect(() => {
+        // Now that all states are animations, we no longer need the if (!isAnimation) check.
+        
+        // Animated sequence: set up interval
+        // We cast frameConfig as the animation object structure, since it is guaranteed to be one.
+        const { startCol, endCol } = frameConfig as { row: number, startCol: number, endCol: number };
+        const frameCount = endCol - startCol + 1;
+
+        // Reset frame state when emotion changes
+        setCurrentFrame(startCol); 
+
+        const intervalId = setInterval(() => {
+            setCurrentFrame(prevFrame => {
+                const nextCol = (prevFrame - startCol + 1) % frameCount + startCol;
+                return nextCol;
+            });
+        }, ANIMATION_INTERVAL);
+
+        return () => clearInterval(intervalId);
+    }, [emotion, frameConfig]); // Removed isAnimation from dependency array
+
+    
+    // 💡 SIMPLIFIED: Background position calculation no longer needs ternary operators
+    // Since we are always animating, 'col' is always 'currentFrame' and 'row' is always 'frameConfig.row'.
+    const { row: animatedRow } = frameConfig as { row: number, startCol: number, endCol: number };
+
+    let col = currentFrame;
+    let row = animatedRow;
+
+    // Ensure col and row are within bounds for safety
+    col = col % SPRITESHEET_COLS;
+    row = row % SPRITESHEET_ROWS;
+
+    const backgroundX = (-col * SPRITE_WIDTH_PX) - OFFSET_X_PX;
+    const backgroundY = (-row * SPRITE_HEIGHT_PX) - OFFSET_Y_PX;
+
+    return (
+        <div 
+            className="jarvis-avatar w-20 h-20" 
+            style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                // Outer div (Viewport) uses 75x75 dimensions
+                width: `${SPRITE_WIDTH_PX}px`, 
+                height: `${SPRITE_HEIGHT_PX}px`,
+                overflow: 'hidden',
+            }}
+        >
+            <div
+                style={{
+                    // Inner div (Spritesheet) uses 8 columns * 75px wide, 7 rows * 75px high
+                    width: `${SPRITESHEET_COLS * SPRITE_WIDTH_PX}px`,
+                    height: `${SPRITESHEET_ROWS * SPRITE_HEIGHT_PX}px`,
+                    backgroundImage: `url('images/robot_spritesheet.jpg')`, 
+                    backgroundSize: `${SPRITESHEET_COLS * SPRITE_WIDTH_PX}px ${SPRITESHEET_ROWS * SPRITE_HEIGHT_PX}px`,
+                    backgroundPosition: `${backgroundX}px ${backgroundY}px`,
+                    transition: 'none', // Transition is now always 'none' for frame-by-frame animation
+                }}
+            />
+        </div>
+    );
+}
+```
+
+## src/app/components/ModelShowcase/ModelShowcase.tsx
+
+```tsx
+'use client';
+
+import { useState, useRef, Suspense } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, useGLTF } from '@react-three/drei';
+import * as THREE from 'three';
+
+// Model data for the showcase
+const MODELS = [
+  {
+    id: 'server_rack',
+    path: '/models/server_rack.glb',
+    label: 'Infrastructure Layer',
+    description: 'Enterprise-grade server architecture. The foundation your applications run on.',
+    accent: '#00d4ff',
+  },
+  {
+    id: 'check_point_router',
+    path: '/models/check_point_router.glb',
+    label: 'Perimeter Defense',
+    description: 'Check Point Quantum Firewall. Stops threats before they reach your network.',
+    accent: '#ff3d6b',
+  },
+  {
+    id: 'splunk_mobile',
+    path: '/models/splunk_mobile.glb',
+    label: 'Intelligence & Visibility',
+    description: 'Splunk SIEM. Every event, every alert, every incident — in one place.',
+    accent: '#7b5cfa',
+  },
+];
+
+// Individual model component with rotation
+function Model({ path }: { path: string }) {
+  const { scene } = useGLTF(path);
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame((state, delta) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.3; // Slow Y rotation
+    }
+  });
+
+  return (
+    <group ref={groupRef} scale={[1.5, 1.5, 1.5]}>
+      <primitive object={scene} />
+    </group>
+  );
+}
+
+// Preload all models
+MODELS.forEach((m) => useGLTF.preload(m.path));
+
+// Scene component for a single model
+function ModelScene({ modelIndex }: { modelIndex: number }) {
+  const model = MODELS[modelIndex];
+
+  return (
+    <>
+      <ambientLight intensity={0.4} />
+      <pointLight position={[10, 10, 10]} intensity={1} />
+      <pointLight position={[-10, -10, -10]} intensity={0.5} />
+      <directionalLight position={[0, 5, 5]} intensity={0.8} />
+      <OrbitControls
+        enableDamping
+        dampingFactor={0.05}
+        enableZoom={true}
+        enablePan={false}
+        minDistance={3}
+        maxDistance={15}
+      />
+      <Suspense fallback={null}>
+        <Model path={model.path} />
+      </Suspense>
+    </>
+  );
+}
+
+// Navigation dots component
+function NavigationDots({
+  currentIndex,
+  onClick,
+}: {
+  currentIndex: number;
+  onClick: (index: number) => void;
+}) {
+  return (
+    <div className="flex gap-3 absolute bottom-24 left-1/2 -translate-x-1/2 z-20">
+      {MODELS.map((model, index) => (
+        <button
+          key={model.id}
+          onClick={() => onClick(index)}
+          className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            index === currentIndex
+              ? 'scale-125'
+              : 'opacity-40 hover:opacity-70'
+          }`}
+          style={{
+            backgroundColor: index === currentIndex ? model.accent : '#444',
+            boxShadow:
+              index === currentIndex ? `0 0 12px ${model.accent}` : 'none',
+          }}
+          aria-label={`View ${model.label}`}
+        />
+      ))}
+    </div>
+  );
+}
+
+// Main showcase component
+export default function ModelShowcase() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const handleNavigate = (index: number) => {
+    if (index === currentIndex || isTransitioning) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentIndex(index);
+      setTimeout(() => setIsTransitioning(false), 400);
+    }, 400);
+  };
+
+  const handlePrev = () => {
+    const prevIndex =
+      currentIndex === 0 ? MODELS.length - 1 : currentIndex - 1;
+    handleNavigate(prevIndex);
+  };
+
+  const handleNext = () => {
+    const nextIndex =
+      currentIndex === MODELS.length - 1 ? 0 : currentIndex + 1;
+    handleNavigate(nextIndex);
+  };
+
+  const currentModel = MODELS[currentIndex];
+
+  return (
+    <div className="relative w-full h-full">
+      {/* 3D Canvas */}
+      <div
+        className={`absolute inset-0 transition-opacity duration-400 ${
+          isTransitioning ? 'opacity-0' : 'opacity-100'
+        }`}
+      >
+        <Canvas camera={{ position: [0, 2, 6], fov: 45 }}>
+          <ModelScene modelIndex={currentIndex} />
+        </Canvas>
+      </div>
+
+      {/* Info Panel - Left side */}
+      <div className="absolute left-0 top-0 h-full w-full md:w-1/3 bg-black/90 border-r border-green-900 p-8 flex flex-col justify-center z-10 pointer-events-none">
+        <div className="pointer-events-auto">
+          <p
+            className="text-xs font-mono mb-2 tracking-widest uppercase"
+            style={{ color: currentModel.accent }}
+          >
+            HARDWARE SHOWCASE
+          </p>
+          <h2
+            className="text-2xl md:text-3xl font-bold font-mono mb-4"
+            style={{ color: currentModel.accent }}
+          >
+            {currentModel.label}
+          </h2>
+          <p className="text-green-400/80 font-mono text-sm md:text-base leading-relaxed max-w-md">
+            {currentModel.description}
+          </p>
+
+          {/* Navigation arrows */}
+          <div className="flex gap-4 mt-8">
+            <button
+              onClick={handlePrev}
+              className="px-6 py-3 border font-mono text-sm transition-colors hover:bg-white/10"
+              style={{
+                borderColor: currentModel.accent,
+                color: currentModel.accent,
+              }}
+              aria-label="Previous model"
+            >
+              ← PREV
+            </button>
+            <button
+              onClick={handleNext}
+              className="px-6 py-3 border font-mono text-sm transition-colors hover:bg-white/10"
+              style={{
+                borderColor: currentModel.accent,
+                color: currentModel.accent,
+              }}
+              aria-label="Next model"
+            >
+              NEXT →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation dots */}
+      <NavigationDots
+        currentIndex={currentIndex}
+        onClick={handleNavigate}
+      />
+
+      {/* Section indicator */}
+      <div className="absolute top-4 left-4 z-20 font-mono text-green-400 text-xs pointer-events-none">
+        <div className="border border-green-800 bg-black/80 p-2">
+          <p>{`// HARDWARE SHOWCASE`}</p>
+          <p>
+            {currentIndex + 1}/{MODELS.length}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+## src/app/components/RiskScan/RiskScanModal.tsx
+
+```tsx
+'use client';
+
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { sendEmail } from '../../actions/send-email';
+
+interface RiskScanModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+
+const SCAN_STEPS = [
+    "INITIALIZING_TARGET_RECON...",
+    "SCANNING_PUBLIC_DNS_RECORDS...",
+    "CHECKING_SSL_CERTIFICATE_STATUS...",
+    "ENUMERATING_OPEN_PORTS...",
+    "ANALYZING_HTTP_HEADERS...",
+    "DETECTING_EXPOSED_API_ENDPOINTS...",
+    "SEARCHING_LEAKED_CREDENTIAL_DATABASES...",
+    "EVALUATING_DOMAIN_REPUTATION...",
+    "SCAN_COMPLETE. VULNERABILITIES_DETECTED."
+];
+
+export default function RiskScanModal({ isOpen, onClose }: RiskScanModalProps) {
+    const [scanProgress, setScanProgress] = useState(0);
+    const [currentStepIndex, setCurrentStepIndex] = useState(0);
+    const [scanComplete, setScanComplete] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const logsEndRef = useRef<HTMLDivElement>(null);
+
+    // Handle ESC key to close modal
+    const handleKeyDown = useCallback((e: KeyboardEvent) => {
+        if (e.key === 'Escape' && isOpen) {
+            onClose();
+        }
+    }, [isOpen, onClose]);
+
+    // Reset state when modal opens
+    useEffect(() => {
+        if (isOpen) {
+            setScanProgress(0);
+            setCurrentStepIndex(0);
+            setScanComplete(false);
+            setSubmitStatus('idle');
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isOpen]);
+
+    // Add/remove ESC key listener
+    useEffect(() => {
+        if (isOpen) {
+            document.addEventListener('keydown', handleKeyDown);
+        }
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isOpen, handleKeyDown]);
+
+    // Auto-scroll logs
+    useEffect(() => {
+        logsEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [currentStepIndex, isOpen]);
+
+    // Run Scan Simulation
+    useEffect(() => {
+        if (!isOpen || scanComplete) return;
+
+        const totalSteps = SCAN_STEPS.length;
+        const stepDuration = 600; // ms per step
+
+        const timer = setInterval(() => {
+            setCurrentStepIndex(prev => {
+                if (prev >= totalSteps - 1) {
+                    clearInterval(timer);
+                    setScanComplete(true);
+                    return prev;
+                }
+                return prev + 1;
+            });
+            setScanProgress(prev => Math.min(prev + (100 / totalSteps), 100));
+        }, stepDuration);
+
+        return () => clearInterval(timer);
+    }, [isOpen, scanComplete]);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        
+        const formData = new FormData(e.currentTarget);
+        // Add a hidden field to indicate this is a Risk Scan request
+        formData.append('message', 'REQUESTING_RISK_SCORE_REPORT'); 
+        
+        const result = await sendEmail(formData);
+
+        setIsSubmitting(false);
+
+        if (result.success) {
+            setSubmitStatus('success');
+            setTimeout(() => {
+                onClose();
+            }, 3000);
+        } else {
+            setSubmitStatus('error');
+        }
+    };
+
+    if (!isOpen) return null;
+
+    return (
+        <div 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+            onClick={onClose}
+        >
+            <div 
+                className="w-full max-w-lg border-2 border-red-500 bg-black p-6 shadow-[0_0_30px_rgba(239,68,68,0.2)] font-mono relative flex flex-col gap-4"
+                onClick={(e) => e.stopPropagation()}
+            >
+                {/* Header */}
+                <div className="flex justify-between items-center border-b border-red-900 pb-2">
+                    <h2 className="text-xl text-red-500 font-bold tracking-wider animate-pulse">
+                        DIGITAL_PERIMETER_SCAN
+                    </h2>
+                    <button 
+                        onClick={onClose}
+                        className="text-gray-500 hover:text-white font-bold px-2 transition-colors"
+                    >
+                        [X]
+                    </button>
+                </div>
+
+                {/* Scan Visualization */}
+                <div className="h-48 bg-gray-900/50 border border-gray-800 p-4 overflow-y-auto font-mono text-xs">
+                    {SCAN_STEPS.slice(0, currentStepIndex + 1).map((step, idx) => (
+                        <div key={idx} className={`mb-1 ${idx === SCAN_STEPS.length - 1 ? 'text-red-500 font-bold' : 'text-green-500'}`}>
+                            <span className="opacity-50 mr-2">[{new Date().toLocaleTimeString()}]</span>
+                            {step}
+                        </div>
+                    ))}
+                    <div ref={logsEndRef} />
+                </div>
+
+                {/* Progress Bar */}
+                <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                    <div 
+                        className="h-full bg-red-500 transition-all duration-300"
+                        style={{ width: `${scanComplete ? 100 : scanProgress}%` }}
+                    />
+                </div>
+
+                {/* Result / Form */}
+                {scanComplete ? (
+                    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                        {submitStatus === 'success' ? (
+                            <div className="text-center py-6">
+                                <p className="text-green-400 text-lg font-bold mb-2">REPORT GENERATED</p>
+                                <p className="text-gray-400 text-sm">Check your inbox for the encrypted dossier.</p>
+                            </div>
+                        ) : (
+                            <>
+                                <div className="bg-red-900/20 border border-red-900/50 p-3 mb-4">
+                                    <p className="text-red-400 text-sm font-bold text-center">
+                                        ⚠ POTENTIAL EXPOSURE DETECTED
+                                    </p>
+                                    <p className="text-gray-400 text-xs text-center mt-1">
+                                        Your digital footprint contains visible surface area.
+                                    </p>
+                                </div>
+
+                                <form onSubmit={handleSubmit} className="space-y-3">
+                                    <div>
+                                        <label htmlFor="email" className="block text-gray-500 text-xs mb-1 uppercase">
+                                            SEND FULL REPORT TO:
+                                        </label>
+                                        <input 
+                                            type="email" 
+                                            name="email" 
+                                            required
+                                            className="w-full bg-black border border-gray-700 text-white p-2 focus:border-red-500 focus:outline-none transition-colors"
+                                            placeholder="ENTER_EMAIL_ADDRESS"
+                                        />
+                                    </div>
+                                    <button 
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className="w-full bg-red-600 hover:bg-red-500 text-black font-bold py-2 uppercase tracking-widest transition-all"
+                                    >
+                                        {isSubmitting ? 'GENERATING...' : 'GET_REMEDIATION_PLAN >>'}
+                                    </button>
+                                </form>
+                            </>
+                        )}
+                    </div>
+                ) : (
+                    <div className="text-center py-8">
+                        <p className="text-gray-500 text-sm animate-pulse">ANALYZING VECTORS...</p>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
+
+```
+
+## src/app/components/SystemStartup/SystemStartup.tsx
+
+```tsx
+// components/SystemStartup/SystemStartup.tsx
+"use client";
+
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Suspense, useEffect, useState } from "react"; 
+import { useGLTF, OrbitControls, Points, PointMaterial } from "@react-three/drei";
+import * as THREE from 'three'; 
+
+import TerminalScreen from "../TerminalScreen/TerminalScreen"; 
+
+// --- Configuration ---
+type AppState = 'idle' | 'zooming' | 'booting' | 'os_load' | 'terminal';
+
+const START_POSITION = new THREE.Vector3(-0.9, 0.9, 6);
+const TARGET_POSITION = new THREE.Vector3(-0.3, 0.2, 1.2);
+const LOOK_AT_POINT = new THREE.Vector3(-0.3, 0.2, 0.8);
+const ZOOM_SPEED = 0.05;
+
+// 1. Component to handle the Camera Zoom Animation
+function CameraZoom({ appState, onZoomComplete }: { appState: AppState, onZoomComplete: () => void }) {
+    const { camera } = useThree();
+
+    useEffect(() => {
+        // FIX: Ensure initialization runs only once on mount to prevent null/undefined errors.
+        camera.position.copy(START_POSITION);
+    }, [camera.position]); // Empty dependency array is the fix
+
+    useFrame(() => {
+        if (appState === 'zooming') {
+            camera.position.lerp(TARGET_POSITION, ZOOM_SPEED);
+            camera.lookAt(LOOK_AT_POINT); 
+
+            if (camera.position.distanceTo(TARGET_POSITION) < 0.1) {
+                onZoomComplete();
+                camera.position.copy(TARGET_POSITION);
+            }
+        }
+    });
+    return null; 
+}
+
+
+// 2. ClickableScreen
+interface ClickableScreenProps { onScreenClick: () => void; }
+function ClickableScreen({ onScreenClick }: ClickableScreenProps) {
+    // Large invisible hit volume covering the CRT bezel + screen (FullComp monitor sits ~center-left in view)
+    return (
+        <mesh
+            position={[-0.22, 0.38, 0.62]}
+            scale={[2.85, 2.35, 0.2]}
+            onClick={(e) => {
+                e.stopPropagation();
+                onScreenClick();
+            }}
+        >
+            <boxGeometry args={[1, 1, 1]} />
+            <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+        </mesh>
+    );
+}
+
+// 3. ComputerModel (Fix for GLTF Group already incorporated)
+function ComputerModel() {
+    const { scene } = useGLTF("/models/FullComp.glb");
+    
+    return (
+        <group 
+            scale={0.5}
+            position={[0.4, 0.1, 0.4]} 
+            rotation={[0, Math.PI, 0]}
+        >
+            <primitive object={scene} />
+        </group>
+    );
+}
+useGLTF.preload("/models/FullComp.glb");
+
+
+// 4. DigitalRain
+function DigitalRain() {
+    const count = 2000;
+    const [positions] = useState(() => {
+        const pos = new Float32Array(count * 3);
+        for (let i = 0; i < count; i++) {
+            pos[i * 3] = (Math.random() - 0.5) * 10;
+            pos[i * 3 + 1] = Math.random() * 10;
+            pos[i * 3 + 2] = (Math.random() - 0.5) * 10;
+        }
+        return pos;
+    });
+
+    useFrame((state, delta) => {
+        for (let i = 0; i < count; i++) {
+            positions[i * 3 + 1] -= delta * 2;
+            if (positions[i * 3 + 1] < -5) {
+                positions[i * 3 + 1] = 5;
+            }
+        }
+    });
+
+    return (
+        <Points positions={positions} stride={3}>
+            <PointMaterial
+                transparent
+                color="#22c55e"
+                size={0.02}
+                sizeAttenuation={true}
+                depthWrite={false}
+                opacity={0.4}
+            />
+        </Points>
+    );
+}
+
+// 5. Main SystemStartup Component
+interface SystemStartupProps {
+    appState: AppState; // Cast to AppState to remove 'game' since it's now internal to TerminalScreen
+    onScreenClick: () => void;
+    onOsLoadComplete: () => void; 
+    onTerminalExecute: (command: 'cards.exe' | 'blog.exe') => void;
+    onZoomComplete: () => void;
+}
+
+export default function SystemStartup({ 
+    appState, 
+    onScreenClick, 
+    onOsLoadComplete, 
+    onTerminalExecute,
+    onZoomComplete 
+}: SystemStartupProps) {
+    
+    // Cast the state for simpler conditional rendering
+    const isIdle = appState === 'idle';
+
+    return (
+        <div 
+            className="h-screen w-screen overflow-hidden" 
+            style={{ 
+                backgroundImage: "url('/images/basement-dweller.jpg')", 
+                backgroundSize: 'cover', backgroundPosition: 'center center', backgroundRepeat: 'no-repeat', 
+            }}
+        >
+            {/* A. Terminal Screen Overlay */}
+            {(appState === 'booting' || appState === 'os_load' || appState === 'terminal') && (
+                <TerminalScreen 
+                    appState={appState} 
+                    onOsLoadComplete={onOsLoadComplete} 
+                    onTerminalExecute={onTerminalExecute}
+                />
+            )}
+
+            <Canvas camera={{ position: START_POSITION.toArray(), fov: 21 }}>
+                <ambientLight intensity={0.6} />
+                <directionalLight position={[-5, 5, 5]} intensity={3} /> 
+                
+                {/* B. Camera Zoom Logic */}
+                <CameraZoom 
+                    appState={appState} 
+                    onZoomComplete={onZoomComplete} 
+                /> 
+
+                {/* C. Orbit Controls */}
+                <OrbitControls 
+                    enableDamping 
+                    dampingFactor={0.05} 
+                    enabled={appState === 'terminal'} 
+                />
+                
+                <Suspense fallback={null}>
+                    <ComputerModel />
+                    <DigitalRain />
+                    
+                    {/* D. Clickable Screen */}
+                    {isIdle && <ClickableScreen onScreenClick={onScreenClick} />}
+
+                </Suspense>
+            </Canvas>
+        </div>
+    );
+}
+```
+
+## src/app/components/TerminalScreen/TerminalScreen.tsx
+
+```tsx
+// components/TerminalScreen/TerminalScreen.tsx
+'use client';
+
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { format } from 'date-fns'; 
+import Image from 'next/image';
+import WindowsStartupAudio from '../WindowsStartupAudio/WindowsStartupAudio';
+import ChatbotArea from '../ChatbotArea/ChatbotArea'; 
+import ContactModal from '../ContactForm/ContactModal';
+import RiskScanModal from '../RiskScan/RiskScanModal';
+import { motion } from 'framer-motion'; 
+
+type AppState = 'idle' | 'booting' | 'os_load' | 'terminal';
+
+const BOOT_MESSAGES = [
+    "BIOS v3.14 - Initializing...",
+    "CPU: Intel Core Resume Processor",
+    "RAM: 64GB Experience",
+    "Loading secure_core.sys...",
+    "Mounting /dev/skills...",
+    "Starting interactive interface...",
+    "Ready.",
+];
+
+const MESSAGE_DELAY = 350;
+const OS_LOAD_DURATION = 3500;
+const PAUSE_AFTER_READY = 700;
+
+interface TerminalScreenProps {
+    appState: AppState;
+    onOsLoadComplete: () => void;
+    onTerminalExecute: (command: 'cards.exe' | 'blog.exe') => void; 
+}
+
+const ASCII_CARD_ICON = '\u{1F0DC}';
+const ASCII_BLOG_ICON = '\u{1F5A5}'; 
+const ASCII_CONTACT_ICON = '\u{2709}';
+
+// J.A.R.V.I.S. Panel - Fixed on the right side
+const JarvisPanel = ({ currentTime, currentDate, status }: { currentTime: string; currentDate: string; status: string }) => (
+    <div className="fixed right-0 top-0 h-full w-[350px] border-l-2 border-green-400/50 bg-black/80 backdrop-blur-sm z-20 hidden lg:flex flex-col p-4">
+        {/* Clock & Globe Widget */}
+        <div className="border-2 border-green-400 p-3 flex flex-col items-center mb-4 flex-shrink-0">
+            <pre className="text-4xl font-extrabold text-yellow-400 tracking-wider leading-none mb-2">
+                {currentTime.slice(0, 5)}
+            </pre>
+            <p className="text-xs text-green-400 mb-2">{currentDate}</p>
+            <div className="w-32 h-8 relative">
+                <Image src="/images/globe.gif" alt="Rotating Globe GIF" fill className="object-contain" unoptimized />
+            </div>
+        </div>
+        {/* Chatbot Area */}
+        <div className="flex-1 min-h-0">
+            <ChatbotArea currentTime={currentTime} status={status} />
+        </div>
+    </div>
+);
+
+// Systems I Build Section - 8 card grid
+const SystemsIBuildSection = () => {
+    const systems = [
+        { icon: '\u{232C}', name: 'AI SOC Assistant', desc: 'Splunk + LLM integration' },
+        { icon: '\u{2301}', name: 'Threat Response Pipelines', desc: 'Automated detection & response' },
+        { icon: '\u{26E8}', name: 'Secure SaaS Platforms', desc: 'Multi-tenant, zero-trust' },
+        { icon: '\u{26B2}', name: 'Mobile Apps', desc: 'Embedded security layers' },
+        { icon: '\u{25C8}', name: 'Zero Trust Architecture', desc: 'Enterprise deployments' },
+        { icon: '\u{269B}', name: 'Autonomous Security AI', desc: 'Intelligent threat agents' },
+        { icon: '\u{25A4}', name: 'SIEM Dashboards', desc: 'Observability & monitoring' },
+        { icon: '\u{2601}', name: 'CloudGuard WAF', desc: 'Network security deployments' },
+    ];
+    return (
+        <div className="py-20">
+            <h3 className="text-sm font-bold text-yellow-400 mb-6 tracking-widest uppercase text-glow">
+                {'// SYSTEMS I BUILD'}
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {systems.map((system, idx) => (
+                    <div key={idx} className="border border-green-800/50 bg-black/40 p-4 hover:border-green-500 transition-all hover:bg-green-900/10 group cursor-pointer">
+                        <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">{system.icon}</div>
+                        <h4 className="text-[11px] text-white font-bold mb-1 group-hover:text-green-400">{system.name}</h4>
+                        <p className="text-[9px] text-gray-500 font-mono">{system.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+// Security Stacks Section
+const SecurityStacksSection = () => {
+    const checkPointStacks = [
+        { name: 'Infinity Platform', icon: '\u{25C8}' },
+        { name: 'Harmony (Email, Mobile, SaaS, Endpoint, SASE)', icon: '\u{26B7}' },
+        { name: 'CloudGuard (Network Security, WAF)', icon: '\u{26EF}' },
+        { name: 'Quantum (Force, Spark, IoT, Hyperscale/Maestro)', icon: '' },
+    ];
+    const splunkStacks = [
+        { name: 'Splunk Cloud & Enterprise', icon: '\u{25A4}' },
+        { name: 'SIEM + SOAR Automation', icon: '\u{2315}' },
+        { name: 'Observability Pipelines', icon: '\u{1F4C8}' },
+        { name: 'MSSP Accreditation', icon: '\u{2611}' },
+    ];
+    return (
+        <div className="py-20">
+            <h3 className="text-sm font-bold text-yellow-400 mb-6 tracking-widest uppercase text-glow">
+                {'// SECURITY STACKS DEPLOYED'}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="border border-orange-800/50 bg-orange-900/10 p-5 hover:border-orange-500/50 transition-all">
+                    <h4 className="text-orange-400 font-bold text-xs mb-4 uppercase tracking-wider">
+                        {'\u{263F}'} CHECK POINT ECOSYSTEM
+                    </h4>
+                    <div className="space-y-3">
+                        {checkPointStacks.map((stack, idx) => (
+                            <div key={idx} className="flex items-center gap-3 text-sm text-gray-300">
+                                <span className="text-orange-500">{stack.icon}</span>
+                                <span className="font-mono">{stack.name}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="border border-green-800/50 bg-green-900/10 p-5 hover:border-green-500/50 transition-all">
+                    <h4 className="text-green-400 font-bold text-xs mb-4 uppercase tracking-wider">
+                        {'\u{25A4}'} SPLUNK ECOSYSTEM
+                    </h4>
+                    <div className="space-y-3">
+                        {splunkStacks.map((stack, idx) => (
+                            <div key={idx} className="flex items-center gap-3 text-sm text-gray-300">
+                                <span className="text-green-500">{stack.icon}</span>
+                                <span className="font-mono">{stack.name}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <p className="text-xs text-green-400 font-mono mt-6 italic text-center opacity-80">
+                {'\u0022'}From perimeter to endpoint to cloud &mdash; fully instrumented, monitored, and automated.{'\u0022'}
+            </p>
+        </div>
+    );
+};
+
+// Certifications Section
+const CertificationsSection = () => {
+    const checkpointCerts = [
+        'CPSC', 'Infinity Platform', 'Infinity ERM', 'Threat Exposure Mgmt',
+        'MSSP', 'Harmony Email', 'Harmony Mobile', 'Harmony SaaS',
+        'Harmony Endpoint', 'Harmony SASE', 'CloudGuard Network',
+        'CloudGuard WAF', 'Quantum Force', 'Quantum Spark',
+        'Quantum IoT', 'Quantum Hyperscale', 'Sales Rep I', 'Technical Selling'
+    ];
+    const splunkCerts = [
+        'Splunk Accredited MSP', 'Splunk Platform SE I', 'Splunk Cloud & Enterprise Developer'
+    ];
+    return (
+        <div className="py-20">
+            <h3 className="text-sm font-bold text-yellow-400 mb-6 tracking-widest uppercase text-glow">
+                {'// CERTIFIED STACK EXPERTISE'}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="border border-orange-800/50 bg-orange-900/10 p-5">
+                    <h4 className="text-orange-400 font-bold text-xs mb-4 uppercase">
+                        {'\u{263F}'} CHECK POINT CERTIFICATIONS
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                        {checkpointCerts.map((cert, idx) => (
+                            <span key={idx} className="border border-orange-700/50 bg-orange-900/20 px-3 py-1 text-[10px] text-orange-300 font-mono">
+                                {cert}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+                <div className="border border-green-800/50 bg-green-900/10 p-5">
+                    <h4 className="text-green-400 font-bold text-xs mb-4 uppercase">
+                        {'\u{25A4}'} SPLUNK CERTIFICATIONS
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                        {splunkCerts.map((cert, idx) => (
+                            <span key={idx} className="border border-green-700/50 bg-green-900/20 px-3 py-1 text-[10px] text-green-300 font-mono">
+                                {cert}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <p className="text-xs text-green-400 font-mono mt-6 italic text-center opacity-80">
+                {'\u0022'}Certified across full-stack security architecture &mdash; from edge to cloud to endpoint to AI-driven response.{'\u0022'}
+            </p>
+        </div>
+    );
+};
+
+// Intel Fragments Section
+const IntelFragmentsSection = () => (
+    <div className="py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+                <h4 className="text-[11px] font-bold text-green-400 mb-3 border-b border-green-800/50 pb-2 tracking-widest uppercase">INTEL FRAGMENTS / RECENT DEPLOYS</h4>
+                <div className="border-l-2 border-green-800 pl-4">
+                    <p className="text-[11px] text-green-500 font-bold uppercase">Global Security Ops</p>
+                    <p className="text-[10px] text-gray-400 italic leading-relaxed">Deployed Splunk SOAR for fortune 500 company, reducing response time by 70%.</p>
+                </div>
+                <div className="border-l-2 border-green-800 pl-4">
+                    <p className="text-[11px] text-green-500 font-bold uppercase">AI Compliance Agent</p>
+                    <p className="text-[10px] text-gray-400 italic leading-relaxed">Automated HIPAA/GDPR auditing using custom RAG pipeline & autonomous agents.</p>
+                </div>
+            </div>
+            <div className="space-y-4">
+                <h4 className="text-[11px] font-bold text-green-400 mb-3 border-b border-green-800/50 pb-2 tracking-widest uppercase">CERTIFICATIONS & STANDARDS</h4>
+                <div className="flex flex-wrap gap-2">
+                    {['SOC2 TYPE II', 'ISO 27001', 'ZERO TRUST', 'HIPAA READY', 'OWASP TOP 10'].map((badge, i) => (
+                        <span key={i} className="border border-green-800 bg-green-900/20 px-3 py-1.5 text-[10px] text-green-400 font-bold">
+                            {badge}
+                        </span>
+                    ))}
+                </div>
+                <div className="text-[10px] text-gray-500 font-mono mt-3">
+                    {'\u003E'} ENCRYPTION: AES-256-GCM<br/>
+                    {'\u003E'} PROTOCOL: TLS 1.3 / QUIC
+                </div>
+            </div>
+        </div>
+    </div>
+);
+
+type NavSection = 'dashboard' | 'systems' | 'services' | 'intel' | 'audit' | 'checklist';
+
+export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalExecute }: TerminalScreenProps) {
+    const [messages, setMessages] = useState<string[]>([]);
+    const sequenceStartedRef = useRef(false);
+    const [currentTime, setCurrentTime] = useState('');
+    const [currentDate, setCurrentDate] = useState('');
+    const [systemStatus, setSystemStatus] = useState("System Offline");
+    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+    const [isRiskScanModalOpen, setIsRiskScanModalOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState<NavSection>('dashboard');
+
+    const handleBlogExecute = () => { onTerminalExecute('blog.exe'); };
+    const handleContactExecute = () => { setIsContactModalOpen(true); };
+    const handleRiskScanExecute = () => { setIsRiskScanModalOpen(true); };
+
+    const navItems = [
+        { id: 'systems' as NavSection, label: 'SYSTEMS', icon: ASCII_CARD_ICON, action: () => setActiveSection('systems') },
+        { id: 'services' as NavSection, label: 'SERVICES', icon: ASCII_BLOG_ICON, action: () => setActiveSection('services') },
+        { id: 'demo' as NavSection, label: '3D DEMO', icon: '', action: () => window.location.href = '/demo' },
+        { id: 'intel' as NavSection, label: 'INTEL', icon: ASCII_CONTACT_ICON, action: handleBlogExecute },
+        { id: 'audit' as NavSection, label: 'AUDIT', icon: '\u{1F5CE}', action: handleRiskScanExecute },
+        { id: 'checklist' as NavSection, label: 'CHECKLIST', icon: '\u{1F5CE}', action: handleContactExecute },
+    ];
+
+    useEffect(() => {
+        setSystemStatus(appState === 'terminal' ? "Active - Awaiting Command" : "System Initializing...");
+    }, [appState]);
+
+    const runBootSequence = useCallback(() => {
+        if (sequenceStartedRef.current) return;
+        sequenceStartedRef.current = true;
+        setMessages([]);
+        let currentMessageIndex = 0;
+        const typeMessage = () => {
+            if (currentMessageIndex >= BOOT_MESSAGES.length) {
+                setTimeout(() => { onOsLoadComplete(); }, PAUSE_AFTER_READY);
+                return;
+            }
+            setMessages(prev => [...prev, BOOT_MESSAGES[currentMessageIndex]]);
+            currentMessageIndex++;
+            setTimeout(typeMessage, MESSAGE_DELAY);
+        };
+        setTimeout(typeMessage, MESSAGE_DELAY);
+    }, [onOsLoadComplete]);
+
+    useEffect(() => {
+        if (appState === 'booting' && !sequenceStartedRef.current) { runBootSequence(); }
+    }, [appState, runBootSequence]);
+
+    useEffect(() => {
+        let timeout: NodeJS.Timeout;
+        if (appState === 'os_load') {
+            timeout = setTimeout(() => { onOsLoadComplete(); }, OS_LOAD_DURATION);
+        }
+        return () => clearTimeout(timeout);
+    }, [appState, onOsLoadComplete]);
+
+    useEffect(() => {
+        let interval: NodeJS.Timeout;
+        if (appState === 'terminal') {
+            const updateDateTime = () => {
+                const now = new Date();
+                setCurrentTime(format(now, 'HH:mm:ss')); 
+                setCurrentDate(format(now, 'dd-MM-yyyy'));
+            };
+            updateDateTime(); 
+            interval = setInterval(updateDateTime, 1000); 
+        }
+        return () => clearInterval(interval);
+    }, [appState]);
+
+    const isBootingActive = appState === 'booting' && sequenceStartedRef.current && messages.length < BOOT_MESSAGES.length;
+
+    return (
+        <div className={`absolute inset-0 z-10 font-mono flex flex-col justify-start items-start`}> 
+            {appState === 'booting' && (
+                <div className="w-full h-full p-10 text-green-400 bg-black/90">
+                    {messages.map((msg, index) => (
+                        <p key={index} className="mb-1">{msg}</p>
+                    ))}
+                    {isBootingActive && <span className="animate-pulse">_</span>}
+                </div>
+            )}
+            {appState === 'os_load' && (
+                <div className="w-full h-full flex flex-col justify-center items-center bg-blue-700 text-white text-3xl font-bold">
+                    <WindowsStartupAudio />
+                    <p className='animate-pulse'>OS INITIALIZING...</p>
+                    <p className='text-sm mt-2'>Loading User Profile...</p>
+                </div>
+            )}
+            {appState === 'terminal' && (
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1 }}
+                    className="w-full h-full bg-black/95 bg-grid-pattern pointer-events-auto text-green-400 flex flex-col relative overflow-hidden"
+                >
+                    <div className="absolute inset-0 bg-green-900/5 pointer-events-none z-0" />
+                    <div className="absolute inset-0 scanlines opacity-20 pointer-events-none" />
+                    
+                    {/* Fixed J.A.R.V.I.S. Panel on the right */}
+                    <JarvisPanel currentTime={currentTime} currentDate={currentDate} status={systemStatus} />
+                    
+                    {/* Main Content Area - Scrollable, with padding for fixed JARVIS */}
+                    <div className="flex-1 overflow-y-auto custom-scrollbar pr-0 lg:pr-[350px]">
+                        <div className="px-6 py-6 md:px-10 md:py-8 min-h-full">
+                            {/* Header with Navigation */}
+                            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10 border-b border-green-800/50 pb-6">
+                                <div>
+                                    <motion.h1 
+                                        initial={{ x: -20, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        className="text-yellow-400 font-bold tracking-widest text-xl md:text-2xl text-glow"
+                                    >
+                                        {activeSection === 'dashboard' && 'SECURE INTELLIGENT SYSTEMS'}
+                                        {activeSection === 'systems' && 'SYSTEMS & STACKS'}
+                                        {activeSection === 'services' && 'SERVICES_MODULE'}
+                                        {activeSection === 'intel' && 'INTEL_DATABASE'}
+                                        {activeSection === 'audit' && 'SECURITY_AUDIT'}
+                                        {activeSection === 'checklist' && 'COMMUNICATION_PROTOCOL'}
+                                    </motion.h1>
+                                    <h2 className="text-[10px] md:text-xs text-green-300 font-mono opacity-80 font-normal">
+                                        Cybersecurity Architecture &middot; AI Automation &middot; Enterprise Security Engineering
+                                    </h2>
+                                </div>
+                                
+                                {/* Navigation Buttons */}
+                                <div className="flex flex-wrap justify-start md:justify-end gap-3">
+                                    {navItems.map((item) => (
+                                        <button 
+                                            key={item.id}
+                                            onClick={item.action}
+                                            className={`flex items-center gap-2 text-[10px] transition-all group border px-3 py-1.5 bg-black/40 ${
+                                                activeSection === item.id 
+                                                    ? 'border-green-400 bg-green-900/30 text-white' 
+                                                    : 'border-green-800 hover:border-green-500 hover:bg-green-900/30'
+                                            }`}
+                                        >
+                                            <span className="text-sm group-hover:scale-110 transition-transform">{item.icon}</span>
+                                            <span className="hidden sm:inline font-bold tracking-tighter">{item.label}</span>
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Section Content */}
+                            <div className="flex flex-col gap-8">
+                                {/* Dashboard Section (Page 1) */}
+                                {activeSection === 'dashboard' && (
+                                    <>
+                                        <div className="border-l-2 border-green-500 pl-4 py-1">
+                                            <h3 className="text-green-300 font-semibold tracking-wide text-xs mb-1 uppercase text-glow">
+                                                {'// MISSION OBJECTIVE'}
+                                            </h3>
+                                            <p className="text-gray-300 leading-relaxed text-base md:text-lg font-bold max-w-3xl italic">
+                                                {'\u0022'}I design and build secure, intelligent systems that scale &mdash; and defend them.{'\u0022'}
+                                            </p>
+                                        </div>
+
+                                        {/* Hero Card */}
+                                        <div className="bg-gradient-to-r from-green-900/20 via-black to-black border border-green-500/80 p-6 rounded-sm relative overflow-hidden group hover:border-green-400 transition-all box-glow">
+                                            <div className="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 shadow-[0_0_15px_rgba(220,38,38,0.6)] animate-pulse">
+                                                SYSTEMS ONLINE
+                                            </div>
+                                            <div className="flex flex-col gap-2 mb-6">
+                                                <h3 className="text-xl md:text-2xl font-bold text-white tracking-wider text-glow">
+                                                    SECURE INTELLIGENT SYSTEMS
+                                                </h3>
+                                                <p className="text-green-300 text-sm font-mono opacity-90">
+                                                    Deploying enterprise-grade defense and autonomous intelligence.
+                                                </p>
+                                            </div>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                                <div className="bg-black/40 p-4 border border-green-900/50">
+                                                    <p className="text-yellow-400 font-bold text-xs mb-2">SYSTEMS I BUILD:</p>
+                                                    <ul className="text-[11px] text-gray-300 space-y-1.5">
+                                                        <li>{'\u003E'} AI SOC Assistant {'\u0026'} Automation</li>
+                                                        <li>{'\u003E'} Threat Detection Pipelines</li>
+                                                        <li>{'\u003E'} Secure Cloud-Native Platforms</li>
+                                                        <li>{'\u003E'} Zero-Trust Architectures</li>
+                                                    </ul>
+                                                </div>
+                                                <div className="bg-black/40 p-4 border border-green-900/50">
+                                                    <p className="text-yellow-400 font-bold text-xs mb-2">SECURITY STACK:</p>
+                                                    <ul className="text-[11px] text-gray-300 space-y-1.5">
+                                                        <li>{'\u003E'} Check Point (Quantum, CloudGuard)</li>
+                                                        <li>{'\u003E'} Splunk (SIEM, SOAR, ITSI)</li>
+                                                        <li>{'\u003E'} Python, Rust, Go, TypeScript</li>
+                                                        <li>{'\u003E'} Kubernetes, Terraform, CI/CD</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <button 
+                                                onClick={handleContactExecute}
+                                                className="w-full bg-green-600 hover:bg-green-500 text-black font-extrabold py-3 uppercase tracking-[0.2em] text-sm transition-all shadow-[0_0_15px_rgba(34,197,94,0.5)] hover:shadow-[0_0_30px_rgba(34,197,94,0.8)] hover:scale-[1.01]"
+                                            >
+                                                REQUEST SECURITY AUDIT {'\u003E\u003E'}
+                                            </button>
+                                        </div>
+
+                                        {/* Tier Cards */}
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                            {[
+                                                { tier: 'TIER 1', title: 'PLATFORM ENGINEERING', desc: 'Full-stack web apps, Mobile applications, Distributed systems, SaaS platforms.', cta: 'VIEW PLATFORMS' },
+                                                { tier: 'TIER 2', title: 'CYBER DEFENSE', desc: 'Check Point Infinity, SIEM architecture, Threat detection, Zero Trust.', cta: 'VIEW DEFENSE' },
+                                                { tier: 'TIER 3', title: 'AI AUTOMATION', desc: 'Autonomous agents, Security AI, ChatOps, Intelligent pipelines.', cta: 'DEPLOY AGENTS' },
+                                                { tier: 'TIER 4', title: 'ENTERPRISE STACKS', desc: 'Check Point, Splunk, MSSP-grade managed security.', cta: 'VIEW STACK' }
+                                            ].map((block, idx) => (
+                                                <div key={idx} className="border border-green-800 p-5 bg-black/40 hover:border-green-500 transition-all cursor-pointer group hover:bg-green-900/10 box-glow-hover" onClick={handleContactExecute}>
+                                                    <p className="text-yellow-400 font-bold text-[10px] mb-2 group-hover:text-glow">{block.tier}</p>
+                                                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-green-400">{block.title}</h4>
+                                                    <p className="text-[10px] text-gray-400 leading-relaxed mb-4">{block.desc}</p>
+                                                    <p className="text-[10px] text-green-500 font-bold uppercase group-hover:underline tracking-wider">
+                                                        {'\u003E'} {block.cta}
+                                                    </p>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        {/* Status Bar */}
+                                        <div className="flex flex-wrap gap-4 text-[10px] text-green-500 font-mono opacity-80">
+                                            <div className="flex items-center gap-2 border border-green-900/50 px-3 py-1.5 bg-green-900/10">
+                                                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                                SIEM: ACTIVE
+                                            </div>
+                                            <div className="flex items-center gap-2 border border-green-900/50 px-3 py-1.5 bg-green-900/10">
+                                                <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                                                AI MODELS: ONLINE
+                                            </div>
+                                            <div className="flex items-center gap-2 border border-green-900/50 px-3 py-1.5 bg-green-900/10">
+                                                <span className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></span>
+                                                THREAT LEVEL: LOW
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
+
+                                {/* Systems & Stacks Section (Page 2) */}
+                                {activeSection === 'systems' && (
+                                    <>
+                                        <SystemsIBuildSection />
+                                        <SecurityStacksSection />
+                                        <CertificationsSection />
+                                        <IntelFragmentsSection />
+                                    </>
+                                )}
+
+                                {/* Services Section */}
+                                {activeSection === 'services' && (
+                                    <div className="py-20 space-y-6">
+                                        <div className="border-l-2 border-yellow-500 pl-4 py-2">
+                                            <h3 className="text-yellow-400 font-bold tracking-wide text-sm uppercase text-glow">
+                                                {'// AVAILABLE SERVICES'}
+                                            </h3>
+                                            <p className="text-gray-300 text-sm mt-1">Select a service tier for detailed specifications.</p>
+                                        </div>
+                                        
+                                        <div className="grid grid-cols-1 gap-4">
+                                            {[
+                                                { tier: 'TIER 1', title: 'PLATFORM ENGINEERING', desc: 'Full-stack web apps (Next.js, APIs, Databases), Mobile applications (React Native / Flutter), High-performance distributed systems, Secure multi-tenant SaaS platforms.' },
+                                                { tier: 'TIER 2', title: 'CYBER DEFENSE & GOVERNANCE', desc: 'Check Point Infinity Platform integration, SIEM architecture & Splunk deployment, Threat detection pipelines, Identity & Access Management, Zero Trust Architecture, Compliance frameworks (ISO 27001, SOC2).' },
+                                                { tier: 'TIER 3', title: 'AI AUTOMATION SYSTEMS', desc: 'Autonomous AI agents & workflows, Security AI (threat detection, anomaly detection), ChatOps / internal AI copilots, Intelligent automation pipelines.' },
+                                                { tier: 'TIER 4', title: 'ENTERPRISE SECURITY STACKS', desc: 'Check Point (Infinity, Harmony, CloudGuard, Quantum), Splunk (SIEM, SOAR, Observability), MSSP-grade managed security services.' }
+                                            ].map((service, idx) => (
+                                                <div key={idx} className="border border-green-800 p-6 bg-black/40 hover:border-green-500 transition-all cursor-pointer group hover:bg-green-900/10">
+                                                    <div className="flex items-start justify-between">
+                                                        <div>
+                                                            <p className="text-yellow-400 font-bold text-xs mb-2">{service.tier}</p>
+                                                            <h4 className="text-white font-bold text-lg mb-3 group-hover:text-green-400">{service.title}</h4>
+                                                            <p className="text-sm text-gray-400 leading-relaxed max-w-2xl">{service.desc}</p>
+                                                        </div>
+                                                        <span className="text-green-500 text-xl group-hover:translate-x-1 transition-transform">{'\u003E'}</span>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="flex gap-4 pt-4">
+                                            <button onClick={handleContactExecute} className="flex-1 bg-green-600 hover:bg-green-500 text-black font-bold py-3 uppercase tracking-widest transition-all">
+                                                REQUEST CONSULTATION
+                                            </button>
+                                            <button onClick={() => setActiveSection('dashboard')} className="px-6 border border-green-600 text-green-400 hover:bg-green-900/30 font-bold py-3 uppercase tracking-widest transition-all">
+                                                BACK
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Audit Section */}
+                                {activeSection === 'audit' && (
+                                    <div className="py-20 space-y-6">
+                                        <div className="border-l-2 border-red-500 pl-4 py-2">
+                                            <h3 className="text-red-400 font-bold tracking-wide text-sm uppercase">
+                                                {'// SECURITY AUDIT PROTOCOL'}
+                                            </h3>
+                                            <p className="text-gray-300 text-sm mt-1">Initiate a comprehensive security assessment.</p>
+                                        </div>
+
+                                        <div className="bg-red-900/10 border border-red-800/50 p-6">
+                                            <div className="flex items-center gap-3 mb-4">
+                                                <span className="text-3xl">{'\u26A0}'}</span>
+                                                <div>
+                                                    <h4 className="text-red-400 font-bold text-lg">DIGITAL PERIMETER SCAN</h4>
+                                                    <p className="text-sm text-gray-400">Automated vulnerability assessment and risk analysis</p>
+                                                </div>
+                                            </div>
+                                            <ul className="text-sm text-gray-300 space-y-2 mb-6">
+                                                <li className="flex items-center gap-2">
+                                                    <span className="text-green-500">{'\u003E'}</span> DNS & SSL Certificate Analysis
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <span className="text-green-500">{'\u003E'}</span> Open Port Detection
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <span className="text-green-500">{'\u003E'}</span> API Endpoint Security Review
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <span className="text-green-500">{'\u003E'}</span> Credential Leak Database Check
+                                                </li>
+                                            </ul>
+                                            <button onClick={handleRiskScanExecute} className="w-full bg-red-600 hover:bg-red-500 text-black font-bold py-3 uppercase tracking-widest transition-all">
+                                                INITIATE SCAN
+                                            </button>
+                                        </div>
+
+                                        <button onClick={() => setActiveSection('dashboard')} className="px-6 border border-green-600 text-green-400 hover:bg-green-900/30 font-bold py-3 uppercase tracking-widest transition-all">
+                                            {'\u003C'} BACK TO DASHBOARD
+                                        </button>
+                                    </div>
+                                )}
+
+                                {/* Checklist Section */}
+                                {activeSection === 'checklist' && (
+                                    <div className="py-20 space-y-6">
+                                        <div className="border-l-2 border-blue-500 pl-4 py-2">
+                                            <h3 className="text-blue-400 font-bold tracking-wide text-sm uppercase">
+                                                {'// SECURE COMMUNICATIONS'}
+                                            </h3>
+                                            <p className="text-gray-300 text-sm mt-1">Encrypted channel for project inquiries.</p>
+                                        </div>
+
+                                        <div className="bg-blue-900/10 border border-blue-800/50 p-6">
+                                            <div className="flex items-center gap-3 mb-4">
+                                                <span className="text-3xl">{'\u{1F512}'}</span>
+                                                <div>
+                                                    <h4 className="text-blue-400 font-bold text-lg">ESTABLISH SECURE CHANNEL</h4>
+                                                    <p className="text-sm text-gray-400">End-to-end encrypted communication protocol</p>
+                                                </div>
+                                            </div>
+                                            <ul className="text-sm text-gray-300 space-y-2 mb-6">
+                                                <li className="flex items-center gap-2">
+                                                    <span className="text-green-500">{'\u003E'}</span> AES-256-GCM Encryption
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <span className="text-green-500">{'\u003E'}</span> TLS 1.3 / QUIC Protocol
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <span className="text-green-500">{'\u003E'}</span> Zero-Knowledge Transmission
+                                                </li>
+                                            </ul>
+                                            <button onClick={handleContactExecute} className="w-full bg-blue-600 hover:bg-blue-500 text-black font-bold py-3 uppercase tracking-widest transition-all">
+                                                OPEN SECURE COMMS
+                                            </button>
+                                        </div>
+
+                                        <button onClick={() => setActiveSection('dashboard')} className="px-6 border border-green-600 text-green-400 hover:bg-green-900/30 font-bold py-3 uppercase tracking-widest transition-all">
+                                            {'\u003C'} BACK TO DASHBOARD
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            )}
+            <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
+            <RiskScanModal isOpen={isRiskScanModalOpen} onClose={() => setIsRiskScanModalOpen(false)} />
+        </div>
+    );
+}
+```
+
+## src/app/components/TierShowcase/TierShowcase.tsx
+
+```tsx
+'use client';
+
+import { useState, useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Environment, Html } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
+import { motion } from 'framer-motion';
+
+interface TierShowcaseProps {
+  tier: string;
+  title: string;
+  description: string;
+  models: Array<{
+    name: string;
+    position: [number, number, number];
+    rotation?: [number, number, number];
+    scale?: number;
+    color?: string;
+  }>;
+  onClose: () => void;
+}
+
+// Model components
+function ServerRack({ position, rotation = [0, 0, 0], scale = 1 }: { position: [number, number, number]; rotation?: [number, number, number]; scale?: number }) {
+  const { scene } = useGLTF('/models/server_rack.glb');
+  return (
+    <primitive 
+      object={scene} 
+      position={position} 
+      rotation={rotation} 
+      scale={[scale, scale, scale]}
+    />
+  );
+}
+
+function CheckPointRouter({ position, rotation = [0, 0, 0], scale = 1 }: { position: [number, number, number]; rotation?: [number, number, number]; scale?: number }) {
+  const { scene } = useGLTF('/models/check_point_router.glb');
+  return (
+    <primitive 
+      object={scene} 
+      position={position} 
+      rotation={rotation} 
+      scale={[scale, scale, scale]}
+    />
+  );
+}
+
+function SplunkMobile({ position, rotation = [0, 0, 0], scale = 1 }: { position: [number, number, number]; rotation?: [number, number, number]; scale?: number }) {
+  const { scene } = useGLTF('/models/splunk_mobile.glb');
+  return (
+    <primitive 
+      object={scene} 
+      position={position} 
+      rotation={rotation} 
+      scale={[scale, scale, scale]}
+    />
+  );
+}
+
+// Scene component
+function ShowcaseScene({ models, tier }: { models: TierShowcaseProps['models']; tier: string }) {
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => setTime(t => t + 0.01), 16);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
+      <ambientLight intensity={0.8} />
+      <pointLight position={[5, 5, 5]} color="#00d4ff" intensity={2} />
+      <pointLight position={[-5, -5, -5]} color="#ff3d6b" intensity={1.5} />
+      <directionalLight position={[0, 10, 0]} intensity={0.5} />
+      
+      {/* Grid floor */}
+      <gridHelper args={[20, 20, '#00d4ff', '#003344']} position={[0, -3, 0]} />
+      
+      {/* Models */}
+      {models.map((model, index) => {
+        const ModelComponent = model.name === 'server_rack' ? ServerRack : 
+                              model.name === 'check_point_router' ? CheckPointRouter : 
+                              SplunkMobile;
+        
+        return (
+          <ModelComponent
+            key={index}
+            position={model.position}
+            rotation={model.rotation}
+            scale={model.scale || 1}
+          />
+        );
+      })}
+
+      {/* Floating labels */}
+      {models.map((model, index) => (
+        <Html key={index} position={[model.position[0], model.position[1] + 2, model.position[2]]}>
+          <div className="text-center">
+            <div className="text-xs font-mono text-green-400 bg-black/80 px-2 py-1 border border-green-500/50">
+              {model.name.replace('_', ' ').toUpperCase()}
+            </div>
+          </div>
+        </Html>
+      ))}
+
+      <OrbitControls 
+        enableZoom={true} 
+        enablePan={true} 
+        minDistance={5} 
+        maxDistance={20}
+        autoRotate={true}
+        autoRotateSpeed={0.5}
+      />
+      <Environment preset="studio" />
+    </Canvas>
+  );
+}
+
+export default function TierShowcase({ tier, title, description, models, onClose }: TierShowcaseProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black z-50 flex flex-col"
+    >
+      {/* Header */}
+      <div className="flex justify-between items-center p-6 border-b border-green-800/50 bg-black/90">
+        <div>
+          <h2 className="text-2xl font-bold text-green-400 font-mono tracking-wider">{tier}</h2>
+          <p className="text-white font-bold text-lg">{title}</p>
+        </div>
+        <button
+          onClick={onClose}
+          className="px-4 py-2 border border-green-600 text-green-400 hover:bg-green-900/30 font-mono text-sm transition-all"
+        >
+          {'\u003C'} BACK TO SERVICES
+        </button>
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 relative">
+        {/* 3D Scene */}
+        <div className="absolute inset-0">
+          <ShowcaseScene models={models} tier={tier} />
+        </div>
+
+        {/* Overlay Info */}
+        <div className="absolute right-0 top-0 w-96 h-full bg-black/80 border-l border-green-800/50 p-6 overflow-y-auto">
+          <h3 className="text-green-400 font-bold text-sm mb-4 tracking-widest uppercase">{'//'} TECHNICAL SPECIFICATIONS</h3>
+          <p className="text-gray-300 text-sm leading-relaxed mb-6">{description}</p>
+          
+          <div className="space-y-4">
+            <h4 className="text-yellow-400 font-bold text-xs uppercase">{'//'} DEPLOYMENT EXAMPLES</h4>
+            <div className="space-y-2 text-xs text-gray-400">
+              {models.map((model, index) => (
+                <div key={index} className="border-l-2 border-green-800/50 pl-3">
+                  <span className="text-green-400 font-bold">{model.name.replace('_', ' ').toUpperCase()}</span>
+                  <p className="mt-1">Enterprise-grade {model.name.replace('_', ' ')} deployment with full monitoring and security integration.</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 space-y-2">
+            <h4 className="text-yellow-400 font-bold text-xs uppercase">{'//'} INTEGRATION POINTS</h4>
+            <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+              <span className="border border-green-800/50 px-2 py-1">Zero Trust Architecture</span>
+              <span className="border border-green-800/50 px-2 py-1">SIEM Integration</span>
+              <span className="border border-green-800/50 px-2 py-1">Automated Response</span>
+              <span className="border border-green-800/50 px-2 py-1">Compliance Monitoring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+```
+
+## src/app/components/Typewriter/Typewriter.tsx
+
+```tsx
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+
+interface TypewriterProps {
+  text: string;
+  speed?: number;
+  startDelay?: number;
+  onComplete?: () => void;
+  onType?: () => void;
+  className?: string;
+  cursorClassName?: string;
+}
+
+export default function Typewriter({
+  text,
+  speed = 30,
+  startDelay = 0,
+  onComplete,
+  onType,
+  className = "",
+  cursorClassName = "inline-block w-2 h-4 bg-green-400 ml-1 align-middle"
+}: TypewriterProps) {
+  const [displayedText, setDisplayedText] = useState('');
+  const [isStarted, setIsStarted] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
+
+  // Refs for callbacks to avoid re-triggering effects when they change
+  const onTypeRef = useRef(onType);
+  const onCompleteRef = useRef(onComplete);
+
+  useEffect(() => {
+    onTypeRef.current = onType;
+    onCompleteRef.current = onComplete;
+  }, [onType, onComplete]);
+
+  useEffect(() => {
+    // Reset state when text changes
+    setDisplayedText('');
+    setIsStarted(false);
+    setIsComplete(false);
+
+    const startTimeout = setTimeout(() => {
+      setIsStarted(true);
+    }, startDelay);
+
+    return () => clearTimeout(startTimeout);
+  }, [text, startDelay]);
+
+  useEffect(() => {
+    if (!isStarted) return;
+
+    let currentIndex = 0;
+    const intervalId = setInterval(() => {
+      if (currentIndex >= text.length) {
+        clearInterval(intervalId);
+        setIsComplete(true);
+        if (onCompleteRef.current) onCompleteRef.current();
+        return;
+      }
+
+      setDisplayedText(text.slice(0, currentIndex + 1));
+      if (onTypeRef.current) onTypeRef.current();
+      currentIndex++;
+    }, speed);
+
+    return () => clearInterval(intervalId);
+  }, [isStarted, text, speed]);
+
+  return (
+    <span className={className}>
+      {displayedText}
+      {!isComplete && (
+        <motion.span
+          className={cursorClassName}
+          animate={{ opacity: [1, 0] }}
+          transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
+        />
+      )}
+    </span>
+  );
+}
+
+```
+
+## src/app/components/WindowsStartupAudio/WindowsStartupAudio.tsx
+
+```tsx
+// components/WindowsStartupAudio/WindowsStartupAudio.tsx
+'use client';
+
+import { useEffect, useRef } from 'react';
+
+// 🛑 IMPORTANT: Confirm the file extension in your /public/audio folder. 
+// Assuming it's MP4 based on your code, but often Windows startup sounds are MP3/WAV.
+const AUDIO_SRC = '/audio/windows_startup.mp4';
+
+export default function WindowsStartupAudio() {
+    // FIX: Add explicit null type to useRef for correct initialization
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+
+    useEffect(() => {
+        const audio = audioRef.current;
+        
+        if (audio) {
+            // Set volume to a lower level (20%)
+            audio.volume = 0.2;
+            // Play the sound immediately when the component mounts
+            audio.play().catch(error => {
+                console.warn("Windows startup audio failed to play (user interaction required):", error);
+            });
+        }
+    }, []);
+
+    return (
+        // The audio element is hidden, only used for playback
+        <audio ref={audioRef} src={AUDIO_SRC} preload="auto" hidden />
+    );
+}
+```
+
+## src/app/demo/page.tsx
+
+```tsx
+'use client';
+
+import { useEffect, useRef, useState, useCallback, Suspense } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { OrbitControls, useGLTF, Html, useCursor } from '@react-three/drei';
+import * as THREE from 'three';
+import { useRouter } from 'next/navigation';
+import { sendEmail } from '../actions/send-email';
+
+// ============================================================
+// TYPES & CONSTANTS
+// ============================================================
+
+type ActIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
+
+/** 3D stack triad: left / center / right — aligns with defense-in-depth story */
+type StackLayerId = 'perimeter' | 'correlation' | 'visibility';
+
+/** Y-rotation for check_point_router.glb so the branded/front face aims at the camera (try 0, Math.PI, or ±Math.PI/2 if the mesh updates). */
+const CHECKPOINT_ROUTER_Y = 0;
+
+const STACK_TRIAD: Record<
+  StackLayerId,
+  { position: [number, number, number]; rotation: [number, number, number]; scale: number; blurb: string }
+> = {
+  perimeter: {
+    position: [-3.85, 0, 0],
+    rotation: [0, CHECKPOINT_ROUTER_Y, 0],
+    scale: 0.62,
+    blurb: 'Perimeter: GeoIP, IPS, and zero-day prevention at the edge.',
+  },
+  correlation: {
+    position: [0, 0, 0],
+    rotation: [0, 0, 0],
+    scale: 1.45,
+    blurb: 'Ingest & correlation: logs and telemetry land in the data plane.',
+  },
+  visibility: {
+    position: [3.85, 0, 0],
+    rotation: [0, -0.35, 0],
+    scale: 1.35,
+    blurb: 'Operator view: Splunk dashboards, alerts, and automated playbooks.',
+  },
+};
+
+const ACTS = [
+  { id: 'cold_open', label: 'Calm Before' },
+  { id: 'first_contact', label: 'Intrusion' },
+  { id: 'the_wall', label: 'Firewall' },
+  { id: 'kaspersky_shield', label: 'Endpoint Shield' },
+  { id: 'inside_wire', label: 'Lateral Move' },
+  { id: 'brain_wakes', label: 'AI Detection' },
+  { id: 'intel_center', label: 'SIEM' },
+  { id: 'after_action', label: 'Debrief' },
+];
+
+const COLORS = {
+  cyan: '#00d4ff',
+  red: '#ff3d6b',
+  purple: '#7b5cfa',
+  green: '#00e5a0',
+  bg: '#0a0c10',
+  surface: '#0f1117',
+  card: '#141720',
+};
+
+// ============================================================
+// LOADING SCREEN
+// ============================================================
+
+function LoadingScreen({ progress, loaded }: { progress: number; loaded: string[] }) {
+  return (
+    <div className="absolute inset-0 z-50 bg-black flex flex-col items-center justify-center">
+      <div className="max-w-md w-full px-8">
+        <h1 className="text-2xl md:text-4xl font-bold font-mono text-green-400 mb-2 text-center">
+          BREACH SIMULATION
+        </h1>
+        <p className="text-xs font-mono text-gray-500 text-center mb-8">
+          {'// LIVE THREAT ENVIRONMENT'}
+        </p>
+
+        <div className="space-y-4 mb-8">
+          {['server_rack.glb', 'check_point_router.glb', 'splunk_mobile.glb'].map((name) => (
+            <div key={name} className="flex items-center gap-4">
+              <span className="text-xs font-mono text-gray-400 w-40 truncate">{name}</span>
+              <div className="flex-1 h-1 bg-gray-800 rounded overflow-hidden">
+                <div
+                  className={`h-full transition-all duration-500 ${loaded.includes(name) ? 'bg-green-500' : 'bg-gray-600'}`}
+                  style={{ width: loaded.includes(name) ? '100%' : `${Math.random() * 30}%` }}
+                />
+              </div>
+              <span className="text-[10px] font-mono text-gray-500 w-12 text-right">
+                {loaded.includes(name) ? '✓' : '...'}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div className="h-1 bg-gray-800 rounded overflow-hidden">
+          <div
+            className="h-full bg-green-500 transition-all duration-300"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        <p className="text-xs font-mono text-gray-500 mt-2 text-center">
+          Initializing threat environment... {Math.round(progress)}%
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// NETWORK ARC SYSTEM (Particles traveling between points)
+// ============================================================
+
+function NetworkArcs({
+  source,
+  target,
+  color,
+  style = 'normal',
+  count = 5,
+  active = true,
+}: {
+  source: THREE.Vector3;
+  target: THREE.Vector3;
+  color: string;
+  style?: 'aggressive' | 'normal' | 'blocked';
+  count?: number;
+  active?: boolean;
+}) {
+  const groupRef = useRef<THREE.Group>(null);
+  const [particles] = useState(() =>
+    Array.from({ length: count }, (_, i) => ({
+      position: source.clone(),
+      progress: i / count,
+      speed: style === 'aggressive' ? 1.5 + Math.random() * 0.5 : 0.3 + Math.random() * 0.2,
+      color,
+      style,
+    }))
+  );
+
+  useFrame((state, delta) => {
+    if (!active || !groupRef.current) return;
+
+    const direction = target.clone().sub(source).normalize();
+    const distance = source.distanceTo(target);
+
+    particles.forEach((p) => {
+      p.progress += (p.speed * delta) / distance;
+
+      if (p.style === 'blocked' && p.progress > 0.5) {
+        // Shatter at midpoint
+        p.progress = 0;
+        p.position.copy(source);
+        return;
+      }
+
+      if (p.progress >= 1) {
+        if (p.style === 'normal') {
+          p.progress = 0;
+          p.position.copy(source);
+        } else {
+          p.progress = 1;
+          p.position.copy(target);
+        }
+        return;
+      }
+
+      p.position.copy(source).add(direction.clone().multiplyScalar(distance * p.progress));
+
+      // Add slight curve
+      const curveOffset = Math.sin(p.progress * Math.PI) * 0.5;
+      p.position.y += curveOffset;
+    });
+  });
+
+  if (!active) return null;
+
+  const positions = new Float32Array([...source.toArray(), ...target.toArray()]);
+
+  return (
+    <group ref={groupRef}>
+      {/* Arc line using lineSegments */}
+      <lineSegments>
+        <bufferGeometry attach="geometry">
+          <bufferAttribute
+            attach="attributes-position"
+            args={[positions, 3]}
+            count={2}
+            itemSize={3}
+          />
+        </bufferGeometry>
+        <lineBasicMaterial color={color} transparent opacity={0.3} attach="material" />
+      </lineSegments>
+
+      {/* Traveling particles */}
+      {particles.map((p, i) => (
+        <mesh key={i} position={p.position}>
+          <sphereGeometry args={[style === 'aggressive' ? 0.08 : 0.04, 4, 4]} />
+          <meshBasicMaterial color={p.color} transparent opacity={style === 'aggressive' ? 0.9 : 0.6} attach="material" />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+// ============================================================
+// MODEL COMPONENTS
+// ============================================================
+
+function ServerRack({
+  position = [0, 0, 0],
+  scale = 1,
+  visible = true,
+  accentColor = COLORS.cyan,
+  spin = true,
+}: {
+  position?: [number, number, number];
+  scale?: number;
+  visible?: boolean;
+  accentColor?: string;
+  spin?: boolean;
+}) {
+  const { scene } = useGLTF('/models/server_rack.glb');
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame((state, delta) => {
+    if (groupRef.current && spin) {
+      groupRef.current.rotation.y += delta * 0.1;
+    }
+  });
+
+  if (!visible) return null;
+
+  return (
+    <group ref={groupRef} position={position as THREE.Vector3Tuple} scale={[scale, scale, scale]}>
+      <primitive object={scene} />
+      <pointLight position={[0, 2, 2]} intensity={1.5} distance={5} color={accentColor} />
+    </group>
+  );
+}
+
+function CheckPointRouter({
+  position = [0, 0, 0],
+  scale = 1,
+  visible = false,
+  rotation = [0, 0, 0],
+  accentColor = COLORS.green,
+  spin = true,
+}: {
+  position?: [number, number, number];
+  scale?: number;
+  visible?: boolean;
+  rotation?: [number, number, number];
+  accentColor?: string;
+  spin?: boolean;
+}) {
+  const { scene } = useGLTF('/models/check_point_router.glb');
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame((state, delta) => {
+    if (groupRef.current && spin) {
+      groupRef.current.rotation.y += delta * 0.05;
+    }
+  });
+
+  if (!visible) return null;
+
+  return (
+    <group ref={groupRef} position={position as THREE.Vector3Tuple} rotation={rotation as THREE.EulerTuple} scale={[scale, scale, scale]}>
+      <primitive object={scene} />
+      <pointLight position={[0, 2, 2]} intensity={1.5} distance={5} color={accentColor} />
+    </group>
+  );
+}
+
+function SplunkMobile({
+  position = [0, 0, 0],
+  scale = 1,
+  visible = false,
+  bob = false,
+  accentColor = COLORS.purple,
+  spin = true,
+}: {
+  position?: [number, number, number];
+  scale?: number;
+  visible?: boolean;
+  bob?: boolean;
+  accentColor?: string;
+  spin?: boolean;
+}) {
+  const { scene } = useGLTF('/models/splunk_mobile.glb');
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame((state, delta) => {
+    if (groupRef.current) {
+      const baseY = position[1];
+      groupRef.current.position.y = bob ? baseY + Math.sin(state.clock.elapsedTime * 0.8) * 0.15 : baseY;
+      if (spin) {
+        groupRef.current.rotation.y += delta * 0.05;
+      }
+    }
+  });
+
+  if (!visible) return null;
+
+  return (
+    <group ref={groupRef} position={position as THREE.Vector3Tuple} scale={[scale, scale, scale]}>
+      <primitive object={scene} />
+      <pointLight position={[0, 2, 2]} intensity={1.5} distance={5} color={accentColor} />
+    </group>
+  );
+}
+
+// Preload models
+useGLTF.preload('/models/server_rack.glb');
+useGLTF.preload('/models/check_point_router.glb');
+useGLTF.preload('/models/splunk_mobile.glb');
+
+// ============================================================
+// STACK TRIAD — Acts 6 & 7 (1/3 · 2/3 · 3/3 layout, clickable)
+// ============================================================
+
+function StackTriadModels({
+  stackFocus,
+  onFocus,
+}: {
+  stackFocus: StackLayerId | null;
+  onFocus: (id: StackLayerId) => void;
+}) {
+  const [hovered, setHovered] = useState<StackLayerId | null>(null);
+  useCursor(!!hovered);
+
+  const scaleFor = (id: StackLayerId) => {
+    const s = STACK_TRIAD[id].scale;
+    return stackFocus === id ? s * 1.14 : s;
+  };
+
+  return (
+    <>
+      <group
+        position={STACK_TRIAD.perimeter.position as THREE.Vector3Tuple}
+        onPointerOver={(e) => {
+          e.stopPropagation();
+          setHovered('perimeter');
+        }}
+        onPointerOut={(e) => {
+          e.stopPropagation();
+          setHovered(null);
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
+          onFocus('perimeter');
+        }}
+      >
+        <CheckPointRouter
+          position={[0, 0, 0]}
+          scale={scaleFor('perimeter')}
+          visible
+          rotation={STACK_TRIAD.perimeter.rotation}
+          accentColor={stackFocus === 'perimeter' ? COLORS.green : COLORS.cyan}
+          spin={false}
+        />
+      </group>
+
+      <group
+        position={STACK_TRIAD.correlation.position as THREE.Vector3Tuple}
+        onPointerOver={(e) => {
+          e.stopPropagation();
+          setHovered('correlation');
+        }}
+        onPointerOut={(e) => {
+          e.stopPropagation();
+          setHovered(null);
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
+          onFocus('correlation');
+        }}
+      >
+        <ServerRack
+          position={[0, 0, 0]}
+          scale={scaleFor('correlation')}
+          visible
+          accentColor={stackFocus === 'correlation' ? COLORS.cyan : '#4a9eff'}
+          spin={false}
+        />
+      </group>
+
+      <group
+        position={STACK_TRIAD.visibility.position as THREE.Vector3Tuple}
+        rotation={STACK_TRIAD.visibility.rotation as THREE.EulerTuple}
+        onPointerOver={(e) => {
+          e.stopPropagation();
+          setHovered('visibility');
+        }}
+        onPointerOut={(e) => {
+          e.stopPropagation();
+          setHovered(null);
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
+          onFocus('visibility');
+        }}
+      >
+        <SplunkMobile
+          position={[0, 0, 0]}
+          scale={scaleFor('visibility')}
+          visible
+          bob={false}
+          accentColor={stackFocus === 'visibility' ? COLORS.purple : '#a78bfa'}
+          spin={false}
+        />
+      </group>
+    </>
+  );
+}
+
+// ============================================================
+// KASPERSKY ENDPOINT SHIELD (Act 3 - Virus catching visualization)
+// ============================================================
+
+function KasperskyShield({ active = false }: { active?: boolean }) {
+  const groupRef = useRef<THREE.Group>(null);
+  const ringRef = useRef<THREE.Mesh>(null);
+  const [viruses, setViruses] = useState<{ pos: THREE.Vector3; speed: number; caught: boolean; explosion: number }[]>([]);
+
+  // Initialize viruses
+  useEffect(() => {
+    if (active) {
+      const initialViruses = Array.from({ length: 8 }, () => ({
+        pos: new THREE.Vector3(-5 + Math.random() * 2, -2 + Math.random() * 4, Math.random() * 2 - 1),
+        speed: 0.5 + Math.random() * 0.5,
+        caught: false,
+        explosion: 0,
+      }));
+      setViruses(initialViruses);
+    }
+  }, [active]);
+
+  useFrame((state, delta) => {
+    if (!active || !groupRef.current) return;
+
+    // Rotate the shield ring
+    if (ringRef.current) {
+      ringRef.current.rotation.z = state.clock.elapsedTime * 0.5;
+    }
+
+    setViruses(prev => prev.map(v => {
+      if (v.explosion > 0) {
+        return { ...v, explosion: v.explosion - delta * 2 };
+      }
+
+      if (v.caught) return v;
+
+      // Move virus toward center (where the shield is)
+      const direction = new THREE.Vector3(0, 0, 0).clone().sub(v.pos).normalize();
+      const newPos = v.pos.clone().add(direction.multiplyScalar(v.speed * delta));
+
+      // Check if virus reached the shield (center area)
+      if (newPos.distanceTo(new THREE.Vector3(0, 0, 0)) < 1.5) {
+        // Virus caught!
+        return { ...v, caught: true, explosion: 1 };
+      }
+
+      return { ...v, pos: newPos };
+    }));
+  });
+
+  if (!active) return null;
+
+  return (
+    <group ref={groupRef}>
+      {/* Kaspersky Shield Dome */}
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[1.5, 16, 16]} />
+        <meshBasicMaterial color="#0066ff" transparent opacity={0.15} wireframe />
+      </mesh>
+      
+      {/* Inner shield glow */}
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[1.3, 16, 16]} />
+        <meshBasicMaterial color="#0088ff" transparent opacity={0.1} />
+      </mesh>
+
+      {/* Rotating shield ring */}
+      <mesh ref={ringRef} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[1.6, 0.03, 8, 32]} />
+        <meshBasicMaterial color="#0066ff" transparent opacity={0.6} />
+      </mesh>
+
+      {/* Kaspersky label */}
+      <Html position={[0, 2.5, 0]}>
+        <div className="text-center">
+          <div className="text-xs font-mono text-blue-400 bg-black/80 px-3 py-1 border border-blue-500/50 whitespace-nowrap">
+            KASPERSKY ENDPOINT SECURITY
+          </div>
+        </div>
+      </Html>
+
+      {/* Viruses */}
+      {viruses.map((virus, i) => (
+        <group key={i} position={virus.pos}>
+          {virus.explosion > 0 ? (
+            // Explosion effect
+            <mesh>
+              <sphereGeometry args={[0.15 * virus.explosion, 8, 8]} />
+              <meshBasicMaterial color="#ff3d6b" transparent opacity={virus.explosion} />
+            </mesh>
+          ) : virus.caught ? null : (
+            // Virus particle
+            <mesh>
+              <icosahedronGeometry args={[0.08, 1]} />
+              <meshBasicMaterial color="#ff3d6b" />
+            </mesh>
+          )}
+        </group>
+      ))}
+
+      {/* Status indicator */}
+      <Html position={[2.5, -1, 0]}>
+        <div className="text-xs font-mono text-green-400 bg-black/80 px-2 py-1 border border-green-500/30">
+          THREATS NEUTRALIZED: {viruses.filter(v => v.caught).length}/{viruses.length}
+        </div>
+      </Html>
+    </group>
+  );
+}
+
+// ============================================================
+// NODE GRAPH (For Acts 4 & 5)
+// ============================================================
+
+function NodeGraph({
+  compromised = false,
+  aiActive = false,
+  spread = 1,
+  groupOffset = [0, 0, 0],
+  wireframeRadius = 4,
+  wireframeCenter = [0, 2, 0],
+  rotateGraph = true,
+}: {
+  compromised?: boolean;
+  aiActive?: boolean;
+  spread?: number;
+  groupOffset?: [number, number, number];
+  wireframeRadius?: number;
+  wireframeCenter?: [number, number, number];
+  rotateGraph?: boolean;
+}) {
+  const groupRef = useRef<THREE.Group>(null);
+
+  const baseNodes = [
+    { id: 'wkstn-01', pos: [-3, 0, 0], compromised: false },
+    { id: 'wkstn-02', pos: [-1.5, 1.5, 0], compromised: false },
+    { id: 'wkstn-07', pos: [1.5, 1.5, 0], compromised: true },
+    { id: 'wkstn-04', pos: [3, 0, 0], compromised: false },
+    { id: 'wkstn-05', pos: [-1.5, -1.5, 0], compromised: false },
+    { id: 'wkstn-06', pos: [1.5, -1.5, 0], compromised: false },
+    { id: 'dc-01', pos: [0, 0, 0], compromised: false, isServer: true },
+  ];
+
+  const nodes = baseNodes.map((n) => ({
+    ...n,
+    pos: [n.pos[0] * spread, n.pos[1] * spread, n.pos[2] * spread] as [number, number, number],
+  }));
+
+  useFrame((state, delta) => {
+    if (groupRef.current && rotateGraph) {
+      groupRef.current.rotation.y += delta * 0.02;
+    }
+  });
+
+  return (
+    <group ref={groupRef} position={groupOffset as THREE.Vector3Tuple}>
+      {nodes.map((node) => (
+        <group key={node.id} position={node.pos as THREE.Vector3Tuple}>
+          {/* Node sphere */}
+          <mesh>
+            <sphereGeometry args={[node.isServer ? 0.3 : 0.2, 8, 8]} />
+            <meshBasicMaterial
+              color={node.compromised && compromised ? COLORS.red : aiActive ? COLORS.purple : COLORS.cyan}
+              transparent
+              opacity={0.8}
+            />
+          </mesh>
+          {node.isServer && (
+            <mesh>
+              <sphereGeometry args={[0.4, 8, 8]} />
+              <meshBasicMaterial color={node.compromised && compromised ? COLORS.red : COLORS.cyan} wireframe transparent opacity={0.3} />
+            </mesh>
+          )}
+          {/* Compromised pulse */}
+          {node.compromised && compromised && (
+            <mesh>
+              <sphereGeometry args={[0.3 + Math.sin(Date.now() * 0.005) * 0.1, 8, 8]} />
+              <meshBasicMaterial color={COLORS.red} transparent opacity={0.3 + Math.sin(Date.now() * 0.005) * 0.2} />
+            </mesh>
+          )}
+          {/* AI lockdown ring */}
+          {node.compromised && aiActive && (
+            <mesh rotation={[Math.PI / 2, 0, 0]}>
+              <torusGeometry args={[0.35, 0.02, 8, 16]} />
+              <meshBasicMaterial color={COLORS.purple} />
+            </mesh>
+          )}
+        </group>
+      ))}
+
+      {/* Connection lines */}
+      {nodes.map((n1, i) =>
+        nodes.slice(i + 1).map((n2, j) => {
+          const isCompromisedConnection = n1.compromised && compromised;
+          const linePos = new Float32Array([...n1.pos, ...n2.pos]);
+          return (
+            <lineSegments key={`${i}-${j}`}>
+              <bufferGeometry attach="geometry">
+                <bufferAttribute
+                  attach="attributes-position"
+                  args={[linePos, 3]}
+                  count={2}
+                  itemSize={3}
+                />
+              </bufferGeometry>
+              <lineBasicMaterial
+                color={isCompromisedConnection ? COLORS.red : aiActive ? COLORS.purple : COLORS.cyan}
+                transparent
+                opacity={isCompromisedConnection ? 0.6 : 0.2}
+                attach="material"
+              />
+            </lineSegments>
+          );
+        })
+      )}
+
+      {/* AI Neural mesh overlay — kept behind / around the phone, not through it */}
+      {aiActive && (
+        <mesh position={wireframeCenter as THREE.Vector3Tuple}>
+          <sphereGeometry args={[wireframeRadius, 8, 8]} />
+          <meshBasicMaterial color={COLORS.purple} wireframe transparent opacity={0.1} />
+        </mesh>
+      )}
+    </group>
+  );
+}
+
+// ============================================================
+// MAIN DEMO SCENE
+// ============================================================
+
+function DemoScene({
+  act,
+  loaded,
+  onLoaded,
+  stackFocus,
+  onStackFocus,
+}: {
+  act: ActIndex;
+  loaded: boolean;
+  onLoaded: () => void;
+  stackFocus: StackLayerId | null;
+  onStackFocus: (id: StackLayerId) => void;
+}) {
+  const { camera } = useThree();
+
+  // Camera positions per act - wider FOV on triad acts so1/3 · 2/3 · 3/3 reads clearly
+  const cameraPositions = [
+    new THREE.Vector3(0, 2, 8),    // Act 0: Cold open
+    new THREE.Vector3(0, 2, 8),    // Act 1: First contact
+    new THREE.Vector3(0, 2, 8),    // Act 2: The wall
+    new THREE.Vector3(0, 3, 8),    // Act 3: Kaspersky Shield
+    new THREE.Vector3(0, 5, 8),    // Act 4: Inside wire
+    new THREE.Vector3(0, 4.2, 8.5), // Act 5: Brain wakes — phone forward, graph recedes
+    new THREE.Vector3(0, 2.65, 10.2), // Act 6: SIEM triad
+    new THREE.Vector3(0, 2.55, 10.8), // Act 7: Full stack + debrief
+  ];
+
+  useFrame((state, delta) => {
+    camera.position.lerp(cameraPositions[act], delta * 0.5);
+    camera.lookAt(0, 0, 0);
+  });
+
+  // Track model loading - simple timeout approach
+  useEffect(() => {
+    if (!loaded) {
+      const timer = setTimeout(() => {
+        onLoaded();
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [loaded, onLoaded]);
+
+  if (!loaded) {
+    return null;
+  }
+
+  return (
+    <>
+      {/* Main lighting setup */}
+      <ambientLight intensity={0.8} />
+      <pointLight position={[5, 5, 5]} intensity={2.0} color={COLORS.cyan} />
+      <pointLight position={[-3, 3, -3]} intensity={1.2} color="#ffffff" />
+      <directionalLight position={[0, 5, 5]} intensity={0.8} />
+
+      {/* Grid floor for acts 0-4, 6 */}
+      {act !== 3 && act !== 4 && (
+        <mesh position={[0, -3, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <planeGeometry args={[50, 50]} />
+          <meshBasicMaterial color="#1a1a2e" wireframe transparent opacity={0.15} />
+        </mesh>
+      )}
+
+      <OrbitControls
+        enableDamping
+        dampingFactor={0.05}
+        enableZoom={act === 6 || act === 7}
+        enablePan={false}
+        minDistance={5}
+        maxDistance={22}
+      />
+
+      {/* ACT 0-1: Server Rack (centered, large) */}
+      {(act <= 1) && (
+        <ServerRack
+          position={[0, 0, 0]}
+          scale={2}
+          visible={true}
+          accentColor={COLORS.cyan}
+        />
+      )}
+
+      {/* ACT 2: Server Rack (centered) + Check Point Router */}
+      {act === 2 && (
+        <>
+          <ServerRack
+            position={[0, 0, 0]}
+            scale={2}
+            visible={true}
+            accentColor={COLORS.cyan}
+          />
+          <CheckPointRouter
+            position={[-2.85, 0, 0]}
+            scale={0.82}
+            visible={true}
+            rotation={[0, CHECKPOINT_ROUTER_Y, 0]}
+            accentColor={COLORS.red}
+            spin={false}
+          />
+        </>
+      )}
+
+      {/* ACT 6: Defense triad — left / center / right, clickable */}
+      {act === 6 && (
+        <>
+          <StackTriadModels stackFocus={stackFocus} onFocus={onStackFocus} />
+          <NetworkArcs
+            source={new THREE.Vector3(STACK_TRIAD.perimeter.position[0], 0.15, 0)}
+            target={new THREE.Vector3(STACK_TRIAD.correlation.position[0], 0, 0)}
+            color={COLORS.cyan}
+            style="normal"
+            count={5}
+            active
+          />
+          <NetworkArcs
+            source={new THREE.Vector3(STACK_TRIAD.correlation.position[0], 0, 0)}
+            target={new THREE.Vector3(STACK_TRIAD.visibility.position[0], 0.12, 0)}
+            color={COLORS.purple}
+            style="normal"
+            count={5}
+            active
+          />
+        </>
+      )}
+
+      {/* ACT 7: Same live stack — “everything together” in the 3D view */}
+      {act === 7 && (
+        <>
+          <StackTriadModels stackFocus={stackFocus} onFocus={onStackFocus} />
+          <NetworkArcs
+            source={new THREE.Vector3(STACK_TRIAD.perimeter.position[0], 0.15, 0)}
+            target={new THREE.Vector3(STACK_TRIAD.correlation.position[0], 0, 0)}
+            color={COLORS.green}
+            style="normal"
+            count={4}
+            active
+          />
+          <NetworkArcs
+            source={new THREE.Vector3(STACK_TRIAD.correlation.position[0], 0, 0)}
+            target={new THREE.Vector3(STACK_TRIAD.visibility.position[0], 0.12, 0)}
+            color={COLORS.cyan}
+            style="normal"
+            count={4}
+            active
+          />
+        </>
+      )}
+
+      {/* ACT 5: Splunk Mobile — in front of the correlation mesh so nodes don’t clip the handset */}
+      {act === 5 && (
+        <SplunkMobile
+          position={[0, 0.12, 2.35]}
+          scale={2.35}
+          visible={true}
+          bob={true}
+          accentColor={COLORS.purple}
+          spin={false}
+        />
+      )}
+
+      {/* ACT 1: Attack arcs */}
+      {act === 1 && (
+        <NetworkArcs
+          source={new THREE.Vector3(-5, 0, 0)}
+          target={new THREE.Vector3(0, 0, 0)}
+          color={COLORS.red}
+          style="aggressive"
+          count={8}
+          active={true}
+        />
+      )}
+
+      {/* ACT 2: Blocked arcs */}
+      {act === 2 && (
+        <>
+          <NetworkArcs
+            source={new THREE.Vector3(-5, 0, 0)}
+            target={new THREE.Vector3(-3, 0, 0)}
+            color={COLORS.red}
+            style="blocked"
+            count={6}
+            active={true}
+          />
+          <NetworkArcs
+            source={new THREE.Vector3(-3, 0, 0)}
+            target={new THREE.Vector3(0, 0, 0)}
+            color={COLORS.green}
+            style="normal"
+            count={3}
+            active={true}
+          />
+        </>
+      )}
+
+      {/* ACT 3: Kaspersky Shield */}
+      {act === 3 && (
+        <KasperskyShield active={true} />
+      )}
+
+      {/* ACT 4-5: Node Graph */}
+      {act === 4 && <NodeGraph compromised={true} aiActive={false} />}
+      {act === 5 && (
+        <NodeGraph
+          compromised={true}
+          aiActive={true}
+          spread={1.32}
+          groupOffset={[0, 0, -2.1]}
+          wireframeRadius={3.1}
+          wireframeCenter={[0, 0.8, -3.4]}
+          rotateGraph={false}
+        />
+      )}
+
+      {/* ACT 5: Data arcs to Splunk */}
+      {act === 5 && (
+        <>
+          <NetworkArcs
+            source={new THREE.Vector3(-4, 0, -0.5)}
+            target={new THREE.Vector3(0, 0.12, 2.35)}
+            color={COLORS.cyan}
+            style="normal"
+            count={10}
+            active={true}
+          />
+          <NetworkArcs
+            source={new THREE.Vector3(4, 0, -0.5)}
+            target={new THREE.Vector3(0, 0.12, 2.35)}
+            color={COLORS.cyan}
+            style="normal"
+            count={10}
+            active={true}
+          />
+        </>
+      )}
+
+    </>
+  );
+}
+
+// ============================================================
+// OVERLAY COMPONENTS
+// ============================================================
+
+function TypewriterText({ text, delay = 0, speed = 30 }: { text: string; delay?: number; speed?: number }) {
+  const [displayed, setDisplayed] = useState('');
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setStarted(true);
+    }, delay);
+    return () => clearTimeout(timeout);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!started) return;
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index < text.length) {
+        setDisplayed(text.slice(0, index + 1));
+        index++;
+      } else {
+        clearInterval(interval);
+      }
+    }, speed);
+    return () => clearInterval(interval);
+  }, [text, started, speed]);
+
+  return <span>{displayed}</span>;
+}
+
+function ActOverlay({ act }: { act: ActIndex }) {
+  if (act === 7) return null;
+
+  const overlays = [
+    // Act 0: Cold Open
+    <div key="0" className="absolute top-8 left-8 z-20 max-w-md">
+      <p className="text-xs font-mono text-gray-500 mb-2">04:47 AM</p>
+      <h2 className="text-xl font-bold font-mono text-green-400 mb-4">
+        <TypewriterText text="All systems nominal." delay={500} />
+      </h2>
+      <div className="space-y-2 text-xs font-mono text-gray-400">
+        <p>Network load: 2.3 Gbps</p>
+        <p>Threat index: <span className="text-green-400">LOW</span></p>
+      </div>
+    </div>,
+
+    // Act 1: First Contact
+    <div key="1" className="absolute top-8 left-8 z-20 max-w-md">
+      <p className="text-xs font-mono text-red-400 mb-2 animate-pulse">04:51 AM — ALERT</p>
+      <h2 className="text-xl font-bold font-mono text-red-400 mb-4">
+        <TypewriterText text="Anomalous traffic detected" delay={300} />
+      </h2>
+      <div className="space-y-2 text-xs font-mono text-gray-400">
+        <p>Source: <span className="text-red-400">185.220.xx.xx (Tor exit node)</span></p>
+        <p>Pattern: Port scanning — 3,200 probes/sec</p>
+      </div>
+      <p className="text-[10px] font-mono text-gray-600 mt-4 italic">
+        Without perimeter defense, this goes unnoticed.
+      </p>
+    </div>,
+
+    // Act 2: The Wall
+    <div key="2" className="absolute top-8 left-8 z-20 max-w-md">
+      <p className="text-xs font-mono text-green-400 mb-2">04:51:03 AM</p>
+      <h2 className="text-xl font-bold font-mono text-green-400 mb-4">
+        <TypewriterText text="Check Point Quantum Firewall — ACTIVE" delay={300} />
+      </h2>
+      <div className="space-y-2 text-xs font-mono text-gray-400">
+        <p>Intrusion attempt <span className="text-green-400">BLOCKED</span></p>
+        <p>Rule: GeoIP block + IPS signature #CVE-2024-3400</p>
+      </div>
+
+      <div className="mt-6 p-4 bg-[#0d0f14] border border-[#ff3d6b]/50 rounded-lg shadow-[0_0_20px_rgba(255,61,107,0.12)]">
+        <p className="text-sm font-mono text-green-400 font-bold mb-2 tracking-wide">THREAT PREVENTED</p>
+        <div className="space-y-1.5 text-xs font-mono text-gray-200">
+          <p><span className="text-gray-500">Type:</span> Exploit attempt</p>
+          <p><span className="text-gray-500">CVE:</span> <span className="text-orange-300">CVE-2024-3400</span></p>
+          <p><span className="text-gray-500">Action:</span> <span className="text-green-400">DROP + LOG</span></p>
+          <p><span className="text-gray-500">Response time:</span> 0.003s</p>
+        </div>
+      </div>
+    </div>,
+
+    // Act 3: Kaspersky Shield
+    <div key="3" className="absolute top-8 left-8 z-20 max-w-md">
+      <p className="text-xs font-mono text-blue-400 mb-2 animate-pulse">04:52 AM — KASPERSKY ACTIVE</p>
+      <h2 className="text-xl font-bold font-mono text-blue-400 mb-4">
+        <TypewriterText text="Endpoint protection engaged" delay={300} />
+      </h2>
+      <div className="space-y-2 text-xs font-mono text-gray-400">
+        <p>Threat: <span className="text-red-400">Malware payload detected</span></p>
+        <p>Location: <span className="text-blue-400">Endpoint security layer</span></p>
+        <p>Action: <span className="text-green-400">Quarantine + Neutralization</span></p>
+      </div>
+
+      <div className="mt-4 p-4 bg-[#141720] border border-[#0066ff]/30 rounded-lg">
+        <p className="text-xs font-mono text-blue-400 font-bold mb-2">VIRUS CATCHING</p>
+        <div className="space-y-1 text-[10px] font-mono text-gray-400">
+          <p>Malware signatures: <span className="text-green-400">DETECTED</span></p>
+          <p>Behavioral analysis: <span className="text-green-400">ANOMALOUS</span></p>
+          <p>Quarantine status: <span className="text-green-400">ACTIVE</span></p>
+          <p>System impact: <span className="text-green-400">MINIMAL</span></p>
+        </div>
+      </div>
+
+      <p className="text-[10px] font-mono text-gray-600 mt-4 italic">
+        Endpoint security prevents malware execution before it can spread.
+      </p>
+    </div>,
+
+    // Act 4: Brain Wakes Up
+    <div key="4" className="absolute top-8 left-8 z-20 max-w-md">
+      <p className="text-xs font-mono text-purple-400 mb-2 animate-pulse">AI ANOMALY ENGINE — ALERT</p>
+      <h2 className="text-xl font-bold font-mono text-purple-400 mb-4">
+        <TypewriterText text="Behavioral deviation: 94.7/100" delay={300} />
+      </h2>
+      <div className="space-y-2 text-xs font-mono text-gray-400">
+        <p>Action: <span className="text-purple-400">Isolating WKSTN-07</span></p>
+        <p>Playbook: SOAR-AUTO-007 triggered</p>
+      </div>
+
+      <div className="mt-6 p-3 bg-[#141720] border border-[#7b5cfa]/30 rounded-lg font-mono text-[10px]">
+        <div className="text-purple-400 mb-2">LIVE FEED:</div>
+        <div className="space-y-1 text-gray-400">
+          <TypewriterText text="[04:58:11] Scanning WKSTN-07 processes..." delay={500} speed={20} />
+          <TypewriterText text="[04:58:12] Malicious DLL detected: svchost32.exe" delay={2000} speed={20} />
+          <TypewriterText text="[04:58:12] Killing process tree..." delay={4000} speed={20} />
+          <TypewriterText text="[04:58:13] Quarantine complete." delay={5500} speed={20} />
+          <TypewriterText text="[04:58:13] Ticket #INC-20491 opened." delay={7000} speed={20} />
+        </div>
+      </div>
+    </div>,
+
+    // Act 5: Intelligence Center
+    <div key="5" className="absolute top-8 left-8 z-20 max-w-md">
+      <p className="text-xs font-mono text-cyan-400 mb-2">CORRELATION ENGINE</p>
+      <h2 className="text-xl font-bold font-mono text-cyan-400 mb-4">
+        <TypewriterText text="Splunk SIEM — All data absorbed" delay={300} />
+      </h2>
+
+      <div className="mt-4 p-4 bg-[#141720] border border-[#00d4ff]/30 rounded-lg">
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <p className="text-[10px] font-mono text-gray-500">EVENTS INGESTED</p>
+            <p className="text-2xl font-bold font-mono text-cyan-400">48,231</p>
+          </div>
+          <div>
+            <p className="text-[10px] font-mono text-gray-500">ALERTS FIRED</p>
+            <p className="text-2xl font-bold font-mono text-yellow-400">3</p>
+          </div>
+          <div>
+            <p className="text-[10px] font-mono text-gray-500">AUTO-RESOLVED</p>
+            <p className="text-2xl font-bold font-mono text-green-400">2</p>
+          </div>
+          <div>
+            <p className="text-[10px] font-mono text-gray-500">ESCALATED</p>
+            <p className="text-2xl font-bold font-mono text-red-400">1</p>
+          </div>
+        </div>
+      </div>
+
+      <p className="text-[10px] font-mono text-gray-600 mt-4 italic">
+        Every packet. Every process. Every login. Recorded.
+      </p>
+    </div>,
+
+    // Act 6: After Action
+    <div key="6" className="absolute top-8 left-8 z-20 max-w-lg">
+      <p className="text-xs font-mono text-green-400 mb-2">INCIDENT CLOSED</p>
+      <h2 className="text-xl font-bold font-mono text-green-400 mb-4">
+        <TypewriterText text="All systems secure." delay={300} />
+      </h2>
+
+      <div className="p-4 bg-[#0d0f14] border border-[#00e5a0]/45 rounded-lg shadow-[0_0_16px_rgba(0,229,160,0.08)]">
+        <p className="text-sm font-mono text-green-400 font-bold mb-3">INCIDENT SUMMARY</p>
+        <div className="space-y-2 text-sm font-mono text-gray-200">
+          <div className="flex justify-between">
+            <span>Attack type:</span>
+            <span>Exploit + Lateral Move</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Duration:</span>
+            <span>11 minutes 22 seconds</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Endpoints hit:</span>
+            <span className="text-green-400">1 (contained)</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Data exfil:</span>
+            <span className="text-green-400">0 bytes</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Auto-resolved:</span>
+            <span className="text-green-400">Yes</span>
+          </div>
+          <div className="border-t border-gray-600 my-2 pt-2">
+            <p className="text-xs text-gray-400 mb-1">Stack used:</p>
+            <p className="text-green-400 text-sm">✓ Check Point Quantum</p>
+            <p className="text-green-400 text-sm">✓ Kaspersky Endpoint Security</p>
+            <p className="text-green-400 text-sm">✓ AI Anomaly Detection Engine</p>
+            <p className="text-green-400 text-sm">✓ Splunk SIEM + SOAR</p>
+          </div>
+        </div>
+      </div>
+      <p className="text-xs font-mono text-gray-300 mt-3 max-w-sm leading-snug">
+        Tip: click each 3D asset left-to-right (edge firewall, data plane rack, Splunk console) to highlight that layer.
+      </p>
+    </div>,
+
+  ];
+
+  return <>{overlays[act]}</>;
+}
+
+// ============================================================
+// ACT 8 (index 7): Full debrief + live triad + lead capture
+// ============================================================
+
+function ActSevenPanel({
+  stackFocus,
+  onStackFocus,
+}: {
+  stackFocus: StackLayerId | null;
+  onStackFocus: (id: StackLayerId | null) => void;
+}) {
+  const [leadStatus, setLeadStatus] = useState<'idle' | 'ok' | 'err'>('idle');
+  const [sending, setSending] = useState(false);
+
+  const focusLabel: Record<StackLayerId, string> = {
+    perimeter: 'Perimeter / Check Point',
+    correlation: 'Ingest & correlation (data plane)',
+    visibility: 'Splunk visibility & SOAR',
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSending(true);
+    setLeadStatus('idle');
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const rawMsg = (fd.get('message') as string) || '';
+    const interest = (fd.get('interest') as string) || 'Not specified';
+    const focusLine = stackFocus ? `3D focus: ${focusLabel[stackFocus]}` : '3D focus: (none)';
+    fd.set('message', `[DEMO_LEAD]\nInterest: ${interest}\n${focusLine}\n\n${rawMsg}`);
+    const result = await sendEmail(fd);
+    setSending(false);
+    if (result.success) {
+      setLeadStatus('ok');
+      form.reset();
+    } else {
+      setLeadStatus('err');
+    }
+  };
+
+  const cardClass = (id: StackLayerId) =>
+    `p-3 rounded-lg border text-left transition-all cursor-pointer ${
+      stackFocus === id
+        ? 'bg-[#1a2030] border-green-400/70 shadow-[0_0_12px_rgba(0,229,160,0.25)]'
+        : 'bg-[#141720] border-[#1e2330] hover:border-cyan-500/40'
+    }`;
+
+  return (
+    <div className="pointer-events-none absolute inset-0 z-20 flex flex-col md:flex-row md:items-start md:justify-between gap-4 px-4 md:px-8 pt-20 pb-36">
+      <div className="pointer-events-auto w-full max-w-lg space-y-4">
+        <p className="text-xs font-mono text-cyan-400 tracking-widest font-semibold">SECURITY STACK OVERVIEW</p>
+        <h2 className="text-lg md:text-xl font-bold font-mono text-white">
+          <TypewriterText text="Complete defense in depth — live stack" delay={200} />
+        </h2>
+        <p className="text-xs font-mono text-gray-300 leading-relaxed">
+          Click a layer in the scene or a card below. Left-to-right: edge → data plane → operator console.
+        </p>
+
+        <div className="grid grid-cols-2 gap-3">
+          <button type="button" className={cardClass('perimeter')} onClick={() => onStackFocus('perimeter')}>
+            <p className="text-xs font-mono text-cyan-400 font-bold mb-1">PERIMETER</p>
+            <p className="text-[11px] font-mono text-gray-200 text-left leading-snug">Check Point · GeoIP · IPS · zero-day</p>
+          </button>
+          <button type="button" className={cardClass('correlation')} onClick={() => onStackFocus('correlation')}>
+            <p className="text-xs font-mono text-blue-400 font-bold mb-1">ENDPOINT + AI</p>
+            <p className="text-[11px] font-mono text-gray-200 text-left leading-snug">Kaspersky · baselines · automated response</p>
+          </button>
+          <button type="button" className={cardClass('correlation')} onClick={() => onStackFocus('correlation')}>
+            <p className="text-xs font-mono text-purple-400 font-bold mb-1">DATA PLANE</p>
+            <p className="text-[11px] font-mono text-gray-200 text-left leading-snug">Ingest · correlation · telemetry</p>
+          </button>
+          <button type="button" className={cardClass('visibility')} onClick={() => onStackFocus('visibility')}>
+            <p className="text-xs font-mono text-orange-400 font-bold mb-1">SIEM / SOAR</p>
+            <p className="text-[11px] font-mono text-gray-200 text-left leading-snug">Splunk · playbooks · dashboards</p>
+          </button>
+        </div>
+
+        {stackFocus && (
+          <div className="p-3 rounded-lg border border-green-500/40 bg-black/90 font-mono text-xs text-green-200 leading-relaxed">
+            {STACK_TRIAD[stackFocus].blurb}
+          </div>
+        )}
+      </div>
+
+      <div className="pointer-events-auto w-full max-w-md border border-orange-400/60 bg-[#07080c]/95 p-5 rounded-lg shadow-[0_0_32px_rgba(255,102,0,0.18)] backdrop-blur-sm">
+        <p className="text-xs font-mono text-orange-400 mb-1 tracking-widest font-bold">SECURE_INTAKE_CHANNEL</p>
+        <h3 className="text-base font-mono text-white font-bold mb-4">Tell us what you want to solve</h3>
+        <form onSubmit={handleSubmit} className="space-y-4 font-mono text-xs">
+          <div>
+            <label className="block text-orange-200/90 mb-1.5 text-[11px] font-semibold" htmlFor="demo-name">
+              {'// NAME_OR_ORG'}
+            </label>
+            <input
+              id="demo-name"
+              name="name"
+              required
+              className="w-full bg-black border border-orange-700/70 text-orange-50 p-2.5 rounded focus:outline-none focus:ring-2 focus:ring-orange-400/50 text-sm placeholder:text-orange-900/80"
+              placeholder="Acme Security / Jane Doe"
+            />
+          </div>
+          <div>
+            <label className="block text-orange-200/90 mb-1.5 text-[11px] font-semibold" htmlFor="demo-email">
+              {'// EMAIL'}
+            </label>
+            <input
+              id="demo-email"
+              name="email"
+              type="email"
+              required
+              className="w-full bg-black border border-orange-700/70 text-orange-50 p-2.5 rounded focus:outline-none focus:ring-2 focus:ring-orange-400/50 text-sm placeholder:text-orange-900/80"
+              placeholder="you@organization.com"
+            />
+          </div>
+          <div>
+            <label className="block text-orange-200/90 mb-1.5 text-[11px] font-semibold" htmlFor="demo-interest">
+              PRIMARY INTEREST
+            </label>
+            <select
+              id="demo-interest"
+              name="interest"
+              className="demo-intake-select w-full bg-black border border-orange-700/70 text-orange-50 p-2.5 rounded focus:outline-none focus:ring-2 focus:ring-orange-400/50 text-sm"
+              defaultValue="Full stack assessment"
+            >
+              <option className="bg-neutral-950 text-orange-100">Perimeter / firewall modernization</option>
+              <option className="bg-neutral-950 text-orange-100">Endpoint detection & response</option>
+              <option className="bg-neutral-950 text-orange-100">SIEM / SOAR / Splunk</option>
+              <option className="bg-neutral-950 text-orange-100">AI anomaly detection & automation</option>
+              <option className="bg-neutral-950 text-orange-100">Full stack assessment</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-orange-200/90 mb-1.5 text-[11px] font-semibold" htmlFor="demo-message">
+              {'// SCOPE'}
+            </label>
+            <textarea
+              id="demo-message"
+              name="message"
+              rows={4}
+              required
+              className="w-full bg-black border border-orange-700/70 text-orange-50 p-2.5 rounded focus:outline-none focus:ring-2 focus:ring-orange-400/50 text-sm resize-none placeholder:text-orange-900/80"
+              placeholder="Regulatory drivers, timeline, tech stack…"
+            />
+          </div>
+          {leadStatus === 'err' && (
+            <p className="text-red-400 text-sm font-semibold">Transmission failed — check configuration or retry.</p>
+          )}
+          {leadStatus === 'ok' && (
+            <p className="text-green-400 text-sm font-semibold">Received. We will follow up on your secure channel.</p>
+          )}
+          <button
+            type="submit"
+            disabled={sending}
+            className="w-full py-3 border-2 border-orange-400 text-orange-100 text-sm font-bold uppercase tracking-wider bg-orange-950/40 hover:bg-orange-500/20 disabled:opacity-50"
+          >
+            {sending ? 'ENCRYPTING…' : 'SUBMIT REQUEST'}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// NAVIGATION & PROGRESS
+// ============================================================
+
+function ProgressDots({ current, onChange }: { current: ActIndex; onChange: (i: ActIndex) => void }) {
+  const [hovered, setHovered] = useState<number | null>(null);
+
+  return (
+    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-3">
+      {ACTS.map((act, i) => (
+        <div key={act.id} className="relative flex items-center justify-end gap-2">
+          {/* Tooltip on hover */}
+          {hovered === i && (
+            <div className="absolute right-8 top-1/2 -translate-y-1/2 bg-[#141720] border border-[#1e2330] px-3 py-1 rounded text-[11px] font-mono text-[#00d4ff] whitespace-nowrap z-50">
+              {act.label}
+            </div>
+          )}
+          <button
+            onMouseEnter={() => setHovered(i)}
+            onMouseLeave={() => setHovered(null)}
+            onClick={() => onChange(i as ActIndex)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              i === current
+                ? 'bg-green-400 scale-150 shadow-[0_0_8px_#00ff41]'
+                : 'bg-gray-600 hover:bg-gray-400'
+            }`}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ============================================================
+// MAIN PAGE
+// ============================================================
+
+export default function DemoPage() {
+  const router = useRouter();
+  const [act, setAct] = useState<ActIndex>(0);
+  const [loaded, setLoaded] = useState(false);
+  const [stackFocus, setStackFocus] = useState<StackLayerId | null>(null);
+
+  useEffect(() => {
+    if (act !== 6 && act !== 7) {
+      setStackFocus(null);
+    }
+  }, [act]);
+
+  const nextAct = useCallback(() => {
+    setAct((prev) => (prev < 7 ? (prev + 1) as ActIndex : prev));
+  }, []);
+
+  const prevAct = useCallback(() => {
+    setAct((prev) => (prev > 0 ? (prev - 1) as ActIndex : prev));
+  }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextAct();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevAct();
+      }
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [nextAct, prevAct]);
+
+  // Simulate loading progress
+  const [loadProgress, setLoadProgress] = useState(0);
+  const [loadedModels, setLoadedModels] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (!loaded) {
+      const models = ['server_rack.glb', 'check_point_router.glb', 'splunk_mobile.glb'];
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress >= 100) {
+          progress = 100;
+          setLoadProgress(100);
+          setLoadedModels(models);
+          clearInterval(interval);
+        } else {
+          setLoadProgress(progress);
+          // Randomly mark models as loaded
+          const loadedSoFar = models.filter((_, i) => (progress / 100) * 3 > i);
+          setLoadedModels(loadedSoFar);
+        }
+      }, 200);
+      return () => clearInterval(interval);
+    }
+  }, [loaded]);
+
+  return (
+    <div className="h-screen w-screen bg-[#0a0c10] overflow-hidden relative">
+      {/* Loading Screen - outside Canvas */}
+      {!loaded && <LoadingScreen progress={loadProgress} loaded={loadedModels} />}
+
+      {/* 3D Canvas */}
+      <div className="absolute inset-0">
+        <Canvas
+          camera={{ position: [0, 2, 8], fov: 45 }}
+          onPointerMissed={() => (act === 6 || act === 7) && setStackFocus(null)}
+        >
+          <Suspense fallback={null}>
+            <DemoScene
+              act={act}
+              loaded={loaded}
+              onLoaded={() => setLoaded(true)}
+              stackFocus={stackFocus}
+              onStackFocus={setStackFocus}
+            />
+          </Suspense>
+        </Canvas>
+      </div>
+
+      {/* Top Nav - Exit button on right side */}
+      <div className="absolute top-4 right-4 z-40">
+        <button
+          onClick={() => router.push('/')}
+          className="font-mono text-green-400 text-xs border border-green-800 bg-black/80 px-3 py-2 hover:bg-green-900/30 transition-colors"
+        >
+          {`EXIT DEMO >`}
+        </button>
+      </div>
+
+      {/* Act indicator */}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-40">
+        <div className="font-mono text-xs text-gray-500 bg-black/80 px-3 py-1 rounded">
+          ACT {act + 1}/{ACTS.length}: <span className="text-green-400">{ACTS[act].label.toUpperCase()}</span>
+        </div>
+      </div>
+
+      {/* Progress dots */}
+      <ProgressDots current={act} onChange={setAct} />
+
+      {/* Overlay content */}
+      <ActOverlay act={act} />
+      {act === 7 && <ActSevenPanel stackFocus={stackFocus} onStackFocus={setStackFocus} />}
+
+      {/* Bottom CTA */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40">
+        {act === 7 ? (
+          <div className="flex gap-4">
+            <button
+              onClick={() => setAct(0)}
+              className="px-6 py-3 border border-green-500 text-green-400 font-mono text-sm hover:bg-green-900/30 transition-colors"
+            >
+              {`⟳ REPLAY SIMULATION`}
+            </button>
+            <button
+              onClick={() => router.push('/services')}
+              className="px-6 py-3 border border-yellow-500 text-yellow-400 font-mono text-sm hover:bg-yellow-900/30 transition-colors"
+            >
+              {`TALK TO OUR TEAM →`}
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={nextAct}
+            className="px-8 py-4 border-2 border-green-500 text-green-400 font-mono text-lg hover:bg-green-900/30 transition-colors animate-pulse"
+          >
+            {`NEXT ACT ›`}
+          </button>
+        )}
+      </div>
+
+      {/* Keyboard hint */}
+      <div className="absolute bottom-4 right-4 z-40 font-mono text-[10px] text-gray-600">
+        ← → to navigate
+      </div>
+
+      {/* Scanlines overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-30 opacity-5"
+        style={{
+          background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #000 2px, #000 4px)',
+        }}
+      />
+    </div>
+  );
+}
+```
+
+## src/app/globals.css
+
+```css
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --color-green-400: #34D399; 
+  --color-yellow-400: #FACC15;
+  --color-green-200: #A7F3D0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: #050505; /* Deep black for terminal feel */
+  color: var(--color-green-400);
+  font-family: var(--font-mono), monospace; /* Enforce mono by default */
+  overflow: hidden;
+}
+
+/* --- Retro Terminal Utilities --- */
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 2px rgba(74, 222, 128, 0.4), 0 0 8px rgba(74, 222, 128, 0.2);
+  }
+  
+  .box-glow {
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.2), inset 0 0 5px rgba(34, 197, 94, 0.1);
+  }
+
+  .box-glow-hover:hover {
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.4), inset 0 0 10px rgba(34, 197, 94, 0.2);
+  }
+
+  .bg-grid-pattern {
+    background-size: 30px 30px;
+    background-image: 
+      linear-gradient(to right, rgba(34, 197, 94, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(34, 197, 94, 0.05) 1px, transparent 1px);
+  }
+
+  .animate-glow {
+    animation: text-glow-anim 2s ease-in-out infinite alternate;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #22c55e;
+    border-radius: 2px;
+  }
+}
+
+@keyframes text-glow-anim {
+  from {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 20px rgba(34, 197, 94, 0.2);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 30px rgba(34, 197, 94, 0.4);
+  }
+}
+
+/* --- CRT & Scanline Effects --- */
+
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50; /* Above most content but below modals if needed */
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 4px;
+  animation: scanlines-anim 0.5s linear infinite; /* Very fast subtle flicker */
+  opacity: 0.3;
+}
+
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 51;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+@keyframes scanlines-anim {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 4px; }
+}
+
+/* --- Typography Overrides --- */
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Retro Terminal Blog Overrides --- */
+
+.prose-terminal {
+    color: var(--color-green-400);
+    max-width: none;
+}
+
+.prose-terminal h1,
+.prose-terminal h2,
+.prose-terminal h3 {
+    color: var(--color-yellow-400);
+    border-bottom: 2px solid var(--color-green-400);
+    padding-bottom: 0.25rem;
+    margin-top: 1.5rem;
+}
+
+.prose-terminal a {
+    color: var(--color-yellow-400);
+    text-decoration: underline;
+}
+
+.prose-terminal blockquote {
+    color: var(--color-green-200);
+    border-left-color: var(--color-yellow-400);
+}
+
+/* Demo intake: native <select> dropdown list (OS renders options — force dark + readable) */
+.demo-intake-select {
+  color-scheme: dark;
+}
+.demo-intake-select option {
+  background-color: #0a0a0c;
+  color: #fed7aa;
+}
+
+```
+
+## src/app/layout.tsx
+
+```tsx
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import ClientLayoutShell from "./ClientLayoutShell";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://m4n.co.za"),
+  title: {
+    default: "Secure Intelligent Systems | Cybersecurity + AI Engineering",
+    template: "%s | Secure Intelligent Systems"
+  },
+  description: "Cybersecurity Architecture, AI Automation, and Enterprise Security Engineering. Check Point Infinity, Splunk SIEM/SOAR, autonomous AI agents, and secure platform engineering.",
+  keywords: ["Cybersecurity", "Check Point", "Splunk", "AI Automation", "SIEM", "SOAR", "Zero Trust", "Platform Engineering", "Next.js", "Security Architecture", "AI Agents", "Threat Detection"],
+  authors: [{ name: "Secure Intelligent Systems" }],
+  creator: "Secure Intelligent Systems",
+  icons: {
+    icon: "/images/M4n.png",
+  },
+  verification: {
+    google: "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE", // TODO: Replace with your actual code
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://m4n.co.za",
+    title: "Secure Intelligent Systems | Cybersecurity + AI Engineering",
+    description: "Cybersecurity Architecture, AI Automation, and Enterprise Security Engineering. Check Point Infinity, Splunk SIEM/SOAR, autonomous AI agents.",
+    siteName: "Secure Intelligent Systems",
+    images: [
+      {
+        url: "/images/lady-justice.png", // Using existing asset as fallback OG image
+        width: 1200,
+        height: 630,
+        alt: "Guardian Protocol - Secure Digital Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Secure Intelligent Systems | Cybersecurity + AI Engineering",
+    description: "Cybersecurity Architecture, AI Automation, and Enterprise Security Engineering.",
+    images: ["/images/lady-justice.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
+      >
+        <ClientLayoutShell>{children}</ClientLayoutShell>
+      </body>
+    </html>
+  );
+}
+
+```
+
+## src/app/page.tsx
+
+```tsx
+'use client';
+
+// Import all necessary components and hooks
+import SystemStartup from "./components/SystemStartup/SystemStartup";
+import BackgroundAudio from "./components/BackgroundAudio/BackgroundAudio"
+import { useState, useRef } from "react"; 
+import CardGame from "./components/CardGame/CardGame"; 
+import { useRouter } from 'next/navigation';
+
+// --- Configuration for Audio Fade-in ---
+const TARGET_VOLUME = 0.1;      // Final volume (40%)
+const FADE_DURATION = 1500;     // Fade over 1.5 seconds (1500ms)
+// ----------------------------------------
+
+// COMPLETE STATE TYPE
+type AppState = 'idle' | 'zooming' | 'booting' | 'os_load' | 'terminal' | 'game';
+
+const Home = () => {
+    const router = useRouter(); 
+    const [appState, setAppState] = useState<AppState>('idle');
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+
+
+    // Function to handle the smooth fade-in of the background audio
+    const startAudioFade = () => {
+        const audio = audioRef.current;
+        if (audio) {
+            audio.play().catch(error => { console.error("Audio failed to play:", error); });
+            let volume = 0;
+            const interval = 50;
+            const steps = FADE_DURATION / interval;
+            const volumeStep = TARGET_VOLUME / steps;
+            const fadeInterval = setInterval(() => {
+                volume += volumeStep;
+                if (audio) audio.volume = Math.min(volume, TARGET_VOLUME);
+                if (volume >= TARGET_VOLUME) clearInterval(fadeInterval);
+            }, interval);
+        }
+    };
+
+    // 1. HANDLER: Triggered when the 3D monitor mesh is clicked (idle -> zooming)
+    const handleScreenClick = () => {
+        if (appState === 'idle') {
+            startAudioFade();
+            setAppState('zooming');
+        }
+    };
+
+    // 2. HANDLER: Triggered when CameraZoom animation finishes (zooming -> booting)
+    const handleZoomComplete = () => {
+        if (appState === 'zooming') {
+            setAppState('booting');
+        }
+    };
+
+    // 3. HANDLER: Triggered twice by TerminalScreen (booting -> os_load -> terminal)
+    const handleOsLoadComplete = () => {
+        if (appState === 'booting') {
+            setAppState('os_load');
+        } else if (appState === 'os_load') {
+            setAppState('terminal');
+        }
+    };
+    
+    // 4. HANDLER: Triggered when the user clicks 'cards.exe' OR 'blog.exe'
+    const handleTerminalExecute = (command?: 'cards.exe' | 'blog.exe') => {
+        if (!command) {
+            console.error("handleTerminalExecute called without a command.");
+            return;
+        }
+
+        if (command === 'cards.exe') {
+            setAppState('game'); // Launch the card game
+        } else if (command === 'blog.exe') {
+            // Immediately redirect to the blog page when 'blog.exe' is clicked
+            router.push('/blog'); 
+        }
+    };
+    
+    // 5. HANDLER: Exit the game back to the terminal
+    const handleExitGame = () => {
+        setAppState('terminal');
+    };
+
+
+    // --- CONDITIONAL RENDERING ---
+
+    return (
+        <div className="h-screen w-screen overflow-hidden">
+            <BackgroundAudio audioRef={audioRef} />
+
+            {/* RENDER CINEMATIC INTRO / TERMINAL (All non-game states) */}
+            {(appState !== 'game') && ( 
+                <SystemStartup 
+                    appState={appState} 
+                    onScreenClick={handleScreenClick}
+                    onOsLoadComplete={handleOsLoadComplete} 
+                    onTerminalExecute={handleTerminalExecute}
+                    onZoomComplete={handleZoomComplete} 
+                />
+            )}
+
+            {/* RENDER MAIN GAME SCENE */}
+            {appState === 'game' && (
+                <CardGame
+                    onExit={handleExitGame}
+                />
+            )}
+            
+            {appState === 'idle' && (
+                <div className="absolute inset-0 z-20 flex flex-col justify-center items-center pointer-events-none p-4">
+                    {/* Full monitor hit target: matches 3D CRT so clicks anywhere on the bezel/screen start boot */}
+                    <button
+                        type="button"
+                        onClick={handleScreenClick}
+                        aria-label="Initialize system — click monitor"
+                        className="pointer-events-auto absolute left-1/2 top-[40%] md:top-[38%] -translate-x-1/2 -translate-y-1/2 w-[min(92vw,480px)] h-[min(42vh,320px)] md:h-[min(38vh,300px)] cursor-pointer rounded-md border-2 border-transparent hover:border-green-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400/80 bg-transparent"
+                    />
+                    <div className="flex flex-col items-center gap-6 text-center max-w-4xl w-full pointer-events-none">
+                        {/* Top Section - Header */}
+                        <div className="flex flex-col gap-2 text-left self-start">
+                            <h1 className="text-3xl md:text-5xl font-extrabold font-mono text-white tracking-tighter leading-none animate-glow drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+                                I design and build secure, intelligent systems that scale &mdash; and defend them.
+                            </h1>
+                            <p className="text-sm md:text-base font-mono text-green-400 opacity-95 uppercase tracking-[0.4em] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
+                                Cybersecurity Architecture &middot; AI Automation &middot; Enterprise Security Engineering
+                            </p>
+                        </div>
+
+                        {/* Spacer aligns with monitor in scene */}
+                        <div className="w-full max-w-md aspect-video min-h-[min(36vh,260px)]" aria-hidden />
+
+                        {/* Bottom Section - Call to Action */}
+                        <div className="flex flex-col items-center gap-2">
+                            <p className="text-xl md:text-2xl font-mono text-white animate-pulse drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                                CLICK THE MONITOR TO INITIALIZE SYSTEM
+                            </p>
+                            <p className="text-xs md:text-sm font-mono text-gray-200 max-w-xl uppercase tracking-widest drop-shadow-[0_1px_4px_rgba(0,0,0,0.95)]">
+                                Explore secure services, engagement models, and digital capabilities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    )
+}
+
+export default Home;
+
+```
+
+## src/app/PostHogPageView.tsx
+
+```tsx
+'use client'
+
+import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, Suspense } from "react";
+import { usePostHog } from 'posthog-js/react';
+
+function PostHogPageViewContent() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const posthog = usePostHog();
+
+  useEffect(() => {
+    if (pathname && posthog) {
+      let url = window.origin + pathname;
+      if (searchParams && searchParams.toString()) {
+        url = url + `?${searchParams.toString()}`;
+      }
+      posthog.capture('$pageview', {
+        '$current_url': url,
+      });
+    }
+  }, [pathname, searchParams, posthog]);
+
+  return null;
+}
+
+export default function PostHogPageView() {
+  return (
+    <Suspense fallback={null}>
+      <PostHogPageViewContent />
+    </Suspense>
+  )
+}
+
+```
+
+## src/app/providers.tsx
+
+```tsx
+'use client'
+
+import posthog from 'posthog-js'
+import { PostHogProvider as PHProvider } from 'posthog-js/react'
+import { useEffect } from 'react'
+
+export function PostHogProvider({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    // Check if env var exists, otherwise fallback or warn
+    const key = process.env.NEXT_PUBLIC_POSTHOG_KEY
+    const host = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com'
+
+    if (key) {
+      posthog.init(key, {
+        api_host: host,
+        capture_pageview: false, // Disable automatic pageview capture, as we capture manually
+        capture_pageleave: true, 
+      })
+    }
+  }, [])
+
+  return <PHProvider client={posthog}>{children}</PHProvider>
+}
+
+```
+
+## src/app/services/page.tsx
+
+```tsx
+'use client';
+
+import { useEffect, useRef, useState, useCallback } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Line, Html } from '@react-three/drei';
+import * as THREE from 'three';
+import { useRouter } from 'next/navigation';
+import ChatbotArea from '../components/ChatbotArea/ChatbotArea';
+import ModelShowcase from '../components/ModelShowcase/ModelShowcase';
+import TierShowcase from '../components/TierShowcase/TierShowcase';
+
+// Color palette
+const COLORS = {
+  primary: '#00ff41',
+  warning: '#ff6600',
+  threat: '#ff0000',
+  core: '#0066ff',
+  bg: '#050a05',
+  text: '#00ff41',
+  darkBg: '#000000',
+};
+
+// ============================================================
+// SECTION 1: QUANTUM FIREWALL ARCHITECTURE
+// ============================================================
+
+const QUANTUM_SATELLITE_POSITIONS = [
+  new THREE.Vector3(3, 1, 0),
+  new THREE.Vector3(2, 2.5, 1),
+  new THREE.Vector3(-1, 3, 0),
+  new THREE.Vector3(-3, 1, 0),
+  new THREE.Vector3(-2, -2.5, 1),
+  new THREE.Vector3(1, -3, 0),
+  new THREE.Vector3(3, -1, 0),
+  new THREE.Vector3(0, 2, -2),
+];
+
+function QuantumFirewallScene() {
+  const groupRef = useRef<THREE.Group>(null);
+  const [packetPositions, setPacketPositions] = useState<THREE.Vector3[]>([]);
+  const [packetColors, setPacketColors] = useState<string[]>([]);
+  const [threatNeutralized, setThreatNeutralized] = useState(false);
+  const [packetCount, setPacketCount] = useState(0);
+  const [burstParticles, setBurstParticles] = useState<{ pos: THREE.Vector3; vel: THREE.Vector3; life: number; color: string }[]>([]);
+
+  const centralNodePos = new THREE.Vector3(0, 0, 0);
+
+  // Initialize packets
+  useEffect(() => {
+    const positions: THREE.Vector3[] = [];
+    const colors: string[] = [];
+    for (let i = 0; i < 12; i++) {
+      const satIdx = i % QUANTUM_SATELLITE_POSITIONS.length;
+      positions.push(QUANTUM_SATELLITE_POSITIONS[satIdx].clone());
+      colors.push(COLORS.primary);
+    }
+    setPacketPositions(positions);
+    setPacketColors(colors);
+  }, []);
+
+  useFrame((state, delta) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.1;
+    }
+
+    // Animate packets along beams
+    setPacketPositions(prev => prev.map((pos, i) => {
+      const satIdx = i % QUANTUM_SATELLITE_POSITIONS.length;
+      const direction = centralNodePos.clone().sub(QUANTUM_SATELLITE_POSITIONS[satIdx]).normalize();
+      const newPos = pos.clone().add(direction.multiplyScalar(delta * 2));
+      
+      // Check if packet reached center
+      if (newPos.distanceTo(centralNodePos) < 0.3) {
+        // Randomly make one packet malicious
+        if (Math.random() < 0.02 && packetColors[i] === COLORS.primary) {
+          const newColors = [...packetColors];
+          newColors[i] = COLORS.threat;
+          setPacketColors(newColors);
+        }
+        
+        // If malicious, create burst effect
+        if (packetColors[i] === COLORS.threat) {
+          const particles = [];
+          for (let j = 0; j < 20; j++) {
+            particles.push({
+              pos: newPos.clone(),
+              vel: new THREE.Vector3(
+                (Math.random() - 0.5) * 5,
+                (Math.random() - 0.5) * 5,
+                (Math.random() - 0.5) * 5
+              ),
+              life: 1,
+              color: COLORS.threat,
+            });
+          }
+          setBurstParticles(particles);
+          setThreatNeutralized(true);
+          setTimeout(() => setThreatNeutralized(false), 2000);
+          
+          // Reset packet
+          const newPositions = [...prev];
+          newPositions[i] = QUANTUM_SATELLITE_POSITIONS[satIdx].clone();
+          const newColors = [...packetColors];
+          newColors[i] = COLORS.primary;
+          setPacketColors(newColors);
+          return QUANTUM_SATELLITE_POSITIONS[satIdx].clone();
+        }
+        
+        // Reset packet to satellite
+        const newPositions = [...prev];
+        newPositions[i] = QUANTUM_SATELLITE_POSITIONS[satIdx].clone();
+        setPacketCount(c => c + 1);
+        return QUANTUM_SATELLITE_POSITIONS[satIdx].clone();
+      }
+      
+      return newPos;
+    }));
+
+    // Animate burst particles
+    setBurstParticles(prev => prev.map(p => ({
+      ...p,
+      pos: p.pos.clone().add(p.vel.clone().multiplyScalar(delta)),
+      life: p.life - delta * 2,
+    })).filter(p => p.life > 0));
+  });
+
+  return (
+    <group ref={groupRef}>
+      {/* Central Firewall Node */}
+      <mesh position={centralNodePos}>
+        <icosahedronGeometry args={[0.5, 1]} />
+        <meshBasicMaterial color={COLORS.primary} wireframe />
+      </mesh>
+      <mesh position={centralNodePos}>
+        <icosahedronGeometry args={[0.3, 0]} />
+        <meshBasicMaterial color={COLORS.primary} transparent opacity={0.8} />
+      </mesh>
+      
+      {/* Satellite Nodes */}
+      {QUANTUM_SATELLITE_POSITIONS.map((pos, i) => (
+        <group key={i}>
+          {/* Connection Line */}
+          <Line
+            points={[centralNodePos, pos]}
+            color={COLORS.primary}
+            lineWidth={1}
+            transparent
+            opacity={0.3}
+          />
+          {/* Satellite Node */}
+          <mesh position={pos}>
+            <octahedronGeometry args={[0.2, 0]} />
+            <meshBasicMaterial color={COLORS.primary} wireframe />
+          </mesh>
+        </group>
+      ))}
+
+      {/* Packets */}
+      {packetPositions.map((pos, i) => (
+        <mesh key={i} position={pos}>
+          <boxGeometry args={[0.1, 0.1, 0.1]} />
+          <meshBasicMaterial color={packetColors[i]} />
+        </mesh>
+      ))}
+
+      {/* Burst Particles */}
+      {burstParticles.map((p, i) => (
+        <mesh key={i} position={p.pos}>
+          <sphereGeometry args={[0.05, 4, 4]} />
+          <meshBasicMaterial color={p.color} transparent opacity={p.life} />
+        </mesh>
+      ))}
+
+      {/* HTML Overlays */}
+      <HtmlOverlay
+        position={[-3, 3, 0]}
+        text="CHECKPOINT_QUANTUM_FIREWALL_V2"
+        scale={0.5}
+      />
+      <HtmlOverlay
+        position={[0, -4, 0]}
+        text={`PACKETS INSPECTED: ${packetCount}`}
+        scale={0.4}
+      />
+      {threatNeutralized && (
+        <HtmlOverlay
+          position={[0, 2, 0]}
+          text="⚠ THREAT NEUTRALISED"
+          scale={0.6}
+          color={COLORS.threat}
+          flash
+        />
+      )}
+    </group>
+  );
+}
+
+function HtmlOverlay({ position, text, scale = 0.3, color = COLORS.primary, flash = false }: {
+  position: [number, number, number];
+  text: string;
+  scale?: number;
+  color?: string;
+  flash?: boolean;
+}) {
+  const [ref] = useState(() => new THREE.Object3D());
+  
+  useFrame(() => {
+    ref.position.set(...position);
+  });
+
+  return (
+    <primitive object={ref}>
+      <Html position={[0, 0, 0]} center>
+        <div
+          style={{
+            fontFamily: 'monospace',
+            fontSize: `${scale * 40}px`,
+            color: color,
+            textShadow: `0 0 10px ${color}`,
+            whiteSpace: 'nowrap',
+            animation: flash ? 'pulse 0.5s infinite' : 'none',
+            pointerEvents: 'none',
+          }}
+        >
+          {text}
+        </div>
+      </Html>
+    </primitive>
+  );
+}
+
+// ============================================================
+// SECTION 2: ATTACK SIMULATION
+// ============================================================
+
+type SimulationPhase = 'normal' | 'attack' | 'defence' | 'logs' | 'stabilize';
+
+function AttackSimulationScene({ triggerSimulation, onPhaseChange }: { triggerSimulation: number; onPhaseChange: (phase: string) => void }) {
+  const groupRef = useRef<THREE.Group>(null);
+  const simulationBusyRef = useRef(false);
+  const onPhaseChangeRef = useRef(onPhaseChange);
+  onPhaseChangeRef.current = onPhaseChange;
+  const [phase, setPhase] = useState<SimulationPhase>('normal');
+  const [nodeStates, setNodeStates] = useState<('healthy' | 'infected' | 'isolated' | 'rebuilding')[]>([]);
+  const [logs, setLogs] = useState<string[]>([]);
+
+  const nodePositions = [
+    new THREE.Vector3(0, 0, 0),    // 0: Central firewall
+    new THREE.Vector3(2, 1, 0.5),   // 1
+    new THREE.Vector3(-1.5, 2, 0),  // 2
+    new THREE.Vector3(-2.5, -1, 0), // 3
+    new THREE.Vector3(1, -2, 0.5),  // 4
+    new THREE.Vector3(3, -0.5, -1), // 5
+    new THREE.Vector3(-0.5, 2.5, 0),// 6
+    new THREE.Vector3(2.5, 1.5, -0.5), // 7: Entry point
+    new THREE.Vector3(-1, -1.5, 0.5),  // 8
+    new THREE.Vector3(0.5, -2.5, 0),   // 9
+    new THREE.Vector3(-2, 0.5, 0.5),   // 10
+    new THREE.Vector3(1.5, -0.5, -1),  // 11
+  ];
+
+  // Initialize node states
+  useEffect(() => {
+    setNodeStates(new Array(12).fill('healthy'));
+  }, []);
+
+  const runSimulation = useCallback(async () => {
+    if (simulationBusyRef.current) return;
+    simulationBusyRef.current = true;
+    setLogs([]);
+    setNodeStates(new Array(12).fill('healthy'));
+    setPhase('normal');
+    onPhaseChangeRef.current('NORMAL STATE - All systems operational');
+
+    // Phase 1: Normal (3 seconds)
+    await new Promise(r => setTimeout(r, 3000));
+    
+    // Phase 2: Attack begins
+    setPhase('attack');
+    onPhaseChangeRef.current('⚠ THREAT DETECTED - PHISHING INGRESS NODE_07');
+    setNodeStates(prev => {
+      const next = [...prev];
+      next[7] = 'infected';
+      return next;
+    });
+    setLogs(prev => [...prev, '[18:46:01] THREAT DETECTED: NODE_07']);
+
+    await new Promise(r => setTimeout(r, 1500));
+    
+    // Spread infection
+    setNodeStates(prev => {
+      const next = [...prev];
+      next[1] = 'infected';
+      next[6] = 'infected';
+      return next;
+    });
+    setLogs(prev => [...prev, '[18:46:01] INFECTION SPREADING...']);
+
+    await new Promise(r => setTimeout(r, 1000));
+
+    // Phase 3: Defence activates
+    setPhase('defence');
+    onPhaseChangeRef.current('QUANTUM FIREWALL: ACTIVE');
+    setLogs(prev => [...prev, 
+      '[18:46:02] FIREWALL RULE TRIGGERED: BLOCK',
+      '[18:46:02] NODE_07 ISOLATED',
+    ]);
+
+    await new Promise(r => setTimeout(r, 500));
+
+    // Isolate nodes
+    setNodeStates(prev => {
+      const next = [...prev];
+      next[7] = 'isolated';
+      next[1] = 'isolated';
+      next[6] = 'isolated';
+      return next;
+    });
+    setLogs(prev => [...prev, 
+      '[18:46:03] LOGGED TO SPLUNK SIEM',
+      '[18:46:04] SOAR PLAYBOOK EXECUTED',
+    ]);
+
+    await new Promise(r => setTimeout(r, 1500));
+
+    // Phase 4: Logs phase
+    setPhase('logs');
+    onPhaseChangeRef.current('ISOLATING COMPROMISED NODES...');
+    setLogs(prev => [...prev, '[18:46:05] SYSTEM INTEGRITY: RESTORED']);
+
+    await new Promise(r => setTimeout(r, 1000));
+
+    // Phase 5: Stabilize
+    setPhase('stabilize');
+    onPhaseChangeRef.current('ALL SYSTEMS: SECURE');
+    setNodeStates(prev => {
+      const next = [...prev];
+      next[7] = 'rebuilding';
+      next[1] = 'rebuilding';
+      next[6] = 'rebuilding';
+      return next;
+    });
+
+    await new Promise(r => setTimeout(r, 2000));
+
+    // Reset to healthy
+    setNodeStates(new Array(12).fill('healthy'));
+    setPhase('normal');
+    simulationBusyRef.current = false;
+  }, []);
+
+  // Simulation trigger
+  useEffect(() => {
+    if (triggerSimulation > 0) {
+      void runSimulation();
+    }
+  }, [triggerSimulation, runSimulation]);
+
+  useFrame((state, delta) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.05;
+    }
+  });
+
+  const getNodeColor = (state: string, index: number) => {
+    if (index === 0) return COLORS.warning; // Central firewall
+    switch (state) {
+      case 'healthy': return COLORS.primary;
+      case 'infected': return COLORS.threat;
+      case 'isolated': return '#444444';
+      case 'rebuilding': return COLORS.core;
+      default: return COLORS.primary;
+    }
+  };
+
+  return (
+    <group ref={groupRef}>
+      {/* Nodes */}
+      {nodePositions.map((pos, i) => (
+        <group key={i}>
+          <mesh position={pos}>
+            <sphereGeometry args={[i === 0 ? 0.4 : 0.2, 8, 8]} />
+            <meshBasicMaterial 
+              color={getNodeColor(nodeStates[i] || 'healthy', i)} 
+              transparent 
+              opacity={nodeStates[i] === 'isolated' ? 0.3 : 0.8}
+            />
+          </mesh>
+          {i === 0 && (
+            <mesh position={pos}>
+              <sphereGeometry args={[0.5, 8, 8]} />
+              <meshBasicMaterial color={COLORS.warning} wireframe transparent opacity={0.3} />
+            </mesh>
+          )}
+        </group>
+      ))}
+
+      {/* Connections */}
+      {nodePositions.map((pos, i) => {
+        if (nodeStates[i] === 'isolated') return null;
+        return nodePositions.map((pos2, j) => {
+          if (j <= i || nodeStates[j] === 'isolated') return null;
+          const connected = Math.random() > 0.6;
+          if (!connected) return null;
+          return (
+            <Line
+              key={`${i}-${j}`}
+              points={[pos, pos2]}
+              color={
+                nodeStates[i] === 'infected' || nodeStates[j] === 'infected' 
+                  ? COLORS.threat 
+                  : COLORS.primary
+              }
+              lineWidth={1}
+              transparent
+              opacity={0.2}
+            />
+          );
+        });
+      })}
+
+      {/* Log Display */}
+      <group position={[4, 0, 0]}>
+        {logs.slice(-5).map((log, i) => (
+          <HtmlOverlay
+            key={i}
+            position={[0, 2 - i * 0.5, 0]}
+            text={log}
+            scale={0.2}
+            color={log.includes('THREAT') ? COLORS.threat : COLORS.primary}
+          />
+        ))}
+      </group>
+
+      {/* Phase indicator */}
+      <HtmlOverlay
+        position={[0, 4, 0]}
+        text={`PHASE: ${phase.toUpperCase()}`}
+        scale={0.3}
+        color={phase === 'attack' ? COLORS.threat : phase === 'defence' ? COLORS.warning : COLORS.primary}
+      />
+    </group>
+  );
+}
+
+// ============================================================
+// SECTION 3: AI INTELLIGENCE CORE
+// ============================================================
+
+function AICoreScene({ jarvisInputTrigger }: { jarvisInputTrigger: number }) {
+  const groupRef = useRef<THREE.Group>(null);
+  const coreRef = useRef<THREE.Mesh>(null);
+
+  const orbitingNodes = [
+    { name: 'SPLUNK', angle: 0, radius: 2 },
+    { name: 'CHECKPOINT', angle: Math.PI / 4, radius: 2.5 },
+    { name: 'RAG ENGINE', angle: Math.PI / 2, radius: 2 },
+    { name: 'LLM LAYER', angle: 3 * Math.PI / 4, radius: 2.8 },
+    { name: 'SOAR', angle: Math.PI, radius: 2.2 },
+    { name: 'THREAT FEED', angle: 5 * Math.PI / 4, radius: 2.6 },
+    { name: 'IDENTITY', angle: 3 * Math.PI / 2, radius: 2.1 },
+    { name: 'CLOUD', angle: 7 * Math.PI / 4, radius: 2.4 },
+  ];
+
+  const outputCards = [
+    { name: 'ALERT', position: new THREE.Vector3(3, 2, 0) },
+    { name: 'BLOCK', position: new THREE.Vector3(-3, 2, 0) },
+    { name: 'LOG', position: new THREE.Vector3(0, -3, 1) },
+    { name: 'REPORT', position: new THREE.Vector3(0, 3, -1) },
+  ];
+
+  useFrame((state, delta) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.05;
+    }
+    
+    // Pulse core when JARVIS input
+    if (coreRef.current) {
+      const pulse = Math.sin(state.clock.elapsedTime * 2) * 0.1 + 0.9;
+      coreRef.current.scale.setScalar(pulse);
+    }
+  });
+
+  // Pulse brighter on JARVIS input
+  useEffect(() => {
+    if (jarvisInputTrigger > 0 && coreRef.current) {
+      coreRef.current.material = new THREE.MeshBasicMaterial({
+        color: '#00ffff',
+        transparent: true,
+        opacity: 1,
+      });
+      setTimeout(() => {
+        if (coreRef.current) {
+          coreRef.current.material = new THREE.MeshBasicMaterial({
+            color: COLORS.core,
+            transparent: true,
+            opacity: 0.8,
+          });
+        }
+      }, 500);
+    }
+  }, [jarvisInputTrigger]);
+
+  return (
+    <group ref={groupRef}>
+      {/* Central AI Core */}
+      <mesh ref={coreRef} position={[0, 0, 0]}>
+        <sphereGeometry args={[1, 32, 32]} />
+        <meshBasicMaterial color={COLORS.core} transparent opacity={0.8} />
+      </mesh>
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[1.2, 16, 16]} />
+        <meshBasicMaterial color={COLORS.core} wireframe transparent opacity={0.2} />
+      </mesh>
+
+      {/* Orbiting Nodes */}
+      {orbitingNodes.map((node, i) => {
+        const x = Math.cos(node.angle + Date.now() * 0.001) * node.radius;
+        const z = Math.sin(node.angle + Date.now() * 0.001) * node.radius;
+        
+        return (
+          <group key={i}>
+            {/* Connection beam to core */}
+            <Line
+              points={[new THREE.Vector3(0, 0, 0), new THREE.Vector3(x, 0, z)]}
+              color={COLORS.core}
+              lineWidth={1}
+              transparent
+              opacity={0.3}
+            />
+            {/* Node */}
+            <mesh position={[x, 0, z]}>
+              <dodecahedronGeometry args={[0.2, 0]} />
+              <meshBasicMaterial color={COLORS.primary} />
+            </mesh>
+            {/* Label */}
+            <HtmlOverlay
+              position={[x, 0.4, z]}
+              text={node.name}
+              scale={0.15}
+            />
+          </group>
+        );
+      })}
+
+      {/* Output Cards */}
+      {outputCards.map((card, i) => (
+        <group key={i} position={card.position}>
+          <mesh>
+            <boxGeometry args={[0.6, 0.4, 0.05]} />
+            <meshBasicMaterial color={COLORS.primary} wireframe transparent opacity={0.5} />
+          </mesh>
+          {/* Beam from core to card */}
+          <Line
+            points={[new THREE.Vector3(0, 0, 0), card.position]}
+            color={COLORS.warning}
+            lineWidth={1}
+            transparent
+            opacity={0.2}
+          />
+          <HtmlOverlay
+            position={[0, 0, 0]}
+            text={card.name}
+            scale={0.2}
+          />
+        </group>
+      ))}
+
+      {/* Status overlays */}
+      <HtmlOverlay position={[-4, 3, 0]} text="AI_CORE: PROCESSING" scale={0.25} />
+      <HtmlOverlay position={[-4, 2, 0]} text="MODELS ACTIVE: 3" scale={0.2} />
+      <HtmlOverlay position={[-4, 1, 0]} text="RESPONSE LATENCY: 180ms" scale={0.2} />
+    </group>
+  );
+}
+
+// ============================================================
+// SECTION 4: LAYERED FORTRESS
+// ============================================================
+
+function LayeredFortressScene() {
+  const groupRef = useRef<THREE.Group>(null);
+  const [selectedLayer, setSelectedLayer] = useState<number | null>(null);
+
+  const layers = [
+    { name: 'USER DEVICES / MOBILE', y: 3, color: COLORS.primary },
+    { name: 'HARMONY ENDPOINT + MDM', y: 2, color: '#00cc33' },
+    { name: 'API GATEWAY / ZERO TRUST', y: 1, color: COLORS.warning },
+    { name: 'BACKEND SERVICES', y: 0, color: COLORS.core },
+    { name: 'CHECK POINT CLOUDGUARD', y: -1, color: '#0055ff' },
+    { name: 'SPLUNK MONITORING', y: -2, color: '#ff6600' },
+  ];
+
+  useFrame((state, delta) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.03;
+    }
+  });
+
+  const handleLayerClick = (index: number) => {
+    setSelectedLayer(selectedLayer === index ? null : index);
+  };
+
+  return (
+    <group ref={groupRef}>
+      {layers.map((layer, i) => {
+        const isSelected = selectedLayer === i;
+        const expandX = isSelected ? 1.5 : 1;
+        const expandZ = isSelected ? 1.5 : 1;
+        
+        return (
+          <group key={i} position={[0, layer.y, 0]}>
+            {/* Layer Platform */}
+            <mesh 
+              position={[0, 0, 0]} 
+              scale={[expandX, 0.05, expandZ]}
+              onClick={() => handleLayerClick(i)}
+            >
+              <boxGeometry args={[3, 0.1, 1.5]} />
+              <meshBasicMaterial 
+                color={layer.color} 
+                wireframe={!isSelected}
+                transparent 
+                opacity={isSelected ? 0.8 : 0.3}
+              />
+            </mesh>
+            
+            {/* Layer Label */}
+            <HtmlOverlay
+              position={[2.5, 0, 0]}
+              text={layer.name}
+              scale={0.15}
+              color={isSelected ? '#ffffff' : layer.color}
+            />
+
+            {/* Scan beams for specific layers */}
+            {i === 1 && (
+              <mesh position={[0, 0.2, 0]}>
+                <planeGeometry args={[3, 0.1]} />
+                <meshBasicMaterial color={COLORS.primary} transparent opacity={0.3} />
+              </mesh>
+            )}
+
+            {/* Connection lines between layers */}
+            {i < layers.length - 1 && (
+              <Line
+                points={[
+                  new THREE.Vector3(0, 0, 0),
+                  new THREE.Vector3(0, layers[i + 1].y - layer.y, 0)
+                ]}
+                color={layer.color}
+                lineWidth={1}
+                transparent
+                opacity={0.2}
+              />
+            )}
+          </group>
+        );
+      })}
+
+      {/* Floating device icons for top layer */}
+      <mesh position={[-1, 3.5, 0.5]}>
+        <boxGeometry args={[0.3, 0.5, 0.05]} />
+        <meshBasicMaterial color={COLORS.primary} wireframe />
+      </mesh>
+      <mesh position={[1, 3.5, -0.5]}>
+        <boxGeometry args={[0.4, 0.3, 0.05]} />
+        <meshBasicMaterial color={COLORS.primary} wireframe />
+      </mesh>
+    </group>
+  );
+}
+
+// ============================================================
+// SECTION 5: SPLUNK DATA STORM
+// ============================================================
+
+const SPLUNK_SOURCE_NODES = [
+  { name: 'FIREWALL', position: new THREE.Vector3(-4, 2, 0) },
+  { name: 'ENDPOINTS', position: new THREE.Vector3(-3, -2, 1) },
+  { name: 'CLOUD', position: new THREE.Vector3(-2, 3, -1) },
+  { name: 'IDENTITY', position: new THREE.Vector3(-4, -1, 1) },
+  { name: 'NETWORK', position: new THREE.Vector3(-3, 0, -2) },
+  { name: 'APPS', position: new THREE.Vector3(-2, -3, 0) },
+];
+
+const SPLUNK_CORE_POS = new THREE.Vector3(0, 0, 0);
+
+function SplunkDataStormScene() {
+  const groupRef = useRef<THREE.Group>(null);
+  const [eventsPerSec, setEventsPerSec] = useState(0);
+  const alertsToday = 847;
+  const mttr = 4.2;
+  const [anomalyActive, setAnomalyActive] = useState(false);
+
+  // Simulate particle flow
+  const [particles, setParticles] = useState<{ pos: THREE.Vector3; target: THREE.Vector3; speed: number; color: string }[]>([]);
+
+  useEffect(() => {
+    const initialParticles: typeof particles = [];
+    for (let i = 0; i < 100; i++) {
+      const sourceIdx = Math.floor(Math.random() * SPLUNK_SOURCE_NODES.length);
+      initialParticles.push({
+        pos: SPLUNK_SOURCE_NODES[sourceIdx].position.clone(),
+        target: SPLUNK_CORE_POS.clone(),
+        speed: 2 + Math.random() * 3,
+        color: Math.random() < 0.05 ? COLORS.threat : COLORS.primary,
+      });
+    }
+    setParticles(initialParticles);
+  }, []);
+
+  useFrame((state, delta) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.02;
+    }
+
+    // Update particles
+    setParticles(prev => prev.map(p => {
+      const direction = p.target.clone().sub(p.pos).normalize();
+      const newPos = p.pos.clone().add(direction.multiplyScalar(p.speed * delta));
+      
+      // Reset if reached core
+      if (newPos.distanceTo(p.target) < 0.5) {
+        const sourceIdx = Math.floor(Math.random() * SPLUNK_SOURCE_NODES.length);
+        return {
+          ...p,
+          pos: SPLUNK_SOURCE_NODES[sourceIdx].position.clone(),
+          color: Math.random() < 0.05 ? COLORS.threat : COLORS.primary,
+        };
+      }
+      
+      return { ...p, pos: newPos };
+    }));
+
+    // Update counters
+    setEventsPerSec(Math.floor(1000 + Math.random() * 500));
+    
+    // Random anomaly
+    if (Math.random() < 0.001) {
+      setAnomalyActive(true);
+      setTimeout(() => setAnomalyActive(false), 3000);
+    }
+  });
+
+  return (
+    <group ref={groupRef}>
+      {/* Splunk Core */}
+      <mesh position={SPLUNK_CORE_POS}>
+        <sphereGeometry args={[1, 32, 32]} />
+        <meshBasicMaterial 
+          color={anomalyActive ? COLORS.threat : COLORS.warning} 
+          transparent 
+          opacity={0.6} 
+        />
+      </mesh>
+      <mesh position={SPLUNK_CORE_POS}>
+        <sphereGeometry args={[1.3, 16, 16]} />
+        <meshBasicMaterial color={COLORS.warning} wireframe transparent opacity={0.2} />
+      </mesh>
+
+      {/* Source Nodes */}
+      {SPLUNK_SOURCE_NODES.map((node, i) => (
+        <group key={i} position={node.position}>
+          <mesh>
+            <octahedronGeometry args={[0.2, 0]} />
+            <meshBasicMaterial color={COLORS.primary} />
+          </mesh>
+          <HtmlOverlay
+            position={[0, 0.4, 0]}
+            text={node.name}
+            scale={0.15}
+          />
+        </group>
+      ))}
+
+      {/* Data Particles */}
+      {particles.map((p, i) => (
+        <mesh key={i} position={p.pos}>
+          <sphereGeometry args={[0.03, 4, 4]} />
+          <meshBasicMaterial color={p.color} />
+        </mesh>
+      ))}
+
+      {/* Floating Dashboard Panels */}
+      <group position={[3, 2, 0]}>
+        <mesh>
+          <boxGeometry args={[1.5, 1, 0.05]} />
+          <meshBasicMaterial color={COLORS.primary} wireframe transparent opacity={0.3} />
+        </mesh>
+        <HtmlOverlay position={[0, 0, 0.1]} text={`EVENTS/SEC: ${eventsPerSec}`} scale={0.15} />
+      </group>
+
+      <group position={[3, 0, 0]}>
+        <mesh>
+          <boxGeometry args={[1.5, 0.6, 0.05]} />
+          <meshBasicMaterial color={COLORS.primary} wireframe transparent opacity={0.3} />
+        </mesh>
+        <HtmlOverlay position={[0, 0, 0.1]} text={`ALERTS TODAY: ${alertsToday}`} scale={0.15} />
+      </group>
+
+      <group position={[3, -2, 0]}>
+        <mesh>
+          <boxGeometry args={[1.5, 0.6, 0.05]} />
+          <meshBasicMaterial color={COLORS.primary} wireframe transparent opacity={0.3} />
+        </mesh>
+        <HtmlOverlay position={[0, 0, 0.1]} text={`MTTR: ${mttr} MIN`} scale={0.15} />
+      </group>
+
+      {/* Anomaly Alert */}
+      {anomalyActive && (
+        <HtmlOverlay
+          position={[0, 3, 0]}
+          text="⚠ ANOMALY DETECTED - PLAYBOOK TRIGGERED"
+          scale={0.25}
+          color={COLORS.threat}
+          flash
+        />
+      )}
+    </group>
+  );
+}
+
+// ============================================================
+// MAIN SERVICES PAGE
+// ============================================================
+
+export default function ServicesPage() {
+  const router = useRouter();
+  const [activeSection, setActiveSection] = useState(0);
+  const [simTrigger, setSimTrigger] = useState(0);
+  const [simPhase, setSimPhase] = useState('');
+  const [jarvisTrigger] = useState(0);
+  const [showTierShowcase, setShowTierShowcase] = useState(false);
+  const [selectedTier, setSelectedTier] = useState<{
+    tier: string;
+    title: string;
+    description: string;
+    models: Array<{
+      name: string;
+      position: [number, number, number];
+      rotation?: [number, number, number];
+      scale?: number;
+    }>;
+  } | null>(null);
+  const sectionsRef = useRef<HTMLDivElement[]>([]);
+
+  // Intersection Observer for scroll detection
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0');
+            setActiveSection(index);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    sectionsRef.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const triggerSimulation = () => {
+    setSimTrigger(prev => prev + 1);
+  };
+
+  const handlePhaseChange = (phase: string) => {
+    setSimPhase(phase);
+  };
+
+  return (
+    <div className="h-screen w-screen overflow-y-auto snap-y snap-mandatory bg-black">
+      {/* Navigation hint */}
+      <div className="fixed top-4 left-4 z-50 font-mono text-green-400 text-xs">
+        <div className="border border-green-800 bg-black/80 p-2">
+          <p>{`// SERVICES BRIEFING`}</p>
+          <p>SECTION {activeSection + 1}/6</p>
+          <p className="text-gray-500">SCROLL TO NAVIGATE</p>
+        </div>
+      </div>
+
+      {/* Back button */}
+      <button
+        onClick={() => router.push('/')}
+        className="fixed top-4 right-4 z-50 font-mono text-green-400 text-xs border border-green-800 bg-black/80 px-3 py-2 hover:bg-green-900/30 transition-colors"
+      >
+        {`< RETURN`}
+      </button>
+
+      {/* SECTION 1: Quantum Firewall */}
+      <section
+        ref={(el: HTMLDivElement | null) => { if (el) sectionsRef.current[0] = el; }}
+        data-index="0"
+        className="h-screen w-screen snap-start flex items-center justify-center relative"
+      >
+        <div className="absolute inset-0">
+          <Canvas camera={{ position: [0, 5, 10], fov: 50 }}>
+            <ambientLight intensity={0.5} />
+            <pointLight position={[10, 10, 10]} intensity={1} />
+            <OrbitControls enableDamping dampingFactor={0.05} />
+            <QuantumFirewallScene />
+          </Canvas>
+        </div>
+        
+        <div className="absolute right-0 top-0 h-full w-full md:w-1/3 bg-black/90 border-l border-green-900 p-8 flex flex-col justify-center z-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-yellow-400 mb-2 font-mono">
+            {`// QUANTUM FIREWALL ARCHITECTURE`}
+          </h2>
+          <p className="text-green-600 mb-6 font-mono text-sm">CHECK POINT INFINITY PLATFORM</p>
+          
+          <ul className="space-y-3 text-sm md:text-base font-mono text-green-400">
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Check Point Quantum Series deployment
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Deep packet inspection at wire speed
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Automated threat prevention & isolation
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Integrated with Splunk SIEM for logging
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Zero-day protection via ThreatCloud AI
+            </li>
+          </ul>
+
+          <button className="mt-8 px-6 py-3 border border-green-500 text-green-400 font-mono text-sm hover:bg-green-900/30 transition-colors self-start">
+            {`> EXPLORE CHECKPOINT STACK`}
+          </button>
+        </div>
+      </section>
+
+      {/* SECTION 2: Attack Simulation */}
+      <section
+        ref={(el: HTMLDivElement | null) => { if (el) sectionsRef.current[1] = el; }}
+        data-index="1"
+        className="h-screen w-screen snap-start flex items-center justify-center relative"
+      >
+        <div className="absolute inset-0">
+          <Canvas camera={{ position: [0, 5, 10], fov: 50 }}>
+            <ambientLight intensity={0.5} />
+            <pointLight position={[10, 10, 10]} intensity={1} />
+            <OrbitControls enableDamping dampingFactor={0.05} />
+            <AttackSimulationScene 
+              triggerSimulation={simTrigger} 
+              onPhaseChange={handlePhaseChange}
+            />
+          </Canvas>
+        </div>
+
+        <div className="absolute right-0 top-0 h-full w-full md:w-1/3 bg-black/90 border-l border-green-900 p-8 flex flex-col justify-center z-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-yellow-400 mb-2 font-mono">
+            {`// LIVE ATTACK SIMULATION`}
+          </h2>
+          <p className="text-green-600 mb-6 font-mono text-sm">WATCH HOW I DEFEND YOUR INFRASTRUCTURE</p>
+          
+          <div className="mb-4 p-3 border border-green-900 bg-green-900/10 font-mono text-xs">
+            <p className="text-green-400">STATUS: {simPhase || 'READY'}</p>
+          </div>
+
+          <ul className="space-y-3 text-sm md:text-base font-mono text-green-400">
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Real-time threat detection & isolation
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Check Point + Splunk SOAR integration
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Automated playbook execution
+            </li>
+          <li className="flex items-start">
+            <span className="text-green-600 mr-2">▸</span>
+            Mean time to respond: {`< 60 seconds`}
+          </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Zero manual intervention required
+            </li>
+          </ul>
+
+          <div className="flex gap-4 mt-8">
+            <button 
+              onClick={triggerSimulation}
+              className="px-6 py-3 border border-green-500 text-green-400 font-mono text-sm hover:bg-green-900/30 transition-colors"
+            >
+              {`▶ RUN SIMULATION`}
+            </button>
+            <button className="px-6 py-3 border border-yellow-500 text-yellow-400 font-mono text-sm hover:bg-yellow-900/30 transition-colors">
+              {`> REQUEST SECURITY AUDIT`}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: AI Core */}
+      <section
+        ref={(el: HTMLDivElement | null) => { if (el) sectionsRef.current[2] = el; }}
+        data-index="2"
+        className="h-screen w-screen snap-start flex items-center justify-center relative"
+      >
+        <div className="absolute inset-0">
+          <Canvas camera={{ position: [0, 5, 10], fov: 50 }}>
+            <ambientLight intensity={0.5} />
+            <pointLight position={[10, 10, 10]} intensity={1} />
+            <OrbitControls enableDamping dampingFactor={0.05} />
+            <AICoreScene jarvisInputTrigger={jarvisTrigger} />
+          </Canvas>
+        </div>
+
+        <div className="absolute right-0 top-0 h-full w-full md:w-1/3 bg-black/90 border-l border-green-900 p-8 flex flex-col justify-center z-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-yellow-400 mb-2 font-mono">
+            {`// AI INTELLIGENCE CORE`}
+          </h2>
+          <p className="text-green-600 mb-6 font-mono text-sm">AUTONOMOUS THREAT RESPONSE SYSTEM</p>
+          
+          <ul className="space-y-3 text-sm md:text-base font-mono text-green-400">
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              LLM-powered SOC assistant
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              RAG pipeline over security knowledge base
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Autonomous SOAR playbook triggering
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              ChatOps integration (Slack, Teams, WhatsApp)
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Continuous learning from threat feed
+            </li>
+          </ul>
+
+          <button className="mt-8 px-6 py-3 border border-green-500 text-green-400 font-mono text-sm hover:bg-green-900/30 transition-colors self-start">
+            {`> DEPLOY AI AGENTS`}
+          </button>
+        </div>
+      </section>
+
+      {/* SECTION 4: Layered Fortress */}
+      <section
+        ref={(el: HTMLDivElement | null) => { if (el) sectionsRef.current[3] = el; }}
+        data-index="3"
+        className="h-screen w-screen snap-start flex items-center justify-center relative"
+      >
+        <div className="absolute inset-0">
+          <Canvas camera={{ position: [5, 0, 8], fov: 50 }}>
+            <ambientLight intensity={0.5} />
+            <pointLight position={[10, 10, 10]} intensity={1} />
+            <OrbitControls enableDamping dampingFactor={0.05} />
+            <LayeredFortressScene />
+          </Canvas>
+        </div>
+
+        <div className="absolute right-0 top-0 h-full w-full md:w-1/3 bg-black/90 border-l border-green-900 p-8 flex flex-col justify-center z-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-yellow-400 mb-2 font-mono">
+            {`// MOBILE & ON-PREM ARCHITECTURE`}
+          </h2>
+          <p className="text-green-600 mb-6 font-mono text-sm">HARMONY ENDPOINT · MOBILE SECURITY · EDGE DEFENCE</p>
+          
+          <ul className="space-y-3 text-sm md:text-base font-mono text-green-400">
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Check Point Harmony for mobile & endpoint
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              On-premises Quantum appliance deployment
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Zero Trust access for every device
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              CloudGuard for cloud workload protection
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Splunk observability across all layers
+            </li>
+          </ul>
+
+          <button className="mt-8 px-6 py-3 border border-green-500 text-green-400 font-mono text-sm hover:bg-green-900/30 transition-colors self-start">
+            {`> VIEW FULL STACK`}
+          </button>
+        </div>
+      </section>
+
+      {/* SECTION 5: Splunk Data Storm */}
+      <section
+        ref={(el: HTMLDivElement | null) => { if (el) sectionsRef.current[4] = el; }}
+        data-index="4"
+        className="h-screen w-screen snap-start flex items-center justify-center relative"
+      >
+        <div className="absolute inset-0">
+          <Canvas camera={{ position: [0, 5, 10], fov: 50 }}>
+            <ambientLight intensity={0.5} />
+            <pointLight position={[10, 10, 10]} intensity={1} />
+            <OrbitControls enableDamping dampingFactor={0.05} />
+            <SplunkDataStormScene />
+          </Canvas>
+        </div>
+
+        <div className="absolute right-0 top-0 h-full w-full md:w-1/3 bg-black/90 border-l border-green-900 p-8 flex flex-col justify-center z-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-yellow-400 mb-2 font-mono">
+            {`// SPLUNK OBSERVABILITY PLATFORM`}
+          </h2>
+          <p className="text-green-600 mb-6 font-mono text-sm">SIEM · SOAR · ITSI · REAL-TIME INTELLIGENCE</p>
+          
+          <ul className="space-y-3 text-sm md:text-base font-mono text-green-400">
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Splunk Cloud & Enterprise deployment
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Custom SIEM correlation rules
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              SOAR playbook automation
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              ITSI for service health monitoring
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2">▸</span>
+              Executive dashboards & compliance reports
+            </li>
+          </ul>
+
+          <button className="mt-8 px-6 py-3 border border-green-500 text-green-400 font-mono text-sm hover:bg-green-900/30 transition-colors self-start">
+            {`> VIEW SPLUNK CAPABILITIES`}
+          </button>
+        </div>
+      </section>
+
+      {/* SECTION 6: Hardware Showcase */}
+      <section
+        ref={(el: HTMLDivElement | null) => { if (el) sectionsRef.current[5] = el; }}
+        data-index="5"
+        className="h-screen w-screen snap-start relative"
+      >
+        <ModelShowcase />
+      </section>
+
+      {/* Tier Showcase Modal */}
+      {showTierShowcase && selectedTier && (
+        <TierShowcase
+          tier={selectedTier.tier}
+          title={selectedTier.title}
+          description={selectedTier.description}
+          models={selectedTier.models}
+          onClose={() => {
+            setShowTierShowcase(false);
+            setSelectedTier(null);
+          }}
+        />
+      )}
+
+      {/* Fixed J.A.R.V.I.S. Panel */}
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 w-80 h-[60vh] z-40 hidden lg:block">
+        <ChatbotArea status="online" currentTime={new Date().toLocaleTimeString()} />
+      </div>
+
+      {/* Demo CTA */}
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+        <button
+          onClick={() => router.push('/demo')}
+          className="px-8 py-4 border-2 border-yellow-500 text-yellow-400 font-mono text-lg hover:bg-yellow-900/30 transition-colors animate-pulse"
+        >
+          ▶ LAUNCH INTERACTIVE DEMO
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+## src/app/services/[slug]/page.tsx
+
+```tsx
+import Link from 'next/link';
+
+export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    
+    return (
+        <div className="min-h-screen bg-black text-green-400 font-mono p-10 flex flex-col items-start justify-center">
+            <div className="border border-green-700 p-8 max-w-2xl w-full bg-gray-900/50">
+                <h1 className="text-3xl font-bold text-yellow-400 mb-4 uppercase">
+                    SERVICE_MODULE: {slug.replace(/-/g, '_')}
+                </h1>
+                
+                <div className="space-y-4 text-sm md:text-base">
+                    <p>
+                        <span className="text-green-600">[STATUS]</span> ACCESS_GRANTED
+                    </p>
+                    <p>
+                        <span className="text-green-600">[INFO]</span> This secure module is currently being compiled for presentation.
+                    </p>
+                    <p className="text-gray-400">
+                        Detailed specifications for {slug.replace(/-/g, ' ')} will be available shortly.
+                    </p>
+                </div>
+
+                <div className="mt-8 border-t border-green-800 pt-4">
+                    <Link 
+                        href="/"
+                        className="inline-block px-4 py-2 border border-green-500 text-green-500 hover:bg-green-500 hover:text-black transition-colors font-bold text-sm"
+                    >
+                        &lt; RETURN_TO_TERMINAL
+                    </Link>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+```
+
+## src/app/studio/[[...index]]/page.tsx
+
+```tsx
+'use client'
+
+import { NextStudio } from "next-sanity/studio"
+import config from "../../../../sanity.config"
+
+export default function Studio() {
+    return <NextStudio config={config} />
+}
+```
+
+## src/lib/auth.ts
+
+```typescript
+import { SignJWT, jwtVerify } from 'jose';
+import { cookies } from 'next/headers';
+import bcrypt from 'bcryptjs';
+
+const COOKIE_NAME = 'admin_session';
+const SESSION_TTL_SECONDS = 60 * 60 * 8; // 8 hours
+
+function getSecret(): Uint8Array {
+  const secret = process.env.ADMIN_JWT_SECRET;
+  if (!secret) {
+    throw new Error('ADMIN_JWT_SECRET env var is not set');
+  }
+  return new TextEncoder().encode(secret);
+}
+
+export function getAdminCredentials(): { user: string; hash: string } | null {
+  const user = process.env.ADMIN_USER;
+  const plainPass = process.env.ADMIN_PASS;
+  if (!user || !plainPass) return null;
+  const hash = bcrypt.hashSync(plainPass, 10);
+  return { user, hash };
+}
+
+export async function verifyCredentials(username: string, password: string): Promise<boolean> {
+  const creds = getAdminCredentials();
+  if (!creds) return false;
+  if (username !== creds.user) return false;
+  return bcrypt.compare(password, creds.hash);
+}
+
+export async function createSession(): Promise<string> {
+  const secret = getSecret();
+  const token = await new SignJWT({ sub: 'admin', role: 'admin' })
+    .setProtectedHeader({ alg: 'HS256' })
+    .setIssuedAt()
+    .setExpirationTime(`${SESSION_TTL_SECONDS}s`)
+    .sign(secret);
+
+  const cookieStore = await cookies();
+  cookieStore.set(COOKIE_NAME, token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/admin',
+    maxAge: SESSION_TTL_SECONDS,
+  });
+
+  return token;
+}
+
+export async function destroySession(): Promise<void> {
+  const cookieStore = await cookies();
+  cookieStore.delete(COOKIE_NAME);
+}
+
+export async function isAuthenticated(): Promise<boolean> {
+  try {
+    const cookieStore = await cookies();
+    const token = cookieStore.get(COOKIE_NAME)?.value;
+    if (!token) return false;
+
+    const secret = getSecret();
+    const { payload } = await jwtVerify(token, secret);
+    return !!payload && payload.role === 'admin';
+  } catch {
+    return false;
+  }
+}
+
+```
+
+## src/lib/db.ts
+
+```typescript
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { TENANT_TIER_RATE_LIMITS_DAILY } from './types';
+import nodeCrypto from 'node:crypto';
+import type {
+  Lead,
+  StackVendor,
+  LeadSource,
+  LeadStatus,
+  StackNfrStatus,
+  StackTier,
+  Tenant,
+  TenantTier,
+  TenantStatus,
+  MonitoredAsset,
+  ScanResult,
+  ScanSource,
+  CveMatch,
+  CveMatchStatus,
+  CveSeverity,
+  ApiKey,
+  CreatedApiKey,
+  UsageLog,
+  ScrapeRun,
+} from './types';
+
+let cachedClient: SupabaseClient | null = null;
+
+function getClient(): SupabaseClient | null {
+  if (cachedClient) return cachedClient;
+
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!url || !key) {
+    console.warn('[DB] SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY not set — DB operations will be no-ops');
+    return null;
+  }
+
+  cachedClient = createClient(url, key, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+
+  return cachedClient;
+}
+
+export async function isDbAvailable(): Promise<boolean> {
+  const client = getClient();
+  if (!client) return false;
+  try {
+    const { error } = await client.from('leads').select('id', { count: 'exact', head: true }).limit(1);
+    return !error;
+  } catch {
+    return false;
+  }
+}
+
+// ============================================================
+// LEADS
+// ============================================================
+
+export interface CreateLeadInput {
+  name: string;
+  email: string;
+  message?: string;
+  source: LeadSource;
+  company_name?: string | null;
+  phone?: string | null;
+  website?: string | null;
+  industry?: string | null;
+  region?: string | null;
+  source_url?: string | null;
+  email_verified?: boolean;
+  phone_verified?: boolean;
+  data_quality?: number | null;
+  enrichment?: Record<string, unknown> | null;
+}
+
+export async function createLead(input: CreateLeadInput): Promise<{ error?: string; id?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const { data, error } = await client
+    .from('leads')
+    .insert({
+      name: input.name.trim(),
+      email: input.email.trim().toLowerCase(),
+      message: input.message?.trim() || null,
+      source: input.source,
+      status: 'new',
+      company_name: input.company_name?.trim() || null,
+      phone: input.phone?.trim() || null,
+      website: input.website?.trim() ? input.website.trim().toLowerCase() : null,
+      industry: input.industry?.trim() || null,
+      region: input.region?.trim() || null,
+      source_url: input.source_url?.trim() || null,
+      email_verified: input.email_verified ?? false,
+      phone_verified: input.phone_verified ?? false,
+      data_quality: input.data_quality ?? null,
+      enrichment: input.enrichment ?? {},
+    })
+    .select('id')
+    .single();
+
+  if (error) {
+    console.error('[DB] createLead error:', error);
+    return { error: error.message };
+  }
+
+  return { id: data.id };
+}
+
+export async function listLeads(opts?: {
+  status?: LeadStatus;
+  source?: LeadSource;
+  sortBy?: 'created_at' | 'status' | 'source' | 'email' | 'name';
+  sortDir?: 'asc' | 'desc';
+}): Promise<{ data: Lead[]; error?: string }> {
+  const client = getClient();
+  if (!client) return { data: [] };
+
+  let query = client.from('leads').select('*');
+
+  if (opts?.status) query = query.eq('status', opts.status);
+  if (opts?.source) query = query.eq('source', opts.source);
+
+  const col = opts?.sortBy ?? 'created_at';
+  const dir = opts?.sortDir ?? 'desc';
+  query = query.order(col, { ascending: dir === 'asc' });
+
+  const { data, error } = await query;
+
+  if (error) {
+    console.error('[DB] listLeads error:', error);
+    return { data: [], error: error.message };
+  }
+
+  return { data: (data ?? []) as Lead[] };
+}
+
+export async function updateLeadStatus(id: string, status: LeadStatus): Promise<{ error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const { error } = await client.from('leads').update({ status }).eq('id', id);
+
+  if (error) {
+    console.error('[DB] updateLeadStatus error:', error);
+    return { error: error.message };
+  }
+
+  return {};
+}
+
+export async function getLeadCounts(): Promise<{
+  total: number;
+  byStatus: Record<LeadStatus, number>;
+  bySource: Record<LeadSource, number>;
+}> {
+  const { data } = await listLeads();
+
+  const byStatus: Record<LeadStatus, number> = { new: 0, contacted: 0, qualified: 0, closed: 0 };
+  const bySource: Record<LeadSource, number> = { contact: 0, 'risk-scan': 0, demo: 0 };
+
+  for (const lead of data) {
+    byStatus[lead.status] = (byStatus[lead.status] ?? 0) + 1;
+    bySource[lead.source] = (bySource[lead.source] ?? 0) + 1;
+  }
+
+  return { total: data.length, byStatus, bySource };
+}
+
+/**
+ * Dedupe helper used by GHA scrape jobs before insert.
+ * Match priority: website > phone > (company_name + email)
+ * Returns existing lead id if hit, null if new.
+ */
+export async function findExistingLeadKey(opts: {
+  website?: string | null;
+  phone?: string | null;
+  company_name?: string | null;
+  email?: string | null;
+}): Promise<string | null> {
+  const client = getClient();
+  if (!client) return null;
+
+  const w = opts.website?.trim().toLowerCase();
+  const p = opts.phone?.trim();
+  const c = opts.company_name?.trim();
+  const e = opts.email?.trim().toLowerCase();
+
+  if (w) {
+    const { data } = await client.from('leads').select('id').eq('website', w).limit(1).maybeSingle();
+    if (data) return data.id;
+  }
+  if (p) {
+    const { data } = await client.from('leads').select('id').eq('phone', p).limit(1).maybeSingle();
+    if (data) return data.id;
+  }
+  if (c && e) {
+    const { data } = await client
+      .from('leads')
+      .select('id')
+      .eq('company_name', c)
+      .eq('email', e)
+      .limit(1)
+      .maybeSingle();
+    if (data) return data.id;
+  }
+  return null;
+}
+
+export async function updateLeadEnrichment(
+  id: string,
+  patch: Partial<Omit<Lead, 'id' | 'created_at' | 'source'>>
+): Promise<{ error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+  const { error } = await client.from('leads').update(patch).eq('id', id);
+  if (error) return { error: error.message };
+  return {};
+}
+
+// ============================================================
+// SCRAPE RUNS (GHA / cron-job observability)
+// ============================================================
+
+export interface StartScrapeRunInput {
+  source: string;
+  region?: string | null;
+  industry?: string | null;
+  query_text?: string | null;
+  metadata?: Record<string, unknown> | null;
+}
+
+export async function startScrapeRun(input: StartScrapeRunInput): Promise<{ id?: number; error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const { data, error } = await client
+    .from('scrape_runs')
+    .insert({
+      source: input.source,
+      region: input.region ?? null,
+      industry: input.industry ?? null,
+      query_text: input.query_text ?? null,
+      metadata: input.metadata ?? {},
+    })
+    .select('id')
+    .single();
+
+  if (error) return { error: error.message };
+  return { id: Number(data.id) };
+}
+
+export async function finishScrapeRun(
+  id: number,
+  totals: {
+    found_cnt?: number;
+    new_cnt?: number;
+    dedup_cnt?: number;
+    verified_cnt?: number;
+    errored_cnt?: number;
+    errors?: unknown[] | null;
+    metadata?: Record<string, unknown> | null;
+  }
+): Promise<{ error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const startedAt = await client
+    .from('scrape_runs')
+    .select('started_at')
+    .eq('id', id)
+    .limit(1)
+    .maybeSingle()
+    .then((r) => (r.data?.started_at ? new Date(r.data.started_at) : new Date()));
+
+  const now = new Date();
+  const duration_ms =
+    startedAt instanceof Date && !Number.isNaN(startedAt.getTime())
+      ? Math.round(now.getTime() - startedAt.getTime())
+      : null;
+
+  const { error } = await client
+    .from('scrape_runs')
+    .update({
+      ended_at: now.toISOString(),
+      duration_ms,
+      found_cnt: totals.found_cnt ?? 0,
+      new_cnt: totals.new_cnt ?? 0,
+      dedup_cnt: totals.dedup_cnt ?? 0,
+      verified_cnt: totals.verified_cnt ?? 0,
+      errored_cnt: totals.errored_cnt ?? 0,
+      errors: totals.errors ?? [],
+      metadata: totals.metadata ?? undefined,
+    })
+    .eq('id', id);
+
+  if (error) return { error: error.message };
+  return {};
+}
+
+export async function listScrapeRuns(limit = 100): Promise<{ data: ScrapeRun[]; error?: string }> {
+  const client = getClient();
+  if (!client) return { data: [] };
+
+  const { data, error } = await client
+    .from('scrape_runs')
+    .select('*')
+    .order('started_at', { ascending: false })
+    .limit(limit);
+
+  if (error) return { data: [], error: error.message };
+  return { data: (data ?? []) as unknown as ScrapeRun[] };
+}
+
+// ============================================================
+// STACK STATUS
+// ============================================================
+
+export async function listStackVendors(opts?: {
+  tier?: StackTier;
+}): Promise<{ data: StackVendor[]; error?: string }> {
+  const client = getClient();
+  if (!client) return { data: [] };
+
+  let query = client.from('stack_status').select('*').order('tier', { ascending: true }).order('vendor_name', { ascending: true });
+
+  if (opts?.tier) query = query.eq('tier', opts.tier);
+
+  const { data, error } = await query;
+
+  if (error) {
+    console.error('[DB] listStackVendors error:', error);
+    return { data: [], error: error.message };
+  }
+
+  return { data: (data ?? []) as StackVendor[] };
+}
+
+export async function updateStackVendorStatus(
+  id: string,
+  status: StackNfrStatus
+): Promise<{ error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const updates: Partial<StackVendor> = {
+    nfr_partner_status: status,
+    updated_at: new Date().toISOString(),
+  };
+
+  if (status === 'active' || status === 'partner') {
+    updates.connected_at = new Date().toISOString();
+  }
+
+  const { error } = await client.from('stack_status').update(updates).eq('id', id);
+
+  if (error) {
+    console.error('[DB] updateStackVendorStatus error:', error);
+    return { error: error.message };
+  }
+
+  return {};
+}
+
+export async function getStackCounts(): Promise<{
+  total: number;
+  byTier: Record<StackTier, number>;
+  byStatus: Record<StackNfrStatus, number>;
+}> {
+  const { data } = await listStackVendors();
+
+  const byTier: Record<StackTier, number> = { 'Track 1': 0, 'Track 2': 0, 'Track 3': 0 };
+  const byStatus: Record<StackNfrStatus, number> = { not_started: 0, nfr_requested: 0, active: 0, partner: 0 };
+
+  for (const v of data) {
+    byTier[v.tier] = (byTier[v.tier] ?? 0) + 1;
+    byStatus[v.nfr_partner_status] = (byStatus[v.nfr_partner_status] ?? 0) + 1;
+  }
+
+  return { total: data.length, byTier, byStatus };
+}
+
+// ============================================================
+// TENANTS
+// ============================================================
+
+export async function listTenants(opts?: {
+  tier?: TenantTier;
+  status?: TenantStatus;
+}): Promise<{ data: Tenant[]; error?: string }> {
+  const client = getClient();
+  if (!client) return { data: [] };
+
+  let q = client.from('tenants').select('*').order('created_at', { ascending: false });
+  if (opts?.tier) q = q.eq('tier', opts.tier);
+  if (opts?.status) q = q.eq('status', opts.status);
+
+  const { data, error } = await q;
+  if (error) {
+    console.error('[DB] listTenants error:', error);
+    return { data: [], error: error.message };
+  }
+  return { data: (data ?? []) as Tenant[] };
+}
+
+export async function getTenantBySlug(slug: string): Promise<{ data?: Tenant; error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const { data, error } = await client.from('tenants').select('*').eq('slug', slug).single();
+  if (error) return { error: error.message };
+  return { data: data as Tenant };
+}
+
+export async function updateTenant(
+  id: string,
+  patch: Partial<Pick<Tenant, 'display_name' | 'contact_email' | 'tier' | 'status' | 'popia_consent' | 'metadata'>>
+): Promise<{ error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const { error } = await client.from('tenants').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id);
+  if (error) return { error: error.message };
+  return {};
+}
+
+// ============================================================
+// MONITORED ASSETS (domains per tenant)
+// ============================================================
+
+export async function listAssetsForTenant(tenantId: string): Promise<{ data: MonitoredAsset[]; error?: string }> {
+  const client = getClient();
+  if (!client) return { data: [] };
+
+  const { data, error } = await client
+    .from('monitored_assets')
+    .select('*')
+    .eq('tenant_id', tenantId)
+    .order('added_at', { ascending: false });
+
+  if (error) return { data: [], error: error.message };
+  return { data: (data ?? []) as MonitoredAsset[] };
+}
+
+export async function addAsset(tenantId: string, domain: string): Promise<{ id?: string; error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const { data, error } = await client
+    .from('monitored_assets')
+    .insert({ tenant_id: tenantId, domain: domain.trim().toLowerCase() })
+    .select('id')
+    .single();
+
+  if (error) return { error: error.message };
+  return { id: data.id };
+}
+
+// ============================================================
+// SCAN RESULTS (LeadClaw / Strix output)
+// ============================================================
+
+export async function insertScanResult(
+  input: Pick<ScanResult, 'asset_id' | 'tenant_id' | 'tech_stack' | 'open_ports' | 'dns_records' | 'headers' | 'scan_source' | 'duration_ms'>
+): Promise<{ id?: string; error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const { data, error } = await client
+    .from('scan_results')
+    .insert({
+      asset_id: input.asset_id,
+      tenant_id: input.tenant_id,
+      tech_stack: input.tech_stack ?? [],
+      open_ports: input.open_ports ?? [],
+      dns_records: input.dns_records ?? {},
+      headers: input.headers ?? {},
+      scan_source: input.scan_source ?? ('combined' as ScanSource),
+      duration_ms: input.duration_ms ?? null,
+    })
+    .select('id')
+    .single();
+
+  if (error) return { error: error.message };
+
+  // Bump last_scanned_at on the asset
+  try {
+    await client.from('monitored_assets').update({ last_scanned_at: new Date().toISOString() }).eq('id', input.asset_id);
+  } catch {
+    // non-fatal
+  }
+
+  return { id: data.id };
+}
+
+export async function listScansForTenant(tenantId: string, limit = 500): Promise<{ data: ScanResult[]; error?: string }> {
+  const client = getClient();
+  if (!client) return { data: [] };
+
+  const { data, error } = await client
+    .from('scan_results')
+    .select('*')
+    .eq('tenant_id', tenantId)
+    .order('scanned_at', { ascending: false })
+    .limit(limit);
+
+  if (error) return { data: [], error: error.message };
+  return { data: (data ?? []) as ScanResult[] };
+}
+
+// ============================================================
+// CVE MATCHES
+// ============================================================
+
+export async function listCvesForTenant(
+  tenantId: string,
+  opts?: { status?: CveMatchStatus; severity?: CveSeverity }
+): Promise<{ data: CveMatch[]; error?: string }> {
+  const client = getClient();
+  if (!client) return { data: [] };
+
+  let q = client.from('cve_matches').select('*').eq('tenant_id', tenantId).order('first_detected_at', { ascending: false });
+  if (opts?.status) q = q.eq('status', opts.status);
+  if (opts?.severity) q = q.eq('severity', opts.severity);
+
+  const { data, error } = await q;
+  if (error) return { data: [], error: error.message };
+  return { data: (data ?? []) as CveMatch[] };
+}
+
+export async function upsertCveMatch(row: Omit<CveMatch, 'id' | 'first_detected_at' | 'updated_at' | 'resolved_at'> & { resolved_at?: string | null }): Promise<{ id?: string; error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const { data, error } = await client
+    .from('cve_matches')
+    .upsert(
+      {
+        tenant_id: row.tenant_id,
+        asset_id: row.asset_id ?? null,
+        cve_id: row.cve_id,
+        severity: row.severity,
+        cvss_score: row.cvss_score ?? null,
+        tech_match: row.tech_match ?? {},
+        status: row.status,
+        description: row.description ?? null,
+        cve_references: row.cve_references ?? [],
+      },
+      { onConflict: 'tenant_id,cve_id,asset_id' }
+    )
+    .select('id')
+    .single();
+
+  if (error) return { error: error.message };
+  return { id: data.id };
+}
+
+export async function updateCveMatchStatus(id: string, status: CveMatchStatus): Promise<{ error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const patch: Partial<CveMatch> = { status, updated_at: new Date().toISOString() };
+  if (status === 'resolved') patch.resolved_at = new Date().toISOString();
+
+  const { error } = await client.from('cve_matches').update(patch).eq('id', id);
+  if (error) return { error: error.message };
+  return {};
+}
+
+export async function getCveCountsForTenant(tenantId: string): Promise<{
+  total: number;
+  byStatus: Record<CveMatchStatus, number>;
+  bySeverity: Record<CveSeverity, number>;
+}> {
+  const { data } = await listCvesForTenant(tenantId);
+  const byStatus: Record<CveMatchStatus, number> = { new: 0, acked: 0, resolved: 0 };
+  const bySeverity: Record<CveSeverity, number> = { low: 0, medium: 0, high: 0, critical: 0 };
+  for (const r of data) {
+    byStatus[r.status] = (byStatus[r.status] ?? 0) + 1;
+    bySeverity[r.severity] = (bySeverity[r.severity] ?? 0) + 1;
+  }
+  return { total: data.length, byStatus, bySeverity };
+}
+
+// ============================================================
+// API KEYS (SHA-256 HASHED, NEVER STORE RAW)
+// Raw key format: sk_live_[base64url(32 random bytes)]
+// Stored: key_hash = sha256(raw_key), key_prefix = first 16 chars of raw
+// ============================================================
+
+const TIER_LIMITS: Record<TenantTier, number> = {
+  starter: TENANT_TIER_RATE_LIMITS_DAILY?.starter ?? 100,
+  growth: TENANT_TIER_RATE_LIMITS_DAILY?.growth ?? 2500,
+  enterprise: TENANT_TIER_RATE_LIMITS_DAILY?.enterprise ?? 25000,
+};
+
+function randomBytesBase64Url(n: number): string {
+  if (typeof globalThis.crypto !== 'undefined' && 'getRandomValues' in globalThis.crypto) {
+    const buf = new Uint8Array(n);
+    globalThis.crypto.getRandomValues(buf);
+    let bin = '';
+    for (let i = 0; i < buf.byteLength; i++) bin += String.fromCharCode(buf[i]);
+    return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  if (nodeCrypto && typeof nodeCrypto.randomBytes === 'function') {
+    return nodeCrypto.randomBytes(n).toString('base64url');
+  }
+  throw new Error('No secure RNG available for API key generation');
+}
+
+async function sha256Hex(input: string): Promise<string> {
+  const enc = new TextEncoder().encode(input);
+  if (typeof globalThis.crypto !== 'undefined' && 'subtle' in globalThis.crypto) {
+    const buf = await globalThis.crypto.subtle.digest('SHA-256', enc);
+    return Array.from(new Uint8Array(buf))
+      .map((b) => b.toString(16).padStart(2, '0'))
+      .join('');
+  }
+  if (nodeCrypto && typeof nodeCrypto.createHash === 'function') {
+    return nodeCrypto.createHash('sha256').update(input).digest('hex');
+  }
+  throw new Error('No SHA-256 implementation available');
+}
+
+export async function createApiKey(
+  tenantId: string,
+  tier: TenantTier,
+  label?: string | null
+): Promise<{ data?: CreatedApiKey; error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const raw = 'sk_live_' + randomBytesBase64Url(32);
+  const hashHex = await sha256Hex(raw);
+  const prefix = raw.slice(0, 16);
+
+  const { data, error } = await client
+    .from('api_keys')
+    .insert({
+      tenant_id: tenantId,
+      key_hash: Buffer.from(hashHex, 'hex'),
+      key_prefix: prefix,
+      label: label ?? null,
+      tier,
+      rate_limit_daily: TIER_LIMITS[tier],
+    })
+    .select('id, key_prefix')
+    .single();
+
+  if (error) return { error: error.message };
+  return {
+    data: {
+      id: data.id,
+      raw_key: raw,   // shown ONCE
+      key_prefix: data.key_prefix,
+    },
+  };
+}
+
+/**
+ * Look up an API key by raw key. Returns the full ApiKey row if valid (not revoked).
+ * Uses: sha256(raw_key) = key_hash equality check.
+ */
+export async function resolveApiKey(rawKey: string): Promise<{ data?: ApiKey & { tenant_tier: TenantTier }; error?: string }> {
+  if (!rawKey || typeof rawKey !== 'string') return { error: 'Invalid key' };
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const hashHex = await sha256Hex(rawKey);
+  const hashBytes = Buffer.from(hashHex, 'hex');
+
+  const { data, error } = await client
+    .from('api_keys')
+    .select('*, tenant:tenant_id(tier)')
+    .eq('key_hash', hashBytes)
+    .is('revoked_at', null)
+    .limit(1)
+    .maybeSingle();
+
+  if (error) return { error: error.message };
+  if (!data) return { error: 'Key not found' };
+
+  const tRow = (data as unknown as { tenant?: { tier: TenantTier } | null }).tenant;
+  const tier: TenantTier = (tRow?.tier ?? data.tier ?? 'starter') as TenantTier;
+  const row: ApiKey = {
+    id: data.id,
+    tenant_id: data.tenant_id,
+    key_hash: data.key_hash,
+    key_prefix: data.key_prefix,
+    label: data.label,
+    tier: data.tier,
+    rate_limit_daily: data.rate_limit_daily,
+    created_at: data.created_at,
+    last_used_at: data.last_used_at,
+    revoked_at: data.revoked_at,
+  };
+  return { data: { ...row, tenant_tier: tier } };
+}
+
+export async function revokeApiKey(id: string): Promise<{ error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+  const { error } = await client
+    .from('api_keys')
+    .update({ revoked_at: new Date().toISOString() })
+    .eq('id', id);
+  if (error) return { error: error.message };
+  return {};
+}
+
+// ============================================================
+// USAGE LOG + RATE LIMITING
+// ============================================================
+
+export async function writeUsageLog(input: {
+  api_key_id?: string | null;
+  tenant_id?: string | null;
+  endpoint: string;
+  method?: string | null;
+  status_code?: number | null;
+  response_ms?: number | null;
+  client_ip?: string | null;
+}): Promise<{ id?: number; error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const { data, error } = await client
+    .from('usage_log')
+    .insert({
+      api_key_id: input.api_key_id ?? null,
+      tenant_id: input.tenant_id ?? null,
+      endpoint: input.endpoint,
+      method: input.method ?? null,
+      status_code: input.status_code ?? null,
+      response_ms: input.response_ms ?? null,
+      client_ip: input.client_ip ?? null,
+    })
+    .select('id')
+    .single();
+
+  if (error) return { error: error.message };
+  if (input.api_key_id) {
+    // best-effort touch last_used_at
+    try {
+      await client.from('api_keys').update({ last_used_at: new Date().toISOString() }).eq('id', input.api_key_id);
+    } catch {
+      /* ignore */
+    }
+  }
+  return { id: (data as unknown as { id: number }).id };
+}
+
+/**
+ * Count rows in usage_log for api_key_id during the rolling window.
+ * Default window = today (00:00 local DB TZ to now). Pass windowSeconds for rolling.
+ */
+export async function countUsageSince(
+  apiKeyId: string,
+  windowSeconds?: number
+): Promise<{ count: number; error?: string }> {
+  const client = getClient();
+  if (!client) return { count: 0, error: 'DB not configured' };
+
+  const since = windowSeconds
+    ? new Date(Date.now() - windowSeconds * 1000).toISOString()
+    : new Date(new Date().setHours(0, 0, 0, 0)).toISOString();
+
+  const { count, error } = await client
+    .from('usage_log')
+    .select('id', { count: 'exact', head: true })
+    .eq('api_key_id', apiKeyId)
+    .gte('called_at', since);
+
+  if (error) return { count: 0, error: error.message };
+  return { count: count ?? 0 };
+}
+
+export interface RateLimitResult {
+  allowed: boolean;
+  limit: number;
+  used: number;
+  remaining: number;
+  reset: string; // ISO timestamp for when the window rolls over
+}
+
+export async function checkRateLimitByKey(
+  resolvedKey: { id: string; tier: TenantTier; rate_limit_daily: number }
+): Promise<RateLimitResult> {
+  const limit = resolvedKey.rate_limit_daily || TIER_LIMITS[resolvedKey.tier];
+  const { count, error } = await countUsageSince(resolvedKey.id);
+  const used = error ? 0 : count;
+  const resetMidnight = new Date();
+  resetMidnight.setHours(24, 0, 0, 0);
+  return {
+    allowed: used < limit,
+    limit,
+    used,
+    remaining: Math.max(0, limit - used),
+    reset: resetMidnight.toISOString(),
+  };
+}
+
+export async function listApiKeysForTenant(tenantId: string): Promise<{ data: ApiKey[]; error?: string }> {
+  const client = getClient();
+  if (!client) return { data: [] };
+
+  const { data, error } = await client
+    .from('api_keys')
+    .select('id, tenant_id, key_prefix, label, tier, rate_limit_daily, created_at, last_used_at, revoked_at')
+    .eq('tenant_id', tenantId)
+    .order('created_at', { ascending: false });
+
+  if (error) return { data: [], error: error.message };
+  return { data: (data ?? []) as ApiKey[] };
+}
+
+export async function listUsageForTenant(tenantId: string, limit = 500): Promise<{ data: UsageLog[]; error?: string }> {
+  const client = getClient();
+  if (!client) return { data: [] };
+
+  const { data, error } = await client
+    .from('usage_log')
+    .select('*')
+    .eq('tenant_id', tenantId)
+    .order('called_at', { ascending: false })
+    .limit(limit);
+
+  if (error) return { data: [], error: error.message };
+  return { data: (data ?? []) as UsageLog[] };
+}
+
+```
+
+## src/lib/types.ts
+
+```typescript
+export type LeadSource = 'contact' | 'risk-scan' | 'demo';
+export type LeadStatus = 'new' | 'contacted' | 'qualified' | 'closed';
+
+export interface Lead {
+  id: string;
+  name: string;
+  email: string;
+  message: string | null;
+  source: LeadSource;
+  status: LeadStatus;
+  created_at: string;
+  company_name: string | null;
+  phone: string | null;
+  website: string | null;
+  industry: string | null;
+  region: string | null;
+  source_url: string | null;
+  email_verified: boolean;
+  phone_verified: boolean;
+  data_quality: number | null;
+  enrichment: Record<string, unknown>;
+}
+
+// ------------------------------------------------------------
+// Scrape Runs — GHA / cron-job observability
+// ------------------------------------------------------------
+export interface ScrapeRun {
+  id: number;
+  source: string;              // 'places_api' | 'cape_town_info' | ...
+  region: string | null;
+  industry: string | null;
+  query_text: string | null;
+  started_at: string;
+  ended_at: string | null;
+  duration_ms: number | null;
+  found_cnt: number;
+  new_cnt: number;
+  dedup_cnt: number;
+  verified_cnt: number;
+  errored_cnt: number;
+  errors: unknown[];
+  metadata: Record<string, unknown>;
+}
+
+export type StackTier = 'Track 1' | 'Track 2' | 'Track 3';
+export type StackNfrStatus = 'not_started' | 'nfr_requested' | 'active' | 'partner';
+
+export interface StackVendor {
+  id: string;
+  vendor_name: string;
+  tier: StackTier;
+  nfr_partner_status: StackNfrStatus;
+  vendor_url: string | null;
+  notes: string | null;
+  connected_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export const LEAD_SOURCES: LeadSource[] = ['contact', 'risk-scan', 'demo'];
+export const LEAD_STATUSES: LeadStatus[] = ['new', 'contacted', 'qualified', 'closed'];
+export const STACK_TIERS: StackTier[] = ['Track 1', 'Track 2', 'Track 3'];
+export const STACK_STATUSES: StackNfrStatus[] = ['not_started', 'nfr_requested', 'active', 'partner'];
+
+export const STATUS_LABELS: Record<LeadStatus, string> = {
+  new: 'NEW',
+  contacted: 'CONTACTED',
+  qualified: 'QUALIFIED',
+  closed: 'CLOSED',
+};
+
+export const STACK_STATUS_LABELS: Record<StackNfrStatus, string> = {
+  not_started: 'NOT STARTED',
+  nfr_requested: 'NFR REQUESTED',
+  active: 'ACTIVE',
+  partner: 'PARTNER',
+};
+
+export const STATUS_COLORS: Record<LeadStatus, string> = {
+  new: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50',
+  contacted: 'bg-blue-500/20 text-blue-400 border-blue-500/50',
+  qualified: 'bg-green-500/20 text-green-400 border-green-500/50',
+  closed: 'bg-gray-500/20 text-gray-400 border-gray-500/50',
+};
+
+export const STACK_STATUS_COLORS: Record<StackNfrStatus, string> = {
+  not_started: 'bg-gray-500/20 text-gray-400 border-gray-500/50',
+  nfr_requested: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50',
+  active: 'bg-green-500/20 text-green-400 border-green-500/50',
+  partner: 'bg-purple-500/20 text-purple-400 border-purple-500/50',
+};
+
+// ============================================================
+// M4N PLATFORM TYPES
+// ============================================================
+
+export type TenantTier = 'starter' | 'growth' | 'enterprise';
+export type TenantStatus = 'active' | 'suspended' | 'cancelled';
+
+export interface Tenant {
+  id: string;
+  slug: string;
+  display_name: string;
+  contact_email: string | null;
+  tier: TenantTier;
+  status: TenantStatus;
+  popia_consent: boolean;
+  metadata: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
+}
+
+export const TENANT_TIERS: TenantTier[] = ['starter', 'growth', 'enterprise'];
+export const TENANT_STATUSES: TenantStatus[] = ['active', 'suspended', 'cancelled'];
+
+export const TENANT_TIER_RATE_LIMITS_DAILY: Record<TenantTier, number> = {
+  starter: 100,
+  growth: 2500,
+  enterprise: 25000,
+};
+
+export const TENANT_TIER_LABELS: Record<TenantTier, string> = {
+  starter: 'STARTER',
+  growth: 'GROWTH',
+  enterprise: 'ENTERPRISE',
+};
+
+export const TENANT_TIER_COLORS: Record<TenantTier, string> = {
+  starter: 'bg-slate-500/20 text-slate-400 border-slate-500/50',
+  growth: 'bg-blue-500/20 text-blue-400 border-blue-500/50',
+  enterprise: 'bg-purple-500/20 text-purple-400 border-purple-500/50',
+};
+
+// ------------------------------------------------------------
+// Monitored Assets
+// ------------------------------------------------------------
+export interface MonitoredAsset {
+  id: string;
+  tenant_id: string;
+  domain: string;
+  added_at: string;
+  last_scanned_at: string | null;
+  metadata: Record<string, unknown>;
+}
+
+// ------------------------------------------------------------
+// Scan Results
+// ------------------------------------------------------------
+export interface TechStackItem {
+  name: string;
+  version?: string;
+  category?: string;
+  confidence?: number;
+}
+
+export interface OpenPortItem {
+  port: number;
+  service?: string;
+  banner?: string;
+  state?: 'open' | 'filtered' | 'closed';
+}
+
+export type ScanSource = 'leadclaw' | 'strix' | 'combined';
+
+export interface ScanResult {
+  id: string;
+  asset_id: string;
+  tenant_id: string;
+  tech_stack: TechStackItem[];
+  open_ports: OpenPortItem[];
+  dns_records: Record<string, unknown>;
+  headers: Record<string, unknown>;
+  scan_source: ScanSource;
+  scanned_at: string;
+  duration_ms: number | null;
+}
+
+// ------------------------------------------------------------
+// CVE Matches
+// ------------------------------------------------------------
+export type CveSeverity = 'low' | 'medium' | 'high' | 'critical';
+export type CveMatchStatus = 'new' | 'acked' | 'resolved';
+
+export interface CveMatch {
+  id: string;
+  tenant_id: string;
+  asset_id: string | null;
+  cve_id: string;
+  severity: CveSeverity;
+  cvss_score: number | null;
+  tech_match: Record<string, unknown>;
+  status: CveMatchStatus;
+  description: string | null;
+  cve_references: unknown[];
+  first_detected_at: string;
+  resolved_at: string | null;
+  updated_at: string;
+}
+
+export const CVE_SEVERITIES: CveSeverity[] = ['low', 'medium', 'high', 'critical'];
+export const CVE_MATCH_STATUSES: CveMatchStatus[] = ['new', 'acked', 'resolved'];
+
+export const CVE_SEVERITY_LABELS: Record<CveSeverity, string> = {
+  low: 'LOW',
+  medium: 'MEDIUM',
+  high: 'HIGH',
+  critical: 'CRITICAL',
+};
+
+export const CVE_SEVERITY_COLORS: Record<CveSeverity, string> = {
+  low: 'bg-slate-500/20 text-slate-400 border-slate-500/50',
+  medium: 'bg-amber-500/20 text-amber-400 border-amber-500/50',
+  high: 'bg-orange-500/20 text-orange-400 border-orange-500/50',
+  critical: 'bg-red-500/20 text-red-400 border-red-500/50',
+};
+
+// ------------------------------------------------------------
+// API Keys (hashed only)
+// ------------------------------------------------------------
+export interface ApiKey {
+  id: string;
+  tenant_id: string;
+  key_hash: Uint8Array | string; // BYTEA — stored as hex/buffer
+  key_prefix: string;            // sk_live_xxxx (not a secret)
+  label: string | null;
+  tier: TenantTier;
+  rate_limit_daily: number;
+  created_at: string;
+  last_used_at: string | null;
+  revoked_at: string | null;
+}
+
+export interface CreatedApiKey {
+  id: string;
+  raw_key: string;   // shown ONCE on creation
+  key_prefix: string;
+}
+
+// ------------------------------------------------------------
+// Usage Log
+// ------------------------------------------------------------
+export interface UsageLog {
+  id: number;
+  api_key_id: string | null;
+  tenant_id: string | null;
+  endpoint: string;
+  method: string | null;
+  status_code: number | null;
+  response_ms: number | null;
+  client_ip: string | null;
+  called_at: string;
+}
+
+```
+
+## src/middleware.ts
+
+```typescript
+import { NextRequest, NextResponse } from 'next/server';
+import { jwtVerify } from 'jose';
+
+const COOKIE_NAME = 'admin_session';
+const ADMIN_ROUTES = ['/admin'];
+const PUBLIC_ROUTES = ['/admin/login'];
+
+function getSecret(): Uint8Array {
+  const secret = process.env.ADMIN_JWT_SECRET;
+  if (!secret) {
+    return new TextEncoder().encode('dev-secret-change-me-please-32chars!!');
+  }
+  return new TextEncoder().encode(secret);
+}
+
+async function verifyToken(token: string): Promise<boolean> {
+  try {
+    const secret = getSecret();
+    const { payload } = await jwtVerify(token, secret);
+    return !!payload && (payload as { role?: string }).role === 'admin';
+  } catch {
+    return false;
+  }
+}
+
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  const isAdminRoute = ADMIN_ROUTES.some((r) => pathname.startsWith(r));
+  if (!isAdminRoute) return NextResponse.next();
+
+  const isPublic = PUBLIC_ROUTES.some((r) => pathname === r || pathname.startsWith(r));
+  const isLoginPage = pathname === '/admin/login';
+
+  const token = request.cookies.get(COOKIE_NAME)?.value;
+  const valid = token ? await verifyToken(token) : false;
+
+  if (valid && isLoginPage) {
+    const homeUrl = new URL('/admin/leads', request.url);
+    return NextResponse.redirect(homeUrl);
+  }
+
+  if (!valid && !isLoginPage && !isPublic) {
+    const loginUrl = new URL('/admin/login', request.url);
+    loginUrl.searchParams.set('next', pathname);
+    return NextResponse.redirect(loginUrl);
+  }
+
+  if (!valid && pathname === '/admin') {
+    const loginUrl = new URL('/admin/login', request.url);
+    return NextResponse.redirect(loginUrl);
+  }
+
+  if (valid && pathname === '/admin') {
+    const leadsUrl = new URL('/admin/leads', request.url);
+    return NextResponse.redirect(leadsUrl);
+  }
+
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: ['/admin/:path*'],
+};
+
+```
+
+## src/utils/posts.ts
+
+```typescript
+// src/utils/posts.ts
+
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+
+// Define the type for the data we want to display on the index page
+export interface PostMetadata {
+  title: string;
+  date: string;
+  slug: string;
+  status: string; // The custom status field for your theme
+}
+
+// Set the directory where your Markdown files live (adjust if necessary)
+const POSTS_DIR = path.join(process.cwd(), 'content', 'posts'); // <-- ONLY ONE DECLARATION 👍
+
+/**
+ * Reads all Markdown files in the content/posts directory,
+ * extracts the frontmatter metadata, and returns a sorted list.
+ */
+export function getPostMetadata(): PostMetadata[] {
+  // 1. Get file names in the directory
+  const fileNames = fs.readdirSync(POSTS_DIR);
+
+  // 2. Map through each file, read content, and extract frontmatter
+  const posts = fileNames
+    .map((fileName) => {
+      // Create the full path to the file
+      const fullPath = path.join(POSTS_DIR, fileName);
+      
+      // Read the file content
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      
+      // Use gray-matter to parse the metadata (frontmatter)
+      const { data } = matter(fileContents);
+      
+      // Construct the final metadata object
+      return {
+        title: data.title as string,
+        date: data.date as string,
+        slug: data.slug as string,
+        status: data.status as string,
+      };
+    })
+    // 3. Optional: Sort posts by date (newest first)
+    .sort((a, b) => (a.date < b.date ? 1 : -1)); 
+
+  return posts;
+}
+
+
+/**
+ * Reads the full content and metadata for a single blog post.
+ */
+export function getPostContent(slug: string) {
+  const fullPath = path.join(POSTS_DIR, `${slug}.md`);
+
+  // Check if the file exists (important for error handling)
+  if (!fs.existsSync(fullPath)) {
+    return null;
+  }
+
+  // Read the file content
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+
+  // Use gray-matter to parse the metadata and the markdown body
+  const { data, content } = matter(fileContents);
+
+  return {
+    metadata: {
+      title: data.title as string,
+      date: data.date as string,
+      slug: data.slug as string,
+      status: data.status as string,
+    } as PostMetadata,
+    content, // The raw markdown text
+  };
+}
+
+
+/**
+ * REQUIRED for Next.js Dynamic Routes: Tells Next.js which paths exist.
+ */
+export function getAllPostSlugs() {
+  const fileNames = fs.readdirSync(POSTS_DIR);
+  return fileNames.map(fileName => fileName.replace(/\.md$/, ''));
+}
+```
+
+## src/utils/sanityClient.ts
+
+```typescript
+// src/utils/sanityClient.ts
+
+import { createClient } from 'next-sanity';
+import createImageUrlBuilder from '@sanity/image-url'; // 🛑 NEW IMPORT 🛑
+import { SanityImageSource } from '@sanity/image-url/lib/types/types'; // Optional for better TypeScript
+
+// 🛑 Replace these with your actual NEXT_PUBLIC environment variables 🛑
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION;
+
+if (!projectId || !dataset || !apiVersion) {
+  throw new Error(
+    "Missing Sanity Environment Variables. Check .env.local and Vercel settings."
+  );
+}
+
+export const client = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: true, // `true` uses the cache/CDN for faster lookups
+});
+
+/**
+ * Sanity Fetch Function
+ */
+export async function sanityFetch<T>({ query, params = {} }: { 
+    query: string, 
+    // 🛑 FIX: Apply the linter disable comment
+    params?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any 
+}): Promise<T> {
+    return client.fetch<T>(query, params);
+}
+
+// ---------------------------------------------------------------
+// 🛑 IMAGE UTILITY FUNCTIONS 🛑
+// ---------------------------------------------------------------
+
+// Initialize the Image URL Builder once
+const imageBuilder = createImageUrlBuilder({
+    projectId: projectId as string,
+    dataset: dataset as string,
+});
+
+/**
+ * Generates a Next.js-compatible URL for a Sanity image source (mainImage or body image object).
+ * * @param source The Sanity image object (e.g., post.mainImage or the image object from Portable Text).
+ * @returns A Sanity URL builder object. Call .url() on this object to get the final string URL.
+ */
+export function urlForImage(source: SanityImageSource) {
+    // You can chain methods like .width(800).url() on the returned object in your components
+    return imageBuilder.image(source);
+}
+```
+
+## supabase/migrations/0001_init_leads_stack.sql
+
+```sql
+-- ============================================================
+-- COMMON: moddatetime trigger (auto-updated updated_at columns)
+-- ============================================================
+CREATE OR REPLACE FUNCTION moddatetime()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- ============================================================
+-- LEADS TABLE
+-- ============================================================
+CREATE TABLE IF NOT EXISTS leads (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    message TEXT,
+    source VARCHAR(50) NOT NULL DEFAULT 'contact',
+    status VARCHAR(20) NOT NULL DEFAULT 'new',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_leads_status ON leads(status);
+CREATE INDEX IF NOT EXISTS idx_leads_source ON leads(source);
+CREATE INDEX IF NOT EXISTS idx_leads_created_at ON leads(created_at DESC);
+
+ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
+
+-- Server-side only — no anon access, only service_role
+DROP POLICY IF EXISTS leads_admin_all ON leads;
+CREATE POLICY leads_admin_all ON leads
+    FOR ALL
+    USING (false)
+    WITH CHECK (false);
+
+-- ============================================================
+-- STACK_STATUS TABLE
+-- ============================================================
+CREATE TABLE IF NOT EXISTS stack_status (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    vendor_name VARCHAR(255) NOT NULL UNIQUE,
+    tier VARCHAR(50) NOT NULL,
+    nfr_partner_status VARCHAR(30) NOT NULL DEFAULT 'not_started',
+    vendor_url TEXT,
+    notes TEXT,
+    connected_at TIMESTAMPTZ,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_stack_tier ON stack_status(tier);
+CREATE INDEX IF NOT EXISTS idx_stack_status ON stack_status(nfr_partner_status);
+
+ALTER TABLE stack_status ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS stack_admin_all ON stack_status;
+CREATE POLICY stack_admin_all ON stack_status
+    FOR ALL
+    USING (false)
+    WITH CHECK (false);
+
+DROP TRIGGER IF EXISTS stack_status_updated_at ON stack_status;
+CREATE TRIGGER stack_status_updated_at
+    BEFORE UPDATE ON stack_status
+    FOR EACH ROW
+    EXECUTE FUNCTION moddatetime();
+
+-- Seed initial vendors from the services page
+INSERT INTO stack_status (vendor_name, tier, nfr_partner_status, vendor_url, notes) VALUES
+    ('Check Point Infinity', 'Track 1', 'active', 'https://www.checkpoint.com', 'Quantum firewall, Harmony endpoint, CloudGuard'),
+    ('Splunk SIEM/SOAR', 'Track 1', 'active', 'https://www.splunk.com', 'SIEM, SOAR, ITSI, Observability platform'),
+    ('TheHive', 'Track 2', 'not_started', 'https://thehive-project.org', 'Incident response platform'),
+    ('Wazuh', 'Track 2', 'not_started', 'https://wazuh.com', 'EDR / XDR platform'),
+    ('MISP', 'Track 2', 'not_started', 'https://www.misp-project.org', 'Threat intelligence platform'),
+    ('Shuffle SOAR', 'Track 2', 'not_started', 'https://shuffler.io', 'Open source SOAR alternative'),
+    ('OpenVAS / Greenbone', 'Track 3', 'not_started', 'https://www.greenbone.net', 'Vulnerability scanning'),
+    ('Velociraptor', 'Track 3', 'not_started', 'https://docs.velociraptor.app', 'Digital forensics & IR'),
+    ('Grafana', 'Track 3', 'not_started', 'https://grafana.com', 'Dashboards & telemetry')
+ON CONFLICT (vendor_name) DO NOTHING;
+
+```
+
+## supabase/migrations/0002_m4n_core_platform.sql
+
+```sql
+-- ============================================================
+-- M4N-CORE PLATFORM SCHEMA
+-- tenants (org) -> monitored_assets -> scan_results -> cve_matches
+-- tenants -> api_keys -> usage_log
+-- RLS enabled on every table. Anon/default policy = deny all.
+-- Service role bypasses RLS (used by server code only).
+-- ============================================================
+
+-- ============================================================
+-- TENANTS (client organizations)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS tenants (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    slug VARCHAR(64) NOT NULL UNIQUE,
+    display_name VARCHAR(255) NOT NULL,
+    contact_email VARCHAR(255),
+    tier VARCHAR(30) NOT NULL DEFAULT 'starter', -- starter / growth / enterprise
+    status VARCHAR(30) NOT NULL DEFAULT 'active', -- active / suspended / cancelled
+    popia_consent BOOLEAN NOT NULL DEFAULT false,
+    metadata JSONB NOT NULL DEFAULT '{}'::jsonb,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_tenants_tier ON tenants(tier);
+CREATE INDEX IF NOT EXISTS idx_tenants_status ON tenants(status);
+
+ALTER TABLE tenants ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS tenants_self_read ON tenants;
+CREATE POLICY tenants_self_read ON tenants
+    FOR SELECT
+    USING (auth.jwt() ->> 'tenant_id' = id::text);
+
+DROP POLICY IF EXISTS tenants_admin_deny ON tenants;
+CREATE POLICY tenants_admin_deny ON tenants
+    FOR ALL
+    USING (false) WITH CHECK (false);
+
+DROP TRIGGER IF EXISTS tenants_updated_at ON tenants;
+CREATE TRIGGER tenants_updated_at
+    BEFORE UPDATE ON tenants
+    FOR EACH ROW
+    EXECUTE FUNCTION moddatetime();
+
+-- ============================================================
+-- MONITORED_ASSETS (domains per tenant)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS monitored_assets (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
+    domain VARCHAR(512) NOT NULL,
+    added_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    last_scanned_at TIMESTAMPTZ,
+    metadata JSONB NOT NULL DEFAULT '{}'::jsonb,
+    UNIQUE (tenant_id, domain)
+);
+
+CREATE INDEX IF NOT EXISTS idx_assets_tenant ON monitored_assets(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_assets_domain ON monitored_assets(domain);
+
+ALTER TABLE monitored_assets ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS assets_tenant_rw ON monitored_assets;
+CREATE POLICY assets_tenant_rw ON monitored_assets
+    FOR ALL
+    USING (auth.jwt() ->> 'tenant_id' = tenant_id::text)
+    WITH CHECK (auth.jwt() ->> 'tenant_id' = tenant_id::text);
+
+-- ============================================================
+-- SCAN_RESULTS (Strix/LeadClaw output per asset)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS scan_results (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    asset_id UUID NOT NULL REFERENCES monitored_assets(id) ON DELETE CASCADE,
+    tenant_id UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
+    tech_stack JSONB NOT NULL DEFAULT '[]'::jsonb,   -- [{name:"Nginx", version:"1.24"}]
+    open_ports JSONB NOT NULL DEFAULT '[]'::jsonb,   -- [{port:443, service:"https", banner:"..."}]
+    dns_records JSONB NOT NULL DEFAULT '{}'::jsonb,
+    headers JSONB NOT NULL DEFAULT '{}'::jsonb,
+    scan_source VARCHAR(32) NOT NULL DEFAULT 'leadclaw', -- leadclaw / strix / combined
+    scanned_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    duration_ms INTEGER
+);
+
+CREATE INDEX IF NOT EXISTS idx_scan_asset ON scan_results(asset_id);
+CREATE INDEX IF NOT EXISTS idx_scan_tenant ON scan_results(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_scan_scanned_at ON scan_results(scanned_at DESC);
+
+ALTER TABLE scan_results ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS scan_tenant_read ON scan_results;
+CREATE POLICY scan_tenant_read ON scan_results
+    FOR SELECT
+    USING (auth.jwt() ->> 'tenant_id' = tenant_id::text);
+
+-- ============================================================
+-- CVE_MATCHES (CVE feed diffed against scan_results.tech_stack)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS cve_matches (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
+    asset_id UUID REFERENCES monitored_assets(id) ON DELETE SET NULL,
+    cve_id VARCHAR(32) NOT NULL,                       -- CVE-2024-12345
+    severity VARCHAR(16) NOT NULL DEFAULT 'medium',   -- low / medium / high / critical
+    cvss_score NUMERIC(4,2),
+    tech_match JSONB NOT NULL DEFAULT '{}'::jsonb,    -- {name:"Nginx", version:"1.24", matched_by:"cpe_match"}
+    status VARCHAR(20) NOT NULL DEFAULT 'new',        -- new / acked / resolved
+    description TEXT,
+    cve_references JSONB NOT NULL DEFAULT '[]'::jsonb,
+    first_detected_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    resolved_at TIMESTAMPTZ,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    UNIQUE (tenant_id, cve_id, asset_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_cve_tenant ON cve_matches(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_cve_status ON cve_matches(status);
+CREATE INDEX IF NOT EXISTS idx_cve_severity ON cve_matches(severity);
+CREATE INDEX IF NOT EXISTS idx_cve_cveid ON cve_matches(cve_id);
+
+ALTER TABLE cve_matches ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS cve_tenant_rw ON cve_matches;
+CREATE POLICY cve_tenant_rw ON cve_matches
+    FOR ALL
+    USING (auth.jwt() ->> 'tenant_id' = tenant_id::text)
+    WITH CHECK (auth.jwt() ->> 'tenant_id' = tenant_id::text);
+
+DROP TRIGGER IF EXISTS cve_updated_at ON cve_matches;
+CREATE TRIGGER cve_updated_at
+    BEFORE UPDATE ON cve_matches
+    FOR EACH ROW
+    EXECUTE FUNCTION moddatetime();
+
+-- ============================================================
+-- API_KEYS (SHA-256 hashed only; never raw)
+-- Key format: sk_live_[base64(32 random bytes)] -> show once on creation
+-- ============================================================
+CREATE TABLE IF NOT EXISTS api_keys (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
+    key_hash BYTEA NOT NULL UNIQUE,              -- sha256(raw_key)
+    key_prefix VARCHAR(16) NOT NULL,             -- sk_live_xxxx (for lookup hints, never a secret)
+    label VARCHAR(128),
+    tier VARCHAR(30) NOT NULL DEFAULT 'starter',
+    rate_limit_daily INTEGER NOT NULL DEFAULT 100,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    last_used_at TIMESTAMPTZ,
+    revoked_at TIMESTAMPTZ
+);
+
+CREATE INDEX IF NOT EXISTS idx_apikeys_tenant ON api_keys(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_apikeys_prefix ON api_keys(key_prefix);
+CREATE INDEX IF NOT EXISTS idx_apikeys_active ON api_keys(revoked_at) WHERE revoked_at IS NULL;
+
+ALTER TABLE api_keys ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS apikeys_tenant_ro ON api_keys;
+CREATE POLICY apikeys_tenant_ro ON api_keys
+    FOR SELECT
+    USING (auth.jwt() ->> 'tenant_id' = tenant_id::text);
+
+-- ============================================================
+-- USAGE_LOG (rate limiting / billing telemetry)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS usage_log (
+    id BIGSERIAL PRIMARY KEY,
+    api_key_id UUID REFERENCES api_keys(id) ON DELETE SET NULL,
+    tenant_id UUID REFERENCES tenants(id) ON DELETE CASCADE,
+    endpoint VARCHAR(128) NOT NULL,
+    method VARCHAR(16),
+    status_code SMALLINT,
+    response_ms INTEGER,
+    client_ip INET,
+    called_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_usage_key_time ON usage_log(api_key_id, called_at DESC);
+CREATE INDEX IF NOT EXISTS idx_usage_tenant_time ON usage_log(tenant_id, called_at DESC);
+CREATE INDEX IF NOT EXISTS idx_usage_called_at ON usage_log(called_at DESC);
+
+ALTER TABLE usage_log ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS usage_tenant_ro ON usage_log;
+CREATE POLICY usage_tenant_ro ON usage_log
+    FOR SELECT
+    USING (auth.jwt() ->> 'tenant_id' = tenant_id::text);
+
+-- ============================================================
+-- Rate-limit helper: count today's usage for an api_key
+-- ============================================================
+CREATE OR REPLACE FUNCTION api_key_daily_usage(p_api_key_id UUID)
+RETURNS INTEGER AS $$
+    SELECT COUNT(*)::INTEGER
+    FROM usage_log
+    WHERE api_key_id = p_api_key_id
+      AND called_at >= DATE_TRUNC('day', NOW());
+$$ LANGUAGE sql STABLE SECURITY DEFINER;
+
+-- ============================================================
+-- SEED: a demo/sandbox tenant so the /portal templates work
+-- ============================================================
+INSERT INTO tenants (slug, display_name, contact_email, tier, status, popia_consent) VALUES
+    ('m4n-demo', 'M4N Demo Tenant', 'demo@m4n.co.za', 'starter', 'active', true)
+ON CONFLICT (slug) DO NOTHING;
+
+```
+
+## supabase/migrations/0003_leads_enrichment.sql
+
+```sql
+-- ============================================================
+-- LEADS ENRICHMENT + SCRAPE RUNS (M4N CRM-side)
+-- Apollo-style B2B lead enrichment columns + GitHub Actions cron observability
+-- ============================================================
+
+-- 10 new CRM/enrichment columns on leads — all nullable, safe idempotent ALTERs
+ALTER TABLE leads
+    ADD COLUMN IF NOT EXISTS company_name   VARCHAR(255),
+    ADD COLUMN IF NOT EXISTS phone          VARCHAR(50),
+    ADD COLUMN IF NOT EXISTS website        VARCHAR(512),
+    ADD COLUMN IF NOT EXISTS industry       VARCHAR(100),
+    ADD COLUMN IF NOT EXISTS region         VARCHAR(100),
+    ADD COLUMN IF NOT EXISTS source_url     TEXT,
+    ADD COLUMN IF NOT EXISTS email_verified BOOLEAN NOT NULL DEFAULT false,
+    ADD COLUMN IF NOT EXISTS phone_verified BOOLEAN NOT NULL DEFAULT false,
+    ADD COLUMN IF NOT EXISTS data_quality   SMALLINT,
+    ADD COLUMN IF NOT EXISTS enrichment     JSONB NOT NULL DEFAULT '{}'::jsonb;
+
+-- Dedup + lookup indexes
+CREATE INDEX IF NOT EXISTS idx_leads_company   ON leads(company_name);
+CREATE INDEX IF NOT EXISTS idx_leads_phone     ON leads(phone);
+CREATE INDEX IF NOT EXISTS idx_leads_website   ON leads(website);
+CREATE INDEX IF NOT EXISTS idx_leads_region    ON leads(region);
+CREATE INDEX IF NOT EXISTS idx_leads_industry  ON leads(industry);
+CREATE INDEX IF NOT EXISTS idx_leads_quality   ON leads(data_quality DESC NULLS LAST);
+
+-- ============================================================
+-- SCRAPE_RUNS — GHA / cron-job observability table
+-- Each row = 1 Places API / directory scrape batch
+-- ============================================================
+CREATE TABLE IF NOT EXISTS scrape_runs (
+    id          BIGSERIAL PRIMARY KEY,
+    source      VARCHAR(64) NOT NULL,     -- e.g. 'places_api', 'cape_town_info', 'yellowpages_za', 'bizboostza', 'nearmesa', 'cylex', 'cipc_lookup'
+    region      VARCHAR(100),             -- e.g. 'Cape Town', 'Johannesburg'
+    industry    VARCHAR(100),             -- optional filter used
+    query_text  TEXT,                     -- the actual search string / URL pattern (debug)
+    started_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    ended_at    TIMESTAMPTZ,
+    duration_ms INTEGER,
+    found_cnt   INT NOT NULL DEFAULT 0,   -- raw candidates pulled
+    new_cnt     INT NOT NULL DEFAULT 0,   -- actually inserted (after dedup by website/phone)
+    dedup_cnt   INT NOT NULL DEFAULT 0,   -- skipped: matched existing lead
+    verified_cnt INT NOT NULL DEFAULT 0,  -- emails that passed verify step
+    errored_cnt INT NOT NULL DEFAULT 0,
+    errors      JSONB NOT NULL DEFAULT '[]'::jsonb,  -- array of {row, msg, url}
+    metadata    JSONB NOT NULL DEFAULT '{}'::jsonb   -- arbitrary: gh-run-id, source commit, quota-used, etc
+);
+
+CREATE INDEX IF NOT EXISTS idx_scraper_runs_source  ON scrape_runs(source, started_at DESC);
+CREATE INDEX IF NOT EXISTS idx_scraper_runs_region  ON scrape_runs(region, started_at DESC);
+
+ALTER TABLE scrape_runs ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS scraper_runs_admin_deny ON scrape_runs;
+CREATE POLICY scraper_runs_admin_deny ON scrape_runs
+    FOR ALL
+    USING (false) WITH CHECK (false);   -- server/service-role only
+
+```
+
+## supabase/migrations/all-migrations-combined.sql
+
+```sql
+-- ============================================================
+-- COMMON: moddatetime trigger (auto-updated updated_at columns)
+-- ============================================================
+CREATE OR REPLACE FUNCTION moddatetime()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- ============================================================
+-- LEADS TABLE
+-- ============================================================
+CREATE TABLE IF NOT EXISTS leads (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    message TEXT,
+    source VARCHAR(50) NOT NULL DEFAULT 'contact',
+    status VARCHAR(20) NOT NULL DEFAULT 'new',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_leads_status ON leads(status);
+CREATE INDEX IF NOT EXISTS idx_leads_source ON leads(source);
+CREATE INDEX IF NOT EXISTS idx_leads_created_at ON leads(created_at DESC);
+
+ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
+
+-- Server-side only â€” no anon access, only service_role
+DROP POLICY IF EXISTS leads_admin_all ON leads;
+CREATE POLICY leads_admin_all ON leads
+    FOR ALL
+    USING (false)
+    WITH CHECK (false);
+
+-- ============================================================
+-- STACK_STATUS TABLE
+-- ============================================================
+CREATE TABLE IF NOT EXISTS stack_status (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    vendor_name VARCHAR(255) NOT NULL UNIQUE,
+    tier VARCHAR(50) NOT NULL,
+    nfr_partner_status VARCHAR(30) NOT NULL DEFAULT 'not_started',
+    vendor_url TEXT,
+    notes TEXT,
+    connected_at TIMESTAMPTZ,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_stack_tier ON stack_status(tier);
+CREATE INDEX IF NOT EXISTS idx_stack_status ON stack_status(nfr_partner_status);
+
+ALTER TABLE stack_status ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS stack_admin_all ON stack_status;
+CREATE POLICY stack_admin_all ON stack_status
+    FOR ALL
+    USING (false)
+    WITH CHECK (false);
+
+DROP TRIGGER IF EXISTS stack_status_updated_at ON stack_status;
+CREATE TRIGGER stack_status_updated_at
+    BEFORE UPDATE ON stack_status
+    FOR EACH ROW
+    EXECUTE FUNCTION moddatetime();
+
+-- Seed initial vendors from the services page
+INSERT INTO stack_status (vendor_name, tier, nfr_partner_status, vendor_url, notes) VALUES
+    ('Check Point Infinity', 'Track 1', 'active', 'https://www.checkpoint.com', 'Quantum firewall, Harmony endpoint, CloudGuard'),
+    ('Splunk SIEM/SOAR', 'Track 1', 'active', 'https://www.splunk.com', 'SIEM, SOAR, ITSI, Observability platform'),
+    ('TheHive', 'Track 2', 'not_started', 'https://thehive-project.org', 'Incident response platform'),
+    ('Wazuh', 'Track 2', 'not_started', 'https://wazuh.com', 'EDR / XDR platform'),
+    ('MISP', 'Track 2', 'not_started', 'https://www.misp-project.org', 'Threat intelligence platform'),
+    ('Shuffle SOAR', 'Track 2', 'not_started', 'https://shuffler.io', 'Open source SOAR alternative'),
+    ('OpenVAS / Greenbone', 'Track 3', 'not_started', 'https://www.greenbone.net', 'Vulnerability scanning'),
+    ('Velociraptor', 'Track 3', 'not_started', 'https://docs.velociraptor.app', 'Digital forensics & IR'),
+    ('Grafana', 'Track 3', 'not_started', 'https://grafana.com', 'Dashboards & telemetry')
+ON CONFLICT (vendor_name) DO NOTHING;
+-- ============================================================
+-- M4N-CORE PLATFORM SCHEMA
+-- tenants (org) -> monitored_assets -> scan_results -> cve_matches
+-- tenants -> api_keys -> usage_log
+-- RLS enabled on every table. Anon/default policy = deny all.
+-- Service role bypasses RLS (used by server code only).
+-- ============================================================
+
+-- ============================================================
+-- TENANTS (client organizations)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS tenants (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    slug VARCHAR(64) NOT NULL UNIQUE,
+    display_name VARCHAR(255) NOT NULL,
+    contact_email VARCHAR(255),
+    tier VARCHAR(30) NOT NULL DEFAULT 'starter', -- starter / growth / enterprise
+    status VARCHAR(30) NOT NULL DEFAULT 'active', -- active / suspended / cancelled
+    popia_consent BOOLEAN NOT NULL DEFAULT false,
+    metadata JSONB NOT NULL DEFAULT '{}'::jsonb,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_tenants_tier ON tenants(tier);
+CREATE INDEX IF NOT EXISTS idx_tenants_status ON tenants(status);
+
+ALTER TABLE tenants ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS tenants_self_read ON tenants;
+CREATE POLICY tenants_self_read ON tenants
+    FOR SELECT
+    USING (auth.jwt() ->> 'tenant_id' = id::text);
+
+DROP POLICY IF EXISTS tenants_admin_deny ON tenants;
+CREATE POLICY tenants_admin_deny ON tenants
+    FOR ALL
+    USING (false) WITH CHECK (false);
+
+DROP TRIGGER IF EXISTS tenants_updated_at ON tenants;
+CREATE TRIGGER tenants_updated_at
+    BEFORE UPDATE ON tenants
+    FOR EACH ROW
+    EXECUTE FUNCTION moddatetime();
+
+-- ============================================================
+-- MONITORED_ASSETS (domains per tenant)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS monitored_assets (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
+    domain VARCHAR(512) NOT NULL,
+    added_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    last_scanned_at TIMESTAMPTZ,
+    metadata JSONB NOT NULL DEFAULT '{}'::jsonb,
+    UNIQUE (tenant_id, domain)
+);
+
+CREATE INDEX IF NOT EXISTS idx_assets_tenant ON monitored_assets(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_assets_domain ON monitored_assets(domain);
+
+ALTER TABLE monitored_assets ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS assets_tenant_rw ON monitored_assets;
+CREATE POLICY assets_tenant_rw ON monitored_assets
+    FOR ALL
+    USING (auth.jwt() ->> 'tenant_id' = tenant_id::text)
+    WITH CHECK (auth.jwt() ->> 'tenant_id' = tenant_id::text);
+
+-- ============================================================
+-- SCAN_RESULTS (Strix/LeadClaw output per asset)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS scan_results (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    asset_id UUID NOT NULL REFERENCES monitored_assets(id) ON DELETE CASCADE,
+    tenant_id UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
+    tech_stack JSONB NOT NULL DEFAULT '[]'::jsonb,   -- [{name:"Nginx", version:"1.24"}]
+    open_ports JSONB NOT NULL DEFAULT '[]'::jsonb,   -- [{port:443, service:"https", banner:"..."}]
+    dns_records JSONB NOT NULL DEFAULT '{}'::jsonb,
+    headers JSONB NOT NULL DEFAULT '{}'::jsonb,
+    scan_source VARCHAR(32) NOT NULL DEFAULT 'leadclaw', -- leadclaw / strix / combined
+    scanned_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    duration_ms INTEGER
+);
+
+CREATE INDEX IF NOT EXISTS idx_scan_asset ON scan_results(asset_id);
+CREATE INDEX IF NOT EXISTS idx_scan_tenant ON scan_results(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_scan_scanned_at ON scan_results(scanned_at DESC);
+
+ALTER TABLE scan_results ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS scan_tenant_read ON scan_results;
+CREATE POLICY scan_tenant_read ON scan_results
+    FOR SELECT
+    USING (auth.jwt() ->> 'tenant_id' = tenant_id::text);
+
+-- ============================================================
+-- CVE_MATCHES (CVE feed diffed against scan_results.tech_stack)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS cve_matches (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
+    asset_id UUID REFERENCES monitored_assets(id) ON DELETE SET NULL,
+    cve_id VARCHAR(32) NOT NULL,                       -- CVE-2024-12345
+    severity VARCHAR(16) NOT NULL DEFAULT 'medium',   -- low / medium / high / critical
+    cvss_score NUMERIC(4,2),
+    tech_match JSONB NOT NULL DEFAULT '{}'::jsonb,    -- {name:"Nginx", version:"1.24", matched_by:"cpe_match"}
+    status VARCHAR(20) NOT NULL DEFAULT 'new',        -- new / acked / resolved
+    description TEXT,
+    cve_references JSONB NOT NULL DEFAULT '[]'::jsonb,
+    first_detected_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    resolved_at TIMESTAMPTZ,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    UNIQUE (tenant_id, cve_id, asset_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_cve_tenant ON cve_matches(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_cve_status ON cve_matches(status);
+CREATE INDEX IF NOT EXISTS idx_cve_severity ON cve_matches(severity);
+CREATE INDEX IF NOT EXISTS idx_cve_cveid ON cve_matches(cve_id);
+
+ALTER TABLE cve_matches ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS cve_tenant_rw ON cve_matches;
+CREATE POLICY cve_tenant_rw ON cve_matches
+    FOR ALL
+    USING (auth.jwt() ->> 'tenant_id' = tenant_id::text)
+    WITH CHECK (auth.jwt() ->> 'tenant_id' = tenant_id::text);
+
+DROP TRIGGER IF EXISTS cve_updated_at ON cve_matches;
+CREATE TRIGGER cve_updated_at
+    BEFORE UPDATE ON cve_matches
+    FOR EACH ROW
+    EXECUTE FUNCTION moddatetime();
+
+-- ============================================================
+-- API_KEYS (SHA-256 hashed only; never raw)
+-- Key format: sk_live_[base64(32 random bytes)] -> show once on creation
+-- ============================================================
+CREATE TABLE IF NOT EXISTS api_keys (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
+    key_hash BYTEA NOT NULL UNIQUE,              -- sha256(raw_key)
+    key_prefix VARCHAR(16) NOT NULL,             -- sk_live_xxxx (for lookup hints, never a secret)
+    label VARCHAR(128),
+    tier VARCHAR(30) NOT NULL DEFAULT 'starter',
+    rate_limit_daily INTEGER NOT NULL DEFAULT 100,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    last_used_at TIMESTAMPTZ,
+    revoked_at TIMESTAMPTZ
+);
+
+CREATE INDEX IF NOT EXISTS idx_apikeys_tenant ON api_keys(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_apikeys_prefix ON api_keys(key_prefix);
+CREATE INDEX IF NOT EXISTS idx_apikeys_active ON api_keys(revoked_at) WHERE revoked_at IS NULL;
+
+ALTER TABLE api_keys ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS apikeys_tenant_ro ON api_keys;
+CREATE POLICY apikeys_tenant_ro ON api_keys
+    FOR SELECT
+    USING (auth.jwt() ->> 'tenant_id' = tenant_id::text);
+
+-- ============================================================
+-- USAGE_LOG (rate limiting / billing telemetry)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS usage_log (
+    id BIGSERIAL PRIMARY KEY,
+    api_key_id UUID REFERENCES api_keys(id) ON DELETE SET NULL,
+    tenant_id UUID REFERENCES tenants(id) ON DELETE CASCADE,
+    endpoint VARCHAR(128) NOT NULL,
+    method VARCHAR(16),
+    status_code SMALLINT,
+    response_ms INTEGER,
+    client_ip INET,
+    called_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_usage_key_time ON usage_log(api_key_id, called_at DESC);
+CREATE INDEX IF NOT EXISTS idx_usage_tenant_time ON usage_log(tenant_id, called_at DESC);
+CREATE INDEX IF NOT EXISTS idx_usage_called_at ON usage_log(called_at DESC);
+
+ALTER TABLE usage_log ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS usage_tenant_ro ON usage_log;
+CREATE POLICY usage_tenant_ro ON usage_log
+    FOR SELECT
+    USING (auth.jwt() ->> 'tenant_id' = tenant_id::text);
+
+-- ============================================================
+-- Rate-limit helper: count today's usage for an api_key
+-- ============================================================
+CREATE OR REPLACE FUNCTION api_key_daily_usage(p_api_key_id UUID)
+RETURNS INTEGER AS $$
+    SELECT COUNT(*)::INTEGER
+    FROM usage_log
+    WHERE api_key_id = p_api_key_id
+      AND called_at >= DATE_TRUNC('day', NOW());
+$$ LANGUAGE sql STABLE SECURITY DEFINER;
+
+-- ============================================================
+-- SEED: a demo/sandbox tenant so the /portal templates work
+-- ============================================================
+INSERT INTO tenants (slug, display_name, contact_email, tier, status, popia_consent) VALUES
+    ('m4n-demo', 'M4N Demo Tenant', 'demo@m4n.co.za', 'starter', 'active', true)
+ON CONFLICT (slug) DO NOTHING;
+-- ============================================================
+-- LEADS ENRICHMENT + SCRAPE RUNS (M4N CRM-side)
+-- Apollo-style B2B lead enrichment columns + GitHub Actions cron observability
+-- ============================================================
+
+-- 10 new CRM/enrichment columns on leads â€” all nullable, safe idempotent ALTERs
+ALTER TABLE leads
+    ADD COLUMN IF NOT EXISTS company_name   VARCHAR(255),
+    ADD COLUMN IF NOT EXISTS phone          VARCHAR(50),
+    ADD COLUMN IF NOT EXISTS website        VARCHAR(512),
+    ADD COLUMN IF NOT EXISTS industry       VARCHAR(100),
+    ADD COLUMN IF NOT EXISTS region         VARCHAR(100),
+    ADD COLUMN IF NOT EXISTS source_url     TEXT,
+    ADD COLUMN IF NOT EXISTS email_verified BOOLEAN NOT NULL DEFAULT false,
+    ADD COLUMN IF NOT EXISTS phone_verified BOOLEAN NOT NULL DEFAULT false,
+    ADD COLUMN IF NOT EXISTS data_quality   SMALLINT,
+    ADD COLUMN IF NOT EXISTS enrichment     JSONB NOT NULL DEFAULT '{}'::jsonb;
+
+-- Dedup + lookup indexes
+CREATE INDEX IF NOT EXISTS idx_leads_company   ON leads(company_name);
+CREATE INDEX IF NOT EXISTS idx_leads_phone     ON leads(phone);
+CREATE INDEX IF NOT EXISTS idx_leads_website   ON leads(website);
+CREATE INDEX IF NOT EXISTS idx_leads_region    ON leads(region);
+CREATE INDEX IF NOT EXISTS idx_leads_industry  ON leads(industry);
+CREATE INDEX IF NOT EXISTS idx_leads_quality   ON leads(data_quality DESC NULLS LAST);
+
+-- ============================================================
+-- SCRAPE_RUNS â€” GHA / cron-job observability table
+-- Each row = 1 Places API / directory scrape batch
+-- ============================================================
+CREATE TABLE IF NOT EXISTS scrape_runs (
+    id          BIGSERIAL PRIMARY KEY,
+    source      VARCHAR(64) NOT NULL,     -- e.g. 'places_api', 'cape_town_info', 'yellowpages_za', 'bizboostza', 'nearmesa', 'cylex', 'cipc_lookup'
+    region      VARCHAR(100),             -- e.g. 'Cape Town', 'Johannesburg'
+    industry    VARCHAR(100),             -- optional filter used
+    query_text  TEXT,                     -- the actual search string / URL pattern (debug)
+    started_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    ended_at    TIMESTAMPTZ,
+    duration_ms INTEGER,
+    found_cnt   INT NOT NULL DEFAULT 0,   -- raw candidates pulled
+    new_cnt     INT NOT NULL DEFAULT 0,   -- actually inserted (after dedup by website/phone)
+    dedup_cnt   INT NOT NULL DEFAULT 0,   -- skipped: matched existing lead
+    verified_cnt INT NOT NULL DEFAULT 0,  -- emails that passed verify step
+    errored_cnt INT NOT NULL DEFAULT 0,
+    errors      JSONB NOT NULL DEFAULT '[]'::jsonb,  -- array of {row, msg, url}
+    metadata    JSONB NOT NULL DEFAULT '{}'::jsonb   -- arbitrary: gh-run-id, source commit, quota-used, etc
+);
+
+CREATE INDEX IF NOT EXISTS idx_scraper_runs_source  ON scrape_runs(source, started_at DESC);
+CREATE INDEX IF NOT EXISTS idx_scraper_runs_region  ON scrape_runs(region, started_at DESC);
+
+ALTER TABLE scrape_runs ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS scraper_runs_admin_deny ON scrape_runs;
+CREATE POLICY scraper_runs_admin_deny ON scrape_runs
+    FOR ALL
+    USING (false) WITH CHECK (false);   -- server/service-role only
+
+```
+
+## eslint.config.mjs
+
+```mjs
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import { FlatCompat } from "@eslint/eslintrc";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+});
+
+const eslintConfig = [
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    ignores: [
+      "node_modules/**",
+      ".next/**",
+      "out/**",
+      "build/**",
+      "next-env.d.ts",
+    ],
+  },
+];
+
+export default eslintConfig;
+
+```
+
+## next.config.ts
+
+```typescript
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+    /* config options here */
+    
+    // Add the 'images' configuration block here
+    images: {
+        remotePatterns: [
+            {
+                // Protocol must be secure
+                protocol: 'https',
+                // Hostname for all Sanity-hosted images
+                hostname: 'cdn.sanity.io', 
+                // The port is optional, but often useful to explicitly allow all ports
+                port: '', 
+                // Pathname is optional, but you can use it to restrict to your project ID
+                // pathname: '/images/yzp4zaeb/**', 
+            },
+        ],
+    },
+
+    // Security Headers
+    async headers() {
+        return [
+            {
+                source: '/:path*',
+                headers: [
+                    {
+                        key: 'X-DNS-Prefetch-Control',
+                        value: 'on'
+                    },
+                    {
+                        key: 'Strict-Transport-Security',
+                        value: 'max-age=63072000; includeSubDomains; preload'
+                    },
+                    {
+                        key: 'X-Frame-Options',
+                        value: 'SAMEORIGIN' // Prevents clickjacking
+                    },
+                    {
+                        key: 'X-Content-Type-Options',
+                        value: 'nosniff' // Prevents MIME type sniffing
+                    },
+                    {
+                        key: 'Referrer-Policy',
+                        value: 'origin-when-cross-origin'
+                    },
+                    {
+                        key: 'Permissions-Policy',
+                        value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()' // Privacy-first
+                    }
+                ]
+            }
+        ];
+    },
+};
+
+export default nextConfig;
+```
+
+## package-lock.json
+
+```json
 {
   "name": "portfolio",
   "version": "0.1.0",
@@ -21854,3 +32724,193 @@
     }
   }
 }
+
+```
+
+## package.json
+
+```json
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@next/third-parties": "^16.1.6",
+    "@portabletext/react": "^4.0.3",
+    "@portabletext/types": "^2.0.15",
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.3.0",
+    "@sanity/client": "^7.12.0",
+    "@sanity/image-url": "^1.2.0",
+    "@sanity/vision": "^4.10.2",
+    "@supabase/ssr": "^0.12.4",
+    "@supabase/supabase-js": "^2.112.3",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/animejs": "^3.1.13",
+    "animejs": "^4.3.5",
+    "bcryptjs": "^3.0.3",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^12.23.22",
+    "gray-matter": "^4.0.3",
+    "jose": "^6.2.8",
+    "next": "15.5.9",
+    "next-sanity": "^11.4.2",
+    "posthog-js": "^1.347.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-markdown": "^10.1.0",
+    "rehype-raw": "^7.0.0",
+    "resend": "^6.9.1",
+    "sanity": "^4.10.2",
+    "styled-components": "^6.1.19",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.4",
+    "postcss": "^8.5.6",
+    "supabase": "^2.114.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+
+```
+
+## postcss.config.mjs
+
+```mjs
+const config = {
+  plugins: ["@tailwindcss/postcss"],
+};
+
+export default config;
+
+```
+
+## project.md
+
+```markdown
+[File too large: 1.7 MB > 1.0 MB]
+```
+
+## README.md
+
+````markdown
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+````
+
+## sanity.config.ts
+
+```typescript
+import {defineConfig} from 'sanity'
+import {structureTool} from 'sanity/structure'
+import {visionTool} from '@sanity/vision'
+import {schemaTypes} from './schemaTypes'
+
+export default defineConfig({
+  name: 'default',
+  title: 'portfolio-blog',
+
+  projectId: 'yzp4zaeb',
+  dataset: 'production',
+  
+  // ADD THIS LINE - Required for embedded Studio at /studio sub-route
+  basePath: '/studio', 
+
+  apiVersion: '2025-09-10',
+
+  plugins: [structureTool(), visionTool()],
+
+  schema: {
+    types: schemaTypes,
+  },
+  
+  // Note: 'cors' is not a valid key here. 
+  // You must add these URLs at https://www.sanity.io/manage
+})
+
+```
+
+## tsconfig.json
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/sanity/schemaTypes/post.ts"],
+  "exclude": ["node_modules"]
+}
+
+```
+
