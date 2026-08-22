@@ -1,6 +1,7 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { TENANT_TIER_RATE_LIMITS_DAILY } from './types';
 import nodeCrypto from 'node:crypto';
+import { parsePhoneNumberFromString, isValidNumberForRegion } from 'libphonenumber-js';
 import type {
   Lead,
   StackVendor,
@@ -24,15 +25,38 @@ import type {
 } from './types';
 
 let cachedClient: SupabaseClient | null = null;
+let clientInitLogged = false;
+
+const isProd = process.env.NODE_ENV === 'production';
+
+function assertDbEnv() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const missing: string[] = [];
+  if (!url) missing.push('SUPABASE_URL');
+  if (!key) missing.push('SUPABASE_SERVICE_ROLE_KEY');
+  if (missing.length > 0 && !clientInitLogged) {
+    clientInitLogged = true;
+    const level = isProd ? 'error' : 'warn';
+    const msg =
+      `[DB ${level.toUpperCase()}] Missing required Supabase env vars: ${missing.join(', ')}. ` +
+      (isProd
+        ? 'These MUST be set in Vercel → Project → Settings → Environment Variables → Production. ' +
+          'Leads/stack dashboards will show zero data, all writes (contact form, demo requests, lead inserts) will silently fail. '
+        : 'Set them in .env.local for local development. ') +
+      'Get values from Supabase → Project Settings → API (SUPABASE_URL = Project URL, SUPABASE_SERVICE_ROLE_KEY = service_role secret, NOT the anon key).';
+    if (isProd) console.error(msg);
+    else console.warn(msg);
+  }
+  return { url, key };
+}
 
 function getClient(): SupabaseClient | null {
   if (cachedClient) return cachedClient;
 
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const { url, key } = assertDbEnv();
 
   if (!url || !key) {
-    console.warn('[DB] SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY not set — DB operations will be no-ops');
     return null;
   }
 
@@ -58,6 +82,33 @@ export async function isDbAvailable(): Promise<boolean> {
 // LEADS
 // ============================================================
 
+export function isValidSouthAfricanPhone(rawPhone: string | null | undefined): boolean {
+  if (!rawPhone) return false;
+  const trimmed = rawPhone.trim();
+  if (!trimmed) return false;
+  try {
+    const parsed = parsePhoneNumberFromString(trimmed, 'ZA');
+    if (!parsed) return isValidNumberForRegion(trimmed, 'ZA');
+    return parsed.isValid() && parsed.country === 'ZA';
+  } catch {
+    return false;
+  }
+}
+
+export function computeDataQualityScore(opts: {
+  email_verified?: boolean;
+  phone_verified?: boolean;
+  company_name?: string | null;
+  website?: string | null;
+}): number {
+  let score = 0;
+  if (opts.email_verified === true) score++;
+  if (opts.phone_verified === true) score++;
+  if (opts.company_name && opts.company_name.trim().length > 0) score++;
+  if (opts.website && opts.website.trim().length > 0) score++;
+  return score;
+}
+
 export interface CreateLeadInput {
   name: string;
   email: string;
@@ -79,6 +130,22 @@ export async function createLead(input: CreateLeadInput): Promise<{ error?: stri
   const client = getClient();
   if (!client) return { error: 'DB not configured' };
 
+  const phoneRaw = input.phone?.trim() || null;
+  const phoneVerified = input.phone_verified ?? (phoneRaw ? isValidSouthAfricanPhone(phoneRaw) : false);
+  const emailVerified = input.email_verified ?? false;
+  const companyName = input.company_name?.trim() || null;
+  const websiteRaw = input.website?.trim();
+  const website = websiteRaw ? websiteRaw.toLowerCase() : null;
+
+  const dataQuality =
+    input.data_quality ??
+    computeDataQualityScore({
+      email_verified: emailVerified,
+      phone_verified: phoneVerified,
+      company_name: companyName,
+      website,
+    });
+
   const { data, error } = await client
     .from('leads')
     .insert({
@@ -87,15 +154,15 @@ export async function createLead(input: CreateLeadInput): Promise<{ error?: stri
       message: input.message?.trim() || null,
       source: input.source,
       status: 'new',
-      company_name: input.company_name?.trim() || null,
-      phone: input.phone?.trim() || null,
-      website: input.website?.trim() ? input.website.trim().toLowerCase() : null,
+      company_name: companyName,
+      phone: phoneRaw,
+      website,
       industry: input.industry?.trim() || null,
       region: input.region?.trim() || null,
       source_url: input.source_url?.trim() || null,
-      email_verified: input.email_verified ?? false,
-      phone_verified: input.phone_verified ?? false,
-      data_quality: input.data_quality ?? null,
+      email_verified: emailVerified,
+      phone_verified: phoneVerified,
+      data_quality: dataQuality,
       enrichment: input.enrichment ?? {},
     })
     .select('id')
@@ -112,7 +179,7 @@ export async function createLead(input: CreateLeadInput): Promise<{ error?: stri
 export async function listLeads(opts?: {
   status?: LeadStatus;
   source?: LeadSource;
-  sortBy?: 'created_at' | 'status' | 'source' | 'email' | 'name';
+  sortBy?: 'created_at' | 'status' | 'source' | 'email' | 'name' | 'data_quality';
   sortDir?: 'asc' | 'desc';
 }): Promise<{ data: Lead[]; error?: string }> {
   const client = getClient();
@@ -149,6 +216,52 @@ export async function updateLeadStatus(id: string, status: LeadStatus): Promise<
   }
 
   return {};
+}
+
+export async function findLeadsByEmail(email: string): Promise<{ data: Lead[]; error?: string }> {
+  const client = getClient();
+  if (!client) return { data: [] };
+  const normalized = email.trim().toLowerCase();
+  const { data, error } = await client.from('leads').select('*').eq('email', normalized);
+  if (error) {
+    console.error('[DB] findLeadsByEmail error:', error);
+    return { data: [], error: error.message };
+  }
+  return { data: (data ?? []) as Lead[] };
+}
+
+export async function setLeadEmailVerified(
+  id: string,
+  email_verified: boolean
+): Promise<{ error?: string; data_quality?: number }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const current = await client
+    .from('leads')
+    .select('phone_verified, company_name, website')
+    .eq('id', id)
+    .maybeSingle();
+  if (current.error || !current.data) {
+    return { error: current?.error?.message || 'Lead not found' };
+  }
+
+  const patch = {
+    email_verified,
+    data_quality: computeDataQualityScore({
+      email_verified,
+      phone_verified: !!current.data.phone_verified,
+      company_name: current.data.company_name,
+      website: current.data.website,
+    }),
+  };
+
+  const { error } = await client.from('leads').update(patch).eq('id', id);
+  if (error) {
+    console.error('[DB] setLeadEmailVerified error:', error);
+    return { error: error.message };
+  }
+  return { data_quality: patch.data_quality };
 }
 
 export async function getLeadCounts(): Promise<{

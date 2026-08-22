@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import JarvisAvatar, { JarvisEmotion } from '../JarvisAvatar/JarvisAvatar';
 import Typewriter from '../Typewriter/Typewriter';
 
-const initialMessageText = "Hello, I am J.A.R.V.I.S., an Interactive Interface designed to manage your secure systems and AI-driven defense protocols.";
+const initialMessageText = "Hello, I am J.A.R.V.I.S., an Interactive Interface for this portfolio. Ask about GRC advisory, data engineering, or web development.";
 
 interface Message {
     id: string;
@@ -24,12 +24,12 @@ interface ChatbotAreaProps {
 }
 
 const SUGGESTED_PROMPTS = [
-    "How would you secure my SaaS platform?",
-    "Show security capabilities",
-    "Explain Check Point integration",
-    "Simulate a threat detection scenario",
-    "What's missing from my cloud security?",
-    "How does Splunk SOAR work?",
+    "How does a POPIA assessment work?",
+    "Show web development capabilities",
+    "What data work do you do?",
+    "Explain your platform experience",
+    "What's missing from my compliance posture?",
+    "How much does a website cost?",
 ];
 
 const getEmotionFromText = (text: string, isThinkingNow: boolean): JarvisEmotion => {
@@ -40,24 +40,30 @@ const getEmotionFromText = (text: string, isThinkingNow: boolean): JarvisEmotion
 const processQueryFallback = (query: string): string => {
     const lowerQuery = query.toLowerCase();
     if (lowerQuery === 'help' || lowerQuery === 'commands') {
-        return "COMMANDS AVAILABLE:\n- Ask about cybersecurity services\n- Ask about AI automation\n- Ask about platform engineering\n- Ask about Check Point or Splunk\n- Type 'audit' to request a security assessment";
+        return "COMMANDS AVAILABLE:\n- Ask about GRC & compliance advisory\n- Ask about data analysis & engineering\n- Ask about web development\n- Ask about platform experience\n- Type 'audit' to request a compliance snapshot";
     }
     if (lowerQuery.includes('checkpoint') || lowerQuery.includes('check point') || lowerQuery.includes('infinity')) {
-        return "CHECK POINT ARCHITECTURE: Infinity Platform, Harmony (Email, Mobile, SaaS, Endpoint, SASE), CloudGuard (Network Security, WAF), Quantum (Force, Spark, IoT, Hyperscale/Maestro). Status: Ready for Zero-Trust enforcement.";
+        return "CHECK POINT EXPERIENCE: Certified training (CPSC, Infinity Platform, Harmony, CloudGuard, Quantum) plus an always-on NFR lab. I help you select, procure and integrate \u2014 deployment and operations stay with your team.";
     }
     if (lowerQuery.includes('splunk') || lowerQuery.includes('siem') || lowerQuery.includes('soar')) {
-        return "SPLUNK OPERATIONS: SIEM for real-time monitoring, SOAR for automated response, Observability for platform health, MSSP Accreditation. Status: All logs ingestion nominal.";
+        return "SPLUNK EXPERIENCE: Accredited training (Platform SE I, Cloud & Enterprise Developer). SIEM/SOAR concepts inform the monitoring and reporting advice I give. Lab environment only \u2014 not a hosted SOC.";
     }
     if (lowerQuery.includes('audit') || lowerQuery.includes('security') || lowerQuery.includes('contact')) {
-        return "INITIATING SECURE HANDSHAKE...\nSTATUS: Use the REQUEST SECURITY AUDIT button or SECURE COMMS to connect.";
+        return "INITIATING SECURE HANDSHAKE...\nSTATUS: Use the COMPLIANCE SNAPSHOT button or SECURE COMMS to connect.";
+    }
+    if (lowerQuery.includes('popia') || lowerQuery.includes('compliance') || lowerQuery.includes('grc') || lowerQuery.includes('risk') || lowerQuery.includes('policy')) {
+        return "GRC ADVISORY: POPIA compliance assessments, policy development & review, risk register setup, audit readiness preparation. Scoped per engagement \u2014 no retainers you don't need.";
+    }
+    if (lowerQuery.includes('data') || lowerQuery.includes('dashboard') || lowerQuery.includes('report') || lowerQuery.includes('pipeline')) {
+        return "DATA SERVICES: Reporting dashboards executives actually read, data pipelines & ETL, spreadsheet-to-database migrations, workflow automation that cuts manual admin.";
     }
     if (lowerQuery.includes('ai') || lowerQuery.includes('agent') || lowerQuery.includes('automation')) {
-        return "AI SYSTEMS: Autonomous AI agents & workflows, Security AI (threat detection, anomaly detection), ChatOps / internal AI copilots, Intelligent automation pipelines.";
+        return "AUTOMATION & AI: workflow automation, AI-assisted data analysis, internal copilots, and the pipelines that feed them.";
     }
-    if (lowerQuery.includes('platform') || lowerQuery.includes('web') || lowerQuery.includes('mobile')) {
-        return "PLATFORM ENGINEERING: Full-stack web apps (Next.js, APIs, Databases), Mobile applications (React Native/Flutter), High-performance distributed systems, Secure multi-tenant SaaS platforms.";
+    if (lowerQuery.includes('platform') || lowerQuery.includes('web') || lowerQuery.includes('mobile') || lowerQuery.includes('crm')) {
+        return "WEB DEVELOPMENT: business websites that load fast and stay up, CRM/database-backed tooling built around your workflow, client system integration. Secure by default.";
     }
-    return "I am J.A.R.V.I.S., an AI assistant for this portfolio. Ask me about cybersecurity, AI automation, platform engineering, or the services offered here.";
+    return "I am J.A.R.V.I.S., an AI assistant for this portfolio. Ask me about GRC advisory, data engineering, web development, or platform experience.";
 };
 
 export default function ChatbotArea({}: ChatbotAreaProps) {

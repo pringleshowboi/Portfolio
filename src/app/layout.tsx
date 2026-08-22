@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://m4n.co.za"),
   title: {
-    default: "Secure Intelligent Systems | Cybersecurity + AI Engineering",
+    default: "Secure Intelligent Systems | GRC Advisory, Data Engineering & Web Development",
     template: "%s | Secure Intelligent Systems"
   },
-  description: "Cybersecurity Architecture, AI Automation, and Enterprise Security Engineering. Check Point Infinity, Splunk SIEM/SOAR, autonomous AI agents, and secure platform engineering.",
-  keywords: ["Cybersecurity", "Check Point", "Splunk", "AI Automation", "SIEM", "SOAR", "Zero Trust", "Platform Engineering", "Next.js", "Security Architecture", "AI Agents", "Threat Detection"],
+  description: "GRC & compliance advisory (POPIA readiness, policy development, risk registers, audit prep), data analysis & engineering, and full-stack web development for South African businesses.",
+  keywords: ["GRC", "POPIA compliance", "Compliance advisory", "Risk assessment", "Policy development", "Audit readiness", "Data analysis", "Data engineering", "Dashboards", "Web development", "CRM development", "Next.js", "South Africa"],
   authors: [{ name: "Secure Intelligent Systems" }],
   creator: "Secure Intelligent Systems",
   icons: {
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://m4n.co.za",
-    title: "Secure Intelligent Systems | Cybersecurity + AI Engineering",
-    description: "Cybersecurity Architecture, AI Automation, and Enterprise Security Engineering. Check Point Infinity, Splunk SIEM/SOAR, autonomous AI agents.",
+    title: "Secure Intelligent Systems | GRC Advisory, Data Engineering & Web Development",
+    description: "GRC & compliance advisory (POPIA), data analysis & engineering, and full-stack web development for South African businesses.",
     siteName: "Secure Intelligent Systems",
     images: [
       {
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Secure Intelligent Systems | Cybersecurity + AI Engineering",
-    description: "Cybersecurity Architecture, AI Automation, and Enterprise Security Engineering.",
+    title: "Secure Intelligent Systems | GRC Advisory, Data Engineering & Web Development",
+    description: "GRC & compliance advisory (POPIA), data analysis & engineering, and full-stack web development.",
     images: ["/images/lady-justice.png"],
   },
   robots: {

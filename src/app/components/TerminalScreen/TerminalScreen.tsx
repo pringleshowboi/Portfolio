@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { format } from 'date-fns'; 
 import Image from 'next/image';
 import WindowsStartupAudio from '../WindowsStartupAudio/WindowsStartupAudio';
@@ -59,14 +60,14 @@ const JarvisPanel = ({ currentTime, currentDate, status }: { currentTime: string
 // Systems I Build Section - 8 card grid
 const SystemsIBuildSection = () => {
     const systems = [
-        { icon: '\u{232C}', name: 'AI SOC Assistant', desc: 'Splunk + LLM integration' },
-        { icon: '\u{2301}', name: 'Threat Response Pipelines', desc: 'Automated detection & response' },
-        { icon: '\u{26E8}', name: 'Secure SaaS Platforms', desc: 'Multi-tenant, zero-trust' },
-        { icon: '\u{26B2}', name: 'Mobile Apps', desc: 'Embedded security layers' },
-        { icon: '\u{25C8}', name: 'Zero Trust Architecture', desc: 'Enterprise deployments' },
-        { icon: '\u{269B}', name: 'Autonomous Security AI', desc: 'Intelligent threat agents' },
-        { icon: '\u{25A4}', name: 'SIEM Dashboards', desc: 'Observability & monitoring' },
-        { icon: '\u{2601}', name: 'CloudGuard WAF', desc: 'Network security deployments' },
+        { icon: '\u{2696}', name: 'GRC Advisory', desc: 'POPIA readiness & governance' },
+        { icon: '\u{25C8}', name: 'Risk Assessment', desc: 'Registers & control mapping' },
+        { icon: '\u{2714}', name: 'Audit Readiness', desc: 'Policies, evidence & prep' },
+        { icon: '\u{25A4}', name: 'Dashboards', desc: 'Reporting & executive insight' },
+        { icon: '\u{21C4}', name: 'Data Pipelines', desc: 'ETL, cleanup & migrations' },
+        { icon: '\u{2601}', name: 'Business Websites', desc: 'Secure, fast, maintainable' },
+        { icon: '\u{2328}', name: 'CRM Tooling', desc: 'Database-backed client systems' },
+        { icon: '\u{2699}', name: 'Automation', desc: 'Workflows & integrations' },
     ];
     return (
         <div className="py-20">
@@ -86,56 +87,59 @@ const SystemsIBuildSection = () => {
     );
 };
 
-// Security Stacks Section
+// Platform Experience Section — honest framing: certified training + lab
+// environment. No "deployed stack" claims; procurement/integration support only.
+const PLATFORM_EXPERIENCE = [
+    {
+        heading: 'CHECK POINT ECOSYSTEM',
+        accent: 'orange' as const,
+        items: ['Quantum, Harmony, CloudGuard training', 'Always-on NFR lab environment', 'Procurement guidance & licensing navigation'],
+    },
+    {
+        heading: 'SPLUNK ECOSYSTEM',
+        accent: 'green' as const,
+        items: ['Platform SE I + Developer accreditations', 'SIEM/SOAR concepts & dashboard builds (lab)', 'Integration support while your team operates'],
+    },
+    {
+        heading: 'OPEN-SOURCE LAB',
+        accent: 'blue' as const,
+        items: ['Wazuh SIEM — rules tested before recommended', 'Proxmox homelab cluster', 'pfSense perimeter experiments'],
+    },
+];
+
+const ACCENT_CLASSES = {
+    orange: { border: 'border-orange-800/50 bg-orange-900/10', text: 'text-orange-400' },
+    green: { border: 'border-green-800/50 bg-green-900/10', text: 'text-green-400' },
+    blue: { border: 'border-blue-800/50 bg-blue-900/10', text: 'text-blue-400' },
+};
+
 const SecurityStacksSection = () => {
-    const checkPointStacks = [
-        { name: 'Infinity Platform', icon: '\u{25C8}' },
-        { name: 'Harmony (Email, Mobile, SaaS, Endpoint, SASE)', icon: '\u{26B7}' },
-        { name: 'CloudGuard (Network Security, WAF)', icon: '\u{26EF}' },
-        { name: 'Quantum (Force, Spark, IoT, Hyperscale/Maestro)', icon: '' },
-    ];
-    const splunkStacks = [
-        { name: 'Splunk Cloud & Enterprise', icon: '\u{25A4}' },
-        { name: 'SIEM + SOAR Automation', icon: '\u{2315}' },
-        { name: 'Observability Pipelines', icon: '\u{1F4C8}' },
-        { name: 'MSSP Accreditation', icon: '\u{2611}' },
-    ];
     return (
         <div className="py-20">
-            <h3 className="text-sm font-bold text-yellow-400 mb-6 tracking-widest uppercase text-glow">
-                {'// SECURITY STACKS DEPLOYED'}
+            <h3 className="text-sm font-bold text-yellow-400 mb-2 tracking-widest uppercase text-glow">
+                {'// PLATFORM EXPERIENCE'}
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="border border-orange-800/50 bg-orange-900/10 p-5 hover:border-orange-500/50 transition-all">
-                    <h4 className="text-orange-400 font-bold text-xs mb-4 uppercase tracking-wider">
-                        {'\u{263F}'} CHECK POINT ECOSYSTEM
-                    </h4>
-                    <div className="space-y-3">
-                        {checkPointStacks.map((stack, idx) => (
-                            <div key={idx} className="flex items-center gap-3 text-sm text-gray-300">
-                                <span className="text-orange-500">{stack.icon}</span>
-                                <span className="font-mono">{stack.name}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="border border-green-800/50 bg-green-900/10 p-5 hover:border-green-500/50 transition-all">
-                    <h4 className="text-green-400 font-bold text-xs mb-4 uppercase tracking-wider">
-                        {'\u{25A4}'} SPLUNK ECOSYSTEM
-                    </h4>
-                    <div className="space-y-3">
-                        {splunkStacks.map((stack, idx) => (
-                            <div key={idx} className="flex items-center gap-3 text-sm text-gray-300">
-                                <span className="text-green-500">{stack.icon}</span>
-                                <span className="font-mono">{stack.name}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-            <p className="text-xs text-green-400 font-mono mt-6 italic text-center opacity-80">
-                {'\u0022'}From perimeter to endpoint to cloud &mdash; fully instrumented, monitored, and automated.{'\u0022'}
+            <p className="text-[11px] text-gray-400 font-mono mb-6 max-w-3xl leading-relaxed">
+                {'\u003E'} Hands-on familiarity through certified training and a permanent lab environment.
+                I do not run these stacks as a managed service &mdash; I help you choose, procure, and integrate them.
             </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {PLATFORM_EXPERIENCE.map((col) => (
+                    <div key={col.heading} className={`border p-5 hover:border-green-500/50 transition-all ${ACCENT_CLASSES[col.accent].border}`}>
+                        <h4 className={`${ACCENT_CLASSES[col.accent].text} font-bold text-xs mb-4 uppercase tracking-wider`}>
+                            {'\u{25A4}'} {col.heading}
+                        </h4>
+                        <ul className="space-y-2.5 text-[11px] text-gray-300 font-mono">
+                            {col.items.map((item) => (
+                                <li key={item} className="flex items-start gap-2">
+                                    <span className={ACCENT_CLASSES[col.accent].text}>{'\u003E'}</span>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
@@ -144,7 +148,7 @@ const SecurityStacksSection = () => {
 const CertificationsSection = () => {
     const checkpointCerts = [
         'CPSC', 'Infinity Platform', 'Infinity ERM', 'Threat Exposure Mgmt',
-        'MSSP', 'Harmony Email', 'Harmony Mobile', 'Harmony SaaS',
+        'Harmony Email', 'Harmony Mobile', 'Harmony SaaS',
         'Harmony Endpoint', 'Harmony SASE', 'CloudGuard Network',
         'CloudGuard WAF', 'Quantum Force', 'Quantum Spark',
         'Quantum IoT', 'Quantum Hyperscale', 'Sales Rep I', 'Technical Selling'
@@ -184,7 +188,7 @@ const CertificationsSection = () => {
                 </div>
             </div>
             <p className="text-xs text-green-400 font-mono mt-6 italic text-center opacity-80">
-                {'\u0022'}Certified across full-stack security architecture &mdash; from edge to cloud to endpoint to AI-driven response.{'\u0022'}
+                {'\u0022'}Platform certifications support the advisory work &mdash; they inform what I recommend, procure, and integrate for clients.{'\u0022'}
             </p>
         </div>
     );
@@ -195,20 +199,20 @@ const IntelFragmentsSection = () => (
     <div className="py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
-                <h4 className="text-[11px] font-bold text-green-400 mb-3 border-b border-green-800/50 pb-2 tracking-widest uppercase">INTEL FRAGMENTS / RECENT DEPLOYS</h4>
+                <h4 className="text-[11px] font-bold text-green-400 mb-3 border-b border-green-800/50 pb-2 tracking-widest uppercase">INTEL FRAGMENTS / FIELD NOTES</h4>
                 <div className="border-l-2 border-green-800 pl-4">
-                    <p className="text-[11px] text-green-500 font-bold uppercase">Global Security Ops</p>
-                    <p className="text-[10px] text-gray-400 italic leading-relaxed">Deployed Splunk SOAR for fortune 500 company, reducing response time by 70%.</p>
+                    <p className="text-[11px] text-green-500 font-bold uppercase">Lab Environment</p>
+                    <p className="text-[10px] text-gray-400 italic leading-relaxed">Proxmox-hosted homelab running Wazuh SIEM and self-hosted services &mdash; where detection rules get tested before they get recommended.</p>
                 </div>
                 <div className="border-l-2 border-green-800 pl-4">
-                    <p className="text-[11px] text-green-500 font-bold uppercase">AI Compliance Agent</p>
-                    <p className="text-[10px] text-gray-400 italic leading-relaxed">Automated HIPAA/GDPR auditing using custom RAG pipeline & autonomous agents.</p>
+                    <p className="text-[11px] text-green-500 font-bold uppercase">AI Red-Teaming</p>
+                    <p className="text-[10px] text-gray-400 italic leading-relaxed">Hands-on LLM red-teaming exercises probing for prompt-injection and data-leak weaknesses &mdash; findings documented on the intel feed.</p>
                 </div>
             </div>
             <div className="space-y-4">
-                <h4 className="text-[11px] font-bold text-green-400 mb-3 border-b border-green-800/50 pb-2 tracking-widest uppercase">CERTIFICATIONS & STANDARDS</h4>
+                <h4 className="text-[11px] font-bold text-green-400 mb-3 border-b border-green-800/50 pb-2 tracking-widest uppercase">FRAMEWORKS I WORK WITH</h4>
                 <div className="flex flex-wrap gap-2">
-                    {['SOC2 TYPE II', 'ISO 27001', 'ZERO TRUST', 'HIPAA READY', 'OWASP TOP 10'].map((badge, i) => (
+                    {['POPIA', 'ISO 27001', 'OWASP TOP 10', 'CIS CONTROLS', 'NIST CSF'].map((badge, i) => (
                         <span key={i} className="border border-green-800 bg-green-900/20 px-3 py-1.5 text-[10px] text-green-400 font-bold">
                             {badge}
                         </span>
@@ -226,6 +230,7 @@ const IntelFragmentsSection = () => (
 type NavSection = 'dashboard' | 'systems' | 'services' | 'intel' | 'audit' | 'checklist';
 
 export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalExecute }: TerminalScreenProps) {
+    const router = useRouter();
     const [messages, setMessages] = useState<string[]>([]);
     const sequenceStartedRef = useRef(false);
     const [currentTime, setCurrentTime] = useState('');
@@ -240,12 +245,13 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
     const handleRiskScanExecute = () => { setIsRiskScanModalOpen(true); };
 
     const navItems = [
-        { id: 'systems' as NavSection, label: 'SYSTEMS', icon: ASCII_CARD_ICON, action: () => setActiveSection('systems') },
+        { id: 'systems' as NavSection, label: 'CAPABILITIES', icon: ASCII_CARD_ICON, action: () => setActiveSection('systems') },
         { id: 'services' as NavSection, label: 'SERVICES', icon: ASCII_BLOG_ICON, action: () => setActiveSection('services') },
+        { id: 'pricing' as NavSection, label: 'PRICING', icon: '\u{1F4B0}', action: () => router.push('/pricing') },
         { id: 'demo' as NavSection, label: '3D DEMO', icon: '', action: () => window.location.href = '/demo' },
-        { id: 'intel' as NavSection, label: 'INTEL', icon: ASCII_CONTACT_ICON, action: handleBlogExecute },
-        { id: 'audit' as NavSection, label: 'AUDIT', icon: '\u{1F5CE}', action: handleRiskScanExecute },
-        { id: 'checklist' as NavSection, label: 'CHECKLIST', icon: '\u{1F5CE}', action: handleContactExecute },
+        { id: 'intel' as NavSection, label: 'INTEL FEED', icon: ASCII_CONTACT_ICON, action: handleBlogExecute },
+        { id: 'audit' as NavSection, label: 'COMPLIANCE SCAN', icon: '\u{1F5CE}', action: handleRiskScanExecute },
+        { id: 'checklist' as NavSection, label: 'CONTACT', icon: '\u{2709}', action: handleContactExecute },
     ];
 
     useEffect(() => {
@@ -346,7 +352,7 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                         {activeSection === 'checklist' && 'COMMUNICATION_PROTOCOL'}
                                     </motion.h1>
                                     <h2 className="text-[10px] md:text-xs text-green-300 font-mono opacity-80 font-normal">
-                                        Cybersecurity Architecture &middot; AI Automation &middot; Enterprise Security Engineering
+                                        GRC &amp; Compliance Advisory &middot; Data Analysis &amp; Engineering &middot; Full-Stack Web Development
                                     </h2>
                                 </div>
                                 
@@ -379,7 +385,7 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                                 {'// MISSION OBJECTIVE'}
                                             </h3>
                                             <p className="text-gray-300 leading-relaxed text-base md:text-lg font-bold max-w-3xl italic">
-                                                {'\u0022'}I design and build secure, intelligent systems that scale &mdash; and defend them.{'\u0022'}
+                                                {'\u0022'}Compliance guidance, sharp data work, and web platforms built to run your business.{'\u0022'}
                                             </p>
                                         </div>
 
@@ -393,26 +399,26 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                                     SECURE INTELLIGENT SYSTEMS
                                                 </h3>
                                                 <p className="text-green-300 text-sm font-mono opacity-90">
-                                                    Deploying enterprise-grade defense and autonomous intelligence.
+                                                    Advisory, data, and web &mdash; delivered on a security-first foundation.
                                                 </p>
                                             </div>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                                                 <div className="bg-black/40 p-4 border border-green-900/50">
-                                                    <p className="text-yellow-400 font-bold text-xs mb-2">SYSTEMS I BUILD:</p>
+                                                    <p className="text-yellow-400 font-bold text-xs mb-2">WHAT I DELIVER:</p>
                                                     <ul className="text-[11px] text-gray-300 space-y-1.5">
-                                                        <li>{'\u003E'} AI SOC Assistant {'\u0026'} Automation</li>
-                                                        <li>{'\u003E'} Threat Detection Pipelines</li>
-                                                        <li>{'\u003E'} Secure Cloud-Native Platforms</li>
-                                                        <li>{'\u003E'} Zero-Trust Architectures</li>
+                                                        <li>{'\u003E'} GRC &amp; Compliance Advisory (POPIA)</li>
+                                                        <li>{'\u003E'} Dashboards &amp; Data Pipelines</li>
+                                                        <li>{'\u003E'} Business Websites</li>
+                                                        <li>{'\u003E'} CRM / Database Tooling</li>
                                                     </ul>
                                                 </div>
                                                 <div className="bg-black/40 p-4 border border-green-900/50">
-                                                    <p className="text-yellow-400 font-bold text-xs mb-2">SECURITY STACK:</p>
+                                                    <p className="text-yellow-400 font-bold text-xs mb-2">TOOLBOX:</p>
                                                     <ul className="text-[11px] text-gray-300 space-y-1.5">
-                                                        <li>{'\u003E'} Check Point (Quantum, CloudGuard)</li>
-                                                        <li>{'\u003E'} Splunk (SIEM, SOAR, ITSI)</li>
-                                                        <li>{'\u003E'} Python, Rust, Go, TypeScript</li>
-                                                        <li>{'\u003E'} Kubernetes, Terraform, CI/CD</li>
+                                                        <li>{'\u003E'} Next.js, TypeScript, React</li>
+                                                        <li>{'\u003E'} Python, SQL, Supabase/Postgres</li>
+                                                        <li>{'\u003E'} Check Point &amp; Splunk (lab exp.)</li>
+                                                        <li>{'\u003E'} Wazuh SIEM + Proxmox homelab</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -420,17 +426,17 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                                 onClick={handleContactExecute}
                                                 className="w-full bg-green-600 hover:bg-green-500 text-black font-extrabold py-3 uppercase tracking-[0.2em] text-sm transition-all shadow-[0_0_15px_rgba(34,197,94,0.5)] hover:shadow-[0_0_30px_rgba(34,197,94,0.8)] hover:scale-[1.01]"
                                             >
-                                                REQUEST SECURITY AUDIT {'\u003E\u003E'}
+                                                START A PROJECT {'\u003E\u003E'}
                                             </button>
                                         </div>
 
                                         {/* Tier Cards */}
                                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                                             {[
-                                                { tier: 'TIER 1', title: 'PLATFORM ENGINEERING', desc: 'Full-stack web apps, Mobile applications, Distributed systems, SaaS platforms.', cta: 'VIEW PLATFORMS' },
-                                                { tier: 'TIER 2', title: 'CYBER DEFENSE', desc: 'Check Point Infinity, SIEM architecture, Threat detection, Zero Trust.', cta: 'VIEW DEFENSE' },
-                                                { tier: 'TIER 3', title: 'AI AUTOMATION', desc: 'Autonomous agents, Security AI, ChatOps, Intelligent pipelines.', cta: 'DEPLOY AGENTS' },
-                                                { tier: 'TIER 4', title: 'ENTERPRISE STACKS', desc: 'Check Point, Splunk, MSSP-grade managed security.', cta: 'VIEW STACK' }
+                                                { tier: 'TIER 1', title: 'FULL-STACK WEB DEVELOPMENT', desc: 'Business websites, CRM & database-backed tooling, client system integration. Secure by default.', cta: 'START A BUILD' },
+                                                { tier: 'TIER 2', title: 'DATA ANALYSIS & ENGINEERING', desc: 'Dashboards, reporting pipelines, ETL & migrations, workflow automation that cuts manual admin.', cta: 'DISCUSS YOUR DATA' },
+                                                { tier: 'TIER 3', title: 'GRC & COMPLIANCE ADVISORY', desc: 'POPIA compliance assessment, policy development, risk register setup, audit readiness prep.', cta: 'BOOK CONSULT' },
+                                                { tier: 'TIER 4', title: 'PLATFORM EXPERIENCE', desc: 'Check Point & Splunk certified training + NFR lab. Procurement guidance & integration support.', cta: 'VIEW EXPERIENCE' }
                                             ].map((block, idx) => (
                                                 <div key={idx} className="border border-green-800 p-5 bg-black/40 hover:border-green-500 transition-all cursor-pointer group hover:bg-green-900/10 box-glow-hover" onClick={handleContactExecute}>
                                                     <p className="text-yellow-400 font-bold text-[10px] mb-2 group-hover:text-glow">{block.tier}</p>
@@ -447,15 +453,15 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                         <div className="flex flex-wrap gap-4 text-[10px] text-green-500 font-mono opacity-80">
                                             <div className="flex items-center gap-2 border border-green-900/50 px-3 py-1.5 bg-green-900/10">
                                                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                                SIEM: ACTIVE
+                                                AVAILABILITY: OPEN
                                             </div>
                                             <div className="flex items-center gap-2 border border-green-900/50 px-3 py-1.5 bg-green-900/10">
                                                 <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                                                AI MODELS: ONLINE
+                                                SCOPING: PER ENGAGEMENT
                                             </div>
                                             <div className="flex items-center gap-2 border border-green-900/50 px-3 py-1.5 bg-green-900/10">
                                                 <span className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></span>
-                                                THREAT LEVEL: LOW
+                                                BASE: SOUTH AFRICA
                                             </div>
                                         </div>
                                     </>
@@ -478,15 +484,15 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                             <h3 className="text-yellow-400 font-bold tracking-wide text-sm uppercase text-glow">
                                                 {'// AVAILABLE SERVICES'}
                                             </h3>
-                                            <p className="text-gray-300 text-sm mt-1">Select a service tier for detailed specifications.</p>
+                                            <p className="text-gray-300 text-sm mt-1">Every engagement is scoped individually. See PRICING for engagement models.</p>
                                         </div>
                                         
                                         <div className="grid grid-cols-1 gap-4">
                                             {[
-                                                { tier: 'TIER 1', title: 'PLATFORM ENGINEERING', desc: 'Full-stack web apps (Next.js, APIs, Databases), Mobile applications (React Native / Flutter), High-performance distributed systems, Secure multi-tenant SaaS platforms.' },
-                                                { tier: 'TIER 2', title: 'CYBER DEFENSE & GOVERNANCE', desc: 'Check Point Infinity Platform integration, SIEM architecture & Splunk deployment, Threat detection pipelines, Identity & Access Management, Zero Trust Architecture, Compliance frameworks (ISO 27001, SOC2).' },
-                                                { tier: 'TIER 3', title: 'AI AUTOMATION SYSTEMS', desc: 'Autonomous AI agents & workflows, Security AI (threat detection, anomaly detection), ChatOps / internal AI copilots, Intelligent automation pipelines.' },
-                                                { tier: 'TIER 4', title: 'ENTERPRISE SECURITY STACKS', desc: 'Check Point (Infinity, Harmony, CloudGuard, Quantum), Splunk (SIEM, SOAR, Observability), MSSP-grade managed security services.' }
+                                                { tier: 'TIER 1', title: 'FULL-STACK WEB DEVELOPMENT', desc: 'Business websites that load fast and stay up. CRM & database-backed tooling built around your workflow (Next.js, APIs, databases). Client system integration. Security baked in by default.' },
+                                                { tier: 'TIER 2', title: 'DATA ANALYSIS & ENGINEERING', desc: 'Dashboards and reports executives actually read. Data pipelines, cleanup & ETL. Spreadsheet-to-database migrations. Workflow automation that cuts manual admin.' },
+                                                { tier: 'TIER 3', title: 'GRC & COMPLIANCE ADVISORY', desc: 'POPIA compliance assessment & gap analysis. Policy development & review. Risk register setup & maintenance. Audit readiness preparation.' },
+                                                { tier: 'TIER 4', title: 'PLATFORM EXPERIENCE & PROCUREMENT', desc: 'Certified Check Point & Splunk training with an always-on NFR lab. Procurement guidance & integration support while your team operates the platform.' }
                                             ].map((service, idx) => (
                                                 <div key={idx} className="border border-green-800 p-6 bg-black/40 hover:border-green-500 transition-all cursor-pointer group hover:bg-green-900/10">
                                                     <div className="flex items-start justify-between">
@@ -505,6 +511,9 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                             <button onClick={handleContactExecute} className="flex-1 bg-green-600 hover:bg-green-500 text-black font-bold py-3 uppercase tracking-widest transition-all">
                                                 REQUEST CONSULTATION
                                             </button>
+                                            <button onClick={() => router.push('/pricing')} className="px-6 border border-yellow-500 text-yellow-400 hover:bg-yellow-900/30 font-bold py-3 uppercase tracking-widest transition-all">
+                                                VIEW PRICING
+                                            </button>
                                             <button onClick={() => setActiveSection('dashboard')} className="px-6 border border-green-600 text-green-400 hover:bg-green-900/30 font-bold py-3 uppercase tracking-widest transition-all">
                                                 BACK
                                             </button>
@@ -517,31 +526,31 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
                                     <div className="py-20 space-y-6">
                                         <div className="border-l-2 border-red-500 pl-4 py-2">
                                             <h3 className="text-red-400 font-bold tracking-wide text-sm uppercase">
-                                                {'// SECURITY AUDIT PROTOCOL'}
+                                                {'// COMPLIANCE & RISK SNAPSHOT'}
                                             </h3>
-                                            <p className="text-gray-300 text-sm mt-1">Initiate a comprehensive security assessment.</p>
+                                            <p className="text-gray-300 text-sm mt-1">A free automated look at your public security posture.</p>
                                         </div>
 
                                         <div className="bg-red-900/10 border border-red-800/50 p-6">
                                             <div className="flex items-center gap-3 mb-4">
                                                 <span className="text-3xl">{'\u26A0}'}</span>
                                                 <div>
-                                                    <h4 className="text-red-400 font-bold text-lg">DIGITAL PERIMETER SCAN</h4>
-                                                    <p className="text-sm text-gray-400">Automated vulnerability assessment and risk analysis</p>
+                                                    <h4 className="text-red-400 font-bold text-lg">PUBLIC POSTURE SNAPSHOT</h4>
+                                                    <p className="text-sm text-gray-400">Automated external checks that feed a compliance conversation</p>
                                                 </div>
                                             </div>
                                             <ul className="text-sm text-gray-300 space-y-2 mb-6">
                                                 <li className="flex items-center gap-2">
-                                                    <span className="text-green-500">{'\u003E'}</span> DNS & SSL Certificate Analysis
+                                                    <span className="text-green-500">{'\u003E'}</span> Public DNS record hygiene
                                                 </li>
                                                 <li className="flex items-center gap-2">
-                                                    <span className="text-green-500">{'\u003E'}</span> Open Port Detection
+                                                    <span className="text-green-500">{'\u003E'}</span> TLS certificate validity &amp; posture
                                                 </li>
                                                 <li className="flex items-center gap-2">
-                                                    <span className="text-green-500">{'\u003E'}</span> API Endpoint Security Review
+                                                    <span className="text-green-500">{'\u003E'}</span> Email spoofing protection (SPF / DMARC)
                                                 </li>
                                                 <li className="flex items-center gap-2">
-                                                    <span className="text-green-500">{'\u003E'}</span> Credential Leak Database Check
+                                                    <span className="text-green-500">{'\u003E'}</span> Security headers review
                                                 </li>
                                             </ul>
                                             <button onClick={handleRiskScanExecute} className="w-full bg-red-600 hover:bg-red-500 text-black font-bold py-3 uppercase tracking-widest transition-all">

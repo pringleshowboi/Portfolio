@@ -1,5 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+const isProd = process.env.NODE_ENV === 'production';
+let openRouterWarned = false;
+
+function assertOpenRouterKey() {
+  const k = process.env.OPENROUTER_API_KEY;
+  if (!k && !openRouterWarned) {
+    openRouterWarned = true;
+    const msg =
+      '[JARVIS WARN] Missing OPENROUTER_API_KEY env var. ' +
+      (isProd
+        ? 'Set in Vercel → Project → Settings → Environment Variables → Production. '
+        : 'Set in .env.local for local dev. ') +
+      'JARVIS chatbot will respond only with offline/fallback templates and will not call real LLM models.';
+    if (isProd) console.error(msg);
+    else console.warn(msg);
+  }
+  return k;
+}
+
 // In-memory store for rate limiting (use Upstash Redis for production)
 const ipRequestMap = new Map<string, { count: number; resetAt: number }>();
 
@@ -95,6 +114,8 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
+
+  assertOpenRouterKey();
 
   const model = getNextModel();
 

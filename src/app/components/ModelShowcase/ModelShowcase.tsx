@@ -18,14 +18,14 @@ const MODELS = [
     id: 'check_point_router',
     path: '/models/check_point_router.glb',
     label: 'Perimeter Defense',
-    description: 'Check Point Quantum Firewall. Stops threats before they reach your network.',
+    description: 'Check Point Quantum Firewall — NFR lab unit. Hands-on experience that informs the perimeter guidance and procurement support I provide.',
     accent: '#ff3d6b',
   },
   {
     id: 'splunk_mobile',
     path: '/models/splunk_mobile.glb',
     label: 'Intelligence & Visibility',
-    description: 'Splunk SIEM. Every event, every alert, every incident — in one place.',
+    description: 'Splunk SIEM — training and lab environment. The concepts shape the monitoring and reporting advice I give clients.',
     accent: '#7b5cfa',
   },
 ];

@@ -2,9 +2,19 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { createLead } from '@/lib/db';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 function getResend(): Resend | null {
   const key = process.env.RESEND_API_KEY;
-  if (!key) return null;
+  if (!key) {
+    if (isProd) {
+      console.error(
+        '[RESEND FATAL] Missing RESEND_API_KEY in production env (Vercel → Project → Settings → Environment Variables). ' +
+        'Demo requests will fail with "Email service is not configured". Get key from https://resend.com/api-keys'
+      );
+    }
+    return null;
+  }
   return new Resend(key);
 }
 

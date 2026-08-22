@@ -10,7 +10,7 @@ import {
   STATUS_COLORS,
 } from '@/lib/types';
 
-type SortField = 'created_at' | 'status' | 'source' | 'email' | 'name';
+type SortField = 'created_at' | 'status' | 'source' | 'email' | 'name' | 'data_quality';
 type SortDir = 'asc' | 'desc';
 
 const SOURCE_LABELS: Record<LeadSource, string> = {
@@ -25,6 +25,27 @@ const SOURCE_COLORS: Record<LeadSource, string> = {
   demo: 'bg-purple-500/20 text-purple-400 border-purple-500/50',
 };
 
+const QUALITY_COLORS: Record<number, string> = {
+  0: 'bg-red-500/20 text-red-400 border-red-500/50',
+  1: 'bg-red-500/20 text-red-400 border-red-500/50',
+  2: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50',
+  3: 'bg-green-500/20 text-green-400 border-green-500/50',
+  4: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/50',
+};
+
+function getQualityLabel(score: number | null): string {
+  if (score == null) return 'N/A';
+  if (score <= 1) return 'LOW';
+  if (score === 2) return 'MED';
+  if (score === 3) return 'HIGH';
+  return 'PRIME';
+}
+
+function getQualityColor(score: number | null): string {
+  if (score == null) return 'bg-gray-500/20 text-gray-400 border-gray-500/50';
+  return QUALITY_COLORS[score] ?? 'bg-gray-500/20 text-gray-400 border-gray-500/50';
+}
+
 export default function LeadsDashboardClient({
   initialLeads,
 }: {
@@ -33,6 +54,7 @@ export default function LeadsDashboardClient({
   const [leads, setLeads] = useState<Lead[]>(initialLeads);
   const [filterStatus, setFilterStatus] = useState<LeadStatus | 'all'>('all');
   const [filterSource, setFilterSource] = useState<LeadSource | 'all'>('all');
+  const [filterQuality, setFilterQuality] = useState<'all' | 0 | 1 | 2 | 3 | 4>('all');
   const [search, setSearch] = useState('');
   const [sortField, setSortField] = useState<SortField>('created_at');
   const [sortDir, setSortDir] = useState<SortDir>('desc');
@@ -44,6 +66,13 @@ export default function LeadsDashboardClient({
 
     if (filterStatus !== 'all') list = list.filter((l) => l.status === filterStatus);
     if (filterSource !== 'all') list = list.filter((l) => l.source === filterSource);
+    if (filterQuality !== 'all') {
+      list = list.filter((l) => {
+        if (filterQuality === 0) return (l.data_quality ?? 0) <= 1;
+        if (filterQuality === 4) return (l.data_quality ?? 0) >= 4;
+        return l.data_quality === filterQuality;
+      });
+    }
 
     if (search.trim()) {
       const q = search.toLowerCase().trim();
@@ -51,6 +80,7 @@ export default function LeadsDashboardClient({
         (l) =>
           l.name.toLowerCase().includes(q) ||
           l.email.toLowerCase().includes(q) ||
+          (l.company_name ?? '').toLowerCase().includes(q) ||
           (l.message ?? '').toLowerCase().includes(q)
       );
     }
@@ -73,16 +103,32 @@ export default function LeadsDashboardClient({
         case 'name':
           cmp = a.name.localeCompare(b.name);
           break;
+        case 'data_quality':
+          cmp = (a.data_quality ?? -1) - (b.data_quality ?? -1);
+          break;
       }
       return sortDir === 'asc' ? cmp : -cmp;
     });
 
     return list;
-  }, [leads, filterStatus, filterSource, search, sortField, sortDir]);
+  }, [leads, filterStatus, filterSource, filterQuality, search, sortField, sortDir]);
 
   const counts = useMemo(() => {
     const c: Record<LeadStatus, number> = { new: 0, contacted: 0, qualified: 0, closed: 0 };
     for (const l of leads) c[l.status] = (c[l.status] ?? 0) + 1;
+    return c;
+  }, [leads]);
+
+  const qualityCounts = useMemo(() => {
+    const c = { low: 0, med: 0, high: 0, prime: 0, na: 0 };
+    for (const l of leads) {
+      const s = l.data_quality;
+      if (s == null) c.na++;
+      else if (s <= 1) c.low++;
+      else if (s === 2) c.med++;
+      else if (s === 3) c.high++;
+      else c.prime++;
+    }
     return c;
   }, [leads]);
 
@@ -122,6 +168,31 @@ export default function LeadsDashboardClient({
     </span>
   );
 
+  const VerifiedBadge = ({ email, phone }: { email: boolean; phone: boolean }) => (
+    <div className="flex gap-1 flex-wrap">
+      <span
+        className={`inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] border font-bold tracking-wider ${
+          email
+            ? 'bg-green-500/10 text-green-400 border-green-500/40'
+            : 'bg-red-500/10 text-red-400 border-red-500/40'
+        }`}
+        title={email ? 'Email verified / deliverable' : 'Email unverified or bounced'}
+      >
+        {email ? '✓ EMAIL' : '✗ EMAIL'}
+      </span>
+      <span
+        className={`inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] border font-bold tracking-wider ${
+          phone
+            ? 'bg-blue-500/10 text-blue-400 border-blue-500/40'
+            : 'bg-red-500/10 text-red-400 border-red-500/40'
+        }`}
+        title={phone ? 'Phone: valid SA format' : 'Phone: missing or invalid format'}
+      >
+        {phone ? '✓ PHONE' : '✗ PHONE'}
+      </span>
+    </div>
+  );
+
   return (
     <div className="space-y-6">
       <div className="flex items-start justify-between flex-wrap gap-4">
@@ -149,12 +220,29 @@ export default function LeadsDashboardClient({
         </div>
       </div>
 
+      <div className="grid grid-cols-4 gap-3">
+        {[
+          { key: 'low' as const, label: 'LOW QUALITY', count: qualityCounts.low, color: 'border-red-500/50 text-red-400 bg-red-900/10' },
+          { key: 'med' as const, label: 'MEDIUM', count: qualityCounts.med, color: 'border-yellow-500/50 text-yellow-400 bg-yellow-900/10' },
+          { key: 'high' as const, label: 'HIGH', count: qualityCounts.high, color: 'border-green-500/50 text-green-400 bg-green-900/10' },
+          { key: 'prime' as const, label: 'PRIME (4/4)', count: qualityCounts.prime, color: 'border-emerald-500/50 text-emerald-400 bg-emerald-900/10' },
+        ].map((q) => (
+          <div
+            key={q.key}
+            className={`px-4 py-3 border ${q.color} transition-colors`}
+          >
+            <div className="text-xs font-bold tracking-wider">{q.label}</div>
+            <div className="text-2xl font-bold mt-1">{q.count}</div>
+          </div>
+        ))}
+      </div>
+
       <div className="flex flex-wrap gap-3 items-center">
         <input
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search name, email, message..."
+          placeholder="Search name, email, company, message..."
           className="flex-1 min-w-64 bg-black border border-green-900/50 text-green-400 px-4 py-2 text-sm focus:outline-none focus:border-green-500 font-mono"
         />
 
@@ -179,6 +267,21 @@ export default function LeadsDashboardClient({
             <option key={s} value={s}>{SOURCE_LABELS[s]}</option>
           ))}
         </select>
+
+        <select
+          value={String(filterQuality)}
+          onChange={(e) => {
+            const v = e.target.value;
+            setFilterQuality(v === 'all' ? 'all' : (Number(v) as 0 | 1 | 2 | 3 | 4));
+          }}
+          className="bg-black border border-green-900/50 text-green-400 px-4 py-2 text-sm focus:outline-none focus:border-green-500 font-mono"
+        >
+          <option value="all">ALL QUALITY</option>
+          <option value="0">≤1 — LOW / JUNK</option>
+          <option value="2">2 — MEDIUM</option>
+          <option value="3">3 — HIGH</option>
+          <option value="4">4 — PRIME</option>
+        </select>
       </div>
 
       <div className="border border-green-900/50 bg-black/60 backdrop-blur overflow-hidden">
@@ -191,6 +294,7 @@ export default function LeadsDashboardClient({
                   { field: 'name' as SortField, label: 'NAME' },
                   { field: 'email' as SortField, label: 'EMAIL' },
                   { field: 'source' as SortField, label: 'SOURCE' },
+                  { field: 'data_quality' as SortField, label: 'VERIFIED' },
                   { field: 'status' as SortField, label: 'STATUS' },
                 ].map((col) => (
                   <th
@@ -208,7 +312,7 @@ export default function LeadsDashboardClient({
             <tbody>
               {filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-4 py-12 text-center text-gray-600 font-mono">
+                  <td colSpan={7} className="px-4 py-12 text-center text-gray-600 font-mono">
                     {'// NO_LEADS_FOUND'}
                   </td>
                 </tr>
@@ -222,11 +326,28 @@ export default function LeadsDashboardClient({
                       {format(new Date(lead.created_at), 'MMM d, HH:mm')}
                     </td>
                     <td className="px-4 py-3 text-green-400 font-bold">{lead.name}</td>
-                    <td className="px-4 py-3 text-green-300">{lead.email}</td>
+                    <td className="px-4 py-3 text-green-300">
+                      <div>{lead.email}</div>
+                      {lead.company_name && (
+                        <div className="text-xs text-gray-500 mt-0.5">{lead.company_name}</div>
+                      )}
+                    </td>
                     <td className="px-4 py-3">
                       <span className={`px-2 py-1 text-xs border font-bold tracking-wider ${SOURCE_COLORS[lead.source]}`}>
                         {SOURCE_LABELS[lead.source]}
                       </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      <div className="space-y-1.5">
+                        <VerifiedBadge email={!!lead.email_verified} phone={!!lead.phone_verified} />
+                        <span
+                          className={`inline-block px-2 py-0.5 text-[10px] border font-bold tracking-wider ${getQualityColor(
+                            lead.data_quality
+                          )}`}
+                        >
+                          SCORE: {lead.data_quality ?? '?'} / 4 · {getQualityLabel(lead.data_quality)}
+                        </span>
+                      </div>
                     </td>
                     <td className="px-4 py-3">
                       <select
@@ -281,6 +402,17 @@ export default function LeadsDashboardClient({
             </div>
 
             <div className="p-6 space-y-5">
+              <div className="flex items-center gap-2 flex-wrap pb-2 border-b border-green-900/30">
+                <VerifiedBadge email={!!selected.email_verified} phone={!!selected.phone_verified} />
+                <span
+                  className={`inline-block px-2 py-0.5 text-xs border font-bold tracking-wider ${getQualityColor(
+                    selected.data_quality
+                  )}`}
+                >
+                  DATA QUALITY: {selected.data_quality ?? '?'} / 4 ({getQualityLabel(selected.data_quality)})
+                </span>
+              </div>
+
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <div className="text-green-700 text-xs uppercase tracking-wider mb-1">Email</div>
@@ -318,6 +450,46 @@ export default function LeadsDashboardClient({
                     ))}
                   </select>
                 </div>
+                {(selected.phone || selected.website || selected.company_name) && (
+                  <>
+                    <div>
+                      <div className="text-green-700 text-xs uppercase tracking-wider mb-1">Phone</div>
+                      <div className="text-gray-400 flex items-center gap-2">
+                        {selected.phone || <span className="text-gray-600">—</span>}
+                        {selected.phone && (
+                          <span
+                            className={`text-[10px] px-1.5 py-0.5 border font-bold ${
+                              selected.phone_verified
+                                ? 'text-blue-400 border-blue-500/40 bg-blue-500/10'
+                                : 'text-red-400 border-red-500/40 bg-red-500/10'
+                            }`}
+                          >
+                            {selected.phone_verified ? '✓ SA VALID' : '✗ INVALID'}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-green-700 text-xs uppercase tracking-wider mb-1">Website</div>
+                      {selected.website ? (
+                        <a
+                          href={selected.website.startsWith('http') ? selected.website : `https://${selected.website}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-green-400 hover:underline"
+                        >
+                          {selected.website}
+                        </a>
+                      ) : (
+                        <span className="text-gray-600">—</span>
+                      )}
+                    </div>
+                    <div>
+                      <div className="text-green-700 text-xs uppercase tracking-wider mb-1">Company</div>
+                      <div className="text-gray-400">{selected.company_name || <span className="text-gray-600">—</span>}</div>
+                    </div>
+                  </>
+                )}
               </div>
 
               <div>

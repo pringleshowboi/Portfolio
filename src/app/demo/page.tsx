@@ -47,7 +47,7 @@ const ACTS = [
   { id: 'cold_open', label: 'Calm Before' },
   { id: 'first_contact', label: 'Intrusion' },
   { id: 'the_wall', label: 'Firewall' },
-  { id: 'kaspersky_shield', label: 'Endpoint Shield' },
+  { id: 'endpoint_shield', label: 'Endpoint Shield' },
   { id: 'inside_wire', label: 'Lateral Move' },
   { id: 'brain_wakes', label: 'AI Detection' },
   { id: 'intel_center', label: 'SIEM' },
@@ -418,10 +418,10 @@ function StackTriadModels({
 }
 
 // ============================================================
-// KASPERSKY ENDPOINT SHIELD (Act 3 - Virus catching visualization)
+// ENDPOINT SHIELD (Act 3 - Virus catching visualization)
 // ============================================================
 
-function KasperskyShield({ active = false }: { active?: boolean }) {
+function EndpointShield({ active = false }: { active?: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
   const ringRef = useRef<THREE.Mesh>(null);
   const [viruses, setViruses] = useState<{ pos: THREE.Vector3; speed: number; caught: boolean; explosion: number }[]>([]);
@@ -472,7 +472,7 @@ function KasperskyShield({ active = false }: { active?: boolean }) {
 
   return (
     <group ref={groupRef}>
-      {/* Kaspersky Shield Dome */}
+      {/* Shield Dome */}
       <mesh position={[0, 0, 0]}>
         <sphereGeometry args={[1.5, 16, 16]} />
         <meshBasicMaterial color="#0066ff" transparent opacity={0.15} wireframe />
@@ -490,11 +490,11 @@ function KasperskyShield({ active = false }: { active?: boolean }) {
         <meshBasicMaterial color="#0066ff" transparent opacity={0.6} />
       </mesh>
 
-      {/* Kaspersky label */}
+      {/* Endpoint security label */}
       <Html position={[0, 2.5, 0]}>
         <div className="text-center">
           <div className="text-xs font-mono text-blue-400 bg-black/80 px-3 py-1 border border-blue-500/50 whitespace-nowrap">
-            KASPERSKY ENDPOINT SECURITY
+            ENDPOINT SECURITY LAYER
           </div>
         </div>
       </Html>
@@ -669,7 +669,7 @@ function DemoScene({
     new THREE.Vector3(0, 2, 8),    // Act 0: Cold open
     new THREE.Vector3(0, 2, 8),    // Act 1: First contact
     new THREE.Vector3(0, 2, 8),    // Act 2: The wall
-    new THREE.Vector3(0, 3, 8),    // Act 3: Kaspersky Shield
+    new THREE.Vector3(0, 3, 8),    // Act 3: Endpoint Shield
     new THREE.Vector3(0, 5, 8),    // Act 4: Inside wire
     new THREE.Vector3(0, 4.2, 8.5), // Act 5: Brain wakes — phone forward, graph recedes
     new THREE.Vector3(0, 2.65, 10.2), // Act 6: SIEM triad
@@ -842,9 +842,9 @@ function DemoScene({
         </>
       )}
 
-      {/* ACT 3: Kaspersky Shield */}
+      {/* ACT 3: Endpoint Shield */}
       {act === 3 && (
-        <KasperskyShield active={true} />
+        <EndpointShield active={true} />
       )}
 
       {/* ACT 4-5: Node Graph */}
@@ -972,9 +972,9 @@ function ActOverlay({ act }: { act: ActIndex }) {
       </div>
     </div>,
 
-    // Act 3: Kaspersky Shield
+    // Act 3: Endpoint Shield
     <div key="3" className="absolute top-8 left-8 z-20 max-w-md">
-      <p className="text-xs font-mono text-blue-400 mb-2 animate-pulse">04:52 AM — KASPERSKY ACTIVE</p>
+      <p className="text-xs font-mono text-blue-400 mb-2 animate-pulse">04:52 AM — ENDPOINT DEFENSE ACTIVE</p>
       <h2 className="text-xl font-bold font-mono text-blue-400 mb-4">
         <TypewriterText text="Endpoint protection engaged" delay={300} />
       </h2>
@@ -1088,7 +1088,7 @@ function ActOverlay({ act }: { act: ActIndex }) {
           <div className="border-t border-gray-600 my-2 pt-2">
             <p className="text-xs text-gray-400 mb-1">Stack used:</p>
             <p className="text-green-400 text-sm">✓ Check Point Quantum</p>
-            <p className="text-green-400 text-sm">✓ Kaspersky Endpoint Security</p>
+            <p className="text-green-400 text-sm">✓ EDR / Endpoint Protection</p>
             <p className="text-green-400 text-sm">✓ AI Anomaly Detection Engine</p>
             <p className="text-green-400 text-sm">✓ Splunk SIEM + SOAR</p>
           </div>
@@ -1132,8 +1132,15 @@ function ActSevenPanel({
     const fd = new FormData(form);
     const rawMsg = (fd.get('message') as string) || '';
     const interest = (fd.get('interest') as string) || 'Not specified';
+    // Inputs use non-standard field names so browser autofill can't match them;
+    // re-map to the canonical keys expected by the sendEmail server action.
+    const intakeOrg = ((fd.get('secure_intake_org_x7f2') as string) || '').trim();
+    const intakeEmail = ((fd.get('secure_intake_email_x7f2') as string) || '').trim();
     const focusLine = stackFocus ? `3D focus: ${focusLabel[stackFocus]}` : '3D focus: (none)';
+    fd.set('name', intakeOrg);
+    fd.set('email', intakeEmail);
     fd.set('message', `[DEMO_LEAD]\nInterest: ${interest}\n${focusLine}\n\n${rawMsg}`);
+    fd.set('source', 'demo');
     const result = await sendEmail(fd);
     setSending(false);
     if (result.success) {
@@ -1169,7 +1176,7 @@ function ActSevenPanel({
           </button>
           <button type="button" className={cardClass('correlation')} onClick={() => onStackFocus('correlation')}>
             <p className="text-xs font-mono text-blue-400 font-bold mb-1">ENDPOINT + AI</p>
-            <p className="text-[11px] font-mono text-gray-200 text-left leading-snug">Kaspersky · baselines · automated response</p>
+            <p className="text-[11px] font-mono text-gray-200 text-left leading-snug">EDR · baselines · automated response</p>
           </button>
           <button type="button" className={cardClass('correlation')} onClick={() => onStackFocus('correlation')}>
             <p className="text-xs font-mono text-purple-400 font-bold mb-1">DATA PLANE</p>
@@ -1191,27 +1198,29 @@ function ActSevenPanel({
       <div className="pointer-events-auto w-full max-w-md border border-orange-400/60 bg-[#07080c]/95 p-5 rounded-lg shadow-[0_0_32px_rgba(255,102,0,0.18)] backdrop-blur-sm">
         <p className="text-xs font-mono text-orange-400 mb-1 tracking-widest font-bold">SECURE_INTAKE_CHANNEL</p>
         <h3 className="text-base font-mono text-white font-bold mb-4">Tell us what you want to solve</h3>
-        <form onSubmit={handleSubmit} className="space-y-4 font-mono text-xs">
+        <form onSubmit={handleSubmit} autoComplete="off" className="space-y-4 font-mono text-xs">
           <div>
-            <label className="block text-orange-200/90 mb-1.5 text-[11px] font-semibold" htmlFor="demo-name">
+            <label className="block text-orange-200/90 mb-1.5 text-[11px] font-semibold" htmlFor="demo-intake-callsign">
               {'// NAME_OR_ORG'}
             </label>
             <input
-              id="demo-name"
-              name="name"
+              id="demo-intake-callsign"
+              name="secure_intake_org_x7f2"
+              autoComplete="off"
               required
               className="w-full bg-black border border-orange-700/70 text-orange-50 p-2.5 rounded focus:outline-none focus:ring-2 focus:ring-orange-400/50 text-sm placeholder:text-orange-900/80"
               placeholder="Acme Security / Jane Doe"
             />
           </div>
           <div>
-            <label className="block text-orange-200/90 mb-1.5 text-[11px] font-semibold" htmlFor="demo-email">
+            <label className="block text-orange-200/90 mb-1.5 text-[11px] font-semibold" htmlFor="demo-intake-relay">
               {'// EMAIL'}
             </label>
             <input
-              id="demo-email"
-              name="email"
+              id="demo-intake-relay"
+              name="secure_intake_email_x7f2"
               type="email"
+              autoComplete="off"
               required
               className="w-full bg-black border border-orange-700/70 text-orange-50 p-2.5 rounded focus:outline-none focus:ring-2 focus:ring-orange-400/50 text-sm placeholder:text-orange-900/80"
               placeholder="you@organization.com"

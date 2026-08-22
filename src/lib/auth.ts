@@ -5,27 +5,56 @@ import bcrypt from 'bcryptjs';
 const COOKIE_NAME = 'admin_session';
 const SESSION_TTL_SECONDS = 60 * 60 * 8; // 8 hours
 
+const isProd = process.env.NODE_ENV === 'production';
+
+function assertEnv(name: string, value: string | undefined): asserts value is string {
+  if (!value) {
+    const msg = `Missing required environment variable: ${name} ${
+      isProd ? 'in production env (Vercel → Project → Settings → Environment Variables)' : 'in .env.local'
+    }`;
+    throw new Error(msg);
+  }
+}
+
 function getSecret(): Uint8Array {
   const secret = process.env.ADMIN_JWT_SECRET;
   if (!secret) {
-    throw new Error('ADMIN_JWT_SECRET env var is not set');
+    if (isProd) {
+      throw new Error(
+        '[AUTH FATAL] Missing ADMIN_JWT_SECRET in production env (Vercel → Project → Settings → Environment Variables). ' +
+        'Without this, admin session signing cannot work and all /admin/* routes will crash on SSR with a digest-only error. ' +
+        'Generate with: node -e "console.log(require(\'crypto\').randomBytes(32).toString(\'hex\'))"'
+      );
+    }
+    return new TextEncoder().encode('dev-secret-change-me-please-32chars!!');
+  }
+  if (secret.length < 32) {
+    throw new Error(
+      `[AUTH FATAL] ADMIN_JWT_SECRET must be at least 32 characters for HS256 security. Current length: ${secret.length}. ` +
+      `Generate with: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
+    );
   }
   return new TextEncoder().encode(secret);
 }
 
-export function getAdminCredentials(): { user: string; hash: string } | null {
+export function getAdminCredentials(): { user: string; hash: string } {
   const user = process.env.ADMIN_USER;
   const plainPass = process.env.ADMIN_PASS;
-  if (!user || !plainPass) return null;
+  assertEnv('ADMIN_USER', user);
+  assertEnv('ADMIN_PASS', plainPass);
   const hash = bcrypt.hashSync(plainPass, 10);
   return { user, hash };
 }
 
 export async function verifyCredentials(username: string, password: string): Promise<boolean> {
-  const creds = getAdminCredentials();
-  if (!creds) return false;
-  if (username !== creds.user) return false;
-  return bcrypt.compare(password, creds.hash);
+  try {
+    const creds = getAdminCredentials();
+    if (username !== creds.user) return false;
+    return bcrypt.compare(password, creds.hash);
+  } catch (err) {
+    console.error('[AUTH] verifyCredentials error (likely missing ADMIN_USER/ADMIN_PASS env vars):', err);
+    return false;
+  }
 }
 
 export async function createSession(): Promise<string> {

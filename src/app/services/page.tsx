@@ -910,35 +910,35 @@ export default function ServicesPage() {
         
         <div className="absolute right-0 top-0 h-full w-full md:w-1/3 bg-black/90 border-l border-green-900 p-8 flex flex-col justify-center z-10">
           <h2 className="text-2xl md:text-3xl font-bold text-yellow-400 mb-2 font-mono">
-            {`// QUANTUM FIREWALL ARCHITECTURE`}
+            {`// GRC & COMPLIANCE ADVISORY`}
           </h2>
-          <p className="text-green-600 mb-6 font-mono text-sm">CHECK POINT INFINITY PLATFORM</p>
+          <p className="text-green-600 mb-6 font-mono text-sm">POPIA READINESS &middot; RISK GOVERNANCE &middot; AUDIT PREPAREDNESS</p>
           
           <ul className="space-y-3 text-sm md:text-base font-mono text-green-400">
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Check Point Quantum Series deployment
+              POPIA compliance assessment &amp; gap analysis
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Deep packet inspection at wire speed
+              Policy development &amp; review
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Automated threat prevention & isolation
+              Risk register setup &amp; maintenance
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Integrated with Splunk SIEM for logging
+              Audit readiness support
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Zero-day protection via ThreatCloud AI
+              Layered-controls thinking, borrowed from network security
             </li>
           </ul>
 
           <button className="mt-8 px-6 py-3 border border-green-500 text-green-400 font-mono text-sm hover:bg-green-900/30 transition-colors self-start">
-            {`> EXPLORE CHECKPOINT STACK`}
+            {`> BOOK COMPLIANCE CONSULT`}
           </button>
         </div>
       </section>
@@ -963,9 +963,9 @@ export default function ServicesPage() {
 
         <div className="absolute right-0 top-0 h-full w-full md:w-1/3 bg-black/90 border-l border-green-900 p-8 flex flex-col justify-center z-10">
           <h2 className="text-2xl md:text-3xl font-bold text-yellow-400 mb-2 font-mono">
-            {`// LIVE ATTACK SIMULATION`}
+            {`// RISK ASSESSMENT, VISUALIZED`}
           </h2>
-          <p className="text-green-600 mb-6 font-mono text-sm">WATCH HOW I DEFEND YOUR INFRASTRUCTURE</p>
+          <p className="text-green-600 mb-6 font-mono text-sm">UNDERSTANDING ATTACK PATHS FEEDS BETTER RISK REGISTERS</p>
           
           <div className="mb-4 p-3 border border-green-900 bg-green-900/10 font-mono text-xs">
             <p className="text-green-400">STATUS: {simPhase || 'READY'}</p>
@@ -974,23 +974,23 @@ export default function ServicesPage() {
           <ul className="space-y-3 text-sm md:text-base font-mono text-green-400">
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Real-time threat detection & isolation
+              Threat-path modelling for realistic risk scenarios
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Check Point + Splunk SOAR integration
+              Control effectiveness review
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Automated playbook execution
+              Plain-language risk reporting
             </li>
           <li className="flex items-start">
             <span className="text-green-600 mr-2">▸</span>
-            Mean time to respond: {`< 60 seconds`}
+            Prioritized remediation roadmaps
           </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Zero manual intervention required
+              An illustrative animation &mdash; the real work is in the register
             </li>
           </ul>
 
@@ -1002,7 +1002,7 @@ export default function ServicesPage() {
               {`▶ RUN SIMULATION`}
             </button>
             <button className="px-6 py-3 border border-yellow-500 text-yellow-400 font-mono text-sm hover:bg-yellow-900/30 transition-colors">
-              {`> REQUEST SECURITY AUDIT`}
+              {`> REQUEST COMPLIANCE REVIEW`}
             </button>
           </div>
         </div>
@@ -1025,35 +1025,35 @@ export default function ServicesPage() {
 
         <div className="absolute right-0 top-0 h-full w-full md:w-1/3 bg-black/90 border-l border-green-900 p-8 flex flex-col justify-center z-10">
           <h2 className="text-2xl md:text-3xl font-bold text-yellow-400 mb-2 font-mono">
-            {`// AI INTELLIGENCE CORE`}
+            {`// DATA ANALYSIS & AUTOMATION`}
           </h2>
-          <p className="text-green-600 mb-6 font-mono text-sm">AUTONOMOUS THREAT RESPONSE SYSTEM</p>
+          <p className="text-green-600 mb-6 font-mono text-sm">DASHBOARDS &middot; PIPELINES &middot; WORKFLOW AUTOMATION</p>
           
           <ul className="space-y-3 text-sm md:text-base font-mono text-green-400">
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              LLM-powered SOC assistant
+              Reporting dashboards executives actually read
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              RAG pipeline over security knowledge base
+              Data pipelines &amp; ETL: cleanup, migration, enrichment
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Autonomous SOAR playbook triggering
+              Spreadsheet-to-database migrations
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              ChatOps integration (Slack, Teams, WhatsApp)
+              Workflow automation that cuts manual admin
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Continuous learning from threat feed
+              AI-assisted analysis where it earns its keep
             </li>
           </ul>
 
           <button className="mt-8 px-6 py-3 border border-green-500 text-green-400 font-mono text-sm hover:bg-green-900/30 transition-colors self-start">
-            {`> DEPLOY AI AGENTS`}
+            {`> DISCUSS YOUR DATA`}
           </button>
         </div>
       </section>
@@ -1075,35 +1075,35 @@ export default function ServicesPage() {
 
         <div className="absolute right-0 top-0 h-full w-full md:w-1/3 bg-black/90 border-l border-green-900 p-8 flex flex-col justify-center z-10">
           <h2 className="text-2xl md:text-3xl font-bold text-yellow-400 mb-2 font-mono">
-            {`// MOBILE & ON-PREM ARCHITECTURE`}
+            {`// FULL-STACK WEB DEVELOPMENT`}
           </h2>
-          <p className="text-green-600 mb-6 font-mono text-sm">HARMONY ENDPOINT · MOBILE SECURITY · EDGE DEFENCE</p>
+          <p className="text-green-600 mb-6 font-mono text-sm">BUSINESS WEBSITES &middot; CRM TOOLING &middot; SECURE BY DEFAULT</p>
           
           <ul className="space-y-3 text-sm md:text-base font-mono text-green-400">
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Check Point Harmony for mobile & endpoint
+              Business websites that load fast &amp; stay up
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              On-premises Quantum appliance deployment
+              CRM &amp; database-backed client tooling
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Zero Trust access for every device
+              Client system integration via APIs
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              CloudGuard for cloud workload protection
+              Security baked in: TLS, hardened headers, server-side validation
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Splunk observability across all layers
+              Maintainable handover documentation
             </li>
           </ul>
 
           <button className="mt-8 px-6 py-3 border border-green-500 text-green-400 font-mono text-sm hover:bg-green-900/30 transition-colors self-start">
-            {`> VIEW FULL STACK`}
+            {`> START A BUILD`}
           </button>
         </div>
       </section>
@@ -1125,35 +1125,35 @@ export default function ServicesPage() {
 
         <div className="absolute right-0 top-0 h-full w-full md:w-1/3 bg-black/90 border-l border-green-900 p-8 flex flex-col justify-center z-10">
           <h2 className="text-2xl md:text-3xl font-bold text-yellow-400 mb-2 font-mono">
-            {`// SPLUNK OBSERVABILITY PLATFORM`}
+            {`// PLATFORM EXPERIENCE`}
           </h2>
-          <p className="text-green-600 mb-6 font-mono text-sm">SIEM · SOAR · ITSI · REAL-TIME INTELLIGENCE</p>
+          <p className="text-green-600 mb-6 font-mono text-sm">CHECK POINT &middot; SPLUNK &middot; OPEN-SOURCE LAB</p>
           
           <ul className="space-y-3 text-sm md:text-base font-mono text-green-400">
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Splunk Cloud & Enterprise deployment
+              Certified Check Point &amp; Splunk training
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Custom SIEM correlation rules
+              Always-on NFR lab environment
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              SOAR playbook automation
+              Procurement guidance &amp; licensing navigation
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              ITSI for service health monitoring
+              Integration support while your team operates
             </li>
             <li className="flex items-start">
               <span className="text-green-600 mr-2">▸</span>
-              Executive dashboards & compliance reports
+              Honest boundaries: no managed SOC / MSSP services
             </li>
           </ul>
 
           <button className="mt-8 px-6 py-3 border border-green-500 text-green-400 font-mono text-sm hover:bg-green-900/30 transition-colors self-start">
-            {`> VIEW SPLUNK CAPABILITIES`}
+            {`> HOW I ENGAGE`}
           </button>
         </div>
       </section>

@@ -3,7 +3,7 @@
 // Import all necessary components and hooks
 import SystemStartup from "./components/SystemStartup/SystemStartup";
 import BackgroundAudio from "./components/BackgroundAudio/BackgroundAudio"
-import { useState, useRef } from "react"; 
+import { useState, useRef, useEffect } from "react"; 
 import CardGame from "./components/CardGame/CardGame"; 
 import { useRouter } from 'next/navigation';
 
@@ -12,6 +12,9 @@ const TARGET_VOLUME = 0.1;      // Final volume (40%)
 const FADE_DURATION = 1500;     // Fade over 1.5 seconds (1500ms)
 // ----------------------------------------
 
+// sessionStorage key: boot animation plays once per browser session
+const BOOT_PLAYED_KEY = 'm4n_boot_played';
+
 // COMPLETE STATE TYPE
 type AppState = 'idle' | 'zooming' | 'booting' | 'os_load' | 'terminal' | 'game';
 
@@ -19,6 +22,18 @@ const Home = () => {
     const router = useRouter(); 
     const [appState, setAppState] = useState<AppState>('idle');
     const audioRef = useRef<HTMLAudioElement | null>(null);
+
+    // On mount: if the boot sequence already ran this browser session,
+    // skip straight to the fully-rendered terminal instead of replaying it.
+    useEffect(() => {
+        try {
+            if (sessionStorage.getItem(BOOT_PLAYED_KEY)) {
+                setAppState('terminal');
+            }
+        } catch {
+            // sessionStorage unavailable (privacy mode) — play normally
+        }
+    }, []);
 
 
     // Function to handle the smooth fade-in of the background audio
@@ -58,6 +73,8 @@ const Home = () => {
         if (appState === 'booting') {
             setAppState('os_load');
         } else if (appState === 'os_load') {
+            // Boot sequence completed successfully — remember for this session
+            try { sessionStorage.setItem(BOOT_PLAYED_KEY, '1'); } catch { /* ignore */ }
             setAppState('terminal');
         }
     };
@@ -120,10 +137,10 @@ const Home = () => {
                         {/* Top Section - Header */}
                         <div className="flex flex-col gap-2 text-left self-start">
                             <h1 className="text-3xl md:text-5xl font-extrabold font-mono text-white tracking-tighter leading-none animate-glow drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
-                                I design and build secure, intelligent systems that scale &mdash; and defend them.
+                                Compliance guidance, sharp data work, and web platforms built to run your business.
                             </h1>
                             <p className="text-sm md:text-base font-mono text-green-400 opacity-95 uppercase tracking-[0.4em] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
-                                Cybersecurity Architecture &middot; AI Automation &middot; Enterprise Security Engineering
+                                GRC &amp; Compliance Advisory &middot; Data Analysis &amp; Engineering &middot; Full-Stack Web Development
                             </p>
                         </div>
 
@@ -136,7 +153,7 @@ const Home = () => {
                                 CLICK THE MONITOR TO INITIALIZE SYSTEM
                             </p>
                             <p className="text-xs md:text-sm font-mono text-gray-200 max-w-xl uppercase tracking-widest drop-shadow-[0_1px_4px_rgba(0,0,0,0.95)]">
-                                Explore secure services, engagement models, and digital capabilities.
+                                Explore advisory services, engagement models, and digital capabilities.
                             </p>
                         </div>
                     </div>

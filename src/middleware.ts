@@ -5,9 +5,17 @@ const COOKIE_NAME = 'admin_session';
 const ADMIN_ROUTES = ['/admin'];
 const PUBLIC_ROUTES = ['/admin/login'];
 
+const isProd = process.env.NODE_ENV === 'production';
+
 function getSecret(): Uint8Array {
   const secret = process.env.ADMIN_JWT_SECRET;
   if (!secret) {
+    if (isProd) {
+      throw new Error(
+        '[MIDDLEWARE FATAL] Missing ADMIN_JWT_SECRET in production env (Vercel → Project → Settings → Environment Variables). ' +
+        'Without this, admin sessions cannot be verified. Generate with: node -e "console.log(require(\'crypto\').randomBytes(32).toString(\'hex\'))"'
+      );
+    }
     return new TextEncoder().encode('dev-secret-change-me-please-32chars!!');
   }
   return new TextEncoder().encode(secret);
