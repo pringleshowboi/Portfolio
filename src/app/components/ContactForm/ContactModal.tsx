@@ -82,7 +82,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
                 {status === 'success' ? (
                     <div className="py-12 flex flex-col items-center justify-center text-center space-y-4">
-                        <div className="text-4xl animate-bounce">🛡️</div>
+                        <div className="text-4xl animate-bounce">[SHIELD]</div>
                         <h3 className="text-green-400 text-xl font-bold uppercase tracking-widest">AUDIT_PROTOCOL_INITIALIZED</h3>
                         <p className="text-green-600 text-sm">Security request queued for analysis.</p>
                         <p className="text-xs text-gray-500 mt-4">Closing secure tunnel...</p>

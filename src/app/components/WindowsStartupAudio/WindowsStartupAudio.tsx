@@ -3,7 +3,7 @@
 
 import { useEffect, useRef } from 'react';
 
-// 🛑 IMPORTANT: Confirm the file extension in your /public/audio folder. 
+// IMPORTANT: Confirm the file extension in your /public/audio folder. 
 // Assuming it's MP4 based on your code, but often Windows startup sounds are MP3/WAV.
 const AUDIO_SRC = '/audio/windows_startup.mp4';
 
@@ -15,8 +15,8 @@ export default function WindowsStartupAudio() {
         const audio = audioRef.current;
         
         if (audio) {
-            // Set volume to a lower level (20%)
-            audio.volume = 0.2;
+            // Set volume to a lower level (10%)
+            audio.volume = 0.1;
             // Play the sound immediately when the component mounts
             audio.play().catch(error => {
                 console.warn("Windows startup audio failed to play (user interaction required):", error);

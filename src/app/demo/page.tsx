@@ -6,6 +6,7 @@ import { OrbitControls, useGLTF, Html, useCursor } from '@react-three/drei';
 import * as THREE from 'three';
 import { useRouter } from 'next/navigation';
 import { sendEmail } from '../actions/send-email';
+import ContactModal from '../components/ContactForm/ContactModal';
 
 // ============================================================
 // TYPES & CONSTANTS
@@ -90,7 +91,7 @@ function LoadingScreen({ progress, loaded }: { progress: number; loaded: string[
                 />
               </div>
               <span className="text-[10px] font-mono text-gray-500 w-12 text-right">
-                {loaded.includes(name) ? '✓' : '...'}
+                {loaded.includes(name) ? '[OK]' : '...'}
               </span>
             </div>
           ))}
@@ -1087,10 +1088,10 @@ function ActOverlay({ act }: { act: ActIndex }) {
           </div>
           <div className="border-t border-gray-600 my-2 pt-2">
             <p className="text-xs text-gray-400 mb-1">Stack used:</p>
-            <p className="text-green-400 text-sm">✓ Check Point Quantum</p>
-            <p className="text-green-400 text-sm">✓ EDR / Endpoint Protection</p>
-            <p className="text-green-400 text-sm">✓ AI Anomaly Detection Engine</p>
-            <p className="text-green-400 text-sm">✓ Splunk SIEM + SOAR</p>
+            <p className="text-green-400 text-sm">[OK] Check Point Quantum</p>
+            <p className="text-green-400 text-sm">[OK] EDR / Endpoint Protection</p>
+            <p className="text-green-400 text-sm">[OK] AI Anomaly Detection Engine</p>
+            <p className="text-green-400 text-sm">[OK] Splunk SIEM + SOAR</p>
           </div>
         </div>
       </div>
@@ -1314,6 +1315,7 @@ function ProgressDots({ current, onChange }: { current: ActIndex; onChange: (i: 
 
 export default function DemoPage() {
   const router = useRouter();
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const [act, setAct] = useState<ActIndex>(0);
   const [loaded, setLoaded] = useState(false);
   const [stackFocus, setStackFocus] = useState<StackLayerId | null>(null);
@@ -1419,6 +1421,7 @@ export default function DemoPage() {
       {/* Overlay content */}
       <ActOverlay act={act} />
       {act === 7 && <ActSevenPanel stackFocus={stackFocus} onStackFocus={setStackFocus} />}
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
 
       {/* Bottom CTA */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40">
@@ -1428,13 +1431,13 @@ export default function DemoPage() {
               onClick={() => setAct(0)}
               className="px-6 py-3 border border-green-500 text-green-400 font-mono text-sm hover:bg-green-900/30 transition-colors"
             >
-              {`⟳ REPLAY SIMULATION`}
+              {`REPLAY SIMULATION`}
             </button>
             <button
-              onClick={() => router.push('/services')}
+              onClick={() => setIsContactOpen(true)}
               className="px-6 py-3 border border-yellow-500 text-yellow-400 font-mono text-sm hover:bg-yellow-900/30 transition-colors"
             >
-              {`TALK TO OUR TEAM →`}
+              {`TALK TO OUR TEAM >`}
             </button>
           </div>
         ) : (

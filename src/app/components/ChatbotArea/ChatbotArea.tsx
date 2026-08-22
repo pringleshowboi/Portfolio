@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import JarvisAvatar, { JarvisEmotion } from '../JarvisAvatar/JarvisAvatar';
 import Typewriter from '../Typewriter/Typewriter';
 
-const initialMessageText = "Hello, I am J.A.R.V.I.S., an Interactive Interface for this portfolio. Ask about GRC advisory, data engineering, or web development.";
+const initialMessageText = "Hello, I am M4N, an Interactive Interface for this portfolio. Ask about GRC advisory, data engineering, or web development.";
 
 interface Message {
     id: string;
@@ -63,7 +63,7 @@ const processQueryFallback = (query: string): string => {
     if (lowerQuery.includes('platform') || lowerQuery.includes('web') || lowerQuery.includes('mobile') || lowerQuery.includes('crm')) {
         return "WEB DEVELOPMENT: business websites that load fast and stay up, CRM/database-backed tooling built around your workflow, client system integration. Secure by default.";
     }
-    return "I am J.A.R.V.I.S., an AI assistant for this portfolio. Ask me about GRC advisory, data engineering, web development, or platform experience.";
+    return "I am M4N, an AI assistant for this portfolio. Ask me about GRC advisory, data engineering, web development, or platform experience.";
 };
 
 export default function ChatbotArea({}: ChatbotAreaProps) {
@@ -116,7 +116,7 @@ export default function ChatbotArea({}: ChatbotAreaProps) {
                 setIsRateLimited(true);
                 const jarvisMsg: Message = {
                     id: (Date.now() + 1).toString(),
-                    text: `J.A.R.V.I.S is cooling down. Neural core resets in ${data.error.match(/\d+/)?.[0] || 'unknown'} minutes.`,
+                    text: `M4N is cooling down. Neural core resets in ${data.error.match(/\d+/)?.[0] || 'unknown'} minutes.`,
                     sender: 'jarvis',
                     timestamp: Date.now()
                 };
@@ -211,7 +211,7 @@ export default function ChatbotArea({}: ChatbotAreaProps) {
 
     return (
         <div className={`border-2 p-2 flex flex-col h-full w-full gap-2 ${isRateLimited ? 'border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)]' : 'border-green-400'}`}>
-            <p className="text-yellow-400 font-bold">J.A.R.V.I.S. INTERFACE:</p>
+            <p className="text-yellow-400 font-bold">M4N INTERFACE:</p>
 
             <div className="h-[100px] w-full flex justify-center">
                 <JarvisAvatar emotion={emotion} />
@@ -241,7 +241,7 @@ export default function ChatbotArea({}: ChatbotAreaProps) {
                             </div>
                         );
                     })}
-                    {isThinking && <p className="text-gray-500 animate-pulse">J.A.R.V.I.S. is thinking...</p>}
+                    {isThinking && <p className="text-gray-500 animate-pulse">M4N is thinking...</p>}
                     <div ref={messagesEndRef} />
                 </div>
             </div>

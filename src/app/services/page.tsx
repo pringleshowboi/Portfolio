@@ -185,7 +185,7 @@ function QuantumFirewallScene() {
       {threatNeutralized && (
         <HtmlOverlay
           position={[0, 2, 0]}
-          text="⚠ THREAT NEUTRALISED"
+          text="[ALERT] THREAT NEUTRALISED"
           scale={0.6}
           color={COLORS.threat}
           flash
@@ -277,7 +277,7 @@ function AttackSimulationScene({ triggerSimulation, onPhaseChange }: { triggerSi
     
     // Phase 2: Attack begins
     setPhase('attack');
-    onPhaseChangeRef.current('⚠ THREAT DETECTED - PHISHING INGRESS NODE_07');
+    onPhaseChangeRef.current('[ALERT] THREAT DETECTED - PHISHING INGRESS NODE_07');
     setNodeStates(prev => {
       const next = [...prev];
       next[7] = 'infected';
@@ -811,7 +811,7 @@ function SplunkDataStormScene() {
       {anomalyActive && (
         <HtmlOverlay
           position={[0, 3, 0]}
-          text="⚠ ANOMALY DETECTED - PLAYBOOK TRIGGERED"
+          text="[ALERT] ANOMALY DETECTED - PLAYBOOK TRIGGERED"
           scale={0.25}
           color={COLORS.threat}
           flash

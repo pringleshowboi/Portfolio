@@ -293,7 +293,7 @@ export default function RiskScanModal({ isOpen, onClose }: RiskScanModalProps) {
                     <div>
                         <div className="bg-yellow-900/20 border border-yellow-700/60 p-3 mb-4">
                             <p className="text-yellow-400 text-sm font-bold text-center tracking-wider">
-                                ⚠ SAMPLE AUDIT PREVIEW
+                                [!] SAMPLE AUDIT PREVIEW
                             </p>
                             <p className="text-yellow-200/70 text-[10px] text-center mt-1">
                                 NOT A LIVE SCAN — no checks were run against your infrastructure.

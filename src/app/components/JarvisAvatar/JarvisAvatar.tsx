@@ -8,26 +8,26 @@ import React, { useEffect, useState } from 'react';
 const SPRITESHEET_COLS = 8;
 const SPRITESHEET_ROWS = 7; 
 
-// 🎯 FINAL DIMENSIONS: 75px for both width and height.
+// FINAL DIMENSIONS: 75px for both width and height.
 const SPRITE_WIDTH_PX = 215; 
 const SPRITE_HEIGHT_PX = 100; 
 
-// 💡 MANUAL PIXEL OFFSETS (Keep these for alignment, fine-tune as needed)
+// MANUAL PIXEL OFFSETS (Keep these for alignment, fine-tune as needed)
 const OFFSET_X_PX = 0; 
 const OFFSET_Y_PX = -35; 
 
 
 // --- State Definitions ---
-// 💡 UPDATED: Only 'idle' and 'talking' are active states now
+// UPDATED: Only 'idle' and 'talking' are active states now
 export type JarvisEmotion = 'idle' | 'talking';
 
 // Map emotion to a specific sprite sheet row or animation frame sequence
 // Coordinates are (col, row) where (0, 0) is top-left
 const EMOTION_FRAMES: { [key in JarvisEmotion]: { row: number, startCol: number, endCol: number } } = {
-    // 💡 UPDATED: Idle is now an animation: Row 0, Frames 0, 1, 2 (0-2)
+    // UPDATED: Idle is now an animation: Row 0, Frames 0, 1, 2 (0-2)
     idle: { row: 0, startCol: 0, endCol: 2 }, 
 
-    // 💡 UPDATED: Talking animation: Row 1, Frames 4, 5, 6, 7 (4-7)
+    // UPDATED: Talking animation: Row 1, Frames 4, 5, 6, 7 (4-7)
     talking: { row: 1, startCol: 4, endCol: 7 }, 
     
     // Note: Since both are now animations, the type definition for EMOTION_FRAMES
@@ -47,7 +47,7 @@ export default function JarvisAvatar({ emotion = 'idle' }: JarvisAvatarProps) {
     // If emotion is not found (shouldn't happen with the default)
     const frameConfig = EMOTION_FRAMES[emotion] || EMOTION_FRAMES.idle;
     
-    // 💡 SIMPLIFIED: isAnimation is always true now since all remaining states are animations
+    // SIMPLIFIED: isAnimation is always true now since all remaining states are animations
     // const isAnimation = true; 
 
     useEffect(() => {
@@ -72,7 +72,7 @@ export default function JarvisAvatar({ emotion = 'idle' }: JarvisAvatarProps) {
     }, [emotion, frameConfig]); // Removed isAnimation from dependency array
 
     
-    // 💡 SIMPLIFIED: Background position calculation no longer needs ternary operators
+    // SIMPLIFIED: Background position calculation no longer needs ternary operators
     // Since we are always animating, 'col' is always 'currentFrame' and 'row' is always 'frameConfig.row'.
     const { row: animatedRow } = frameConfig as { row: number, startCol: number, endCol: number };
 

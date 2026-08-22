@@ -20,10 +20,10 @@ const WEB_TIERS = [
         highlight: false,
     },
     {
-        price: 'R50',
+        price: 'R200',
         unit: '/ MONTH',
         name: 'MAINTENANCE RETAINER',
-        tagline: 'Keeps your site healthy while you run the business.',
+        tagline: 'Keeps your site healthy while you run the business. Scales to R500 depending on domains.',
         features: [
             'Content updates & minor changes',
             'Uptime monitoring',

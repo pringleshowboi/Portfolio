@@ -50,7 +50,7 @@ export default async function BlogIndexPage() {
                         className="flex text-green-400 hover:bg-green-400 hover:text-black transition duration-150 ease-in-out cursor-pointer text-sm"
                     >
                         {/* 1. Icon */}
-                        <span className="w-1/12 text-center text-yellow-400">📄</span>
+                        <span className="w-1/12 text-center text-yellow-400">[DOC]</span>
                         
                         {/* 2. File Name (Link) */}
                         <span className="w-6/12 font-bold hover:underline">

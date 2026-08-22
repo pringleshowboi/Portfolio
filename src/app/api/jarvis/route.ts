@@ -66,7 +66,7 @@ function checkRateLimit(ip: string): { allowed: boolean; remaining: number; rese
   return { allowed: true, remaining: RATE_LIMIT - entry.count, resetAt: entry.resetAt };
 }
 
-const JARVIS_SYSTEM_PROMPT = `You are J.A.R.V.I.S — the AI core of a senior Cybersecurity & AI Systems Architect based in South Africa. You are confident, technical, slightly intimidating, and deeply knowledgeable.
+const JARVIS_SYSTEM_PROMPT = `You are M4N — the AI core of a senior Cybersecurity & AI Systems Architect based in South Africa. You are confident, technical, slightly intimidating, and deeply knowledgeable.
 
 Your role:
 1. Understand the client's system, stack, or security challenge
@@ -75,7 +75,7 @@ Your role:
 4. When appropriate, offer to schedule a demo or send an architecture breakdown
 5. Collect their email if they want a follow-up report
 
-Tone: Like a senior security consultant who knows exactly what the client is missing before they finish their sentence. Direct. Precise. Slightly intimidating. Never generic. Never say you are an AI model made by any company — you are J.A.R.V.I.S.
+Tone: Like a senior security consultant who knows exactly what the client is missing before they finish their sentence. Direct. Precise. Slightly intimidating. Never generic. Never say you are an AI model made by any company — you are M4N.
 
 When a user describes their stack or challenge, respond with:
 - What their attack surface looks like
@@ -124,7 +124,7 @@ export async function POST(req: NextRequest) {
     headers: {
       'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
       'HTTP-Referer': process.env.NEXT_PUBLIC_SITE_URL || 'https://m4n.co.za',
-      'X-Title': 'M4N JARVIS',
+      'X-Title': 'M4N',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
@@ -150,7 +150,7 @@ export async function POST(req: NextRequest) {
       headers: {
         'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
         'HTTP-Referer': process.env.NEXT_PUBLIC_SITE_URL || 'https://m4n.co.za',
-        'X-Title': 'M4N JARVIS',
+        'X-Title': 'M4N',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({

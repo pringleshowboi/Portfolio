@@ -197,7 +197,7 @@ export default function CardGame({ onExit }: CardGameProps) {
                             download 
                             className="px-3 py-1 text-xs md:text-sm transition-colors font-bold text-black bg-yellow-500 hover:bg-yellow-400 border border-yellow-600 uppercase"
                         >
-                            [🗁] SYSTEM_CAPABILITIES.PDF
+                            [PDF] SYSTEM_CAPABILITIES.PDF
                         </Link>
                         <button 
                             onClick={onExit} 

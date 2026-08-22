@@ -46,7 +46,7 @@ export async function generateStaticParams() {
 }
 
 
-// 🛑 ABSOLUTE FINAL FIX: Disable the linter for this one line to force compilation.
+// ABSOLUTE FINAL FIX: Disable the linter for this one line to force compilation.
 // This resolves the "Unexpected any" error at line 53.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any 
 export default async function BlogPostPage(props: any) { 
@@ -77,7 +77,7 @@ export default async function BlogPostPage(props: any) {
             style={{ height: 'calc(100vh - 64px)' }} 
         > 
             
-            {/* 🛑 CRITICAL GUARD CLAUSE FIX: Only render if asset reference exists 🛑 */}
+            {/* CRITICAL GUARD CLAUSE FIX: Only render if asset reference exists */}
             {post.mainImage && post.mainImage.asset && post.mainImage.asset._ref && (
                 <div className="mb-8 border-b-2 border-green-400 pb-4">
                     <Image

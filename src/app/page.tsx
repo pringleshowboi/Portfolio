@@ -8,7 +8,7 @@ import CardGame from "./components/CardGame/CardGame";
 import { useRouter } from 'next/navigation';
 
 // --- Configuration for Audio Fade-in ---
-const TARGET_VOLUME = 0.1;      // Final volume (40%)
+const TARGET_VOLUME = 0.1;      // Final volume (10%)
 const FADE_DURATION = 1500;     // Fade over 1.5 seconds (1500ms)
 // ----------------------------------------
 

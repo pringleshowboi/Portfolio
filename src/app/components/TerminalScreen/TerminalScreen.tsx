@@ -33,11 +33,11 @@ interface TerminalScreenProps {
     onTerminalExecute: (command: 'cards.exe' | 'blog.exe') => void; 
 }
 
-const ASCII_CARD_ICON = '\u{1F0DC}';
-const ASCII_BLOG_ICON = '\u{1F5A5}'; 
-const ASCII_CONTACT_ICON = '\u{2709}';
+const ASCII_CARD_ICON = '[>]';
+const ASCII_BLOG_ICON = '[::]'; 
+const ASCII_CONTACT_ICON = '[@]';
 
-// J.A.R.V.I.S. Panel - Fixed on the right side
+// M4N Panel - Fixed on the right side
 const JarvisPanel = ({ currentTime, currentDate, status }: { currentTime: string; currentDate: string; status: string }) => (
     <div className="fixed right-0 top-0 h-full w-[350px] border-l-2 border-green-400/50 bg-black/80 backdrop-blur-sm z-20 hidden lg:flex flex-col p-4">
         {/* Clock & Globe Widget */}
@@ -60,14 +60,14 @@ const JarvisPanel = ({ currentTime, currentDate, status }: { currentTime: string
 // Systems I Build Section - 8 card grid
 const SystemsIBuildSection = () => {
     const systems = [
-        { icon: '\u{2696}', name: 'GRC Advisory', desc: 'POPIA readiness & governance' },
-        { icon: '\u{25C8}', name: 'Risk Assessment', desc: 'Registers & control mapping' },
-        { icon: '\u{2714}', name: 'Audit Readiness', desc: 'Policies, evidence & prep' },
-        { icon: '\u{25A4}', name: 'Dashboards', desc: 'Reporting & executive insight' },
-        { icon: '\u{21C4}', name: 'Data Pipelines', desc: 'ETL, cleanup & migrations' },
-        { icon: '\u{2601}', name: 'Business Websites', desc: 'Secure, fast, maintainable' },
-        { icon: '\u{2328}', name: 'CRM Tooling', desc: 'Database-backed client systems' },
-        { icon: '\u{2699}', name: 'Automation', desc: 'Workflows & integrations' },
+        { icon: '#', name: 'GRC Advisory', desc: 'POPIA readiness & governance' },
+        { icon: '%', name: 'Risk Assessment', desc: 'Registers & control mapping' },
+        { icon: '&', name: 'Audit Readiness', desc: 'Policies, evidence & prep' },
+        { icon: '$', name: 'Dashboards', desc: 'Reporting & executive insight' },
+        { icon: '~', name: 'Data Pipelines', desc: 'ETL, cleanup & migrations' },
+        { icon: '@', name: 'Business Websites', desc: 'Secure, fast, maintainable' },
+        { icon: '+', name: 'CRM Tooling', desc: 'Database-backed client systems' },
+        { icon: '^', name: 'Automation', desc: 'Workflows & integrations' },
     ];
     return (
         <div className="py-20">
@@ -127,7 +127,7 @@ const SecurityStacksSection = () => {
                 {PLATFORM_EXPERIENCE.map((col) => (
                     <div key={col.heading} className={`border p-5 hover:border-green-500/50 transition-all ${ACCENT_CLASSES[col.accent].border}`}>
                         <h4 className={`${ACCENT_CLASSES[col.accent].text} font-bold text-xs mb-4 uppercase tracking-wider`}>
-                            {'\u{25A4}'} {col.heading}
+                            {'>'} {col.heading}
                         </h4>
                         <ul className="space-y-2.5 text-[11px] text-gray-300 font-mono">
                             {col.items.map((item) => (
@@ -164,7 +164,7 @@ const CertificationsSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="border border-orange-800/50 bg-orange-900/10 p-5">
                     <h4 className="text-orange-400 font-bold text-xs mb-4 uppercase">
-                        {'\u{263F}'} CHECK POINT CERTIFICATIONS
+                        {'>'} CHECK POINT CERTIFICATIONS
                     </h4>
                     <div className="flex flex-wrap gap-2">
                         {checkpointCerts.map((cert, idx) => (
@@ -176,7 +176,7 @@ const CertificationsSection = () => {
                 </div>
                 <div className="border border-green-800/50 bg-green-900/10 p-5">
                     <h4 className="text-green-400 font-bold text-xs mb-4 uppercase">
-                        {'\u{25A4}'} SPLUNK CERTIFICATIONS
+                        {'>'} SPLUNK CERTIFICATIONS
                     </h4>
                     <div className="flex flex-wrap gap-2">
                         {splunkCerts.map((cert, idx) => (
@@ -247,11 +247,11 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
     const navItems = [
         { id: 'systems' as NavSection, label: 'CAPABILITIES', icon: ASCII_CARD_ICON, action: () => setActiveSection('systems') },
         { id: 'services' as NavSection, label: 'SERVICES', icon: ASCII_BLOG_ICON, action: () => setActiveSection('services') },
-        { id: 'pricing' as NavSection, label: 'PRICING', icon: '\u{1F4B0}', action: () => router.push('/pricing') },
+        { id: 'pricing' as NavSection, label: 'PRICING', icon: '[$]', action: () => router.push('/pricing') },
         { id: 'demo' as NavSection, label: '3D DEMO', icon: '', action: () => window.location.href = '/demo' },
         { id: 'intel' as NavSection, label: 'INTEL FEED', icon: ASCII_CONTACT_ICON, action: handleBlogExecute },
-        { id: 'audit' as NavSection, label: 'COMPLIANCE SCAN', icon: '\u{1F5CE}', action: handleRiskScanExecute },
-        { id: 'checklist' as NavSection, label: 'CONTACT', icon: '\u{2709}', action: handleContactExecute },
+        { id: 'audit' as NavSection, label: 'COMPLIANCE SCAN', icon: '[!]', action: handleRiskScanExecute },
+        { id: 'checklist' as NavSection, label: 'CONTACT', icon: '[@]', action: handleContactExecute },
     ];
 
     useEffect(() => {
@@ -533,7 +533,7 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
 
                                         <div className="bg-red-900/10 border border-red-800/50 p-6">
                                             <div className="flex items-center gap-3 mb-4">
-                                                <span className="text-3xl">{'\u26A0}'}</span>
+                                                <span className="text-3xl">{'[!]'}</span>
                                                 <div>
                                                     <h4 className="text-red-400 font-bold text-lg">PUBLIC POSTURE SNAPSHOT</h4>
                                                     <p className="text-sm text-gray-400">Automated external checks that feed a compliance conversation</p>
@@ -576,7 +576,7 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
 
                                         <div className="bg-blue-900/10 border border-blue-800/50 p-6">
                                             <div className="flex items-center gap-3 mb-4">
-                                                <span className="text-3xl">{'\u{1F512}'}</span>
+                                                <span className="text-3xl">{'[##]'}</span>
                                                 <div>
                                                     <h4 className="text-blue-400 font-bold text-lg">ESTABLISH SECURE CHANNEL</h4>
                                                     <p className="text-sm text-gray-400">End-to-end encrypted communication protocol</p>

@@ -13,7 +13,7 @@ export interface PostMetadata {
 }
 
 // Set the directory where your Markdown files live (adjust if necessary)
-const POSTS_DIR = path.join(process.cwd(), 'content', 'posts'); // <-- ONLY ONE DECLARATION 👍
+const POSTS_DIR = path.join(process.cwd(), 'content', 'posts'); // <-- ONLY ONE DECLARATION
 
 /**
  * Reads all Markdown files in the content/posts directory,

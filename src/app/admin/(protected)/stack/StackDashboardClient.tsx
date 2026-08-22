@@ -26,7 +26,7 @@ const STATUS_ICONS: Record<StackNfrStatus, string> = {
   not_started: '○',
   nfr_requested: '◐',
   active: '●',
-  partner: '★',
+  partner: '*',
 };
 
 export default function StackDashboardClient({

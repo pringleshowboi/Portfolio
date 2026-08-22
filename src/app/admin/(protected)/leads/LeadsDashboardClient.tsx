@@ -178,7 +178,7 @@ export default function LeadsDashboardClient({
         }`}
         title={email ? 'Email verified / deliverable' : 'Email unverified or bounced'}
       >
-        {email ? '✓ EMAIL' : '✗ EMAIL'}
+        {email ? '[OK] EMAIL' : '[X] EMAIL'}
       </span>
       <span
         className={`inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] border font-bold tracking-wider ${
@@ -188,7 +188,7 @@ export default function LeadsDashboardClient({
         }`}
         title={phone ? 'Phone: valid SA format' : 'Phone: missing or invalid format'}
       >
-        {phone ? '✓ PHONE' : '✗ PHONE'}
+        {phone ? '[OK] PHONE' : '[X] PHONE'}
       </span>
     </div>
   );
@@ -464,7 +464,7 @@ export default function LeadsDashboardClient({
                                 : 'text-red-400 border-red-500/40 bg-red-500/10'
                             }`}
                           >
-                            {selected.phone_verified ? '✓ SA VALID' : '✗ INVALID'}
+                            {selected.phone_verified ? '[OK] SA VALID' : '[X] INVALID'}
                           </span>
                         )}
                       </div>
