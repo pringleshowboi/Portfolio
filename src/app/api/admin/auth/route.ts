@@ -16,7 +16,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
     }
 
-    await createSession();
+    // Mark the cookie Secure only when the request actually arrived over HTTPS
+    // (Vercel/proxies report this via x-forwarded-proto).
+    const proto = req.headers.get('x-forwarded-proto') ?? new URL(req.url).protocol.replace(':', '');
+    await createSession(proto === 'https');
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Auth error:', error);

@@ -15,8 +15,8 @@ export default function WindowsStartupAudio() {
         const audio = audioRef.current;
         
         if (audio) {
-            // Set volume to a lower level (10%)
-            audio.volume = 0.1;
+            // Set volume to a whisper-quiet level (4%) so the chime never startles anyone
+            audio.volume = 0.04;
             // Play the sound immediately when the component mounts
             audio.play().catch(error => {
                 console.warn("Windows startup audio failed to play (user interaction required):", error);

@@ -57,7 +57,7 @@ export async function verifyCredentials(username: string, password: string): Pro
   }
 }
 
-export async function createSession(): Promise<string> {
+export async function createSession(secure?: boolean): Promise<string> {
   const secret = getSecret();
   const token = await new SignJWT({ sub: 'admin', role: 'admin' })
     .setProtectedHeader({ alg: 'HS256' })
@@ -68,7 +68,9 @@ export async function createSession(): Promise<string> {
   const cookieStore = await cookies();
   cookieStore.set(COOKIE_NAME, token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
+    // Only mark Secure when actually served over HTTPS; browsers drop Secure
+    // cookies on plain-HTTP origins (e.g. LAN IPs), which silently breaks login.
+    secure: secure ?? isProd,
     sameSite: 'lax',
     path: '/admin',
     maxAge: SESSION_TTL_SECONDS,
