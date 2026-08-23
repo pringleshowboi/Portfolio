@@ -78,13 +78,26 @@ export async function POST(req: NextRequest) {
         ? body.notes.trim().slice(0, 5000)
         : null;
 
+    // Persist the monthly retainer as its own line item so the DB record
+    // reflects what the client was quoted. It is deliberately NOT summed
+    // into estimated_total_zar (that stays the once-off build estimate).
+    const storedLineItems = [
+      ...quote.lineItems.map((li) => ({ label: li.label, amount_zar: li.amountZar })),
+      ...(quote.monthlyRetainerZar
+        ? [{
+            label: 'HOSTING & MAINTENANCE RETAINER (/ MONTH)',
+            amount_zar: quote.monthlyRetainerZar,
+          }]
+        : []),
+    ];
+
     const dbResult = await createProjectRequest({
       project_type: selection.projectType,
       style: selection.style ?? null,
       features: selection.features,
       notes,
       billing_model: quote.billing,
-      line_items: quote.lineItems.map((li) => ({ label: li.label, amount_zar: li.amountZar })),
+      line_items: storedLineItems,
       estimated_total_zar: quote.totalZar,
       ...contact.data,
     });
@@ -115,6 +128,9 @@ export async function POST(req: NextRequest) {
       '',
       'ESTIMATED BREAKDOWN:',
       ...quote.lineItems.map((li) => `  - ${li.label}: ${formatZar(li.amountZar)}`),
+      quote.monthlyRetainerZar
+        ? `  - PLUS HOSTING & MAINTENANCE RETAINER: ${formatZar(quote.monthlyRetainerZar)} / MONTH`
+        : null,
       `${quote.billing === 'monthly' ? 'ESTIMATED TOTAL / MONTH' : 'ESTIMATED TOTAL'}: ${formatZar(quote.totalZar)}`,
       '',
       '(Estimate only — final scope and price confirmed after consultation.)',

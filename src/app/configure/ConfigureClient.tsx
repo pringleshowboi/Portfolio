@@ -537,6 +537,16 @@ export default function ConfigureClient() {
                       </span>
                     </li>
                   ))}
+                  {(quote.monthlyRetainerZar ?? 0) > 0 && (
+                    <li className="flex items-baseline justify-between gap-3 text-[11px]">
+                      <span className="text-gray-400" title="HOSTING & MAINTENANCE RETAINER">
+                        + HOSTING &amp; MAINTENANCE
+                      </span>
+                      <span className="text-yellow-400">
+                        {formatZar(quote.monthlyRetainerZar!)} / MO
+                      </span>
+                    </li>
+                  )}
                 </ul>
                 <div className="border-t border-green-800/60 pt-3 flex items-baseline justify-between">
                   <span className="text-[10px] text-gray-500 tracking-widest">

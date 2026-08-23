@@ -171,8 +171,16 @@ export interface PriceLineItem {
 export interface QuoteBreakdown {
   billing: BillingModel;
   lineItems: PriceLineItem[];
+  /** Mandatory monthly hosting & maintenance retainer on top of the
+   *  once-off build estimate (website projects only). NOT included in
+   *  totalZar — display and persist it as a separate /month line. */
+  monthlyRetainerZar?: number;
   totalZar: number;
 }
+
+// Website builds carry a mandatory monthly hosting & maintenance
+// retainer on top of the once-off build estimate (R0 first build).
+export const WEBSITE_MONTHLY_RETAINER_ZAR = 50;
 
 const ZAR_FORMATTER = new Intl.NumberFormat('en-ZA', {
   style: 'currency',
@@ -213,6 +221,8 @@ export function calculateQuote(selection: ConfiguratorSelection): QuoteBreakdown
   return {
     billing: projectType.billing,
     lineItems,
+    monthlyRetainerZar:
+      projectType.id === 'website' ? WEBSITE_MONTHLY_RETAINER_ZAR : undefined,
     totalZar,
   };
 }

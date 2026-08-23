@@ -220,6 +220,28 @@ export async function generateQuotePdf(input: QuotePdfInput): Promise<Uint8Array
     y -= 16;
   }
 
+  if (input.quote.monthlyRetainerZar && input.quote.monthlyRetainerZar > 0) {
+    ensureSpace(20);
+    const retainerStr = `${formatZar(input.quote.monthlyRetainerZar)} / MONTH`;
+    const page = lastPage();
+    page.drawText('- HOSTING & MAINTENANCE RETAINER', {
+      x: margin,
+      y,
+      size: 10,
+      font,
+      color: DARK,
+    });
+    const w = bold.widthOfTextAtSize(retainerStr, 10);
+    page.drawText(retainerStr, {
+      x: pageW - margin - w,
+      y,
+      size: 10,
+      font: bold,
+      color: M4N_YELLOW,
+    });
+    y -= 16;
+  }
+
   y -= 4;
   ensureSpace(26);
   {
