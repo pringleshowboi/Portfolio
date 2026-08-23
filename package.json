@@ -30,6 +30,7 @@
     "libphonenumber-js": "^1.13.11",
     "next": "15.5.9",
     "next-sanity": "^11.4.2",
+    "pdf-lib": "^1.17.1",
     "posthog-js": "^1.347.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",

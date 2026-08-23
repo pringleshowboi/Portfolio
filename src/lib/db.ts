@@ -22,6 +22,7 @@ import type {
   CreatedApiKey,
   UsageLog,
   ScrapeRun,
+  QuoteLineItem,
 } from './types';
 
 let cachedClient: SupabaseClient | null = null;
@@ -76,6 +77,65 @@ export async function isDbAvailable(): Promise<boolean> {
   } catch {
     return false;
   }
+}
+
+// ============================================================
+// PROJECT REQUESTS (/configure quote builder)
+// ============================================================
+
+export interface CreateProjectRequestInput {
+  project_type: string;
+  style?: string | null;
+  features: string[];
+  notes?: string | null;
+  billing_model: string;
+  line_items: QuoteLineItem[];
+  estimated_total_zar: number;
+  name: string;
+  email: string;
+  phone?: string | null;
+  company_name?: string | null;
+}
+
+export async function createProjectRequest(
+  input: CreateProjectRequestInput
+): Promise<{ error?: string; id?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+
+  const { data, error } = await client
+    .from('project_requests')
+    .insert({
+      project_type: input.project_type,
+      style: input.style ?? null,
+      features: input.features,
+      notes: input.notes?.trim() || null,
+      billing_model: input.billing_model,
+      line_items: input.line_items,
+      estimated_total_zar: input.estimated_total_zar,
+      name: input.name.trim(),
+      email: input.email.trim().toLowerCase(),
+      phone: input.phone?.trim() || null,
+      company_name: input.company_name?.trim() || null,
+      status: 'new',
+    })
+    .select('id')
+    .single();
+
+  if (error) {
+    console.error('[DB] createProjectRequest error:', error);
+    return { error: error.message };
+  }
+
+  return { id: data.id };
+}
+
+export async function markProjectRequestPdfSent(id: string): Promise<{ error?: string }> {
+  const client = getClient();
+  if (!client) return { error: 'DB not configured' };
+  const { error } = await client.from('project_requests').update({ pdf_sent: true }).eq('id', id);
+  if (error) return { error: error.message };
+  return {};
 }
 
 // ============================================================
@@ -835,6 +895,13 @@ export async function writeUsageLog(input: {
   status_code?: number | null;
   response_ms?: number | null;
   client_ip?: string | null;
+  // AI groundwork (0005)
+  action_type?: string | null;
+  client_identifier?: string | null;
+  tokens_in?: number | null;
+  tokens_out?: number | null;
+  token_count?: number | null;
+  cost_usd?: number | null;
 }): Promise<{ id?: number; error?: string }> {
   const client = getClient();
   if (!client) return { error: 'DB not configured' };
@@ -849,6 +916,16 @@ export async function writeUsageLog(input: {
       status_code: input.status_code ?? null,
       response_ms: input.response_ms ?? null,
       client_ip: input.client_ip ?? null,
+      action_type: input.action_type ?? null,
+      client_identifier: input.client_identifier ?? null,
+      tokens_in: input.tokens_in ?? null,
+      tokens_out: input.tokens_out ?? null,
+      token_count:
+        input.token_count ??
+        (input.tokens_in != null || input.tokens_out != null
+          ? (input.tokens_in ?? 0) + (input.tokens_out ?? 0)
+          : null),
+      cost_usd: input.cost_usd ?? null,
     })
     .select('id')
     .single();
@@ -942,4 +1019,140 @@ export async function listUsageForTenant(tenantId: string, limit = 500): Promise
 
   if (error) return { data: [], error: error.message };
   return { data: (data ?? []) as UsageLog[] };
+}
+
+// ============================================================
+// AI USAGE RATE-LIMITING GROUNDWORK
+// Infrastructure only. Nothing calls these yet — future AI-assisted
+// features should call checkAiRateLimit() BEFORE running a model
+// call and logAiUsage() AFTER it completes.
+//
+//   const gate = await checkAiRateLimit({
+//     clientIdentifier: user.email,
+//     actionType: 'chat_completion',
+//     maxCallsPerDay: 25,
+//     maxCostUsdPerDay: 0.5,
+//   });
+//   if (!gate.allowed) return tooManyRequests();
+//   ... run AI call ...
+//   await logAiUsage({ clientIdentifier, actionType, tokensIn, tokensOut, costUsd });
+// ============================================================
+
+export interface AiRateLimitOptions {
+  /** Who is calling: email, api-key prefix, hashed session id... */
+  clientIdentifier: string;
+  /** What they are doing: 'chat_completion', 'summarize', 'embedding'... */
+  actionType: string;
+  /** Max allowed calls in the rolling window (default window = 24h). */
+  maxCallsPerDay?: number;
+  /** Optional spend ceiling in USD for the same window. */
+  maxCostUsdPerDay?: number;
+  /** Rolling window length in seconds (default 86400 = 24h). */
+  windowSeconds?: number;
+}
+
+export interface AiRateLimitResult extends RateLimitResult {
+  /** USD already spent by this identifier+action inside the window. */
+  costUsedUsd: number;
+}
+
+/**
+ * Check whether an AI action may proceed for a client identifier.
+ * Counts both call volume and (optionally) accumulated estimated cost.
+ * Fails OPEN if the DB is unreachable so infrastructure issues never
+ * hard-block unrelated features — flip to fail-closed per feature if needed.
+ */
+export async function checkAiRateLimit(opts: AiRateLimitOptions): Promise<AiRateLimitResult> {
+  const windowSeconds = opts.windowSeconds ?? 86400;
+  const callLimit = opts.maxCallsPerDay ?? Number.POSITIVE_INFINITY;
+
+  const fallbackReset = new Date(Date.now() + windowSeconds * 1000).toISOString();
+  const client = getClient();
+  if (!client) {
+    console.warn('[AI-RATELIMIT] DB not configured — failing open');
+    return { allowed: true, limit: 0, used: 0, remaining: 0, reset: fallbackReset, costUsedUsd: 0 };
+  }
+
+  const since = new Date(Date.now() - windowSeconds * 1000).toISOString();
+
+  const [callRes, costRes] = await Promise.all([
+    client
+      .from('usage_log')
+      .select('id', { count: 'exact', head: true })
+      .eq('client_identifier', opts.clientIdentifier)
+      .eq('action_type', opts.actionType)
+      .gte('called_at', since),
+    opts.maxCostUsdPerDay != null
+      ? client
+          .from('usage_log')
+          .select('cost_usd')
+          .eq('client_identifier', opts.clientIdentifier)
+          .eq('action_type', opts.actionType)
+          .gte('called_at', since)
+      : null,
+  ]);
+
+  if (callRes.error) {
+    console.error('[AI-RATELIMIT] count query failed:', callRes.error.message);
+    // fail open on infra errors
+    return { allowed: true, limit: 0, used: 0, remaining: 0, reset: fallbackReset, costUsedUsd: 0 };
+  }
+
+  const used = callRes.count ?? 0;
+
+  let costUsedUsd = 0;
+  if (costRes && !costRes.error && costRes.data) {
+    costUsedUsd = costRes.data.reduce(
+      (sum, row) => sum + (typeof row.cost_usd === 'number' ? row.cost_usd : 0),
+      0
+    );
+  }
+
+  const overCalls = used >= callLimit;
+  const overCost =
+    opts.maxCostUsdPerDay != null ? costUsedUsd >= opts.maxCostUsdPerDay : false;
+
+  return {
+    allowed: !overCalls && !overCost,
+    limit: Number.isFinite(callLimit) ? callLimit : 0,
+    used,
+    remaining: Math.max(0, (Number.isFinite(callLimit) ? callLimit : used) - used),
+    reset: new Date(Date.now() + windowSeconds * 1000).toISOString(),
+    costUsedUsd,
+  };
+}
+
+/**
+ * Record one completed AI action. Best-effort: failures are logged,
+ * never thrown — telemetry must not break the caller's response.
+ */
+export async function logAiUsage(input: {
+  clientIdentifier: string;
+  actionType: string;
+  endpoint?: string;
+  tenantId?: string | null;
+  apiKeyId?: string | null;
+  tokensIn?: number | null;
+  tokensOut?: number | null;
+  costUsd?: number | null;
+  statusCode?: number | null;
+}): Promise<void> {
+  try {
+    const result = await writeUsageLog({
+      endpoint: input.endpoint ?? `ai:${input.actionType}`,
+      action_type: input.actionType,
+      client_identifier: input.clientIdentifier,
+      tenant_id: input.tenantId ?? null,
+      api_key_id: input.apiKeyId ?? null,
+      tokens_in: input.tokensIn ?? null,
+      tokens_out: input.tokensOut ?? null,
+      cost_usd: input.costUsd ?? null,
+      status_code: input.statusCode ?? 200,
+    });
+    if (result.error) {
+      console.warn('[AI-USAGE] log failed:', result.error);
+    }
+  } catch (err) {
+    console.warn('[AI-USAGE] log threw:', err);
+  }
 }

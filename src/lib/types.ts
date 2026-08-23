@@ -1,6 +1,34 @@
 export type LeadSource = 'contact' | 'risk-scan' | 'demo';
 export type LeadStatus = 'new' | 'contacted' | 'qualified' | 'closed';
 
+// ------------------------------------------------------------
+// Project Requests — /configure quote builder
+// ------------------------------------------------------------
+export type ProjectRequestStatus = 'new' | 'contacted' | 'scoped' | 'won' | 'lost';
+
+export interface QuoteLineItem {
+  label: string;
+  amount_zar: number;
+}
+
+export interface ProjectRequest {
+  id: string;
+  project_type: string;
+  style: string | null;
+  features: string[];
+  notes: string | null;
+  billing_model: string;
+  line_items: QuoteLineItem[];
+  estimated_total_zar: number;
+  name: string;
+  email: string;
+  phone: string | null;
+  company_name: string | null;
+  status: ProjectRequestStatus;
+  pdf_sent: boolean;
+  created_at: string;
+}
+
 export interface Lead {
   id: string;
   name: string;
@@ -249,4 +277,11 @@ export interface UsageLog {
   response_ms: number | null;
   client_ip: string | null;
   called_at: string;
+  // AI groundwork (0005) — infrastructure only, not yet wired to any feature
+  action_type: string | null;
+  client_identifier: string | null;
+  tokens_in: number | null;
+  tokens_out: number | null;
+  token_count: number | null;
+  cost_usd: number | null;
 }

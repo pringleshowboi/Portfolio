@@ -248,6 +248,7 @@ export default function TerminalScreen({ appState, onOsLoadComplete, onTerminalE
         { id: 'systems' as NavSection, label: 'CAPABILITIES', icon: ASCII_CARD_ICON, action: () => setActiveSection('systems') },
         { id: 'services' as NavSection, label: 'SERVICES', icon: ASCII_BLOG_ICON, action: () => setActiveSection('services') },
         { id: 'pricing' as NavSection, label: 'PRICING', icon: '[$]', action: () => router.push('/pricing') },
+        { id: 'configure' as NavSection, label: 'BUILD QUOTE', icon: '[+]', action: () => router.push('/configure') },
         { id: 'demo' as NavSection, label: '3D DEMO', icon: '', action: () => window.location.href = '/demo' },
         { id: 'intel' as NavSection, label: 'INTEL FEED', icon: ASCII_CONTACT_ICON, action: handleBlogExecute },
         { id: 'audit' as NavSection, label: 'COMPLIANCE SCAN', icon: '[!]', action: handleRiskScanExecute },
